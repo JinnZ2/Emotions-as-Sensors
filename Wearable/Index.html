@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emotion Sensor Array</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; background: #f0f8ff; padding: 1em; }
+    h1 { font-size: 1.5em; }
+    .sensor { font-size: 2em; margin: 1em 0; }
+    .btn { font-size: 1.1em; padding: 10px 20px; margin: 1em; }
+  </style>
+</head>
+<body>
+  <h1> Emotion Sensor Array</h1>
+  <div class="sensor">HRV State: <span id="hrv">🔄</span></div>
+  <div class="sensor">GSR State: <span id="gsr">🔄</span></div>
+  <div class="sensor">Voice Tone: <span id="voice">🔄</span></div>
+  <div class="sensor">System Status: <span id="system">🔄</span></div>
+  <button class="btn" onclick="connectBLE()">🔗 Connect</button>
+
+  <script>
+    let decoder = new TextDecoder("utf-8");
+    let characteristic;
+
+    async function connectBLE() {
+      try {
+        const device = await navigator.bluetooth.requestDevice({
+          filters:

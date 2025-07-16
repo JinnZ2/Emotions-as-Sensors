@@ -1,0 +1,13 @@
+Notes for BLE to Work
+
+ESP32 BLE UART Tips:
+	•	Make sure your ESP32 is advertising a BLE UART service.
+	•	You can use a library like NimBLE-Arduino for ESP32 BLE support.
+	•	You can set service UUIDs to match:
+	•	0xFFE0 = UART Service
+	•	0xFFE1 = RX/TX
+
+  try?  ESP32 BLE Arduino sketch for this that emits JSON strings every 2 seconds, like:
+{"HRV_state":"φ","GSR_state":"⚡","Voice_tone":"❄","System_status":"🟠"}
+
+

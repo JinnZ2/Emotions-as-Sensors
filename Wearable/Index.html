@@ -26,4 +26,34 @@
     async function connectBLE() {
       try {
         const device = await navigator.bluetooth.requestDevice({
-          filters:
+          filters: [{ namePrefix: "ESP32" }],
+          optionalServices: [0xFFE0]  // Custom UART service (adjust if needed)
+        });
+
+        const server = await device.gatt.connect();
+        const service = await server.getPrimaryService(0xFFE0);
+        characteristic = await service.getCharacteristic(0xFFE1);
+
+        await characteristic.startNotifications();
+        characteristic.addEventListener("characteristicvaluechanged", handleBLE);
+        alert("✅ Connected to ESP32 Emotion Sensor");
+      } catch (err) {
+        alert("❌ BLE Connect Failed: " + err);
+      }
+    }
+
+    function handleBLE(event) {
+      const value = decoder.decode(event.target.value);
+      try {
+        const data = JSON.parse(value.trim());
+        document.getElementById("hrv").textContent = data.HRV_state || "—";
+        document.getElementById("gsr").textContent = data.GSR_state || "—";
+        document.getElementById("voice").textContent = data.Voice_tone || "—";
+        document.getElementById("system").textContent = data.System_status || "—";
+      } catch (e) {
+        console.warn("Parse error:", e, value);
+      }
+    }
+  </script>
+</body>
+</html>

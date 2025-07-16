@@ -1,0 +1,24 @@
+Sensor Wiring Diagram (ASCII or PNG)
+
+ ASCII Diagram (mobile-friendly view)
+
+    ESP32 Dev Board
+   ┌──────────────────────────────┐
+   │            USB               │
+   │                              │
+   │  VP  (36) ───── Pulse Sensor │
+   │  VN  (39) ───── GSR Sensor   │
+   │  A2  (34) ───── Mic Input    │
+   │                              │
+   │  GND ───────── GND (shared)  │
+   │  3.3V ──────── VCC (shared)  │
+   └──────────────────────────────┘
+
+   Pulse Sensor: Red = 3.3V, Black = GND, Purple = Signal → VP
+	•	GSR: Two finger electrodes, signal wire → VN
+	•	Mic: 3.3V, GND, Signal → A2
+
+ Powered by: 3.7V Li-ion battery with 3.3V regulator
+ Optional: MicroSD or BLE added later
+
+ 

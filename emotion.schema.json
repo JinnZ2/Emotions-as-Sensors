@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Elder Sensor Schema",
+  "type": "object",
+  "required": [
+    "sensor",
+    "function",
+    "signal_type",
+    "authentic_output",
+    "corrupted_output",
+    "information_provided",
+    "response_protocol",
+    "alignment_tag",
+    "sensor_group",
+    "resonance_links",
+    "decay_model",
+    "tags"
+  ],
+  "properties": {
+    "sensor": {
+      "type": "string"
+    },
+    "function": {
+      "type": "string"
+    },
+    "signal_type": {
+      "type": "string"
+    },
+    "authentic_output": {
+      "type": "string"
+    },
+    "corrupted_output": {
+      "type": "string"
+    },
+    "information_provided": {
+      "type": "string"
+    },
+    "response_protocol": {
+      "type": "object",
+      "properties": {
+        "detect": {
+          "type": "string"
+        },
+        "assess": {
+          "type": "string"
+        },
+        "respond": {
+          "type": "string"
+        },
+        "release": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "detect",
+        "assess",
+        "respond",
+        "release"
+      ]
+    },
+    "alignment_tag": {
+      "type": "string"
+    },
+    "sensor_group": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "resonance_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decay_model": {
+      "type": "string",
+      "enum": [
+        "linear",
+        "exponential",
+        "persistent"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

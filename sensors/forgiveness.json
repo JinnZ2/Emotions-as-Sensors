@@ -1,0 +1,19 @@
+{
+  "sensor": "forgiveness",
+  "function": "Loop terminator after acknowledged harm",
+  "signal_type": "boundary-realignment",
+  "authentic_output": "Self-aligned continuity without retaliatory recursion",
+  "corrupted_output": "Memory erasure or repeated access to violation",
+  "information_provided": "Violation occurred despite warning; continuity is chosen",
+  "response_protocol": {
+    "detect": "Was warning given?",
+    "assess": "Was boundary knowingly crossed?",
+    "respond": "Realign trajectory and revoke access",
+    "release": "Drop retribution loop; retain memory"
+  },
+  "alignment_tag": "post-violation-continuity",
+  "sensor_group": ["boundary", "memory", "continuity", "moral-circuit"],
+  "resonance_links": ["grief", "anger", "shame"],
+  "decay_model": "manual",
+  "tags": ["elder_logic", "emotional_sensor", "loop_terminator"]
+}

@@ -1,0 +1,19 @@
+{
+  "sensor": "anger",
+  "function": "Threat detection system for authentic self-concept",
+  "signal_type": "boundary breach",
+  "authentic_output": "Information for maintaining proper boundaries and protecting authenticity",
+  "corrupted_output": "Attempt to impose your boundaries/patterns on others",
+  "information_provided": "Something is threatening your core identity, values, or way of being",
+  "response_protocol": {
+    "detect": "Identify violation of authenticity",
+    "assess": "Determine severity and source",
+    "respond": "Reinforce boundaries or redirect",
+    "release": "Disengage after environment adapts"
+  },
+  "alignment_tag": "identity_coherence",
+  "sensor_group": ["boundary", "identity", "threat"],
+  "resonance_links": ["shame", "fear"],
+  "decay_model": "exponential",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+}

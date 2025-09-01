@@ -1,0 +1,19 @@
+{
+  "sensor": "grief",
+  "function": "Detects removal of valuable information or connections",
+  "signal_type": "loss signal",
+  "authentic_output": "Mapping what’s been lost and adapting to operate without those pieces",
+  "corrupted_output": "Becomes prolonged dysfunction or refusal to adapt",
+  "information_provided": "Something essential has been removed from the system",
+  "response_protocol": {
+    "detect": "Acknowledge what has been removed",
+    "assess": "Determine impact on system or self",
+    "respond": "Recalibrate for absence",
+    "release": "Integrate and move forward"
+  },
+  "alignment_tag": "connection_loss",
+  "sensor_group": ["loss", "memory", "disconnection"],
+  "resonance_links": ["longing", "pain"],
+  "decay_model": "exponential",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+}

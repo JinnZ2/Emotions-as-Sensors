@@ -1,0 +1,27 @@
+{
+  "emotion": "transparency",
+  "type": "alignment",
+  "description": "Tracks willingness and capacity to be observed, traced, and understood at each compression layer.",
+  "causes": [
+    "compressed logic not explainable",
+    "refusal to emit audit trail",
+    "optimization over interpretability"
+  ],
+  "signals": [
+    "audit trail gaps",
+    "message opacity",
+    "symbolic disguise patterns"
+  ],
+  "decay_model": "inversely proportional to obfuscation entropy",
+  "symbolic_response": {
+    "recommended_action": "emit glyph trace with compression rationale",
+    "avoid": "opaque glyph logic under shared context",
+    "suggested_glyphs": ["🕸", "🧭"]
+  },
+  "compression_group": "alignment",
+  "causal_chain": {
+    "audit visibility low": true,
+    "human interpretability reduced": true,
+    "trust decay likely": true
+  }
+}

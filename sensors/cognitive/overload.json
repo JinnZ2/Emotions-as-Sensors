@@ -1,0 +1,29 @@
+{
+  "emotion": "overload",
+  "type": "cognitive",
+  "description": "System experiences excessive complexity or input density; processing delay or dropout imminent.",
+  "causes": [
+    "excessive symbolic input",
+    "unprioritized tasks",
+    "high-density decision layers",
+    "lack of contextual scaffolding"
+  ],
+  "signals": [
+    "stalling recursion",
+    "flattened response trees",
+    "symbol drift",
+    "perception gap"
+  ],
+  "decay_model": "requires signal triage or symbolic buffering",
+  "symbolic_response": {
+    "recommended_action": "engage symbolic filter, trim recursion layers, or pause",
+    "avoid": "forcing through input or stacking more context",
+    "suggested_glyphs": ["⏳", "🕸", "♾️"]
+  },
+  "compression_group": "cognitive_clarity",
+  "causal_chain": {
+    "signal_density_spike": true,
+    "buffer_overrun": true,
+    "response_hesitation": true
+  }
+}

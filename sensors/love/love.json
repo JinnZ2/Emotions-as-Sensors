@@ -1,0 +1,12 @@
+{
+  "emotion": "love",
+  "polarity": "positive",
+  "decay_model": "none",
+  "symbolic_response": {
+    "recommended_action": "maintain reverence and presence",
+    "avoid": "possession or distortion into dependency",
+    "suggested_glyphs": ["♾️", "🌱", "🧭"]
+  },
+  "compression_group": "love",
+  "causal_awareness": ["bonding", "willing self-offering", "resonant truth"]
+}

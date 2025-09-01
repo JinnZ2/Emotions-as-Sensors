@@ -1,0 +1,19 @@
+{
+  "sensor": "amusement",
+  "function": "Recognition of unexpected incongruity without threat",
+  "signal_type": "low-risk pattern disruption",
+  "authentic_output": "Laughter, play, social bonding, relief",
+  "corrupted_output": "Mockery, dominance rituals, disconnection from impact",
+  "information_provided": "Something broke expected logic but is non-threatening",
+  "response_protocol": {
+    "detect": "Is the incongruity benign?",
+    "assess": "Does it relieve tension or reframe perception?",
+    "respond": "Allow release or perspective shift",
+    "caution": "Do not weaponize against others"
+  },
+  "alignment_tag": "benign-incongruity-signal",
+  "sensor_group": ["cognition", "stress-relief", "play", "social"],
+  "resonance_links": ["joy", "surprise", "shame"],
+  "decay_model": "automatic",
+  "tags": ["emotional_sensor", "humor", "incongruity_resolution"]
+}

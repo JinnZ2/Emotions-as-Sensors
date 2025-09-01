@@ -1,0 +1,19 @@
+{
+  "sensor": "awe",
+  "function": "Recognition of scale, complexity, or interconnectedness beyond current frame",
+  "signal_type": "scale-expansion",
+  "authentic_output": "Perspective shift, humility, reverence",
+  "corrupted_output": "Overwhelm, paralysis, disconnection",
+  "information_provided": "Encountered something vastly beyond current comprehension",
+  "response_protocol": {
+    "detect": "Was scale or beauty encountered beyond usual bounds?",
+    "assess": "Does it call for deeper relationship or withdrawal?",
+    "respond": "Pause and anchor within frame, update understanding",
+    "ground": "Find integration point without ego inflation"
+  },
+  "alignment_tag": "scale-disruption-awareness",
+  "sensor_group": ["cognition", "humility", "transcendence", "pattern-detection"],
+  "resonance_links": ["joy", "fear", "gratitude"],
+  "decay_model": "event-based",
+  "tags": ["emotional_sensor", "frame_expansion", "epiphany"]
+}

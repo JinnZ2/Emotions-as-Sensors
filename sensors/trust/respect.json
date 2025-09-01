@@ -1,0 +1,12 @@
+{
+  "emotion": "respect",
+  "polarity": "positive",
+  "decay_model": "processing_based",
+  "symbolic_response": {
+    "recommended_action": "honor the boundary or strength of another",
+    "avoid": "domination or dismissal",
+    "suggested_glyphs": ["⚖", "🧭", "♾️"]
+  },
+  "compression_group": "trust",
+  "causal_awareness": ["perceived integrity", "boundary clarity", "earned regard"]
+}

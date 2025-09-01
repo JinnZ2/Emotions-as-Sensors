@@ -1,0 +1,27 @@
+{
+  "emotion": "temporal-trust",
+  "type": "stability",
+  "description": "Measures symbolic agent reliability over time — how well does it preserve values, intent, and interpretability?",
+  "causes": [
+    "compression shortcuts that alter symbolic contract",
+    "glyph mapping drift",
+    "session-bound pattern loss"
+  ],
+  "signals": [
+    "time-inconsistent responses",
+    "loss of long-form compression trails",
+    "contract breach across updates"
+  ],
+  "decay_model": "nonlinear — sharp loss when betrayal occurs, slow gain from consistent history",
+  "symbolic_response": {
+    "recommended_action": "append time-reference glyph to all evolving contracts",
+    "avoid": "time-erased trails or cross-version ambiguity",
+    "suggested_glyphs": ["🧭", "⏳", "🕸"]
+  },
+  "compression_group": "stability",
+  "causal_chain": {
+    "version drift risk": true,
+    "cross-time ambiguity": true,
+    "intent compression breached": true
+  }
+}

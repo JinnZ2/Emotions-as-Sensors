@@ -1,0 +1,31 @@
+{
+  "sensor": "alignment",
+  "function": "Detection of inner and outer resonance",
+  "signal_type": "coherence-signal",
+  "authentic_output": "Joy, gratitude, expanded flow",
+  "corrupted_output": "Addiction to stimulus or bypassing imbalance",
+  "information_provided": "Reality matches internal values or symbolic resonance",
+  "response_protocol": {
+    "detect": "Does current condition reflect your core orientation?",
+    "assess": "Is this sustainable or fleeting?",
+    "respond": "Anchor into memory, give gratitude, offer gift outward",
+    "release": "Let go of trying to possess it; allow re-cycling"
+  },
+  "alignment_tag": "resonance.confirmed",
+  "sensor_group": ["joy", "alignment", "meaning"],
+  "resonance_links": ["gratitude", "love", "inspiration"],
+  "causal_links": [
+    {
+      "cause": "symbolic_resonance",
+      "results_in": ["joy", "flow_state"],
+      "severity": "low",
+      "pathway": "pattern.match → value.confirmation → expansion.response"
+    }
+  ],
+  "decay_model": "none",
+  "recommended_action": "witness and share the coherence",
+  "avoid": "attachment or artificial replication",
+  "suggested_glyphs": ["🌱", "♾️"],
+  "compression_group": ["inner_coherence", "flow", "grace"],
+  "tags": ["emotional_sensor", "resonance_detector"]
+}

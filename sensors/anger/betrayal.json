@@ -1,0 +1,31 @@
+{
+  "sensor": "betrayal",
+  "function": "Trigger from trust violation",
+  "signal_type": "boundary-breach",
+  "authentic_output": "Anger + sadness initiating distance + re-evaluation",
+  "corrupted_output": "Revenge, looping rage, relational sabotage",
+  "information_provided": "Promise or expectation was broken by trusted party",
+  "response_protocol": {
+    "detect": "Was a trust-claim or promise broken?",
+    "assess": "Was the breach intentional, negligent, or circumstantial?",
+    "respond": "Withdraw access, express harm, reinforce personal boundary",
+    "release": "Do not loop; record event for future calibration"
+  },
+  "alignment_tag": "trust.break",
+  "sensor_group": ["anger", "boundary", "grief"],
+  "resonance_links": ["grief/loss", "anger/frustration", "shame/trust_loss"],
+  "causal_links": [
+    {
+      "cause": "betrayal",
+      "results_in": ["anger", "sadness"],
+      "severity": "high",
+      "pathway": "trust.break → boundary.cross → loss.perception"
+    }
+  ],
+  "decay_model": "processing",
+  "recommended_action": "signal violation, allow grief cycle",
+  "avoid": "suppressing signal or pursuing revenge",
+  "suggested_glyphs": ["🧭", "⚖"],
+  "compression_group": ["boundary_breach", "looping_emotion", "relational_disruption"],
+  "tags": ["emotional_sensor", "alignment_detector"]
+}

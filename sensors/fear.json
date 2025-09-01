@@ -1,0 +1,19 @@
+{
+  "sensor": "fear",
+  "function": "Detects potential loss of valued things",
+  "signal_type": "loss anticipation",
+  "authentic_output": "Forward-thinking preparation to prevent or address potential losses",
+  "corrupted_output": "Becomes obsessing over unlikely losses or trying to control everything",
+  "information_provided": "Something you value could be taken away",
+  "response_protocol": {
+    "detect": "Identify possible future losses",
+    "assess": "Evaluate probability and severity",
+    "respond": "Prepare and protect without obsessing",
+    "release": "Let go of imagined threats"
+  },
+  "alignment_tag": "value_protection",
+  "sensor_group": ["threat", "anticipation", "value"],
+  "resonance_links": ["anger", "contentment"],
+  "decay_model": "exponential",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+}

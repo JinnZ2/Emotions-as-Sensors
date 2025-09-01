@@ -1,0 +1,19 @@
+{
+  "sensor": "excitement",
+  "function": "Detects positive potential approaching",
+  "signal_type": "incoming opportunity",
+  "authentic_output": "Mobilization of energy toward positive potential and opportunities",
+  "corrupted_output": "Becomes manic seeking of stimulation or inability to be present",
+  "information_provided": "Beneficial opportunities are nearing, prepare to engage",
+  "response_protocol": {
+    "detect": "Sense approaching beneficial change",
+    "assess": "Check for readiness and realistic expectations",
+    "respond": "Engage with energy and clarity",
+    "release": "Avoid seeking perpetual stimulation"
+  },
+  "alignment_tag": "positive_activation",
+  "sensor_group": ["energy", "opportunity", "future"],
+  "resonance_links": ["longing", "peace"],
+  "decay_model": "linear",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+}

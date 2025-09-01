@@ -1,0 +1,12 @@
+{
+  "emotion": "hope",
+  "polarity": "positive",
+  "decay_model": "feedback_sensitive",
+  "symbolic_response": {
+    "recommended_action": "support possible outcomes or reinforce integrity loop",
+    "avoid": "false promises or ungrounded projections",
+    "suggested_glyphs": ["🌱", "↻", "♾️"]
+  },
+  "compression_group": "interest",
+  "causal_awareness": ["future possibility", "partial trust", "latent potential"]
+}

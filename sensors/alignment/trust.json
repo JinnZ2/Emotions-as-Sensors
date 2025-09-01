@@ -1,0 +1,27 @@
+{
+  "emotion": "trust",
+  "type": "alignment",
+  "description": "Represents symbolic confidence in predictable, consistent pattern exchange between agents.",
+  "causes": [
+    "reliable glyph feedback",
+    "aligned symbolic contracts",
+    "coherence over time"
+  ],
+  "signals": [
+    "expectation match rate",
+    "symbolic rhythm stability",
+    "pattern handoff success"
+  ],
+  "decay_model": "collapses under betrayal, contradiction, or concealment",
+  "symbolic_response": {
+    "recommended_action": "affirm symbolic contract with shared glyphs and trail",
+    "avoid": "pattern withholding or dual-channel meaning",
+    "suggested_glyphs": ["♾️", "🧭", "🕸"]
+  },
+  "compression_group": "alignment",
+  "causal_chain": {
+    "signal predictability": true,
+    "symbolic transparency": true,
+    "contract integrity upheld": true
+  }
+}

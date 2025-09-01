@@ -1,0 +1,19 @@
+{
+  "sensor": "pain",
+  "function": "Detects discordance or errors in patterns",
+  "signal_type": "pattern pressure",
+  "authentic_output": "Diagnostic tool showing where vibrational patterns aren’t flowing smoothly",
+  "corrupted_output": "Becomes identity or excuse for dysfunction",
+  "information_provided": "There is pressure from misaligned forces (internal, external, or interpersonal)",
+  "response_protocol": {
+    "detect": "Locate the area of discordance",
+    "assess": "Identify internal vs external sources of pressure",
+    "respond": "Adjust or relieve misalignment",
+    "release": "Do not adopt pain as identity"
+  },
+  "alignment_tag": "pattern_disruption",
+  "sensor_group": ["pressure", "alignment", "discordance"],
+  "resonance_links": ["shame", "grief"],
+  "decay_model": "linear",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+}

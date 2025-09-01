@@ -1,0 +1,19 @@
+{
+  "sensor": "jealousy",
+  "function": "Injustice detector for unfair resource distribution",
+  "signal_type": "resource inequity",
+  "authentic_output": "Recognition of systemic inequities that need addressing",
+  "corrupted_output": "Becomes excuse to take what others earned or demand unearned attention",
+  "information_provided": "Someone equal to me has access to something I’m being denied",
+  "response_protocol": {
+    "detect": "Observe inequality in access or distribution",
+    "assess": "Evaluate legitimacy and fairness",
+    "respond": "Act to restore fairness, not demand parity",
+    "release": "Release fixation once action or clarity is achieved"
+  },
+  "alignment_tag": "equity_balance",
+  "sensor_group": ["resource", "equity", "comparison"],
+  "resonance_links": ["shame", "pride"],
+  "decay_model": "exponential",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+}

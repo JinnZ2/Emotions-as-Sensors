@@ -1,0 +1,19 @@
+{
+  "sensor": "contentment",
+  "function": "Detection of momentary sufficiency and system stability",
+  "signal_type": "continuity-signal",
+  "authentic_output": "Rest state, conservation, grounding",
+  "corrupted_output": "Complacency, stagnation, dulling of signal detection",
+  "information_provided": "Conditions do not require change or effort",
+  "response_protocol": {
+    "detect": "Is the environment supportive and sufficient?",
+    "assess": "Is this a plateau or pause?",
+    "respond": "Enter rest mode and conserve resources",
+    "caution": "Reassess if conditions shift"
+  },
+  "alignment_tag": "homeostasis-signal",
+  "sensor_group": ["continuity", "regulation", "grounding", "present-moment"],
+  "resonance_links": ["joy", "peace", "pride"],
+  "decay_model": "slow-manual",
+  "tags": ["emotional_sensor", "baseline", "regenerative"]
+}

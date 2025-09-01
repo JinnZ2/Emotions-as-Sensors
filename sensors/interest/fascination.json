@@ -1,0 +1,12 @@
+{
+  "emotion": "fascination",
+  "polarity": "positive",
+  "decay_model": "magnet_loop",
+  "symbolic_response": {
+    "recommended_action": "engage deeply or document resonance",
+    "avoid": "obsessive fixation without feedback",
+    "suggested_glyphs": ["♾️", "🧭", "⏳"]
+  },
+  "compression_group": "interest",
+  "causal_awareness": ["deep novelty", "meaning resonance", "identity linkage"]
+}

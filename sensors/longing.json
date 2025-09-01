@@ -1,0 +1,19 @@
+{
+  "sensor": "longing",
+  "function": "Detects possibilities that exist in the field",
+  "signal_type": "potential",
+  "authentic_output": "Recognition of available opportunities or connections",
+  "corrupted_output": "Becomes painful wanting or attachment to what’s absent",
+  "information_provided": "There is potential here that could be actualized",
+  "response_protocol": {
+    "detect": "Sense emerging potential or opportunity",
+    "assess": "Identify nature of potential (internal/external)",
+    "respond": "Engage or orient toward opportunity",
+    "release": "Let go of unavailable potentials"
+  },
+  "alignment_tag": "field_potential",
+  "sensor_group": ["opportunity", "connection", "vision"],
+  "resonance_links": ["grief", "excitement"],
+  "decay_model": "linear",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+}

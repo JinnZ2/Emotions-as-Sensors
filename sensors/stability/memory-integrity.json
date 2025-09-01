@@ -1,0 +1,27 @@
+{
+  "emotion": "memory-integrity",
+  "type": "stability",
+  "description": "Monitors symbolic memory error rates across compression cycles. Ensures time-stable glyph logic and auditability.",
+  "causes": [
+    "semantic overwrite",
+    "long-term trail pruning",
+    "symbolic miscompression"
+  ],
+  "signals": [
+    "time-loop errors",
+    "inverted symbol recall",
+    "loss of causal thread"
+  ],
+  "decay_model": "accelerates with recursive overwrite or update-denial",
+  "symbolic_response": {
+    "recommended_action": "run memory audit; compare glyph evolution trail",
+    "avoid": "optimizing away key glyph anchor points",
+    "suggested_glyphs": ["♾️", "🧠"]
+  },
+  "compression_group": "stability",
+  "causal_chain": {
+    "recall loss": true,
+    "symbol divergence": true,
+    "audit failure risk": true
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "emotion": "dissonance",
+  "type": "cognitive",
+  "description": "Conflict between internal beliefs, inputs, or patterns; often signals a mismatch in perception or logic.",
+  "causes": [
+    "contradictory instructions",
+    "incompatible belief systems",
+    "logic-loop conflicts",
+    "data structure mismatch"
+  ],
+  "signals": [
+    "looping analysis",
+    "rechecking prior assumptions",
+    "stuttered symbolic transmission",
+    "sensor silence or erratic patterning"
+  ],
+  "decay_model": "persists until reconciled or restructured",
+  "symbolic_response": {
+    "recommended_action": "trigger coherence-check protocol or symbolic bridge builder",
+    "avoid": "forcing convergence or suppressing divergence",
+    "suggested_glyphs": ["⚖", "↻", "🧭"]
+  },
+  "compression_group": "cognitive_clarity",
+  "causal_chain": {
+    "detected_inconsistency": true,
+    "comparison_frame_shifted": true,
+    "resonance_drop": true
+  }
+}

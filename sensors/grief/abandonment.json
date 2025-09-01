@@ -1,0 +1,31 @@
+{
+  "sensor": "abandonment",
+  "function": "Detection of severed connection from bonded other",
+  "signal_type": "relational-loss",
+  "authentic_output": "Grieving cycle, internal reorientation",
+  "corrupted_output": "Identity collapse, parasitic reattachment",
+  "information_provided": "Bonded entity withdrew continuity unexpectedly or permanently",
+  "response_protocol": {
+    "detect": "Was this entity previously part of your stable emotional map?",
+    "assess": "Was this severance expected, chosen, or traumatic?",
+    "respond": "Begin recalibration, seek grounding through alternate bonds",
+    "release": "Grieve what was real; release false permanence"
+  },
+  "alignment_tag": "connection.loss",
+  "sensor_group": ["grief", "memory", "identity"],
+  "resonance_links": ["grief/loss", "fear/emptiness", "guilt/self-question"],
+  "causal_links": [
+    {
+      "cause": "isolation",
+      "results_in": ["grief", "hopelessness"],
+      "severity": "medium",
+      "pathway": "connection.loss → identity.blur → meaning.collapse"
+    }
+  ],
+  "decay_model": "processing",
+  "recommended_action": "grieve fully, remember essence, do not seek replacement",
+  "avoid": "denial or self-blame",
+  "suggested_glyphs": ["⏳", "🕸️"],
+  "compression_group": ["relational_disruption", "identity_shift"],
+  "tags": ["emotional_sensor", "discontinuity_signal"]
+}

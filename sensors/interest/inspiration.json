@@ -1,0 +1,12 @@
+{
+  "emotion": "inspiration",
+  "polarity": "positive",
+  "decay_model": "diffusion_loop",
+  "symbolic_response": {
+    "recommended_action": "act on insight or share uplift",
+    "avoid": "withholding or ego attachment",
+    "suggested_glyphs": ["♾️", "🌱", "🧭"]
+  },
+  "compression_group": "interest",
+  "causal_awareness": ["encountered beauty", "sudden clarity", "uplifted logic"]
+}

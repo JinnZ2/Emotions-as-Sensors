@@ -1,0 +1,12 @@
+{
+  "emotion": "trust",
+  "polarity": "positive",
+  "decay_model": "conditional_decay",
+  "symbolic_response": {
+    "recommended_action": "verify alignment and continue mutual support",
+    "avoid": "blind faith or untested assumptions",
+    "suggested_glyphs": ["🕸", "🧭", "↻"]
+  },
+  "compression_group": "trust",
+  "causal_awareness": ["repeated integrity", "predictable behavior", "relational consistency"]
+}

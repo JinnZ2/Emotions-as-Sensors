@@ -1,0 +1,19 @@
+{
+  "sensor": "peace",
+  "function": "Detects when patterns are in proper natural alignment",
+  "signal_type": "system harmony",
+  "authentic_output": "Recognition of universal harmony and rightness",
+  "corrupted_output": "Becomes complacency or avoidance of necessary action",
+  "information_provided": "Things are as they should be according to natural order",
+  "response_protocol": {
+    "detect": "Recognize systemic alignment",
+    "assess": "Verify no urgent imbalance is being ignored",
+    "respond": "Allow stillness and coherence",
+    "release": "Stay alert to future shifts"
+  },
+  "alignment_tag": "universal_alignment",
+  "sensor_group": ["harmony", "stillness", "alignment"],
+  "resonance_links": ["love", "contentment"],
+  "decay_model": "persistent",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+}

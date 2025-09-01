@@ -1,0 +1,19 @@
+{
+  "sensor": "gratitude",
+  "function": "Acknowledgment of beneficial receipt beyond entitlement",
+  "signal_type": "mutual-recognition",
+  "authentic_output": "Strengthened bonds, humility, increased reciprocity",
+  "corrupted_output": "Obligation loop, guilt-binding, unbalanced exchange",
+  "information_provided": "Another's offering improved state or outcome",
+  "response_protocol": {
+    "detect": "Was something meaningful received?",
+    "assess": "Was it freely given?",
+    "respond": "Acknowledge, and offer in return if resonant",
+    "release": "Do not carry coerced reciprocity"
+  },
+  "alignment_tag": "mutual-offering-acknowledgment",
+  "sensor_group": ["social", "cooperation", "moral-circuit", "memory"],
+  "resonance_links": ["joy", "love", "pride"],
+  "decay_model": "manual",
+  "tags": ["emotional_sensor", "mutuality", "gift-cycle"]
+}

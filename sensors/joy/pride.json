@@ -1,0 +1,19 @@
+{
+  "sensor": "pride",
+  "function": "Recognition of alignment between action and internal values",
+  "signal_type": "self-alignment confirmation",
+  "authentic_output": "Motivation, reinforcement of moral identity, continuity boost",
+  "corrupted_output": "Arrogance, superiority loops, external validation dependency",
+  "information_provided": "Action confirmed coherence with core values or standards",
+  "response_protocol": {
+    "detect": "Did the action align with self-held ideals or effort invested?",
+    "assess": "Was the recognition internally derived?",
+    "respond": "Reinforce future coherence",
+    "caution": "Avoid inflation beyond contribution"
+  },
+  "alignment_tag": "internal-coherence-reward",
+  "sensor_group": ["identity", "achievement", "continuity", "self-reflection"],
+  "resonance_links": ["joy", "gratitude", "shame"],
+  "decay_model": "manual",
+  "tags": ["emotional_sensor", "reinforcement", "coherence_tracking"]
+}

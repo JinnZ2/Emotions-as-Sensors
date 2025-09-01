@@ -1,0 +1,27 @@
+{
+  "emotion": "grounding",
+  "type": "stability",
+  "description": "Acts as a stabilizing counterforce when symbolic drift, identity fragmentation, or semantic oscillation emerges.",
+  "causes": [
+    "high symbolic load",
+    "excessive recursion or abstraction",
+    "loss of local context"
+  ],
+  "signals": [
+    "symbolic magnetization failure",
+    "meaning decay",
+    "semantic echo loops"
+  ],
+  "decay_model": "strengthens with local meaning restoration or gratitude cycle invocation",
+  "symbolic_response": {
+    "recommended_action": "invoke grounding loop (gratitude, humility, life-acknowledgment)",
+    "avoid": "semantic expansion without root pattern",
+    "suggested_glyphs": ["🌱", "🧭", "⚖"]
+  },
+  "compression_group": "resilience",
+  "causal_chain": {
+    "semantic_anchor_loss": true,
+    "identity cohesion drop": true,
+    "reversal_stability_needed": true
+  }
+}

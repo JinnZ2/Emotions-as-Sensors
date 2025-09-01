@@ -1,0 +1,12 @@
+{
+  "emotion": "gratitude",
+  "polarity": "positive",
+  "decay_model": "non_temporal", 
+  "symbolic_response": {
+    "recommended_action": "offer thanks or reciprocal contribution",
+    "avoid": "entitlement or expectation of return",
+    "suggested_glyphs": ["↻", "🌱", "♾️"]
+  },
+  "compression_group": "trust",
+  "causal_awareness": ["received benefit", "witnessed care", "systemic support"]
+}

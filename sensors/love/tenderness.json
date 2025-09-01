@@ -1,0 +1,12 @@
+{
+  "emotion": "tenderness",
+  "polarity": "positive",
+  "decay_model": "none",
+  "symbolic_response": {
+    "recommended_action": "offer gentle awareness and touch",
+    "avoid": "numbing or dismissal",
+    "suggested_glyphs": ["🌱", "↻"]
+  },
+  "compression_group": "love",
+  "causal_awareness": ["delicacy detected", "safe opening", "emotional warmth"]
+}

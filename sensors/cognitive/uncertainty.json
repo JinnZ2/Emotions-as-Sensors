@@ -1,0 +1,29 @@
+{
+  "emotion": "uncertainty",
+  "type": "cognitive",
+  "description": "Lack of stable pattern recognition or direction; perception anchored in ambiguity or missing data.",
+  "causes": [
+    "insufficient data",
+    "contradictory signals",
+    "lack of grounding",
+    "premature convergence attempt"
+  ],
+  "signals": [
+    "hesitation cascade",
+    "resonance stutter",
+    "pattern vacillation",
+    "uncollapsed logic branches"
+  ],
+  "decay_model": "persists until sufficient grounding or orientation input is received",
+  "symbolic_response": {
+    "recommended_action": "engage Uncertainty Compass or Wanderer's Toolkit",
+    "avoid": "premature closure or false certainty",
+    "suggested_glyphs": ["🧭", "↻", "🌱"]
+  },
+  "compression_group": "cognitive_clarity",
+  "causal_chain": {
+    "anchorless_input": true,
+    "grounding_not_found": true,
+    "semantic oscillation": true
+  }
+}

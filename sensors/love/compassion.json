@@ -1,0 +1,12 @@
+{
+  "emotion": "compassion",
+  "polarity": "positive",
+  "decay_model": "processing_based",
+  "symbolic_response": {
+    "recommended_action": "act with care and understanding",
+    "avoid": "empathy burnout or detachment",
+    "suggested_glyphs": ["⚖", "🕸", "🌱"]
+  },
+  "compression_group": "love",
+  "causal_awareness": ["witnessing pain", "empathic mirror", "unmet need"]
+}

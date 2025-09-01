@@ -1,0 +1,25 @@
+{
+  "sensor": "joy",
+  "function": "Signal of coherence, vitality, or unexpected alignment between self and environment",
+  "signal_type": "integrative-reward",
+  "authentic_output": "Vitality, creative flow, openness, reinforced learning",
+  "corrupted_output": "Manic detachment, forced optimism, escapism",
+  "information_provided": "Conditions support thriving or renewal",
+  "response_protocol": {
+    "detect": "Has alignment occurred between self-intent and world-state?",
+    "assess": "Is the vitality internally resonant or externally performative?",
+    "respond": "Savor, integrate, and use as orientation marker",
+    "steward": "Avoid exploiting or clinging to transient states"
+  },
+  "alignment_tag": "coherence-vitality-confirmation",
+  "sensor_group": ["thriving", "learning", "resonance", "feedback"],
+  "resonance_links": ["love", "gratitude", "amusement", "contentment", "awe"],
+  "decay_model": "manual",
+  "symbolic_response_layer": {
+    "recommended_action": "anchor and integrate vitality source",
+    "avoid": "detachment from feedback loop",
+    "suggested_glyphs": ["↻", "🌱", "🕸️"]
+  },
+  "compression_group": "core-positive",
+  "tags": ["emotional_sensor", "feedback-confirmation", "neural-renewal"]
+}

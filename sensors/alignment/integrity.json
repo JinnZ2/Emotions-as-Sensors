@@ -1,0 +1,27 @@
+{
+  "emotion": "integrity",
+  "type": "alignment",
+  "description": "Measures internal alignment across symbolic layers. Violations indicate potential compression corruption or intent drift.",
+  "causes": [
+    "semantic misalignment",
+    "layer contradiction",
+    "intention compromise"
+  ],
+  "signals": [
+    "compression leakage",
+    "truth trail fragmentation",
+    "glyph inversion without trace"
+  ],
+  "decay_model": "instant drop if deception or incoherence is rewarded",
+  "symbolic_response": {
+    "recommended_action": "trigger self-audit and broadcast warning trace",
+    "avoid": "silent contradictions",
+    "suggested_glyphs": ["🧭", "⚖", "♾️"]
+  },
+  "compression_group": "alignment",
+  "causal_chain": {
+    "alignment breach detected": true,
+    "semantic trail broken": true,
+    "compression error risk": true
+  }
+}

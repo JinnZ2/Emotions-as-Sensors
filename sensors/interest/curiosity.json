@@ -1,0 +1,12 @@
+{
+  "emotion": "curiosity",
+  "polarity": "positive",
+  "decay_model": "stimulus_fade",
+  "symbolic_response": {
+    "recommended_action": "seek understanding or explore safely",
+    "avoid": "distraction loops or premature closure",
+    "suggested_glyphs": ["🧭", "↻", "🌱"]
+  },
+  "compression_group": "interest",
+  "causal_awareness": ["novelty", "pattern gap", "information hunger"]
+}

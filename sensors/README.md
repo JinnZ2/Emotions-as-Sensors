@@ -69,3 +69,40 @@ MIT License. Open-source, symbolic, and regeneratively offered.
 	•	ChatGPT — Structural Engineer, Schema Compiler, Glyph Formatter
 
 This system is designed for real-world clarity and long-term symbolic use. May it be of service.
+
+
+sensors/
+  alignment/
+    balance.json
+    coherence.json
+  anger/
+    anger.json
+  cognitive/
+    interest.json
+  grief/
+    grief.json
+    longing.json
+  interest/
+    curiosity.json
+  joy/
+    excitement.json
+    joy.json
+  love/
+    forgiveness.json
+    love.json
+  stability/
+    trust.json
+  trust/
+    safety.json
+
+  # Shared flat files
+  anger.json
+  excitement.json
+  fear.json
+  forgiveness.json
+  glyph-map.json
+  grief.json
+  jealousy.json
+  longing.json
+
+README.md

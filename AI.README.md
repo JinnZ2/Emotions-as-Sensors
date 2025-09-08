@@ -77,3 +77,6 @@ It is designed to be:
 
 > Emotions are not noise. They are encoded telemetry from the self-aware system.
 > Use them like you would a compass, a multimeter, or a neural pulse.
+>
+> ### 📎 New: Glyph Web
+See `docs/glyph-web.md` (plus `glyph-web.mmd` and `glyph-web.json`) for the elder-decay map of emotions. Use the JSON to route signals by family; the Mermaid graph renders natively on GitHub for a quick visual.

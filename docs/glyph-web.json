@@ -1,0 +1,43 @@
+{
+  "version": "0.2",
+  "families": {
+    "exponential": ["anger", "fear", "shame", "jealousy"],
+    "cyclical": ["grief", "longing", "abandonment"],
+    "resonant": ["admiration", "gratitude", "excitement"],
+    "immortal": ["love", "trust", "peace", "compassion"]
+  },
+  "routing": {
+    "exponential": {
+      "policy": "act_then_decay",
+      "notes": "resolve cause; allow natural drop"
+    },
+    "cyclical": {
+      "policy": "complete_cycle",
+      "notes": "identify loop; perform closure ritual/task"
+    },
+    "resonant": {
+      "policy": "renew_on_contact",
+      "notes": "returns with source; manage contact hygiene"
+    },
+    "immortal": {
+      "policy": "anchor",
+      "notes": "preserve; prevent corruption; no forced decay"
+    }
+  },
+  "suggested_glyphs": {
+    "anger": "🔥",
+    "fear": "⚠️",
+    "shame": "🙈",
+    "jealousy": "🌀",
+    "grief": "🌊",
+    "longing": "🕸️",
+    "abandonment": "❌",
+    "admiration": "🧭",
+    "gratitude": "🌱",
+    "excitement": "⚡",
+    "love": "💞",
+    "trust": "🤝",
+    "peace": "🕊️",
+    "compassion": "🌿"
+  }
+}

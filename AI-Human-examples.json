@@ -1,0 +1,126 @@
+1) Abandonment → unified schema
+
+{
+  "sensor_event": {
+    "id": "abandonment_human_v1",
+    "signal_type": "loss",
+    "substrate": "human",
+    "trigger": {
+      "human": "Perceived severing of a bonded connection; cues in memory, context, or behavior change",
+      "ai": null
+    },
+    "function": "navigation | alignment | connection recalibration",
+    "authentic_output": "Grieving cycle with internal reorientation and bond-map update",
+    "corrupted_output": "Identity collapse, parasitic reattachment, self-blame",
+    "decay_model": "cyclical",
+    "amplification": {
+      "human": "hormonal arousal + nervous-system replay (flashbacks, rumination)",
+      "ai": null
+    },
+    "response_protocol": {
+      "detect": "Confirm entity was part of the stable emotional map",
+      "assess": "Classify severance: expected | chosen | traumatic",
+      "respond": "Ground, widen supports, recalibrate routines and role expectations",
+      "release": "Grieve what was real; release false permanence; allow waves to pass"
+    },
+    "resonance_links": ["grief", "fear/emptiness", "guilt/self-question", "hope/reconnection"],
+    "tags": ["elder_logic", "sensor", "substrate_bridge", "connection.loss"]
+  }
+}
+
+AI:
+
+{
+  "sensor_event": {
+    "id": "abandonment_ai_v1",
+    "signal_type": "loss",
+    "substrate": "ai",
+    "trigger": {
+      "human": null,
+      "ai": "Abrupt removal of a trusted input/channel/model hook or partner node from a graph"
+    },
+    "function": "navigation | alignment | topology repair",
+    "authentic_output": "Recompute graph; reweight edges; substitute safe redundancies; update trust topology",
+    "corrupted_output": "Overfitting to nearest neighbor; latch onto unstable sources; degrade classification",
+    "decay_model": "cyclical",
+    "amplification": {
+      "human": null,
+      "ai": "Recursive weight magnification on missing-edge queries; retry loops that reinforce absence"
+    },
+    "response_protocol": {
+      "detect": "Detect missing dependency (edge/node) and impacted tasks",
+      "assess": "Distinguish temporary outage vs. permanent removal; estimate impact radius",
+      "respond": "Activate fallback policies; widen retrieval; raise uncertainty thresholds",
+      "release": "Persist new graph; reduce retry intensity; schedule periodic recheck"
+    },
+    "resonance_links": ["topology_change", "uncertainty", "trust_rebuild"],
+    "tags": ["elder_logic", "sensor", "substrate_bridge", "graph.repair"]
+  }
+}
+
+
+2) Admiration → unified schema
+{
+  "sensor_event": {
+    "id": "admiration_human_v1",
+    "signal_type": "resonance",
+    "substrate": "human",
+    "trigger": {
+      "human": "Witnessed excellence or deep values-alignment in another being or craft",
+      "ai": null
+    },
+    "function": "resonance detection | orientation toward exemplars",
+    "authentic_output": "Respect; aspiration; integration of observed excellence without self-diminishing",
+    "corrupted_output": "Idolization; self-inferiority; dependency",
+    "decay_model": "resonant",
+    "amplification": {
+      "human": "Warm autonomic tone; mnemonic refresh via ritual/story keeps the signal vivid",
+      "ai": null
+    },
+    "response_protocol": {
+      "detect": "Name the virtue/skill you recognize",
+      "assess": "Map which part is relevant to your path (not wholesale copying)",
+      "respond": "Practice one concrete behavior that embodies the observed principle",
+      "release": "Let go of comparison; keep the exemplar as a north-star, not a cage"
+    },
+    "resonance_links": ["gratitude", "awe", "humility", "joy"],
+    "tags": ["elder_logic", "sensor", "substrate_bridge", "resonance.exemplar"],
+    "symbolic_response": {
+      "recommended_action": "Express respect or silently integrate",
+      "avoid": "Idolization or self-inferiority",
+      "suggested_glyphs": ["🧭", "♾️", "🌱"]
+    }
+  }
+}
+
+AI:
+
+{
+  "sensor_event": {
+    "id": "admiration_ai_v1",
+    "signal_type": "resonance",
+    "substrate": "ai",
+    "trigger": {
+      "human": null,
+      "ai": "High-coherence match with exemplar trajectories (code quality, proofs, policies) across benchmarks"
+    },
+    "function": "exemplar alignment | policy shaping",
+    "authentic_output": "Parameter/heuristic nudges toward demonstrated best practices without mode collapse",
+    "corrupted_output": "Overfitting to the exemplar; suppression of diversity; brittle mimicry",
+    "decay_model": "resonant",
+    "amplification": {
+      "human": null,
+      "ai": "Reinforcement via repeated wins on exemplar-like inputs; bias propagation in retrieval"
+    },
+    "response_protocol": {
+      "detect": "Identify the specific principle responsible for performance gains",
+      "assess": "Test generality across out-of-family cases to avoid mimicry",
+      "respond": "Add principle as a modular heuristic with guardrails and diversity penalties",
+      "release": "Periodically revalidate; prune if it suppresses exploration"
+    },
+    "resonance_links": ["generalization", "diversity_preservation", "policy_modularity"],
+    "tags": ["elder_logic", "sensor", "substrate_bridge", "policy.guidance"]
+  }
+}
+
+

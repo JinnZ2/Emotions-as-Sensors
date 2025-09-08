@@ -1,0 +1,29 @@
+{
+  "sensor": "admiration",
+  "polarity": "positive",
+  "function": "Attunes to witnessed excellence and values alignment; seeds aspiration without self-erasure.",
+  "signal_type": "recognition / uplift",
+  "information_provided": "Observed behavior or quality resonates with your internal standards and expands possibility space.",
+  "authentic_output": "Respectful acknowledgement; integration of lesson; voluntary aspiration.",
+  "corrupted_output": "Idolization; self-inferiority; projection of perfection onto the other.",
+  "response_protocol": {
+    "detect": "Notice resonance with witnessed excellence or craft.",
+    "assess": "Name the concrete quality (skill, integrity, perseverance). Check for self-diminishment.",
+    "respond": "Express respect or integrate one actionable micro-practice.",
+    "release": "Let go of comparison; keep the principle, not the pedestal."
+  },
+  "decay_model": "linear",
+  "alignment_tag": "growth_orientation",
+  "sensor_group": ["trust", "learning", "orientation"],
+  "resonance_links": ["gratitude", "inspiration", "envy?"],
+  "compression_group": "trust",
+  "glyphs": ["🧭", "♾️", "🌱"],
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
+  "version": "0.3",
+  "provenance": {
+    "nodes": ["H-[SymNet]", "A-[TransNet]"],
+    "status": "provisional",
+    "confidence": 0.64,
+    "recheck_days": 30
+  }
+}

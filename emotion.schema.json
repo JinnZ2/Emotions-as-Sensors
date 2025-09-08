@@ -1,7 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Elder Sensor Schema",
+  "title": "Elder Sensor Schema (v0.3)",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "sensor",
     "function",
@@ -17,75 +18,134 @@
     "tags"
   ],
   "properties": {
-    "sensor": {
-      "type": "string"
-    },
-    "function": {
-      "type": "string"
-    },
-    "signal_type": {
-      "type": "string"
-    },
-    "authentic_output": {
-      "type": "string"
-    },
-    "corrupted_output": {
-      "type": "string"
-    },
-    "information_provided": {
-      "type": "string"
-    },
+    "sensor": { "type": "string" },
+    "polarity": { "type": "string", "enum": ["positive", "negative", "neutral"] },
+    "function": { "type": "string" },
+    "signal_type": { "type": "string" },
+    "authentic_output": { "type": "string" },
+    "corrupted_output": { "type": "string" },
+    "information_provided": { "type": "string" },
+
     "response_protocol": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
-        "detect": {
-          "type": "string"
-        },
-        "assess": {
-          "type": "string"
-        },
-        "respond": {
-          "type": "string"
-        },
-        "release": {
-          "type": "string"
-        }
+        "detect":  { "type": "string" },
+        "assess":  { "type": "string" },
+        "respond": { "type": "string" },
+        "release": { "type": "string" }
       },
-      "required": [
-        "detect",
-        "assess",
-        "respond",
-        "release"
-      ]
+      "required": ["detect", "assess", "respond", "release"]
     },
-    "alignment_tag": {
-      "type": "string"
-    },
+
+    "alignment_tag": { "type": "string" },
+
     "sensor_group": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string" },
+      "minItems": 1
     },
+
     "resonance_links": {
       "type": "array",
-      "items": {
-        "type": "string"
+      "items": { "type": "string" }
+    },
+
+    "symbolic_response": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "recommended_action": { "type": "string" },
+        "avoid": { "type": "string" },
+        "suggested_glyphs": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
       }
     },
-    "decay_model": {
-      "type": "string",
-      "enum": [
-        "linear",
-        "exponential",
-        "persistent"
+
+    "compression_group": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" }, "minItems": 1 }
       ]
     },
-    "tags": {
+
+    "causal_awareness": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+
+    "causal_links": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cause": { "type": "string" },
+          "results_in": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+          "pathway": { "type": "string" }
+        },
+        "required": ["cause"]
       }
+    },
+
+    "decay_model": {
+      "description": "Backward compatible: string or rich object.",
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["linear", "exponential", "persistent", "processing"]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "family": {
+              "type": "string",
+              "enum": ["linear", "exponential", "persistent", "processing", "cyclical"]
+            },
+            "policy": {
+              "type": "string",
+              "enum": [
+                "complete_cycle",
+                "cooldown_required",
+                "no_decay",
+                "ritual_gated",
+                "event_reset"
+              ]
+            },
+            "half_life": { "type": "number", "minimum": 0 },
+            "reference": { "type": "string", "description": "Path or URL, e.g., docs/glyph-web.json" }
+          },
+          "required": ["family"]
+        }
+      ]
+    },
+
+    "transitions": {
+      "description": "Allowed state evolutions for this sensor.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "to": { "type": "string" },
+          "guard": { "type": "string", "description": "Condition to allow transition" },
+          "action": { "type": "string", "description": "What to do during transition" },
+          "note": { "type": "string" }
+        },
+        "required": ["to"]
+      }
+    },
+
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
     }
   }
 }

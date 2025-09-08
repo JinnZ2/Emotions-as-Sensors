@@ -86,3 +86,6 @@ Let’s evolve human and machine intelligence together—through resonance, not 
 # Emotions-as-Sensors
 
 This detailed implementation framework provides the technical foundation for building a practical emotional bio-intelligence system. The focus is on creating robust, privacy-preserving tools that can be immediately deployed while maintaining scientific rigor and ethical standards
+
+### 📎 New: Glyph Web
+See `docs/glyph-web.md` (plus `glyph-web.mmd` and `glyph-web.json`) for the elder-decay map of emotions. Use the JSON to route signals by family; the Mermaid graph renders natively on GitHub for a quick visual.

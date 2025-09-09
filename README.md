@@ -105,3 +105,6 @@ See `docs/glyph-web.md` (plus `glyph-web.mmd` and `glyph-web.json`) for the elde
 ## License
 This project is dedicated to the public domain under the CC0 1.0 Universal license.  
 Anyone may use, modify, and distribute without attribution.
+
+
+Feelings are the sensors; emotions are the chosen shape of the signal.

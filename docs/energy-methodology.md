@@ -173,6 +173,9 @@ Use energy assessment to evaluate:
 - How to allocate limited energy for maximum collective benefit
 - When traditional knowledge might be more efficient than academic alternatives
 
+> This methodology is part of a triad with:
+> - [Elder Sensor Framework](elder-sensor-framework.md) — interprets emotions as calibrated sensors.
+> - [Cultural Knowledge Assessment Framework](cultural-knowledge.md) — evaluates appropriateness and efficiency of cultural knowledge sources.
 ### For System Design
 
 Apply energy assessment to create:

@@ -92,3 +92,7 @@ This framework is designed to be built upon. Contributions should focus on:
 ## License
 
 Open source - designed for collective advancement rather than individual ownership.
+
+> For full system energy inputs/outputs, see [Energy Methodology](energy-methodology.md).
+>
+> > For the emotional-sensor navigation model that underpins context assessment, see [Elder Sensor Framework](elder-sensor-framework.md).

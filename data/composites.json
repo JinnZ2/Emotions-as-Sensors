@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "rules": {
+    "composition": "unordered set of atomic sensors + temporal modifier (optional)",
+    "temporal_note": "unresolved primary sensors over time may evolve (e.g., resentment)"
+  },
+  "composites": [
+    {
+      "name": "bittersweet",
+      "atoms": ["joy", "grief"],
+      "notes": "often nostalgia; add 'longing' if memory-weighted"
+    },
+    {
+      "name": "awe",
+      "atoms": ["surprise", "admiration"],
+      "notes": "sharp+resonant"
+    },
+    {
+      "name": "protective_fury",
+      "atoms": ["anger", "love"],
+      "notes": "boundary to safeguard resonance"
+    },
+    {
+      "name": "anxious_anticipation",
+      "atoms": ["fear", "surprise", "longing"]
+    },
+    {
+      "name": "resentment",
+      "atoms": ["anger", "grief"],
+      "temporal": "unresolved_persistence",
+      "notes": "per your temporal rule: unprocessed sensors carried forward"
+    }
+  ]
+}

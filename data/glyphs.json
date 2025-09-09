@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "families": {
+    "boundary": ["anger", "shame"],
+    "loss": ["grief", "abandonment"],
+    "resonance": ["love", "compassion"],
+    "radiant": ["joy", "admiration"],
+    "sharp": ["fear", "surprise"],
+    "balanced": ["peace", "contentment"],
+    "subtle": ["longing"]
+  },
+  "glyphs": {
+    "anger": "⛔",
+    "shame": "🫢",
+    "grief": "🌧️",
+    "abandonment": "🚪",
+    "love": "❤",
+    "compassion": "🤝",
+    "joy": "✨",
+    "admiration": "🌟",
+    "fear": "⚡",
+    "surprise": "💥",
+    "peace": "🕊️",
+    "contentment": "🌿",
+    "longing": "↗️"
+  }
+}

@@ -50,7 +50,17 @@ The system includes ten classes of sensors:
 - Resilient to partial data loss
 - Resource-efficient for continuous monitoring
 
----
+## Applied Example: BioGrid 2.0
+
+[BioGrid 2.0](https://github.com/JinnZ2/BioGrid2.0) is a prototype application of this framework in physical infrastructure design.  
+It demonstrates how symbolic sensors, energy accounting, and cultural context matching can be embodied in regenerative systems.
+
+- **Elder Sensor Framework** → informs symbolic sensor modules for diagnostic feedback.  
+- **Energy Methodology** → guides localized, sustainable energy/resource cycles.  
+- **Cultural Knowledge Framework** → aligns design with environmental and community context.  
+- **Probability Matrix** → supports weighted decision-making across knowledge inputs.  
+
+BioGrid 2.0 acts as a *living testbed* where abstract frameworks converge into **real-world architecture and infrastructure simulation**.
 
 ##  Scientific & Ethical Framework
 

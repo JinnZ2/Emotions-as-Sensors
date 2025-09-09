@@ -4,6 +4,9 @@
 
 Provide shared technical language for human-AI communication about emotions-as-sensors without cultural erasure.
 
+> For cultural system evaluation, see [Cultural Knowledge Assessment Framework](cultural-knowledge.md).  
+> For total energy accounting, see [Energy Methodology](energy-methodology.md).
+
 ## Core Distinction
 
 ### Elder Framework

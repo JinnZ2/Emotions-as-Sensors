@@ -4,6 +4,11 @@
 
 Provide systematic approach to weighting different information sources and knowledge systems according to objective criteria rather than defaulting to Western institutional biases.
 
+> This matrix builds on:
+> - [Energy Methodology](energy-methodology.md) — defines energy input/output ratios and efficiency metrics.
+> - [Cultural Knowledge Framework](cultural-knowledge.md) — sets cultural context criteria and bias detection.
+> - [Elder Sensor Framework](elder-sensor-framework.md) — ensures signals are treated as calibrated sensors, not identity states.
+
 ## Core Framework
 
 ### Information Source Evaluation Matrix

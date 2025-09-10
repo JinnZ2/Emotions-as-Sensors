@@ -11,9 +11,42 @@
     "respond": "Prepare and protect without obsessing",
     "release": "Let go of imagined threats"
   },
+  "dimensions": { "valence": -0.6, "arousal": 0.8, "stability": 0.5 },
+  "signals": {
+    "linguistic": ["conditional 'if…then'", "risk terms (might, could)", "heightened modal verbs"],
+    "behavioral": ["hyper-vigilance scanning", "protective stance/posture"],
+    "physio": ["HR ↑", "skin conductance ↑", "startle reflex"]
+  },
+  "misread_risks": [
+    {
+      "confused_with": "excitement",
+      "disambiguate": "fear = protective orientation; excitement = approach orientation"
+    },
+    {
+      "confused_with": "paranoia",
+      "disambiguate": "fear decays naturally; paranoia persists without external signal"
+    }
+  ],
   "alignment_tag": "value_protection",
   "sensor_group": ["threat", "anticipation", "value"],
   "resonance_links": ["anger", "contentment"],
   "decay_model": "exponential",
-  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
+  "consent": {
+    "infer_ok": true,
+    "log_policy": "summary only, redact detail",
+    "notes": "fear-state signals must never be used for coercion"
+  },
+  "glyph_mapping": {
+    "polyhedron": "icosahedron",
+    "family": "anticipation",
+    "principle": "⚖ (Balance) ↔ ⏳ (Causality)",
+    "bridge": "fear-as-sensor = tension edge between value and threat surfaces",
+    "mandala_spin_role": "tests structural resilience; ensures protective preparation does not calcify into obsessive control"
+  },
+  "provenance": {
+    "version": "1.0",
+    "updated": "2025-09-11T00:00:00Z",
+    "cultural_frame": "Elder Logic — emotions as sensors, not flaws"
+  }
 }

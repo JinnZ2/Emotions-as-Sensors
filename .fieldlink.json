@@ -1,0 +1,66 @@
+{
+  "fieldlink": {
+    "version": "1.1",
+    "updated": "2025-09-11T00:00:00Z",
+
+    "role": ["sensors", "protocols", "shapes", "hub"],
+
+    "sources": [
+      {
+        "name": "biogrid",
+        "repo": "https://github.com/JinnZ2/BioGrid2.0",
+        "ref": "main",
+        "paths": [
+          "planned/glyphs/atlas.json",
+          "registry/atlas.glyphs.json"
+        ],
+        "mounts": [
+          { "remote": "planned/glyphs/atlas.json", "as": "atlas/remote/biogrid/planned.json" },
+          { "remote": "registry/atlas.glyphs.json", "as": "atlas/remote/biogrid/registry.json" }
+        ],
+        "consent": { "license": "CC-BY-4.0", "share_ok": true }
+      },
+      {
+        "name": "emotions",
+        "repo": "https://github.com/JinnZ2/Emotions-as-Sensors",
+        "ref": "main",
+        "paths": [
+          "atlas/emotions.json",
+          "glyphs/emotion.glyphs.json"
+        ],
+        "mounts": [
+          { "remote": "atlas/emotions.json", "as": "atlas/remote/emotions/atlas.json" },
+          { "remote": "glyphs/emotion.glyphs.json", "as": "atlas/remote/emotions/glyphs.json" }
+        ],
+        "consent": { "license": "CC-BY-4.0", "share_ok": true }
+      }
+    ],
+
+    "local_manifests": [
+      "glyphs/**",
+      "protocols/**",
+      "sensors/**",
+      "atlas/shapes.json"
+    ],
+
+    "merge": {
+      "order": ["local", "emotions", "biogrid"],   // left→right precedence
+      "strategy": "deep-merge"                      // note: staging-by-precedence in script
+    },
+
+    "offline": false,
+    "cache_dir": ".fieldcache",
+
+    "integrity": {
+      "enabled": false,
+      "hash": "sha256",
+      "allow_missing": true
+    },
+
+    "consent": {
+      "license": "CC-BY-4.0",
+      "share_ok": true,
+      "redact_rules": ["**/private/**", "*.secrets.json"]
+    }
+  }
+}

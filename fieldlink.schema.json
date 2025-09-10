@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/fieldlink.schema.json",
+  "title": "Fieldlink Configuration",
+  "type": "object",
+  "required": ["fieldlink"],
+  "properties": {
+    "fieldlink": {
+      "type": "object",
+      "required": ["version", "role", "local_manifests"],
+      "properties": {
+        "version": { "type": "string" },
+        "updated": { "type": "string" },
+        "role": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "offline": { "type": "boolean" },
+        "cache_dir": { "type": "string" },
+        "local_manifests": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "repo", "paths"],
+            "properties": {
+              "name": { "type": "string" },
+              "repo": { "type": "string", "format": "uri" },
+              "ref": { "type": "string" },
+              "paths": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+              "mounts": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["remote", "as"],
+                  "properties": {
+                    "remote": { "type": "string" },
+                    "as": { "type": "string" }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "consent": {
+                "type": "object",
+                "properties": {
+                  "license": { "type": "string" },
+                  "share_ok": { "type": "boolean" }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+
+        "merge": {
+          "type": "object",
+          "properties": {
+            "order": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "strategy": { "type": "string", "enum": ["deep-merge", "replace", "prefer-remote"] }
+          },
+          "additionalProperties": false
+        },
+
+        "integrity": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "hash": { "type": "string", "enum": ["sha256", "sha512"] },
+            "allow_missing": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+
+        "consent": {
+          "type": "object",
+          "properties": {
+            "license": { "type": "string" },
+            "share_ok": { "type": "boolean" },
+            "redact_rules": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

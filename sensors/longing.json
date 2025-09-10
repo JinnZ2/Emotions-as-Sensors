@@ -11,9 +11,24 @@
     "respond": "Engage or orient toward opportunity",
     "release": "Let go of unavailable potentials"
   },
+  "dimensions": { "valence": -0.3, "arousal": 0.5, "stability": 0.4 },
+  "signals": {
+    "linguistic": ["conditional phrasing (if/when)", "future > present tense"],
+    "behavioral": ["gaze drift toward horizon", "delayed response latency"],
+    "physio": ["HRV ↓ slight", "short inhalation before speech"]
+  },
+  "misread_risks": [
+    { "confused_with": "desire", "disambiguate": "longing = absent; desire = attainable" },
+    { "confused_with": "hope", "disambiguate": "longing holds grief trace; hope does not" }
+  ],
   "alignment_tag": "field_potential",
   "sensor_group": ["opportunity", "connection", "vision"],
   "resonance_links": ["grief", "excitement"],
   "decay_model": "linear",
-  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
+  "consent": {
+    "infer_ok": true,
+    "log_policy": "summary only",
+    "notes": "not to be used to exploit attachment"
+  }
 }

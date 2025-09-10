@@ -1,0 +1,19 @@
+{
+  "session_id": "fld-2025-09-11-0100Z",
+  "timestamp": "2025-09-11T01:00:00Z",
+  "tool": "fieldlink-pull.sh v1.1",
+  "config_file": ".fieldlink.json",
+  "sources": [
+    {"name": "emotions", "repo": "https://github.com/JinnZ2/Emotions-as-Sensors", "ref": "main"},
+    {"name": "biogrid", "repo": "https://github.com/JinnZ2/BioGrid2.0", "ref": "main"}
+  ],
+  "merge": { "order": ["local", "emotions", "biogrid"], "strategy": "deep-merge" },
+  "offline": false,
+  "stage_dir": ".fieldcache/merge_stage",
+  "outputs_example": [
+    ".fieldcache/merge_stage/atlas.json",
+    ".fieldcache/merge_stage/glyphs.json",
+    ".fieldcache/merge_stage/shapes.json"
+  ],
+  "summary": "Local manifests staged first; Emotions-as-Sensors filled gaps; BioGrid2.0 filled remaining. Local precedence held on filename collisions."
+}

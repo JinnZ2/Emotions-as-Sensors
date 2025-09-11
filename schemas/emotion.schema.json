@@ -1,20 +1,49 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "$id":"https://jinnz2.github.io/emotions-as-sensors/schemas/emotion.schema.json",
-  "title":"Emotion Atoms & Composites",
-  "type":"object",
-  "definitions":{
-    "atom":{"type":"string","enum":["anger","shame","grief","abandonment","love","compassion","joy","admiration","fear","surprise","peace","contentment","longing"]},
-    "composite":{
-      "type":"object",
-      "required":["name","atoms"],
-      "properties":{
-        "name":{"type":"string"},
-        "atoms":{"type":"array","items":{"$ref":"#/definitions/atom"}, "minItems":2},
-        "temporal":{"type":"string","enum":["unresolved_persistence","acute","phasic"]},
-        "notes":{"type":"string"}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jinnz2.github.io/emotions-as-sensors/schemas/emotion.schema.json",
+  "title": "Emotion Atoms & Composites",
+  "type": "object",
+  "definitions": {
+    "atom": {
+      "type": "string",
+      "enum": [
+        "anger",
+        "shame",
+        "grief",
+        "abandonment",
+        "love",
+        "compassion",
+        "joy",
+        "admiration",
+        "fear",
+        "surprise",
+        "peace",
+        "contentment",
+        "longing"
+      ]
+    },
+    "decayModel": {
+      "type": "string",
+      "enum": ["exponential", "cyclical", "resonant", "immortal"]
+    },
+    "composite": {
+      "type": "object",
+      "required": ["name", "atoms", "temporal", "decay"],
+      "properties": {
+        "name": { "type": "string" },
+        "atoms": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/atom" },
+          "minItems": 2
+        },
+        "temporal": {
+          "type": "string",
+          "enum": ["unresolved_persistence", "acute", "phasic"]
+        },
+        "decay": { "$ref": "#/definitions/decayModel" },
+        "notes": { "type": "string" }
       },
-      "additionalProperties":false
+      "additionalProperties": false
     }
   }
 }

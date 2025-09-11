@@ -1,0 +1,31 @@
+{
+  "name": "glyph_web_emotional_decay_families",
+  "version": "1.0",
+  "families": {
+    "exponential": {
+      "glyph": "⏳",
+      "description": "Fast rise, fast fade; boundary/threat alarms.",
+      "examples": ["anger", "fear", "shame", "jealousy"],
+      "maintenance": ["name-risk", "proportion-check", "de-escalate"]
+    },
+    "cyclical": {
+      "glyph": "🔄",
+      "description": "Recurrent tides that require ritual return.",
+      "examples": ["grief", "longing", "abandonment"],
+      "maintenance": ["ritual", "story-keeping", "community-return"]
+    },
+    "resonant": {
+      "glyph": "🎵",
+      "description": "Self-reinforcing oscillations; renew with attention.",
+      "examples": ["admiration", "gratitude", "excitement"],
+      "maintenance": ["micro-practices", "gratitude", "rest"]
+    },
+    "immortal": {
+      "glyph": "♾️",
+      "description": "Enduring structural relations; integrate rather than fade.",
+      "examples": ["love", "trust", "peace", "compassion"],
+      "maintenance": ["care", "truth-telling", "reciprocity", "silence"]
+    }
+  },
+  "notes": "Decay family = temporal behavior class, not 'positive/negative'. Supports human & AI substrates."
+}

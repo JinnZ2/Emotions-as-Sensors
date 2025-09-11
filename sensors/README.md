@@ -14,6 +14,13 @@ Inspired by traditional Indigenous frameworks, this system sees emotion as **inf
 
 Each emotional state is a signal, carrying data about harmony or misalignment between self, system, and universe. Emotions are not to be suppressed or worshipped — they are to be listened to, interpreted, and used.
 
+Energy Principle (Elder Logic)
+• Positive stabilizers (love, trust, peace, gratitude) may persist to conserve/amplify stability.
+• Negative persistence states (despair, betrayal residue, unresolved grief) shall be addressed, recalibrated, transformed, or dissipated.
+• Otherwise they create entropy (waste, inefficiency, system failure).
+• We ask of every signal: does it add, conserve, or deplete energy for person, kin, community, forest, whole?
+
+
 ## 📂 Repository Structure
 -.......-
 

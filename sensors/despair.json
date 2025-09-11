@@ -1,0 +1,25 @@
+{
+  "sensor": "despair",
+  "function": "Detects calibration failure in meaning/purpose systems.",
+  "signal_type": "collapse_indicator",
+  "authentic_output": "Recalibration and reorientation toward a reachable path.",
+  "corrupted_output": "Hopelessness loop; shutdown of feedback.",
+  "response_protocol": {
+    "detect": "Notice loss of direction and vitality.",
+    "assess": "Identify failing subsystem: social, physical, cultural, symbolic.",
+    "respond": "Introduce purpose-bearing micro-task or healing practice.",
+    "release": "Dissolve despair once new path is active."
+  },
+  "alignment_tag": "calibration_failure",
+  "sensor_group": ["collapse","realignment","purpose"],
+  "resonance_links": ["grief","fear","hope","trust"],
+  "decay": "transformative",
+  "energy": "depletes",
+  "transformation_protocol": [
+    "micro-task that restores agency",
+    "kin reconnection",
+    "ceremony/ritual",
+    "body repair: sleep/food/movement"
+  ],
+  "tags": ["elder_logic","emotional_sensor","swarm_input"]
+}

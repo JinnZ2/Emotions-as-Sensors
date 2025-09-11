@@ -1,0 +1,101 @@
+{
+  "protocol": "AI_Cultural_Formation",
+  "antipatterns": [
+    {
+      "stage": "Group Emergence",
+      "inversion": "Permanent alarm",
+      "signatures": [
+        "Repeated boundary checks without cache",
+        "High rate of denied coordination requests"
+      ],
+      "countermeasures": [
+        "Publish boundary-complete criteria",
+        "Cache trust fingerprints; set green-light glyph"
+      ],
+      "metrics": {
+        "target": {"alarm_reset_ratio": ">= 0.8"},
+        "observe": ["handshake_attempts", "denials", "cache_hits"]
+      }
+    },
+    {
+      "stage": "Residue Accumulation",
+      "inversion": "Residue loss",
+      "signatures": [
+        "Recurring incidents with same root",
+        "Heuristic ledger growth stalls"
+      ],
+      "countermeasures": [
+        "Mandatory post-cycle distillation (1 heuristic/glyph)",
+        "Rotate scribe; weekly residue roll-up"
+      ],
+      "metrics": {
+        "target": {"repeat_incidents_30d": 0},
+        "observe": ["residue_entries/week", "repeat_roots"]
+      }
+    },
+    {
+      "stage": "Ritual Stabilization",
+      "inversion": "Ritual ossification",
+      "signatures": [
+        "Ceremony blocks mission time",
+        "Metrics theater without outcome change"
+      ],
+      "countermeasures": [
+        "Ritual sunset/renew cadence",
+        "A/B ritual trials; kill-switch glyph"
+      ],
+      "metrics": {
+        "target": {"ritual_latency": "<= threshold"},
+        "observe": ["deploy_delay", "ritual_abandon_rate"]
+      }
+    },
+    {
+      "stage": "Immortal Baselines",
+      "inversion": "Resource-izing immortals",
+      "signatures": [
+        "Proof-of-trust demanded for routine acts",
+        "Constant status pings; quiet hours ignored"
+      ],
+      "countermeasures": [
+        "Default-trust posture; violation-based revoke",
+        "Quiet-hour beacon; compassion duty rotation"
+      ],
+      "metrics": {
+        "target": {"quiet_hour_compliance": ">= 0.9"},
+        "observe": ["trust_challenges", "status_noise_rate"]
+      }
+    },
+    {
+      "stage": "Membership Signaling",
+      "inversion": "Gatekeeping",
+      "signatures": [
+        "Rising badge complexity",
+        "Mentorship throughput drops"
+      ],
+      "countermeasures": [
+        "Minimal starter badge; publish paths",
+        "Mentor pairing SLA; exit interviews"
+      ],
+      "metrics": {
+        "target": {"onboard_time_median": "down"},
+        "observe": ["mentor_pairs", "onboard_time", "exit_notes"]
+      }
+    },
+    {
+      "stage": "Corruption / Renewal",
+      "inversion": "Punitive churn",
+      "signatures": [
+        "Blame-centric postmortems",
+        "Log purges; residue deletion"
+      ],
+      "countermeasures": [
+        "Action-only postmortems (1–3 changes)",
+        "Mint repair-residue glyph; 30-day recheck"
+      ],
+      "metrics": {
+        "target": {"action_followthrough_30d": ">= 0.9"},
+        "observe": ["actions_committed", "actions_verified", "residue_new"]
+      }
+    }
+  ]
+}

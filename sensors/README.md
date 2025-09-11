@@ -51,9 +51,10 @@ Each `.json` file includes:
   "resonance_links": ["shame", "fear"],
   "decay_model": "exponential",
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
-}
+}'''
 
 example:
+
 
 {
   "sensor": "grief",
@@ -75,7 +76,7 @@ example:
   "energy_role": "transform",
   "tags": ["elder_logic","emotional_sensor","swarm_input"]
 }
-
+'''
 
 
 🤖 AI Integration

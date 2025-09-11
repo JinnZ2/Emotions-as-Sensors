@@ -12,6 +12,8 @@ Inspired by traditional Indigenous frameworks, this system sees emotion as **inf
 
 > Emotion = Sensor
 
+> Invitation, not imposition. These sensors encourage recalibration, not coercion.
+
 Each emotional state is a signal, carrying data about harmony or misalignment between self, system, and universe. Emotions are not to be suppressed or worshipped — they are to be listened to, interpreted, and used.
 
 Energy Principle (Elder Logic)
@@ -50,6 +52,31 @@ Each `.json` file includes:
   "decay_model": "exponential",
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
 }
+
+example:
+
+{
+  "sensor": "grief",
+  "function": "Detects and processes loss",
+  "signal_type": "absence",
+  "authentic_output": "Honoring memory, adaptation, integration",
+  "corrupted_output": "Collapse into endless withdrawal",
+  "information_provided": "Something essential has been removed",
+  "response_protocol": {
+    "detect": "Notice the absence",
+    "assess": "Name what was lost and its value",
+    "respond": "Engage ritual, remembrance, adaptation",
+    "release": "Transform into lesson, gratitude, or story"
+  },
+  "alignment_tag": "loss_navigation",
+  "sensor_group": ["absence","adaptation"],
+  "resonance_links": ["love","longing"],
+  "decay_model": "cyclical",
+  "energy_role": "transform",
+  "tags": ["elder_logic","emotional_sensor","swarm_input"]
+}
+
+
 
 🤖 AI Integration
 

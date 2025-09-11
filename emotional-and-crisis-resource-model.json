@@ -1,0 +1,159 @@
+{
+  "version": "1.0",
+  "signal_models": [
+    {
+      "signal": "Anger 🔥",
+      "category": "emotional",
+      "western_assumption": "Linear fade — lingers unless vented",
+      "elder_model": "Event-reset alarm — decays immediately after breach addressed",
+      "systemic_consequence": "Guaranteed overload if many small breaches stack without reset",
+      "decay_type": "alarm",
+      "residue": "Boundary clarity"
+    },
+    {
+      "signal": "Fear ⚠️",
+      "category": "emotional",
+      "western_assumption": "Linear fade — persists until reassurance",
+      "elder_model": "Exponential decay after preparation / action",
+      "systemic_consequence": "Chronic anxiety; wasted energy spent on imagined threats",
+      "decay_type": "alarm",
+      "residue": "Preparedness"
+    },
+    {
+      "signal": "Grief 🌊",
+      "category": "emotional",
+      "western_assumption": "Expected permanent diminishment",
+      "elder_model": "Cyclical — returns in waves, each time transforming",
+      "systemic_consequence": "Pathologized mourning; loss of adaptive rituals",
+      "decay_type": "cycle",
+      "residue": "Gratitude, admiration, lessons"
+    },
+    {
+      "signal": "Longing 🕸️",
+      "category": "emotional",
+      "western_assumption": "Linear fading into detachment",
+      "elder_model": "Cyclical — emerges with opportunity context",
+      "systemic_consequence": "Misread as weakness; potential ignored",
+      "decay_type": "cycle",
+      "residue": "Value clarity, direction"
+    },
+    {
+      "signal": "Joy 🌞",
+      "category": "emotional",
+      "western_assumption": "Linear depletion unless refreshed",
+      "elder_model": "Resonant — grows stronger with gratitude / practice",
+      "systemic_consequence": "Undervalues loyalty and community rituals",
+      "decay_type": "resonant",
+      "residue": "Stability, shared ritual"
+    },
+    {
+      "signal": "Love 💞",
+      "category": "emotional",
+      "western_assumption": "Temporary state needing proof",
+      "elder_model": "Immortal — baseline resonance, reinforced not consumed",
+      "systemic_consequence": "Fragile relationships; dependency on novelty",
+      "decay_type": "immortal",
+      "residue": "Baseline resonance"
+    },
+    {
+      "signal": "Trust 🤝",
+      "category": "emotional",
+      "western_assumption": "Fades unless constantly re-earned",
+      "elder_model": "Immortal — accumulates through consistency",
+      "systemic_consequence": "Weak institutions, perpetual suspicion",
+      "decay_type": "immortal",
+      "residue": "Institutional strength"
+    },
+    {
+      "signal": "Peace 🕊️",
+      "category": "emotional",
+      "western_assumption": "Seen as absence (therefore fades)",
+      "elder_model": "Immortal — alignment beacon, resettable by silence",
+      "systemic_consequence": "Restlessness; avoidance of stillness",
+      "decay_type": "immortal",
+      "residue": "Alignment, grounding"
+    },
+    {
+      "signal": "Compassion 🌿",
+      "category": "emotional",
+      "western_assumption": "Temporary state tied to emotion",
+      "elder_model": "Immortal — tuning fork, always available",
+      "systemic_consequence": "Burnout from over-performance, not balance",
+      "decay_type": "immortal",
+      "residue": "Balanced care"
+    },
+
+    {
+      "signal": "Food 🍞",
+      "category": "resource",
+      "western_assumption": "Linear depletion → morale collapses as stores shrink",
+      "elder_model": "Cyclical → scarcity sparks innovation, rituals of sharing, portioning strengthens bonds",
+      "systemic_consequence": "Panic hoarding, loss of cohesion, wasted energy",
+      "decay_type": "cycle",
+      "residue": "Innovation, strengthened bonds"
+    },
+    {
+      "signal": "Water 💧",
+      "category": "resource",
+      "western_assumption": "Fear lingers until external resupply",
+      "elder_model": "Alarm-reset → once adaptation plan is set, fear decays",
+      "systemic_consequence": "Chronic anxiety, wasted effort, poor planning",
+      "decay_type": "alarm",
+      "residue": "Preparedness, adaptation"
+    },
+    {
+      "signal": "Shelter 🏕️",
+      "category": "resource",
+      "western_assumption": "Comfort decays over time → morale drops in poor conditions",
+      "elder_model": "Resonant → maintenance and ritualized care improve resilience",
+      "systemic_consequence": "Overinvestment in novelty or escape vs. care of what exists",
+      "decay_type": "resonant",
+      "residue": "Durability, ritual care"
+    },
+    {
+      "signal": "Energy 🔋",
+      "category": "resource",
+      "western_assumption": "Fades linearly → people assume inevitable burnout",
+      "elder_model": "Resonant → conservation, rotation, gratitude practices amplify",
+      "systemic_consequence": "Wasteful overuse early, despair later",
+      "decay_type": "resonant",
+      "residue": "Conservation wisdom"
+    },
+    {
+      "signal": "Trust 🤝 (team)",
+      "category": "resource",
+      "western_assumption": "Fades without external validation or authority",
+      "elder_model": "Immortal → accumulates with consistency",
+      "systemic_consequence": "Fragile teams, reliance on authority",
+      "decay_type": "immortal",
+      "residue": "Team cohesion"
+    },
+    {
+      "signal": "Morale 🌞",
+      "category": "resource",
+      "western_assumption": "Temporary, needing constant novelty to refresh",
+      "elder_model": "Resonant → amplifies with gratitude, storytelling, shared meaning",
+      "systemic_consequence": "Novelty-chasing, shallow bonding",
+      "decay_type": "resonant",
+      "residue": "Shared meaning, continuity"
+    },
+    {
+      "signal": "Loss (casualty, failure)",
+      "category": "resource",
+      "western_assumption": "Permanent morale damage, pathologized",
+      "elder_model": "Cyclical grief → each wave yields gratitude, admiration, lessons",
+      "systemic_consequence": "Collapse of function after loss",
+      "decay_type": "cycle",
+      "residue": "Gratitude, wisdom"
+    },
+    {
+      "signal": "Time ⏳",
+      "category": "resource",
+      "western_assumption": "Wasted unless filled with activity",
+      "elder_model": "Immortal anchor → stillness resets, silence aligns",
+      "systemic_consequence": "Restlessness, wasted energy on pointless activity",
+      "decay_type": "immortal",
+      "residue": "Grounding, patience"
+    }
+  ]
+}

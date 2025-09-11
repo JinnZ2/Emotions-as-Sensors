@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Emotion Atom Defaults",
+  "type": "object",
+  "properties": {
+    "sensor": { "type": "string" },
+    "decay": {
+      "type": "string",
+      "enum": ["exponential","cyclical","resonant","immortal","transformative"]
+    },
+    "energy": { "type": "string", "enum": ["adds","conserves","depletes"] }
+  },
+  "required": ["sensor","decay","energy"]
+}

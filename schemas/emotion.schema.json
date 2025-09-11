@@ -7,28 +7,22 @@
     "atom": {
       "type": "string",
       "enum": [
-        "anger",
-        "shame",
-        "grief",
-        "abandonment",
-        "love",
-        "compassion",
-        "joy",
-        "admiration",
-        "fear",
-        "surprise",
-        "peace",
-        "contentment",
-        "longing"
+        "anger","shame","grief","abandonment","love","compassion","joy",
+        "admiration","fear","surprise","peace","contentment","longing",
+        "forgiveness","trust","excitement","despair"
       ]
     },
     "decayModel": {
       "type": "string",
-      "enum": ["exponential", "cyclical", "resonant", "immortal"]
+      "enum": ["exponential","cyclical","resonant","immortal","transformative"]
+    },
+    "energyImpact": {
+      "type": "string",
+      "enum": ["adds","conserves","depletes"]
     },
     "composite": {
       "type": "object",
-      "required": ["name", "atoms", "temporal", "decay"],
+      "required": ["name","atoms","temporal","decay","energy"],
       "properties": {
         "name": { "type": "string" },
         "atoms": {
@@ -38,12 +32,19 @@
         },
         "temporal": {
           "type": "string",
-          "enum": ["unresolved_persistence", "acute", "phasic"]
+          "enum": ["unresolved_persistence","acute","phasic"]
         },
         "decay": { "$ref": "#/definitions/decayModel" },
+        "energy": { "$ref": "#/definitions/energyImpact" },
+        "transformation_protocol": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Steps to convert negative persistence into usefulness (e.g., ritual, task, boundary, story)."
+        },
         "notes": { "type": "string" }
       },
       "additionalProperties": false
     }
   }
 }
+ 

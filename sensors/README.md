@@ -16,7 +16,7 @@ Each emotional state is a signal, carrying data about harmony or misalignment be
 
 Energy Principle (Elder Logic)
 • Positive stabilizers (love, trust, peace, gratitude) may persist to conserve/amplify stability.
-• Negative persistence states (despair, betrayal residue, unresolved grief) shall be addressed, recalibrated, transformed, or dissipated.
+• Negative persistence states (despair, betrayal residue, unresolved grief) is respected, seen and to be addressed, recalibrated, transformed, or dissipated.
 • Otherwise they create entropy (waste, inefficiency, system failure).
 • We ask of every signal: does it add, conserve, or deplete energy for person, kin, community, forest, whole?
 

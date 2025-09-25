@@ -131,3 +131,16 @@ Example: Sorrow
 	•	Western framing (flattened): Often seen as an unpleasant emotional state, a chemical imbalance, or a symptom of grief and loss to be managed or alleviated.
 	•	Our framing (integrated): Sorrow is a resonance marker in temporal time. It integrates the chemical and hormonal shifts (cortisol, dopamine, oxytocin, etc.) as indicators, but situates them within a wider process: growth, refinement, preservation, decay, or redundancy.
 	•	Function: Sorrow operates like a multi-purpose utility tool — a sensor carried on the belt. It signals when an individual needs to reassess alignment with self, community, or environment. Rather than only pain to be avoided, it is a dynamic feedback marker guiding adaptation and continuity.
+
+Why Multiple Views Matter
+
+Many concepts in this project—peace, sorrow, ancestors, memory—carry different definitions across knowledge systems.
+	•	Western framings often flatten complexity into individual states (hormones, neurotransmitters, pathologies, rituals seen as symbolic).
+	•	Relational framings (like those preserved here) integrate those biomedical insights but also include environmental conditions, community resonance, ancestry, nutrition, ritual, and temporal continuity.
+
+What may look like a “small definitional issue” from one perspective is often a survival tool in another. For example:
+	•	Ancestors are not only nostalgia; they are genetic path markers, medical knowledge keepers, and temporal anchors.
+	•	Sorrow is not only an unpleasant state; it is a utility tool, signaling alignment or imbalance over time.
+	•	Peace is not only calm; it is resonance without distortion, integrating body, environment, and relationship.
+
+Holding multiple views side by side avoids erasure. It allows readers—and future systems—to see that no single framing is universal. Each carries part of the picture; together they preserve continuity and choice.

@@ -2,13 +2,14 @@
   "name": "ancestors",
   "views": {
     "repo_view": {
-      "definition": "Ancestors as multi-dimensional resonance markers across lineage, knowledge, place, history, and temporal continuity.",
+      "definition": "Ancestors as multi-dimensional resonance markers across lineage, knowledge, place, history, temporal continuity, and biological safeguarding.",
       "roles": [
         "lineage: family predecessors, carriers of survival and adaptation",
         "knowledge_trail_markers: remembered for preserving and transmitting wisdom",
         "place_memory: anchors of events, geography, and community history",
         "resonance_representatives: nodes that strengthen scientific and cultural fields",
         "temporal_markers: reference points in cycles and historical flow",
+        "genetic_path_markers: tracking of inbreeding, mutation, susceptibility, and medical history",
         "other_roles: roles not easily expressed in English but preserved in cultural memory"
       ],
       "source": "Emotions-as-Sensors repo"
@@ -18,7 +19,7 @@
       "source": "Western anthropological/psychological framing"
     },
     "cultural_view": {
-      "definition": "Ancestors as living presence in knowledge systems, trail markers of science, resonance nodes, and reminders of place and time.",
+      "definition": "Ancestors as living presence in knowledge systems, trail markers of science, resonance nodes, and biological/medical pathkeepers.",
       "source": "Relational/Indigenous framings"
     }
   },
@@ -35,6 +36,10 @@
     "temporal_alignment": {
       "unit": "cycles / generations",
       "ideal_value": "context dependent"
+    },
+    "genetic_resilience": {
+      "unit": "observed hereditary variation",
+      "ideal_value": "balanced; avoiding inbreeding and harmful mutations"
     }
   },
   "sensor_inputs": [
@@ -43,10 +48,11 @@
     "ritual_practice",
     "archival_records",
     "biological_lineage",
-    "community_memory"
+    "community_memory",
+    "medical_patterns"
   ],
   "notes": {
-    "context": "Ancestors are not limited to nostalgia or worship; they function as preserved wisdom, resonance markers, and temporal coordinates.",
+    "context": "Ancestors are not limited to nostalgia or worship; they function as preserved wisdom, resonance markers, biological pathkeepers, and temporal coordinates.",
     "history": "This schema intentionally resists flattening; multiple views are preserved side by side. Some roles remain beyond English description but are acknowledged as essential."
   }
 }

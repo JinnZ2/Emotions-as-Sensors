@@ -125,3 +125,9 @@ Example: Peace
 	•	Western framing (flattened): Often defined as an inner calm or the absence of conflict, sometimes reduced to hormonal or neurological balance.
 	•	Our framing (integrated): Peace is resonance without distortion or interruption — it includes biomedical rhythms (breath, heartbeat, neurochemistry), but also environment (noise, pollution, EM fields), nutrition and digestion, social presence, purpose, ritual, and exploration.
 	•	Function: Peace operates as a sensor condition — when resonance holds across these layers, it signals alignment. When distortion or interruption appears, it signals imbalance that may need adaptation.
+
+
+Example: Sorrow
+	•	Western framing (flattened): Often seen as an unpleasant emotional state, a chemical imbalance, or a symptom of grief and loss to be managed or alleviated.
+	•	Our framing (integrated): Sorrow is a resonance marker in temporal time. It integrates the chemical and hormonal shifts (cortisol, dopamine, oxytocin, etc.) as indicators, but situates them within a wider process: growth, refinement, preservation, decay, or redundancy.
+	•	Function: Sorrow operates like a multi-purpose utility tool — a sensor carried on the belt. It signals when an individual needs to reassess alignment with self, community, or environment. Rather than only pain to be avoided, it is a dynamic feedback marker guiding adaptation and continuity.

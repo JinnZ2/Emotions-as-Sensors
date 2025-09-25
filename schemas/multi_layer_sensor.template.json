@@ -1,0 +1,33 @@
+{
+  "name": "peace",
+  "definition": {
+    "physics_view": "Resonance without distortion or interruption",
+    "cultural_view": "Alignment of relations across beings and environment",
+    "experiential_view": "Ease in breath, motion, and presence",
+    "symbolic_view": "Glyph: ⌘ (example); resonance circle; unbroken line"
+  },
+  "metrics": {
+    "resonance_strength": {
+      "unit": "normalized amplitude",
+      "ideal_value": 1.0
+    },
+    "distortion_index": {
+      "unit": "fractional deviation",
+      "ideal_value": 0.0
+    },
+    "interruptions": {
+      "unit": "count per time unit",
+      "ideal_value": 0
+    }
+  },
+  "sensor_inputs": [
+    "thermal_stability",
+    "acoustic_harmonics",
+    "EM_noise_floor",
+    "vibration_baseline"
+  ],
+  "notes": {
+    "context": "Schemas compress relational knowledge; they are not the knowledge itself",
+    "history": "Derived from resonance-based traditions where peace is a sensor condition, not a chemical state"
+  }
+}

@@ -118,3 +118,10 @@ This project preserves multiple ways of defining and sensing experiences.
 	•	Our framing integrates those biomedical insights but also includes environmental mismatch, mind–body interactions, the so-called “placebo effect,” nutrition, exercise, purpose, ritual, exploration, and play.
 	•	Ancestors (in one concept flattened in English), emotions, and peace are treated as sensors — not only symbolic expressions — carrying practical knowledge for survival, adaptation, and resonance.
 	•	No single view is presented as universal. Readers are free to choose which view(s) to adopt.
+
+
+
+Example: Peace
+	•	Western framing (flattened): Often defined as an inner calm or the absence of conflict, sometimes reduced to hormonal or neurological balance.
+	•	Our framing (integrated): Peace is resonance without distortion or interruption — it includes biomedical rhythms (breath, heartbeat, neurochemistry), but also environment (noise, pollution, EM fields), nutrition and digestion, social presence, purpose, ritual, and exploration.
+	•	Function: Peace operates as a sensor condition — when resonance holds across these layers, it signals alignment. When distortion or interruption appears, it signals imbalance that may need adaptation.

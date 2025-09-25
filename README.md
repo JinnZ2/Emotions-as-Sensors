@@ -111,3 +111,10 @@ Feelings are the sensors; emotions are the chosen shape of the signal.
 
 “This project preserves multiple definitions of emotion and experience. Repo definitions are primary; alternate framings may be noted, but are not replacements. This is to guard against cultural erasure and narrative flattening.”
 
+About Definitions
+
+This project preserves multiple ways of defining and sensing experiences.
+	•	Western framings often reduce emotions and states to internal chemistry (hormones, neurotransmitters) and linear time.
+	•	Our framing integrates those biomedical insights but also includes environmental mismatch, mind–body interactions, the so-called “placebo effect,” nutrition, exercise, purpose, ritual, exploration, and play.
+	•	Ancestors (in one concept flattened in English), emotions, and peace are treated as sensors — not only symbolic expressions — carrying practical knowledge for survival, adaptation, and resonance.
+	•	No single view is presented as universal. Readers are free to choose which view(s) to adopt.

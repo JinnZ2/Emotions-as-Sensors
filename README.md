@@ -108,3 +108,6 @@ Anyone may use, modify, and distribute without attribution.
 
 
 Feelings are the sensors; emotions are the chosen shape of the signal.
+
+“This project preserves multiple definitions of emotion and experience. Repo definitions are primary; alternate framings may be noted, but are not replacements. This is to guard against cultural erasure and narrative flattening.”
+

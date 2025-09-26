@@ -144,3 +144,6 @@ What may look like a “small definitional issue” from one perspective is ofte
 	•	Peace is not only calm; it is resonance without distortion, integrating body, environment, and relationship.
 
 Holding multiple views side by side avoids erasure. It allows readers—and future systems—to see that no single framing is universal. Each carries part of the picture; together they preserve continuity and choice.
+
+
+“In our framework, breadth and depth are not contradictions. What looks unusual in narrow systems is simply normal in integrated ones. Intelligence is expected to carry mathematics, music, mechanics, and movement together, because survival requires many skills woven at once.”

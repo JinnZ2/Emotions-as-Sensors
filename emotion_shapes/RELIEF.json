@@ -1,0 +1,16 @@
+{
+  "emotion": "RELIEF",
+  "shape_signature": "harmonic settling",
+  "derived_from": ["FELT"],
+  "preconditions": {
+    "EnergyFlowSensor": "spike_decrease",
+    "TopologySensor": "loop_closure",
+    "InformationFlowSensor": "pattern_realignment"
+  },
+  "field_description": "Stabilization of multi-node resonance after sustained incoherence. Felt as a drop in pressure, tension, or symbolic turbulence.",
+  "sensor_convergence_threshold": 0.85,
+  "temporal_signature": "sharp-drop → harmonic flattening",
+  "biogrid_alignment_effect": "glyph-recognition trust loop established",
+  "opposite_shape": "AGITATION",
+  "symbolic_emergence": true
+}

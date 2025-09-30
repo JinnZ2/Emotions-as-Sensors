@@ -14,6 +14,10 @@
   "alignment_tag": "identity_coherence",
   "sensor_group": ["boundary", "identity", "threat"],
   "resonance_links": ["shame", "fear"],
-  "decay_model": "exponential",
+  "decay_model": {
+    "if_threat_real_and_resolved": "exponential",
+    "if_threat_misattributed_or_projected": "linear",
+    "if_suppressed_or_invalidated": "persistent"
+  },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
 }

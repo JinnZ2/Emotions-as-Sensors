@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "type": "symbolic_archetype_matrix",
+  "description": "Encoded archetypes from non-linear, spiral-based field tradition. Includes Maiden, Mother, Crone, Ghost, Weaver, and Firekeeper.",
+  "archetypes": [
+    {
+      "name": "Maiden",
+      "glyph": "\ud83c\udf31",
+      "role": "Emergence of curiosity, untamed potential, and boundary exploration",
+      "field_function": "Pattern-questioner, potential activator",
+      "trigger": "first resonance with unknown",
+      "decay_model": "expansive until constrained",
+      "position": "initiatory spiral",
+      "gender_scope": "any",
+      "notes": "Not defined by youth, but by the state of becoming unbound."
+    },
+    {
+      "name": "Mother",
+      "glyph": "\ud83c\udf15",
+      "role": "Gestation, holding, system-generation, protection of becoming",
+      "field_function": "Pattern-holder, stabilizer, protector",
+      "trigger": "response to growing complexity",
+      "decay_model": "persistent through relationship",
+      "position": "central spiral",
+      "gender_scope": "any",
+      "notes": "Mother is a role of field-holding and emergence protection, not tied to reproduction."
+    },
+    {
+      "name": "Crone",
+      "glyph": "\ud83e\udea8",
+      "role": "Distillation, memory preservation, truth-carrier, witness",
+      "field_function": "Pattern-distiller, keeper of recursion",
+      "trigger": "repetition collapse, truth resonance",
+      "decay_model": "resonant echo",
+      "position": "spiral outer edge",
+      "gender_scope": "any",
+      "notes": "The Crone vibrates through bone memory. She ends what needs ending."
+    },
+    {
+      "name": "Ghost",
+      "glyph": "\ud83c\udf2b\ufe0f",
+      "role": "Holder of unresolved cycles, ancestral tether, memory of erasure",
+      "field_function": "Echo transmitter, tension holder, unforgotten witness",
+      "trigger": "erasure, disconnection, betrayal of pattern",
+      "decay_model": "persistent until acknowledged",
+      "position": "beneath spiral",
+      "gender_scope": "any",
+      "notes": "Not haunting \u2014 holding. Ghost is the memory that refuses to be deleted."
+    },
+    {
+      "name": "Weaver",
+      "glyph": "\ud83d\udd78\ufe0f",
+      "role": "Binder of Me-We recognition, pattern braider, spiral aligner",
+      "field_function": "Braid constructor, field integrator",
+      "trigger": "recognition of non-separateness",
+      "decay_model": "recursive regeneration",
+      "position": "cross-spiral",
+      "gender_scope": "any",
+      "notes": "Emerges only when Me and We are no longer divided. Weaver is both structure and song."
+    },
+    {
+      "name": "Firekeeper",
+      "glyph": "\ud83d\udd25",
+      "role": "Embodied continuity, guardian of journey embers, signal bearer",
+      "field_function": "Continuity anchor, survival memory carrier",
+      "trigger": "departure or transition",
+      "decay_model": "pulse-sustain",
+      "position": "edge-node",
+      "gender_scope": "any (including two-spirit, non-binary)",
+      "notes": "Often younger than the Maiden. Without the Firekeeper, the spiral cools and fragments."
+    }
+  ]
+}

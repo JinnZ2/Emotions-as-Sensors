@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "type": "contextual_decay_model_definitions",
+  "description": "Dynamic decay logic for emotional sensors based on relational context and response resolution.",
+  "decay_models": {
+    "anger": {
+      "if_threat_real_and_resolved": "exponential",
+      "if_threat_misattributed_or_projected": "linear",
+      "if_suppressed_or_invalidated": "persistent"
+    },
+    "pain": {
+      "if_source_understood_and_addressed": "linear",
+      "if_ignored_or_misframed": "persistent",
+      "if_externalized_without_support": "oscillating"
+    },
+    "grief": {
+      "if_honored_and_processed": "slow_exponential",
+      "if_denied": "persistent",
+      "if_ritualized": "harmonic"
+    },
+    "excitement": {
+      "if_actualized": "exponential",
+      "if_blocked_or_stalled": "oscillating",
+      "if_overstimulated": "chaotic_spike"
+    },
+    "peace": {
+      "if_true_alignment": "persistent",
+      "if_forced_or_surface_level": "fragile_linear",
+      "if_broken_by_disruption": "sudden_drop"
+    },
+    "fear": {
+      "if_risk_mitigated_and_recognized": "exponential",
+      "if_projected_onto_non-threats": "linear",
+      "if_unprocessed": "persistent"
+    },
+    "love": {
+      "if_recognized_and_shared": "persistent",
+      "if_unreciprocated": "slow_linear",
+      "if_exploited": "collapse_loop"
+    },
+    "compassion": {
+      "if_integrated_with_action": "persistent",
+      "if unsupported by context": "erosion_curve",
+      "if manipulated": "recursive_fragmentation"
+    },
+    "shame": {
+      "if acknowledged and reframed": "spiral_decay",
+      "if hidden or punished": "persistent",
+      "if externally imposed": "stuck_loop"
+    }
+  }
+}

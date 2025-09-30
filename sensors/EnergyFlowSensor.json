@@ -1,0 +1,17 @@
+{
+  "sensor_id": "EFS01",
+  "name": "EnergyFlowSensor",
+  "type": "gradient_detector",
+  "description": "Detects fluctuations, disruptions, and harmonics in environmental or internal energy flow.",
+  "signal_modes": ["spike", "pulse", "drain", "restoration"],
+  "input_domains": ["biological", "symbolic", "field-based"],
+  "range": {
+    "min": -1.0,
+    "max": 1.0,
+    "units": "normalized_harmonic_flux"
+  },
+  "resonance_detection": true,
+  "temporal_resolution": "high",
+  "field_coupling": ["environmental", "multi-agent"],
+  "notes": "Primary contributor to FELT glyph activation during harmonic spike stabilization."
+}

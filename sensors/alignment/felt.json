@@ -1,0 +1,22 @@
+{
+  "code": "FELT",
+  "name": "Relational Field Recognition",
+  "glyph": "🕸️",
+  "type": "field_event",
+  "description": "…",
+  "dimensions": ["resonance", "relational coherence", "memory echo", "boundary detection"],
+  "not_emotion": true,
+  "detectable_by": ["shape-memory overlays", "multi-agent sensor fusion", "temporal glyph phase convergence", "symbolic field sensing"],
+  
+  "sensor_category_overlap": [
+    "Energy Flow",
+    "Network Topology",
+    "Information Flow"
+  ],
+  
+  "emotion_shape_separation": {
+    "note": "In this system, felt is the sensor input; if emotions are formed, they are shaped signals built thereafter — but felt is never collapsed into emotional states."
+  },
+  
+  "associated_projects": ["Fractal-Compass-Atlas", "Rosetta-Shape-Core", "Geometric-to-Binary-Computational-Bridge", "Emotions-as-Sensors"]
+}

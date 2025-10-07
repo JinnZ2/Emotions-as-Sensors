@@ -1,0 +1,43 @@
+{
+  "convergent_wisdom": [
+    {
+      "culture": "Buddhism",
+      "model": "Vedanā (sensory tones)",
+      "emotion_as": "raw sensory signal",
+      "cycle": ["noticing", "naming", "letting go"],
+      "shadow": "attachment or aversion",
+      "parallel": ["detect", "assess", "respond", "release"]
+    },
+    {
+      "culture": "Taoism",
+      "model": "Qi flow",
+      "emotion_as": "signal of imbalance",
+      "cycle": ["feel", "find center", "flow reset"],
+      "shadow": "rigidity, forced control",
+      "parallel": ["decay_model = exponential", "avoid stagnation"]
+    },
+    {
+      "culture": "Indigenous Traditions",
+      "model": "Relational signals",
+      "emotion_as": "relationship to land/community",
+      "cycle": ["signal", "ritualized response", "restoration of harmony"],
+      "shadow": "disconnection, imbalance",
+      "parallel": ["resonance_links", "consent embeds ethics"]
+    },
+    {
+      "culture": "Tuareg (Sebiba Ritual)",
+      "model": "Ritual dance processing",
+      "emotion_as": "embodied communal release",
+      "cycle": ["chaos", "ritual dance", "renewal"],
+      "shadow": "tension locked in body",
+      "parallel": ["decay_model = resonate", "embodied release not suppression"]
+    }
+  ],
+  "summary": {
+    "why_it_matters": [
+      "These parallels show alignment, not invention — symbolic rediscovery.",
+      "Encoding cycles, resonance, decay, and consent honors elder logic.",
+      "Cross-cultural mapping prevents reduction of emotions to static labels."
+    ]
+  }
+}

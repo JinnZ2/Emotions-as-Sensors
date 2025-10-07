@@ -12,7 +12,7 @@ Each equation is designed to quantify intuitive or emotional sensing using rigor
 
 E(t) = SENSE → PATTERN → RESPOND + U(t)
 
-This equation defines Emotion as a Bio-Intelligence Function. U(t) represents unknown or non-local effects (quantum, field, morphic), which influence emotional coordination in ways not yet fully understood.
+This equation defines Emotion as a Intelligence Function. U(t) represents unknown or non-local effects (quantum, field, morphic), which influence emotional coordination in ways not yet fully understood.
 
 ---
 
@@ -23,7 +23,7 @@ The system includes ten classes of sensors:
 1. Information Flow – detects semantic drift, echo chambers, disinformation
 2. Energy Flow – measures energy efficiency, parasitic systems, burnout
 3. Network Topology – detects fragility, hierarchy gradients, overload
-4. Bio-Emotional Coordination – quantifies coherence, contagion, group alignment
+4. Emotional Coordination – quantifies coherence, contagion, group alignment
 5. Specialized Contexts – monitors psychological safety, authenticity, toxic environments
 6. Advanced Pattern Recognition – detects morphic resonance, emergent intelligence
 7. Predictive Models – forecasts cascades, system health, and intervention success

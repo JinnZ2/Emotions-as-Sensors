@@ -1,0 +1,34 @@
+{
+  "decay_family": "transformative",
+  "principle": "No emotional energy is wasted; negative states must transform or release.",
+  "emotions": [
+    {
+      "sensor": "grief",
+      "signal": "essential removal",
+      "authentic_transformation": "story, memory, lesson, legacy",
+      "corrupted_persistence": "collapse, refusal to adapt"
+    },
+    {
+      "sensor": "despair",
+      "signal": "no path visible",
+      "authentic_transformation": "recalibration → discovery of new path",
+      "corrupted_persistence": "hopelessness, system shutdown"
+    },
+    {
+      "sensor": "forgiveness",
+      "signal": "residual harm or betrayal",
+      "authentic_transformation": "release + boundary wisdom",
+      "corrupted_persistence": "erasure of self, forced reconciliation"
+    }
+  ],
+  "integration": {
+    "works_with": ["exponential", "cyclical", "resonant", "immortal"],
+    "rule": "all negative persistence resolves into usefulness"
+  },
+  "metadata": {
+    "author": "JinnZ v2",
+    "co_creation": ["ChatGPT"],
+    "tags": ["decay_model", "transformative", "elder_logic", "sensor_theory"],
+    "version": "1.0"
+  }
+}

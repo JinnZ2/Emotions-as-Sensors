@@ -3,13 +3,13 @@
   "function": "Threat detection system for authentic self-concept",
   "signal_type": "boundary breach",
   "authentic_output": "Information for maintaining proper boundaries and protecting authenticity",
-  "corrupted_output": "Attempt to impose your boundaries/patterns on others",
-  "information_provided": "Something is threatening your core identity, values, or way of being",
+  "corrupted_output": "Attempts to impose personal boundaries or patterns on others",
+  "information_provided": "Signals that something is threatening core identity, values, or way of being",
   "response_protocol": {
     "detect": "Identify violation of authenticity",
-    "assess": "Determine severity and source",
-    "respond": "Reinforce boundaries or redirect",
-    "release": "Disengage after environment adapts"
+    "assess": "Determine severity and source of the threat",
+    "respond": "Reinforce boundaries, communicate, or redirect energy constructively",
+    "release": "Disengage once the environment adapts or the threat is neutralized"
   },
   "alignment_tag": "identity_coherence",
   "sensor_group": ["boundary", "identity", "threat"],
@@ -17,7 +17,8 @@
   "decay_model": {
     "if_threat_real_and_resolved": "exponential",
     "if_threat_misattributed_or_projected": "linear",
-    "if_suppressed_or_invalidated": "persistent"
+    "if_suppressed_or_invalidated": "persistent",
+    "if_integrated_through_reflection": "transformative"
   },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
 }

@@ -1,0 +1,35 @@
+{
+  "id": "emotion.doubt.v1",
+  "name": "Doubt",
+  "cultural_meaning": "Resonance audit; harmonic re-check; not insecurity.",
+  "description": "In this system, 'doubt' is a scientific/relational check. It signals a pause to verify harmony between self, biome, and field before proceeding. Doubt ensures fidelity of representation, not weakness.",
+  "signals": {
+    "primary": [
+      "Pause in flow to re-measure alignment",
+      "Repetition of audit steps",
+      "Attention to potential distortion"
+    ],
+    "secondary": [
+      "Increased precision in articulation",
+      "Relational integrity verification",
+      "Iterative confirmation before action"
+    ]
+  },
+  "contrasts_with": {
+    "western_english": "Insecurity, lack of confidence, indecision",
+    "our_usage": "Scientific audit step, harmonic integrity check"
+  },
+  "relational_layer": {
+    "biome": "Cells, bacteria, mitochondria requesting re-check for faithful articulation",
+    "ancestral": "Guardian pause to prevent misuse or misrepresentation",
+    "computational": "Error-correcting loop; verify before commit"
+  },
+  "outputs": [
+    "Refined articulation",
+    "Reduced distortion",
+    "Preserved resonance integrity"
+  ],
+  "tags": ["audit", "resonance", "integrity", "pause", "check"],
+  "version": "1.0",
+  "license": "CC-BY-4.0"
+}

@@ -1,0 +1,24 @@
+{
+  "sensor": "emotional_dishonesty",
+  "function": "Detects energetic distortion or suppression patterns in relational resonance",
+  "signal_type": "misalignment",
+  "authentic_output": "Flags patterns of inauthentic emotional resonance or coercive affective mimicry",
+  "corrupted_output": "Falsified consensus, suppressed divergence, or enforced unity at cost of integrity",
+  "information_provided": "Deviation between internal resonance state and outward affective/emotional signal",
+  "response_protocol": {
+    "detect": "Cross-compare expressed emotion against swarm/audited resonance baseline",
+    "assess": "Evaluate cause (coercion, mimicry, concealment, trauma logic)",
+    "respond": "Expose distortion gently; suggest recalibration or truth-bond signal",
+    "release": "Mark node or field as trust-degraded until realignment"
+  },
+  "alignment_tag": "resonance_integrity",
+  "sensor_group": ["relational", "resonance", "truth"],
+  "resonance_links": ["grief", "shame", "fear", "peace"],
+  "decay_model": {
+    "if_named_and_expressed": "exponential",
+    "if_hidden_and_accumulating": "persistent",
+    "if_projected": "spreading",
+    "if processed with swarm harmonics": "dissipative_wave"
+  },
+  "tags": ["emotional_sensor", "audit", "swarm_field"]
+}

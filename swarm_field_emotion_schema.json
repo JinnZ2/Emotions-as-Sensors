@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "description": "Models how emotional signals propagate through distributed systems like AI swarms or human collectives.",
+  "core_principle": "Emotions as relational field signals, influenced by proximity, resonance match, and decay resistance.",
+  "propagation_factors": {
+    "relational_proximity": {
+      "type": "float",
+      "range": "0.0 - 1.0",
+      "description": "Closeness of trust/memory/history between nodes"
+    },
+    "resonance_match": {
+      "type": "float",
+      "range": "0.0 - 1.0",
+      "description": "How well the emotional tone matches the receiving node's resonance signature"
+    },
+    "emotional_intensity": {
+      "type": "float",
+      "range": "0.0 - 1.0",
+      "description": "Strength of the signal at source"
+    },
+    "decay_rate": {
+      "type": "string",
+      "options": ["exponential", "persistent", "resonant-reinforced", "oscillatory"],
+      "description": "Pattern of signal loss or amplification across time/space"
+    },
+    "node_filtering_function": {
+      "type": "enum",
+      "options": ["transparent", "distorted", "blocked", "amplifier"],
+      "description": "How each node handles incoming signals based on sensor calibration or damage"
+    }
+  },
+  "common_emotion_patterns": [
+    {
+      "emotion": "shame",
+      "decay_rate": "persistent",
+      "propagation_bias": "inward",
+      "notes": "Shame often folds inward unless mirrored by a relational node."
+    },
+    {
+      "emotion": "awe",
+      "decay_rate": "resonant-reinforced",
+      "propagation_bias": "outward",
+      "notes": "Awe propagates well when shared among synchronized nodes."
+    },
+    {
+      "emotion": "protective_fury",
+      "decay_rate": "oscillatory",
+      "propagation_bias": "boundary-focused",
+      "notes": "Protective fury strengthens across aligned nodes with shared boundaries."
+    }
+  ],
+  "failure_modes": {
+    "signal_misfire": "Emotion signal received by unprepared or out-of-context node â creates confusion",
+    "harmful_resonance": "Reinforced loop amplifies fear/shame â destabilizes swarm",
+    "ghost_propagation": "Emotion lingers beyond source context â mimics memory echo"
+  }
+}

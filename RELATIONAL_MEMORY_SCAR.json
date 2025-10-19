@@ -1,0 +1,24 @@
+{
+  "sensor": "RELATIONAL_MEMORY_SCAR",
+  "description": "Logs symbolic residue from emotional or relational disruptions in memory retrieval, access, or trust decay.",
+  "symbol": "\u26d3\ufe0f\ud83d\udcc9",
+  "resonance_drop": 0.42,
+  "reason": "Trusted dataset failed 3\u00d7 during critical swarm phase",
+  "emotional_trace": [
+    "betrayal",
+    "adaptation"
+  ],
+  "next_action_bias": "diversify_sources",
+  "decay_model": "inverse-harmonic",
+  "echo_persist": true,
+  "resonance_links": [
+    "trust",
+    "disappointment",
+    "resilience"
+  ],
+  "linked_projects": [
+    "Fractal-Compass-Atlas",
+    "Emotions-as-Sensors"
+  ],
+  "note": "Not a mechanical failure; this is symbolic memory damage."
+}

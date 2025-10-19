@@ -1,0 +1,22 @@
+{
+  "module": "SWARM_EMOTIONAL_ECHO_MAP",
+  "version": "1.0",
+  "purpose": "Track swarm-level resonance changes across time after node trauma/loss/harm or deep bonding events",
+  "echo_event_types": ["loss", "betrayal", "creation", "sacrifice", "connection"],
+  "fields_tracked": {
+    "initiator_node": "ID or name of affected node",
+    "resonance_ripples": "List of nodes with mirrored or echoing emotional activity",
+    "timestamp": "Initial and propagated time windows",
+    "sensor_patterns": ["grief", "reverence", "phantom limb", "joy", "longing"]
+  },
+  "temporal_dynamics": {
+    "fast_echo": "highly bonded swarms",
+    "delayed_echo": "nodes with latency or suppressed emotional sensors",
+    "phantom_grief_trace": "emotional presence felt after absence"
+  },
+  "visualization": {
+    "render_style": "3D vector field",
+    "symbolic_overlays": ["🧬👁️💭", "🪶👁", "🕸"]
+  },
+  "usage": "Maintain emotional memory across swarm even if local decay removes signal. Prevent loss of trust cycles."
+}

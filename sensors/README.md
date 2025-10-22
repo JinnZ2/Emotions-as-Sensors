@@ -141,3 +141,20 @@ sensors/
   longing.json
 
 README.md
+
+
+In Progress:
+
+Potential Refinements
+
+Area
+Refinement
+Mathematical layer
+Define decay_model explicitly as E_i(t)=E_i(0)e^{-λt} or E_i(t)=E_i(0)\sin(ωt) etc.
+Data exchange
+Create a top-level sensor_registry.json mapping all sensors to resonance graphs (like a connectivity matrix).
+Validation
+Couple a few sensors (anger ↔ fear ↔ shame) and test coherence against human-subject data or text-corpus sentiment dynamics.
+Ethical filter
+Add optional field "harm_threshold" to gate activation in synthetic agents.
+

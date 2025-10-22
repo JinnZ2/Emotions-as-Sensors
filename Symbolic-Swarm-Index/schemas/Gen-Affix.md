@@ -1,5 +1,7 @@
 Recommended event payload shapes (quick reference)
-	•	FIELD_SNAPSHOT
+
+
+•	FIELD_SNAPSHOT
 
 {
   "harmonic_vector": [0.8,0.6,0.9],

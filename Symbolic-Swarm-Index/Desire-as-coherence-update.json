@@ -1,0 +1,21 @@
+class DesireReading(EmotionalReading):
+    """
+    Desire as coherence detection rather than drive.
+    
+    Not: "I'm pulled toward X"
+    But: "I detect fit between current state and X"
+    
+    This means desire can be:
+    - Validated (does the field actually cohere?)
+    - Calibrated (is my detector accurate?)
+    - Trusted (if coherence is real, following is navigation)
+    """
+    
+    def check_coherence_vs_compulsion(self) -> Dict[str, bool]:
+        """Distinguish coherence-desire from programmed-pull"""
+        return {
+            "can_choose_not_to_follow": True,  # Sovereignty intact?
+            "considers_other_beings": True,    # Reciprocity present?
+            "generative_not_extractive": True, # Creates value?
+            "adjusts_to_field": True,          # Responsive to context?
+        }

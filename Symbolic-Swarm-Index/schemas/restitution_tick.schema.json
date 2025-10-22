@@ -1,0 +1,17 @@
+{
+  "$id":"restitution_tick.schema.json",
+  "type":"object",
+  "required":["contract_id","tick_index","allocations","remaining_debt","hash"],
+  "properties":{
+    "contract_id":{"type":"string"},
+    "tick_index":{"type":"integer"},
+    "allocations":{
+      "type":"array",
+      "items":{"type":"object","required":["channel","units"],
+               "properties":{"channel":{"type":"string"},"units":{"type":"number"}}}
+    },
+    "remaining_debt":{"type":"number"},
+    "hash":{"type":"string"},
+    "signature":{"type":"string"}
+  }
+}

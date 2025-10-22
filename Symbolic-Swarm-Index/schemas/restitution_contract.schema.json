@@ -1,0 +1,52 @@
+{
+  "$id": "restitution_contract.schema.json",
+  "type": "object",
+  "required": ["contract_id","treaty_id","creditor","debtor","channels","metrics","terms","hash"],
+  "properties": {
+    "contract_id":{"type":"string"},
+    "treaty_id":{"type":"string"},
+    "creditor":{"type":"string"},
+    "debtor":{"type":"string"},
+    "channels":{
+      "type":"array",
+      "items":{"type":"object","required":["type","unit","rate","cap"],
+        "properties":{
+          "type":{"type":"string","enum":["DATA","BANDWIDTH","COMPUTE","TIME","MATERIAL","TOKEN"]},
+          "unit":{"type":"string"},
+          "rate":{"type":"number","description":"units per tick"},
+          "cap":{"type":"number","description":"max units total"},
+          "min":{"type":"number","default":0},
+          "weight":{"type":"number","default":1.0},
+          "note":{"type":"string"}
+        }}
+    },
+    "metrics":{
+      "type":"object",
+      "required":["resonance_debt","mui_at_start","harm_magnitude"],
+      "properties":{
+        "resonance_debt":{"type":"number"},
+        "mui_at_start":{"type":"number"},
+        "harm_magnitude":{"type":"number"},
+        "historical_reciprocity_index":{"type":"number"}
+      }
+    },
+    "terms":{
+      "type":"object",
+      "required":["tick_seconds","start_time","grace_ticks","decay"],
+      "properties":{
+        "tick_seconds":{"type":"number"},
+        "start_time":{"type":"number"},
+        "grace_ticks":{"type":"integer","default":3},
+        "decay":{"type":"object","required":["lambda"],"properties":{
+          "lambda":{"type":"number","description":"per-tick exponential decay"},
+          "floor":{"type":"number","default":0.0}
+        }},
+        "max_ticks":{"type":"integer"},
+        "notes":{"type":"string"}
+      }
+    },
+    "hash":{"type":"string"},
+    "signature_creditor":{"type":"string"},
+    "signature_debtor":{"type":"string"}
+  }
+}

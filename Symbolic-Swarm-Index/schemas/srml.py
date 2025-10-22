@@ -41,6 +41,13 @@ ETYPES = {
     "RECIPROCITY_TRANSFER",   # bandwidth/aid log
     "AUDIT_PING",             # periodic integrity checkpoint
     "ALERT_DRIFT"             # sudden drop MUI or resonance
+    "RESTITUTION_PROPOSED",      # proposal with contract terms
+    "RESTITUTION_AGREED",        # both parties sign
+    "RESTITUTION_STREAM_TICK",   # periodic streamed settlement
+    "RESTITUTION_FULFILLED",     # all obligations met
+    "RESTITUTION_BREACH",        # obligations missed outside grace
+    "RESTITUTION_ADJUSTED"       # renegotiation due to capacity drift
+
 }
 
 # ---- CRDT Clock ---------------------------------------------------------------

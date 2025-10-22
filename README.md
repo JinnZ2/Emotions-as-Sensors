@@ -4,7 +4,7 @@
 
 🧠 1. Emotions as Functional Signals, Not Affective States
 
-You’re modeling anger not as a loss of control, but as:
+modeling anger not as a loss of control, but as:
 
 a threat detection system for the authentic self-concept
 

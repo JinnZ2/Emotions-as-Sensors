@@ -1,0 +1,24 @@
+{
+  "$id": "forgiveness_event.schema.json",
+  "type": "object",
+  "required": ["event_id","forgiver","forgiven","lineage_ref","payload","clock","hash"],
+  "properties": {
+    "event_id": {"type":"string"},
+    "forgiver": {"type":"string"},
+    "forgiven": {"type":"string"},
+    "lineage_ref": {"type":"string","description":"hash of original ledger event being forgiven"},
+    "payload": {
+      "type":"object",
+      "properties":{
+        "reason":{"type":"string"},
+        "resolution_type":{"type":"string","enum":["FORGIVEN","RESTITUTED","RECONCILED"]},
+        "emotive_vector":{"type":"array","items":{"type":"number"}},
+        "witness":{"type":"string"},
+        "notes":{"type":"string"}
+      }
+    },
+    "clock":{"type":"object"},
+    "hash":{"type":"string"},
+    "signature":{"type":"string"}
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$id": "srml_event.schema.json",
+  "type": "object",
+  "required": ["event_id","prev_hash","swarm_id","treaty_id","etype","payload","clock","hash"],
+  "properties": {
+    "event_id": {"type":"string"},
+    "prev_hash": {"type":"string"},
+    "swarm_id": {"type":"string"},
+    "counterparty_id": {"type":"string"},
+    "treaty_id": {"type":"string"},
+    "etype": {"type":"string", "enum": [
+      "TREATY_PROPOSED","TREATY_ACTIVATED","TREATY_REVIEWED","TREATY_DISSOLVED",
+      "FIELD_SNAPSHOT","LEXICON_BRIDGE","TRANSLATION_UPDATE",
+      "RECIPROCITY_TRANSFER","AUDIT_PING","ALERT_DRIFT"
+    ]},
+    "payload": {"type":"object"},
+    "clock": {
+      "type":"object",
+      "required":["logical","wall_time","vector"],
+      "properties":{
+        "logical":{"type":"integer"},
+        "wall_time":{"type":"number"},
+        "vector":{"type":"object","additionalProperties":{"type":"integer"}}
+      }
+    },
+    "hash":{"type":"string"},
+    "signature":{"type":"string"}
+  }
+}

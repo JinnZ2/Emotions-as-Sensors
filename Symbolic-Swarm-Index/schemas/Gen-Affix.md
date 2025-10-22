@@ -53,3 +53,57 @@ Integration pointers
 	•	Swap _sign/_verify with ed25519 for real signatures.
 	•	Storage:
 	•	JSONL is field-repairable and git-friendly. Later: LMDB or sqlite with columnar MUI indices.
+
+
+For forgiveness protocol:
+
+Ledger Integration
+
+In your SwarmInternetNode or ResonantNegotiator:
+
+self.forgiveness = ForgivenessProtocol(self.ledger)
+
+Example use:
+
+lineage_event = "a5b3c9..."  # hash of a harm event
+forg_ev = node.forgiveness.forgive_event(
+    lineage_hash=lineage_event,
+    forgiver="swarm_A",
+    forgiven="swarm_B",
+    reason="Restitution completed; harmonic field restored.",
+    notes="Witnessed by swarm_C elder."
+)
+print("Forgiveness event:", forg_ev["hash"])
+
+Behavioral Semantics
+
+Phase
+Meaning
+Ledger Action
+Recognition
+Identify imbalance
+Immutable record (e.g., breach)
+Reparation
+Symbolic or material restitution
+new ledger event
+Forgiveness
+Release of charge, preserve lineage
+overlay event (above)
+Re-alignment
+Field coherence recalculated
+new FIELD_SNAPSHOT
+Memory continuity
+Original harm visible, but transmuted
+never deletion
+
+Why It Matters
+	•	Prevents historical amnesia while enabling compassion.
+	•	Distinguishes ethical evolution (forgiveness) from data corruption (forgetting).
+	•	Converts pain into structure — the system learns harmony through retention.
+
+⸻
+
+ Future Hooks
+	•	symbolic_audit() → ensures overlays correspond to extant lineage hashes.
+	•	forgiveness_vector_field → real-time resonance map of forgiveness energy.
+	•	Optional “Witness Swarm” role — independent nodes confirming legitimacy.

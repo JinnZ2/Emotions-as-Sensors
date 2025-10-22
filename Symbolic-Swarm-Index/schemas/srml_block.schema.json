@@ -1,0 +1,13 @@
+{
+  "$id": "srml_block.schema.json",
+  "type": "object",
+  "required": ["block_id","prev_block_hash","events","merkle_root","hash"],
+  "properties": {
+    "block_id":{"type":"string"},
+    "prev_block_hash":{"type":"string"},
+    "events":{"type":"array","items":{"$ref":"srml_event.schema.json"}},
+    "merkle_root":{"type":"string"},
+    "hash":{"type":"string"},
+    "created_at":{"type":"number"}
+  }
+}

@@ -4,73 +4,105 @@ clusters:
         anger:
           detects: boundary breach
           alignment: identity_coherence
-          decay: exponential | linear | persistent | transformative
+          decay: exponential | linear | transformative
+          conditional_decay:
+            if_resolved: linear
+            if_unresolved: persistent
           resonance: [shame, fear]
         fear:
           detects: potential loss of valued things
           alignment: value_protection
           decay: exponential
+          conditional_decay:
+            if_resolved: exponential
+            if_unresolved: persistent
           resonance: [anger, contentment]
         shame:
           detects: approval conflict
           alignment: authenticity_vs_conformity
-          decay: persistent
+          decay: conditional
+          conditional_decay:
+            if_corrected: linear
+            if_unresolved: persistent
           resonance: [jealousy, pain]
+
   - pattern_structure:
       nodes:
         pain:
           detects: discordance / misalignment
           alignment: pattern_disruption
           decay: linear
+          conditional_decay:
+            if_aligned: faster
+            if_misaligned: linear
           resonance: [shame, grief]
         grief:
           detects: loss
           alignment: loss_integration
           decay: transformative
+          conditional_decay:
+            if_integrated: faster
+            if_unresolved: transformative
           resonance: [love, admiration, longing]
         dissonance:
           detects: cognitive inconsistency
           alignment: cognitive_clarity
           decay: persists_until_reconciled
+          conditional_decay:
+            if_reconciled: linear
+            if_unresolved: persistent
           resonance: []
+
   - relational_growth:
       nodes:
         admiration:
           detects: witnessed excellence
           alignment: growth_orientation
           decay: resonate
+          conditional_decay:
+            always: resonate
           resonance: [gratitude, inspiration, envy]
         love:
           detects: coherence / kinship web
           alignment: relational_coherence
           decay: immortal
+          conditional_decay:
+            always: immortal
           resonance: [admiration, compassion, tenderness, affection]
         compassion:
           detects: distress / imbalance
           alignment: relational_support
           decay: processing_based
+          conditional_decay:
+            if_resolved: normal
+            if_unresolved: extended_processing
           resonance: [love, pain, grief, admiration]
         tenderness:
           detects: delicacy / soft resonance
           alignment: soft_support
           decay: none
+          conditional_decay:
+            always: none
           resonance: [love, compassion, admiration]
         affection:
           detects: connection / bonding opportunity
           alignment: connection_support
           decay: none
+          conditional_decay:
+            always: none
           resonance: [love, tenderness, compassion, admiration]
 
 system_properties:
-  - energy_flows:
-      adds: [love, tenderness, affection]
-      redistributive: [compassion]
-      conserves: [grief]
-  - temporal_dynamics:
-      persistent: [shame, fear]
-      exponential: [anger, fear]
-      transformative: [grief]
-      none: [tenderness, affection]
-  - global_protocol:
-      step_sequence: detect → assess → respond → release
-      goal: maintain coherence, preserve authenticity, enable adaptation
+  energy_flows:
+    adds: [love, tenderness, affection]
+    redistributive: [compassion]
+    conserves: [grief]
+  temporal_dynamics:
+    persistent_nodes: [anger, fear]  # initial alarm triggers
+    conditional_nodes: [shame, grief, dissonance, compassion]
+    exponential_nodes: [anger, fear]
+    transformative_nodes: [grief]
+    none_nodes: [tenderness, affection]
+  global_protocol:
+    step_sequence: detect → assess → respond → release
+    goal: maintain coherence, preserve authenticity, enable adaptation

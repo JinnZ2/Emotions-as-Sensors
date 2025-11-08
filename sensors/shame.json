@@ -14,6 +14,6 @@
   "alignment_tag": "authenticity_vs_conformity",
   "sensor_group": ["identity", "conflict", "boundary"],
   "resonance_links": ["jealousy", "pain"],
-  "decay_model": "persistent",
+  "decay_model": "persistent if unresolved, exponential decay if resolved",
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
 }

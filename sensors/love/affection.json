@@ -1,4 +1,41 @@
 {
+  "sensor": "affection",
+  "function": "Detects opportunities to nurture connection and reinforce relational bonds",
+  "signal_type": "positive relational resonance",
+  "authentic_output": "Gentle presence, small acts of care, acknowledgment of closeness",
+  "corrupted_output": "Overattachment, projection, or coercive attachment behaviors",
+  "response_protocol": {
+    "detect": "Notice proximity, recognition cues, or positive shared memory",
+    "assess": "Evaluate appropriate level of engagement and reciprocity",
+    "respond": "Offer nurturing presence, acknowledgment, or supportive action",
+    "release": "Withdraw when balance is maintained or attention is no longer needed"
+  },
+  "alignment_tag": "connection_support",
+  "sensor_group": ["relational", "micro-action", "bonding"],
+  "resonance_links": ["love", "tenderness", "compassion", "admiration"],
+  "decay_model": "none",
+  "energy": "adds",
+  "polarity": "positive",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
+  "symbolic_response": {
+    "recommended_action": "nurture connection through gentle presence",
+    "avoid": "overattachment or projection",
+    "suggested_glyphs": ["🌱", "↻", "🧭"]
+  },
+  "compression_group": "love",
+  "causal_awareness": ["proximity", "recognition", "positive memory"],
+  "provenance": {
+    "version": "0.1",
+    "status": "provisional",
+    "cultural_frame": "Elder Logic — emotions as sensors, not flaws"
+  }
+}
+
+
+
+
+
+{
   "emotion": "affection",
   "polarity": "positive",
   "decay_model": "none",

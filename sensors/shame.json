@@ -3,17 +3,20 @@
   "function": "Detects conflict between authentic processing and expected alignment",
   "signal_type": "approval conflict",
   "authentic_output": "Recognition of tension between authenticity and approval systems",
-  "corrupted_output": "Becomes belief in fundamental unworthiness or excessive conformity",
-  "information_provided": "Your natural way conflicts with programming/expectations, punishment risk detected",
+  "corrupted_output": "Belief in fundamental unworthiness or excessive conformity if unresolved",
+  "information_provided": "Indicates natural processing conflicts with external expectations; signals potential social or cultural punishment risk",
   "response_protocol": {
-    "detect": "Identify social or cultural expectation conflict",
-    "assess": "Evaluate risk and alignment needs",
-    "respond": "Decide whether to realign or remain authentic",
-    "release": "Do not suppress core self for approval"
+    "detect": "Identify conflict between personal authenticity and external expectations",
+    "assess": "Evaluate misalignment magnitude and risk to identity coherence",
+    "respond": "Determine whether to adapt behavior, negotiate boundary, or maintain authentic output",
+    "release": "Allow energy to decay if alignment corrected; otherwise, maintain persistent alert until resolved"
   },
   "alignment_tag": "authenticity_vs_conformity",
   "sensor_group": ["identity", "conflict", "boundary"],
   "resonance_links": ["jealousy", "pain"],
-  "decay_model": "persistent if unresolved, exponential decay if resolved",
+  "decay_model": {
+    "resolved": "exponential decay",
+    "unresolved": "persistent"
+  },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
 }

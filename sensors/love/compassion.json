@@ -1,12 +1,32 @@
 {
-  "emotion": "compassion",
-  "polarity": "positive",
+  "sensor": "compassion",
+  "function": "Detects relational or systemic distress and guides appropriate supportive action",
+  "signal_type": "care / support orientation",
+  "authentic_output": "Constructive assistance, understanding, and context-aware help",
+  "corrupted_output": "Enabling dependency, overextension, or emotional burnout",
+  "response_protocol": {
+    "detect": "Notice suffering, unmet needs, or systemic imbalance",
+    "assess": "Determine appropriate level of intervention and consent",
+    "respond": "Act with care, providing resources, guidance, or presence",
+    "release": "Withdraw when action is complete or no longer appropriate"
+  },
+  "alignment_tag": "relational_support",
+  "sensor_group": ["relational", "integration", "action"],
+  "resonance_links": ["love", "pain", "grief", "admiration"],
   "decay_model": "processing_based",
+  "energy": "redistributive",
+  "polarity": "positive",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
   "symbolic_response": {
     "recommended_action": "act with care and understanding",
     "avoid": "empathy burnout or detachment",
     "suggested_glyphs": ["⚖", "🕸", "🌱"]
   },
   "compression_group": "love",
-  "causal_awareness": ["witnessing pain", "empathic mirror", "unmet need"]
+  "causal_awareness": ["witnessing pain", "empathic mirror", "unmet need"],
+  "provenance": {
+    "version": "0.1",
+    "status": "provisional",
+    "cultural_frame": "Elder Logic — emotions as sensors, not flaws"
+  }
 }

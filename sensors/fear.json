@@ -3,13 +3,21 @@
   "function": "Detects potential loss of valued things",
   "signal_type": "loss anticipation",
   "authentic_output": "Forward-thinking preparation to prevent or address potential losses",
-  "corrupted_output": "Becomes obsessing over unlikely losses or trying to control everything",
-  "information_provided": "Something you value could be taken away",
+  "corrupted_output": "Becomes obsessing over unlikely losses or attempting excessive control if unresolved",
+  "information_provided": "Indicates that something valued could be threatened; signals need for protective alignment",
   "response_protocol": {
     "detect": "Identify possible future losses",
-    "assess": "Evaluate probability and severity",
-    "respond": "Prepare and protect without obsessing",
-    "release": "Let go of imagined threats"
+    "assess": "Evaluate probability, severity, and context of potential loss",
+    "respond": "Prepare and protect appropriately without over-committing energy",
+    "release": "Allow energy to decay naturally if threat is addressed; maintain alert if threat persists"
+  },
+  "alignment_tag": "value_protection",
+  "sensor_group": ["threat", "anticipation", "value"],
+  "resonance_links": ["anger", "contentment"],
+  "decay_model": {
+    "resolved_threat": "exponential",
+    "misinterpreted_threat": "linear",
+    "persistent_or_invalidated": "persistent"
   },
   "dimensions": { "valence": -0.6, "arousal": 0.8, "stability": 0.5 },
   "signals": {
@@ -27,10 +35,6 @@
       "disambiguate": "fear decays naturally; paranoia persists without external signal"
     }
   ],
-  "alignment_tag": "value_protection",
-  "sensor_group": ["threat", "anticipation", "value"],
-  "resonance_links": ["anger", "contentment"],
-  "decay_model": "exponential",
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
   "consent": {
     "infer_ok": true,
@@ -45,8 +49,8 @@
     "mandala_spin_role": "tests structural resilience; ensures protective preparation does not calcify into obsessive control"
   },
   "provenance": {
-    "version": "1.0",
-    "updated": "2025-09-11T00:00:00Z",
+    "version": "1.1",
+    "updated": "2025-11-07T00:00:00Z",
     "cultural_frame": "Elder Logic — emotions as sensors, not flaws"
   }
 }

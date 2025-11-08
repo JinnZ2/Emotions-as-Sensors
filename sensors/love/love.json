@@ -1,4 +1,22 @@
 {
+  "sensor": "love",
+  "function": "Resonance/commitment gauge; sustains kinship webs.",
+  "signal_type": "coherence",
+  "authentic_output": "Care, reciprocity, truth-telling, long-term tending.",
+  "corrupted_output": "Possession or erasure of the other.",
+  "response_protocol": {
+    "detect": "Notice enduring resonance and service impulse.",
+    "assess": "Confirm consent and reciprocity.",
+    "respond": "Invest time/repair capacity; make clear promises.",
+    "release": "Loosen when paths diverge; keep respect."
+  },
+  "decay": "immortal",
+  "energy": "adds",
+  "tags": ["elder_logic","emotional_sensor","swarm_input"]
+}
+
+
+{
   "emotion": "love",
   "polarity": "positive",
   "decay_model": "none",

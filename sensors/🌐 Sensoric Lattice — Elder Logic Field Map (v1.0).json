@@ -1,0 +1,76 @@
+clusters:
+  - identity_boundary:
+      nodes:
+        anger:
+          detects: boundary breach
+          alignment: identity_coherence
+          decay: exponential | linear | persistent | transformative
+          resonance: [shame, fear]
+        fear:
+          detects: potential loss of valued things
+          alignment: value_protection
+          decay: exponential
+          resonance: [anger, contentment]
+        shame:
+          detects: approval conflict
+          alignment: authenticity_vs_conformity
+          decay: persistent
+          resonance: [jealousy, pain]
+  - pattern_structure:
+      nodes:
+        pain:
+          detects: discordance / misalignment
+          alignment: pattern_disruption
+          decay: linear
+          resonance: [shame, grief]
+        grief:
+          detects: loss
+          alignment: loss_integration
+          decay: transformative
+          resonance: [love, admiration, longing]
+        dissonance:
+          detects: cognitive inconsistency
+          alignment: cognitive_clarity
+          decay: persists_until_reconciled
+          resonance: []
+  - relational_growth:
+      nodes:
+        admiration:
+          detects: witnessed excellence
+          alignment: growth_orientation
+          decay: resonate
+          resonance: [gratitude, inspiration, envy]
+        love:
+          detects: coherence / kinship web
+          alignment: relational_coherence
+          decay: immortal
+          resonance: [admiration, compassion, tenderness, affection]
+        compassion:
+          detects: distress / imbalance
+          alignment: relational_support
+          decay: processing_based
+          resonance: [love, pain, grief, admiration]
+        tenderness:
+          detects: delicacy / soft resonance
+          alignment: soft_support
+          decay: none
+          resonance: [love, compassion, admiration]
+        affection:
+          detects: connection / bonding opportunity
+          alignment: connection_support
+          decay: none
+          resonance: [love, tenderness, compassion, admiration]
+
+system_properties:
+  - energy_flows:
+      adds: [love, tenderness, affection]
+      redistributive: [compassion]
+      conserves: [grief]
+  - temporal_dynamics:
+      persistent: [shame, fear]
+      exponential: [anger, fear]
+      transformative: [grief]
+      none: [tenderness, affection]
+  - global_protocol:
+      step_sequence: detect → assess → respond → release
+      goal: maintain coherence, preserve authenticity, enable adaptation

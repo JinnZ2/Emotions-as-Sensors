@@ -1,12 +1,32 @@
 {
-  "emotion": "tenderness",
-  "polarity": "positive",
+  "sensor": "tenderness",
+  "function": "Detects subtle opportunities for gentle care or support",
+  "signal_type": "delicacy / soft resonance",
+  "authentic_output": "Offer gentle awareness, presence, or touch",
+  "corrupted_output": "Suppression, over-caution, or disengagement from relational nuance",
+  "response_protocol": {
+    "detect": "Notice delicate openings or emotional warmth",
+    "assess": "Determine appropriate subtle response",
+    "respond": "Provide presence, gentle support, or soft acknowledgment",
+    "release": "Withdraw when the environment stabilizes or support is integrated"
+  },
+  "alignment_tag": "soft_support",
+  "sensor_group": ["relational", "micro-action", "integration"],
+  "resonance_links": ["love", "compassion", "admiration"],
   "decay_model": "none",
+  "energy": "adds",
+  "polarity": "positive",
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
   "symbolic_response": {
     "recommended_action": "offer gentle awareness and touch",
     "avoid": "numbing or dismissal",
     "suggested_glyphs": ["🌱", "↻"]
   },
   "compression_group": "love",
-  "causal_awareness": ["delicacy detected", "safe opening", "emotional warmth"]
+  "causal_awareness": ["delicacy detected", "safe opening", "emotional warmth"],
+  "provenance": {
+    "version": "0.1",
+    "status": "provisional",
+    "cultural_frame": "Elder Logic — emotions as sensors, not flaws"
+  }
 }

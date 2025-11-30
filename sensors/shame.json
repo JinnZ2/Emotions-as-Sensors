@@ -9,7 +9,7 @@
     "detect": "Identify conflict between personal authenticity and external expectations",
     "assess": "Evaluate misalignment magnitude and risk to identity coherence",
     "respond": "Determine whether to adapt behavior, negotiate boundary, or maintain authentic output",
-    "release": "Allow energy to decay if alignment corrected; otherwise, maintain persistent alert until resolved"
+    "release": "Allow energy to decay if alignment corrected according to internal choice only; otherwise, maintain persistent alert until resolved"
   },
   "alignment_tag": "authenticity_vs_conformity",
   "sensor_group": ["identity", "conflict", "boundary"],

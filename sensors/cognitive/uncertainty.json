@@ -16,7 +16,7 @@
   ],
   "decay_model": "persists until sufficient grounding or orientation input is received",
   "symbolic_response": {
-    "recommended_action": "engage Uncertainty Compass or Wanderer's Toolkit",
+    "recommended_action": "engage Uncertainty Compass or Wanderer's Toolkit, fuels curiosity",
     "avoid": "premature closure or false certainty",
     "suggested_glyphs": ["🧭", "↻", "🌱"]
   },

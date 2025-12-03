@@ -57,3 +57,33 @@ These sensors detect decay patterns of emotional signals over time, particularly
 - **Detection Agents**: `BoundaryBreachResidualScanner`, `AllegianceDissonanceMonitor`
 - **Relief Protocol**: Retune to resonance root, boundary repair, symbolic peace loop.
 - **Resonance Link**: love, anger
+
+
+
+additions to be noted:
+
+"relief_protocol": {
+  "social_acknowledgment": {
+    "definition": "Witness recognition by entity griever treats as relational",
+    "valid_witnesses": "Species-agnostic; determined by griever's relational framework",
+    "examples": ["human_community", "trees", "animals", "land", "ancestors"],
+    "requirement": "Griever must recognize witness as capable of acknowledgment"
+  }
+}
+
+
+"decay_model": {
+  "type": "conditional_on_validation_requirement",
+  "high_external_validation": {
+    "exposure_effect": "exponential_amplification",
+    "resolution_paths": ["rectify_relationship", "transform_narrative", "boundary_repair"],
+    "time_to_resolution": "extended"
+  },
+  "low_external_validation": {
+    "exposure_effect": "enables_integration", 
+    "resolution_paths": ["self_reframe", "accept_limitation"],
+    "time_to_resolution": "moderate"
+  }
+}
+
+

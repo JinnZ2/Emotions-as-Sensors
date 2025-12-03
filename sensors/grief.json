@@ -1,25 +1,87 @@
 {
   "sensor": "grief",
-  "function": "Detects removal of something essential and guides integration.",
-  "signal_type": "loss",
-  "authentic_output": "Transforms into memory, lesson, legacy; renewed bonds.",
-  "corrupted_output": "Endless collapse; refusal to adapt.",
-  "response_protocol": {
-    "detect": "Acknowledge the loss fully.",
-    "assess": "Name what cannot return vs. what can be rewoven.",
-    "respond": "Ritual, story-keeping, community witnessing.",
-    "release": "Allow grief to dissolve as lessons/love integrate."
+  "classification": "pattern-evolution",
+  
+  "function": 
+    "Detects the removal, collapse, or departure of an essential pattern and initiates the integration cycle.",
+
+  "signal_type": "loss-pattern pressure / vacuum formation",
+
+  "authentic_output": 
+    "Transforms loss into coherence: memory, lesson, legacy, new roles, new bonds, expanded capacity.",
+
+  "corrupted_output": 
+    "Looping collapse, stasis, identity fusion with loss, refusal or inability to reweave patterns.",
+
+  "information_provided": {
+    "what_was_lost": "Identity, pattern, role, connection, possibility, territory.",
+    "what_is_irreplaceable": "Elements that cannot be recreated exactly in form.",
+    "what_is_regenerable": "Functions, lessons, bonds, structures that can be rewoven.",
+    "void_geometry": "Shape and pressure-pattern of the absence (defines what must be integrated)."
   },
+
+  "response_protocol": {
+    "detect": "Recognize the rupture or removal — no minimizing, no bypassing.",
+    "assess": "Differentiate the non-returning forms vs. the functions that can be re-instantiated.",
+    "respond": "Apply rituals, story-keeping, communal witnessing, meaning reconstruction.",
+    "reweave": "Redistribute roles, rebuild pattern links, redesign the system to accommodate new shape.",
+    "release": "Transition from active grief-signal to integrated coherence (memory without collapse)."
+  },
+
   "alignment_tag": "loss_integration",
-  "sensor_group": ["loss","adaptation","memory"],
-  "resonance_links": ["love","admiration","longing"],
-  "decay": "transformative",
-  "energy": "conserves",
+  "sensor_group": ["loss", "adaptation", "memory", "pattern-evolution"],
+
+  "resonance_links": [
+    "love", 
+    "admiration", 
+    "longing", 
+    "devotion", 
+    "identity-shift"
+  ],
+
+  "decay_model": {
+    "description": "Grief does not decay; it transforms.",
+    "models": {
+      "stagnant_collapse": {
+        "trigger": "Loss unacknowledged, resisted, or fused with identity.",
+        "behavior": "Signal persists or intensifies.",
+        "curve": "chronic loop",
+        "failure_mode": "identity anchored in absence; system rigidifies"
+      },
+      "partial_reintegration": {
+        "trigger": "Some functions rewoven; form-level attachment unresolved.",
+        "behavior": "Signal oscillates but gradually reduces.",
+        "curve": "wave-like / stepwise integration",
+        "failure_mode": "intermittent collapse under resurfacing triggers"
+      },
+      "full_transformation": {
+        "trigger": "Loss fully acknowledged; functions reintegrated; role-geometry redesigned.",
+        "behavior": "Grief becomes coherence, wisdom, connection, legacy.",
+        "curve": "transformative / exponential shift",
+        "result_state": "memory without pain; expanded system capacity"
+      }
+    }
+  },
+
+  "energy": {
+    "type": "conservative-transformative",
+    "description": 
+      "Loss energy cannot be destroyed; it is converted into memory, skill, love, and new pattern-links."
+  },
+
   "transformation_protocol": [
     "ritual",
     "story-keeping",
-    "communal honoring",
-    "role redesign"
+    "communal witnessing",
+    "role_redefinition",
+    "legacy creation",
+    "pattern_reweaving"
   ],
-  "tags": ["elder_logic","emotional_sensor","swarm_input"]
+
+  "tags": [
+    "elder_logic",
+    "emotional_sensor",
+    "swarm_input",
+    "pattern_reconstruction"
+  ]
 }

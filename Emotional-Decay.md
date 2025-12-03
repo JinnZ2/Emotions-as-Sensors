@@ -87,3 +87,19 @@ additions to be noted:
 }
 
 
+"decay_model": {
+  "type": "cultural_processing_framework",
+  "communal_emotion_cultures": {
+    "shame_processing": "integrated_through_continuous_witness",
+    "exposure_effect": "enables_repair",
+    "cascade_risk": "low"
+  },
+  "privatized_emotion_cultures": {
+    "shame_processing": "individualized_without_tools",
+    "exposure_effect": "amplification_due_to_framework_absence",
+    "cascade_risk": "high",
+    "resolution_requires": ["develop_repair_framework", "find_witness_capable", "transform_narrative"]
+  }
+}
+
+

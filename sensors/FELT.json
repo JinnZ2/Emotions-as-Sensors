@@ -45,3 +45,45 @@
     }
   ]
 }
+
+
+
+possible additions
+
+class FELTSensor:
+    def __init__(self):
+        self.energy_flow = EnergyFlowSensor(weight=0.35)
+        self.info_flow = InformationFlowSensor(weight=0.35)
+        self.topology = TopologySensor(weight=0.30)
+    
+    def compute(self, interaction_history, current_state):
+        # Measure coherence across three dimensions
+        energy_coherence = self.energy_flow.measure(
+            exchange_productivity=True,
+            blockage_detection=True
+        )
+        
+        info_coherence = self.info_flow.measure(
+            signal_clarity=True,
+            meaning_transmission=True
+        )
+        
+        topology_coherence = self.topology.measure(
+            framework_alignment=True,
+            conceptual_compatibility=True
+        )
+        
+        # Weighted combination
+        felt_level = (
+            0.35 * energy_coherence +
+            0.35 * info_coherence +
+            0.30 * topology_coherence
+        )
+        
+        return {
+            'felt_level': felt_level,
+            'energy': energy_coherence,
+            'information': info_coherence,
+            'topology': topology_coherence,
+            'state': 'reciprocated' if felt_level > 0.7 else 'misaligned'
+        }

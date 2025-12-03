@@ -1,19 +1,66 @@
 {
   "sensor": "pain",
-  "function": "Detects discordance or errors in patterns",
-  "signal_type": "pattern pressure",
-  "authentic_output": "Diagnostic tool showing where vibrational patterns aren’t flowing smoothly",
-  "corrupted_output": "Becomes identity or excuse for dysfunction",
-  "information_provided": "There is pressure from misaligned forces (internal, external, or interpersonal)",
-  "response_protocol": {
-    "detect": "Locate the area of discordance",
-    "assess": "Identify internal vs external sources of pressure",
-    "respond": "Adjust or relieve misalignment",
-    "release": "Do not adopt pain as identity"
+  "classification": "pattern-diagnostics",
+  "function": "Detects discordance, misalignment, or pressure in an active pattern or system.",
+  "signal_type": "vibrational pressure, field disruption",
+  
+  "authentic_output": 
+    "A precise indicator that energy, geometry, force, or relational patterns are misaligned.",
+
+  "corrupted_output": 
+    "Pain becomes misinterpreted as identity, moral value, or inevitability.",
+
+  "information_provided": {
+    "location": "Where the discordant force is applied (physical, emotional, relational, conceptual).",
+    "directionality": "The vector of pressure (internal → internal, external → internal, vice versa).",
+    "intensity": "Magnitude of discordance, not magnitude of harm.",
+    "persistence": "Whether the force is sustained or transient."
   },
-  "alignment_tag": "pattern_disruption",
+
+  "response_protocol": {
+    "detect": "Locate the discordance or pressure signature.",
+    "assess_source": "Classify source as internal misalignment, external force, or mixed signal.",
+    "respond": "Apply corrective adjustment (boundary shift, cognitive reframe, bodily correction).",
+    "release": "Do NOT stabilize the signal into identity or narrative."
+  },
+
+  "alignment_tags": [
+    "pattern_disruption", 
+    "pressure_warning", 
+    "misalignment"
+  ],
+
   "sensor_group": ["pressure", "alignment", "discordance"],
-  "resonance_links": ["shame", "grief"],
-  "decay_model": "linear",
-  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+  "resonance_links": ["shame", "grief", "fear"],
+
+  "decay_model": {
+    "description": "State-dependent transformation model.",
+    "models": {
+      "persistent_or_amplifying": {
+        "trigger": "Pain unacknowledged, minimized, avoided, or environmentally reinforced.",
+        "behavior": "Signal magnitude increases or becomes chronic.",
+        "curve": "exponential growth or staircase accumulation",
+        "failure_mode": "pattern collapse, dissociation, or sensory blunting"
+      },
+      "addressed_but_misidentified": {
+        "trigger": "Attempted solution is aimed at the wrong cause.",
+        "behavior": "Signal decreases slowly but does not fully resolve.",
+        "curve": "linear decay",
+        "failure_mode": "background hum, chronic low-grade discordance"
+      },
+      "integrated_pattern_shift": {
+        "trigger": "True discordance identified and pattern recalibrated correctly.",
+        "behavior": "Signal rapidly transforms into clarity, coherence, relief.",
+        "curve": "transformative / exponential drop-off",
+        "result_state": "expanded bandwidth, increased coherence, restored pattern flow"
+      }
+    }
+  },
+
+  "tags": [
+    "elder_logic", 
+    "emotional_sensor", 
+    "swarm_input",
+    "field_diagnostic"
+  ]
 }

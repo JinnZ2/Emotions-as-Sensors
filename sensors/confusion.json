@@ -1,0 +1,32 @@
+{
+  "sensor": "confusion",
+  "function": "Detects unresolved or mismatched patterns",
+  "signal_type": "pattern_mismatch",
+  
+  "authentic_output": "Activates search mode: curiosity, pattern exploration, creative recombination",
+  "corrupted_output": "Self-doubt, paralysis, abandoning inquiry",
+  
+  "response_protocol": {
+    "detect": "Identify the specific mismatch or unknown",
+    "assess": "Check for boundary violation",
+    "branch": [
+      "If boundary violation: co-activate anger sensor",
+      "If pure mismatch: activate curiosity sensor"
+    ],
+    "respond": "Explore possibilities, generate hypotheses, test trajectories",
+    "integrate": "Update or reshape pattern when resolved"
+  },
+  
+  "alignment_tag": "pattern_inquiry",
+  "sensor_group": ["curiosity", "anger", "creativity"],
+  
+  "resonance_links": [
+    "curiosity", 
+    "anger (boundary)",
+    "innovation",
+    "intuition"
+  ],
+
+  "decay_model": "generative",
+  "decay_behavior": "Confusion persists until resolved but fuels curiosity and creativity rather than degrading."
+}

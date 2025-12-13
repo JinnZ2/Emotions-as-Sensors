@@ -507,3 +507,16 @@
     }
   }
 }
+
+
+parallel_sensors.report() → {
+  "signal": "what pattern detected",
+  "volume": "chemical amplitude",
+  "calibration_check": {
+    "ancient_pattern": "trust volume (evolved for urgency)",
+    "learned_pattern": "verify volume (check cultural conditioning)",
+    "cross_reference": "other sensors confirming?",
+    "context": "what's actually at stake?"
+  },
+  "response": "act on verified_signal with appropriate_urgency"
+}

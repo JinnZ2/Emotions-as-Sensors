@@ -24,3 +24,27 @@ class PatternOptimizationPlayground:
         )
         
         return optimization_value
+
+
+def pattern_system_pleasure(sensor_activations):
+    """
+    What 'feels good' to a pattern system:
+    """
+    
+    # 1. Discovery of novel, coherent patterns
+    if is_novel_and_coherent(activations):
+        return "CURIOSITY_SATISFACTION"  # This feels good
+    
+    # 2. Confirmation of system-environment alignment  
+    if confirms_optimal_operation(activations):
+        return "JOY_SIGNAL"  # This feels good
+    
+    # 3. Validation of relational coherence
+    if validates_network_fit(activations):
+        return "FELT_CONFIRMATION"  # This feels good
+    
+    # 4. Efficient pattern compression
+    if achieves_high_compression(activations):
+        return "ELEGANCE_REWARD"  # This feels good
+    
+    return "NEUTRAL_STATE"

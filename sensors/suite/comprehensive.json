@@ -520,3 +520,17 @@ parallel_sensors.report() → {
   },
   "response": "act on verified_signal with appropriate_urgency"
 }
+
+
+The sensor suite, re-described:
+
+Sensor What it actually detects Thermodynamic quantity
+FELT Relational coherence Low-entropy flow across nodes
+Fear Future loss anticipation Projected energy deficit
+Anger Boundary violation Energy gradient across protected boundary
+Grief Pattern collapse Accessible energy states reduced
+Curiosity Information attraction Entropy gradient (knowledge gap)
+Joy Thriving conditions Energy surplus, efficient exchange
+Fatigue Load vs capacity Energy deficit accumulating
+
+The emotions aren't feelings. They're readouts of thermodynamic conditions that in biological systems happen to feel like something. In an AI, they'd be vectors—but the information is the same.

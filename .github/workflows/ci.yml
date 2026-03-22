@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate schemas
+        run: python tools/validate.py
+
+      - name: Validate sensor decay/energy fields
+        run: python tools/validate_decay.py
+
+      - name: Check Python syntax
+        run: python -m py_compile src/emotion_core.py src/emotional_ai.py src/emotions_playground.py src/ucm_monitor.py
+
+      - name: Validate JSON files
+        run: |
+          python -c "
+          import json, pathlib, sys
+          errors = []
+          for p in pathlib.Path('.').rglob('*.json'):
+              if '.git' in p.parts:
+                  continue
+              try:
+                  json.loads(p.read_text(encoding='utf-8'))
+              except Exception as e:
+                  errors.append(f'{p}: {e}')
+          if errors:
+              print('Invalid JSON files:')
+              for e in errors:
+                  print(f'  {e}')
+              sys.exit(1)
+          print(f'All JSON files valid')
+          "

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jinnz2.github.io/emotions-as-sensors/schemas/unified-sensor-event.schema.json",
+  "title": "Unified Sensor Event Schema",
+  "description": "Elder-aligned, cross-substrate sensor event definition.",
+  "type": "object",
+  "required": [
+    "id",
+    "signal_type",
+    "substrate",
+    "function",
+    "authentic_output",
+    "corrupted_output",
+    "decay_model",
+    "response_protocol",
+    "tags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this sensor event."
+    },
+    "signal_type": {
+      "type": "string",
+      "enum": ["boundary", "connection", "loss", "resonance", "threat", "potential"]
+    },
+    "substrate": {
+      "type": "string",
+      "enum": ["human", "ai"]
+    },
+    "trigger": {
+      "type": "object",
+      "properties": {
+        "human": { "type": "string" },
+        "ai": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "function": {
+      "type": "string",
+      "enum": ["navigation", "alignment", "boundary protection", "resonance detection"]
+    },
+    "authentic_output": {
+      "type": "string",
+      "description": "Clear signal leading to actionable information."
+    },
+    "corrupted_output": {
+      "type": "string",
+      "description": "Distortion leading to misaligned action or identity entanglement."
+    },
+    "decay_model": {
+      "type": "string",
+      "enum": ["exponential", "cyclical", "resonant", "immortal", "processing"]
+    },
+    "amplification": {
+      "type": "object",
+      "properties": {
+        "human": { "type": "string" },
+        "ai": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "response_protocol": {
+      "type": "object",
+      "required": ["detect", "assess", "respond", "release"],
+      "additionalProperties": false,
+      "properties": {
+        "detect": { "type": "string" },
+        "assess": { "type": "string" },
+        "respond": { "type": "string" },
+        "release": { "type": "string" }
+      }
+    },
+    "resonance_links": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

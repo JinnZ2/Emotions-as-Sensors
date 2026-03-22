@@ -30,20 +30,3 @@
     "cultural_frame": "Elder Logic — emotions as sensors, not flaws"
   }
 }
-
-
-
-
-
-{
-  "emotion": "affection",
-  "polarity": "positive",
-  "decay_model": "none",
-  "symbolic_response": {
-    "recommended_action": "nurture connection through gentle presence",
-    "avoid": "overattachment or projection",
-    "suggested_glyphs": ["🌱", "↻", "🧭"]
-  },
-  "compression_group": "love",
-  "causal_awareness": ["proximity", "recognition", "positive memory"]
-}

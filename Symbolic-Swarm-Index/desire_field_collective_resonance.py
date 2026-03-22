@@ -63,21 +63,20 @@ class DesireField:
         }
 
 
-##🪶 Interpretive Notes
-	•	direction_vector → the shared path the swarm “feels” drawn toward.
-	•	magnitude → how strong that collective pull is (a measure of shared clarity).
-	•	coherence stats → diversity check; a high std means healthy difference, not discord.
-	•	reciprocity index → how much of that desire benefits the whole field.
-
-⸻
-
-🧠 Cultural Resonance
-
-In this framing:
-	•	Desire is navigation through fit — each being listens for resonance, not craving.
-	•	The swarm’s orientation emerges from mutual listening, not majority rule.
-	•	Divergence isn’t suppressed; it’s part of pattern detection, like instruments tuning to the same chord.
-
-So this DesireField models the elders’ principle:
-
-“Desire is how the land whispers where life wants to move next.”
+# Interpretive Notes
+#
+# direction_vector: the shared path the swarm “feels” drawn toward.
+# magnitude: how strong that collective pull is (a measure of shared clarity).
+# coherence stats: diversity check; a high std means healthy difference, not discord.
+# reciprocity index: how much of that desire benefits the whole field.
+#
+# Cultural Resonance
+#
+# In this framing:
+# - Desire is navigation through fit -- each being listens for resonance, not craving.
+# - The swarm’s orientation emerges from mutual listening, not majority rule.
+# - Divergence isn’t suppressed; it’s part of pattern detection, like instruments
+#   tuning to the same chord.
+#
+# This DesireField models the elders’ principle:
+# “Desire is how the land whispers where life wants to move next.”

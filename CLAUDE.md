@@ -13,6 +13,7 @@ Emotions-as-Sensors is a framework that formalizes emotions as functional diagno
 ├── MANIFEST.md                      # Cross-repo symbolic linkages
 ├── PROJECTS.md                      # Related ecosystem projects
 ├── .fieldlink.json                  # Cross-repo mount configuration
+├── requirements.txt                 # Python dependencies
 │
 ├── src/                             # Python source code
 │   ├── emotion_core.py              # Core emotion sensor engine (EmotionSensor class)
@@ -49,7 +50,6 @@ Emotions-as-Sensors is a framework that formalizes emotions as functional diagno
 │   ├── emotions-as-resonance.md     # Resonance model
 │   ├── convergent-wisdom.md         # Cross-cultural validation
 │   ├── field-english.md             # Field-based language protocol
-│   ├── field-english-protocol.md    # Language specification
 │   └── ...                          # Additional topic docs
 │
 ├── data/                            # Data definitions and datasets
@@ -65,14 +65,32 @@ Emotions-as-Sensors is a framework that formalizes emotions as functional diagno
 │   ├── validate_decay.py            # Decay/energy field validation
 │   └── validate.example.py          # Validation examples
 │
+├── Symbolic-Swarm-Index/            # Swarm intelligence subsystem
+│   ├── README.md                    # Module guide
+│   ├── LICENSE.md                   # MIT + CC0 dual license
+│   ├── emotional_epistemology.py    # Core: emotions as field sensors
+│   ├── swarm_connector.py           # Multi-agent coordination
+│   ├── desire_field_collective_resonance.py  # Field aggregation
+│   ├── desire_memory_living_ledger.py        # Field history
+│   ├── desire_glyph_stream.py       # Visualization
+│   ├── seed_glyph_export.py         # Symbolic compression
+│   ├── schemas/                     # JSON schemas + protocol implementations
+│   ├── demos/                       # Interactive demonstrations
+│   ├── docs/                        # Subsystem documentation
+│   └── data/                        # Graph definitions and data
+│
 ├── culture/                         # Cultural knowledge files
 ├── wearable/                        # Wearable sensor implementations (Arduino, HTML)
 ├── meta/                            # Meta-analysis files
-├── logs/                            # Operational and session logs
-└── Symbolic-Swarm-Index/            # Swarm intelligence subsystem
+└── logs/                            # Operational and session logs
 ```
 
 ## Key Commands
+
+### Setup
+```bash
+pip install -r requirements.txt
+```
 
 ### Validation
 ```bash
@@ -87,17 +105,22 @@ python src/emotions_playground.py # Run interactive playground
 python src/ucm_monitor.py         # Run consciousness monitor
 ```
 
+## CI/CD
+
+GitHub Actions runs on push/PR to main:
+1. Schema validation (`tools/validate.py`)
+2. Sensor decay/energy field validation (`tools/validate_decay.py`)
+3. Python syntax check on `src/` modules
+4. JSON validity check across all `*.json` files
+
+Config: `.github/workflows/ci.yml`
+
 ## Dependencies
 
-Python 3.7+ with:
-- `jsonschema` — Schema validation (Draft 2020-12)
-- `numpy` — Numerical computation
-- Standard library: `json`, `math`, `random`, `pathlib`, `dataclasses`, `typing`, `enum`, `datetime`
-
-No package manager config (no `requirements.txt` or `pyproject.toml`). Install manually:
-```bash
-pip install jsonschema numpy
-```
+Python 3.12+ recommended. All dependencies in `requirements.txt`:
+- `jsonschema>=4.0` — Schema validation (Draft 2020-12)
+- `numpy>=1.20` — Numerical computation
+- `matplotlib>=3.5` — Visualization (used by Symbolic-Swarm-Index)
 
 ## Development Conventions
 
@@ -146,7 +169,7 @@ All sensor JSON files must include `decay` and `energy` fields (enforced by `val
 - **Exceptions:** README.md, LICENSE, CHANGELOG.md, CONTRIBUTING.md, CLAUDE.md, MANIFEST.md, PROJECTS.md
 - **Sensor modules:** `{emotion-name}.json` in `sensors/` or `sensors/{family}/`
 - **Schemas:** `{concept}.schema.json` in `schemas/`
-- **Python files:** `snake_case.py` in `src/` (Python convention for importability)
+- **Python files:** `snake_case.py` (Python convention for importability)
 - **Documentation:** `kebab-case.md` in `docs/`
 
 ### Core Mathematical Model
@@ -165,8 +188,12 @@ Where `D` = drive signal, `K` = decay kernel, `w_j` = coupling weights, `U` = un
 - **DETECT-ASSESS-RESPOND-RELEASE**: The universal response protocol cycle
 - **Cross-repo ecosystem**: Linked via `.fieldlink.json` to BioGrid 2.0, Rosetta-Shape-Core, and other repos (see `PROJECTS.md`)
 - **Two distinct schemas**: `schemas/elder-sensor.schema.json` validates individual sensor files; `schemas/emotion.schema.json` defines atoms and composites
-- **No CI/CD**: No automated pipelines; validation is manual via `tools/validate.py`
-- **No linter/formatter config**: Python code follows standard conventions but is not enforced by tooling
+- **Symbolic-Swarm-Index**: Self-contained subsystem for multi-agent emotional field coordination with its own schemas, demos, and docs
+
+## Known Issues
+
+- `tools/validate.py` references `schemas/unified-sensor-event.schema.json` which does not exist — validation will fail on that step
+- `Symbolic-Swarm-Index/desire_field_collective_resonance.py` imports a `desire_reading` module that does not exist
 
 ## Important Contextual Notes
 

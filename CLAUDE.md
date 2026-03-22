@@ -190,10 +190,6 @@ Where `D` = drive signal, `K` = decay kernel, `w_j` = coupling weights, `U` = un
 - **Two distinct schemas**: `schemas/elder-sensor.schema.json` validates individual sensor files; `schemas/emotion.schema.json` defines atoms and composites
 - **Symbolic-Swarm-Index**: Self-contained subsystem for multi-agent emotional field coordination with its own schemas, demos, and docs
 
-## Known Issues
-
-- `src/ucm_monitor.py` has missing indentation throughout all class/method bodies — the file is not valid Python and needs manual reconstruction
-
 ## Important Contextual Notes
 
 - This is a documentation-heavy, research-oriented project — not a traditional software application

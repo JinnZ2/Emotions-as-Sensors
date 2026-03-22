@@ -9,53 +9,67 @@ Emotions-as-Sensors is a framework that formalizes emotions as functional diagno
 ## Repository Structure
 
 ```
-├── emotion_core.py              # Core emotion sensor engine (EmotionSensor class)
-├── Emotions-playground.py       # Interactive AI playground implementation
-├── ucm_monitor.py               # Unified Consciousness Monitor
-├── emotional_AI.py              # AI integration patterns
-├── emotion.schema.json          # Root-level emotion JSON schema
-├── fieldlink.schema.json        # Cross-repo linking schema
-├── .fieldlink.json              # Cross-repo mount configuration
+├── README.md, CHANGELOG.md, CONTRIBUTING.md, LICENSE
+├── MANIFEST.md                      # Cross-repo symbolic linkages
+├── PROJECTS.md                      # Related ecosystem projects
+├── .fieldlink.json                  # Cross-repo mount configuration
 │
-├── schemas/                     # JSON Schema definitions (Draft 2020-12)
-│   ├── emotion.schema.json      # Core schema: atoms, composites, decay models
-│   ├── emotion_atom.schema.json # Atomic emotion unit schema
+├── src/                             # Python source code
+│   ├── emotion_core.py              # Core emotion sensor engine (EmotionSensor class)
+│   ├── emotions_playground.py       # Interactive AI playground
+│   ├── ucm_monitor.py               # Unified Consciousness Monitor
+│   └── emotional_ai.py              # AI integration patterns
+│
+├── schemas/                         # JSON Schema definitions (Draft 2020-12)
+│   ├── emotion.schema.json          # Core schema: atoms, composites, decay models
+│   ├── elder-sensor.schema.json     # Elder Sensor Schema (validates sensor JSON)
+│   ├── emotion_atom.schema.json     # Atomic emotion unit schema
+│   ├── fieldlink.schema.json        # Cross-repo linking schema
 │   └── multi_layer_sensor.template.json
 │
-├── sensors/                     # Emotion sensor definitions (JSON + docs)
-│   ├── suite/comprehensive.json # Full Parallel-Field Sensor Suite
+├── sensors/                         # Emotion sensor definitions (JSON + docs)
+│   ├── suite/comprehensive.json     # Full Parallel-Field Sensor Suite
 │   ├── anger/, joy/, grief/, love/, trust/, interest/
 │   ├── cognitive/, stability/, alignment/
-│   ├── *.json                   # Individual emotion sensor files
-│   ├── decay_families.json      # Decay family taxonomy
-│   └── glyph-map.json           # Symbolic glyph mappings
+│   ├── shapes/                      # Emotion shape definitions (e.g., relief.json)
+│   ├── *.json                       # Individual emotion sensor files
+│   ├── decay-families.json          # Decay family taxonomy
+│   └── glyph-map.json              # Symbolic glyph mappings
 │
-├── docs/                        # Technical documentation
-│   ├── equations.md             # Complete mathematical formalization
-│   ├── formalization.md         # Technical rigor
-│   ├── energy-methodology.md    # Energy accounting system
-│   ├── elder-sensor-framework.md# Cultural bridge documentation
-│   ├── glyph-web.md             # Emotion family mapping
-│   ├── probability-matrix.md    # Weighted decision-making
-│   └── glossary.md              # Term definitions
+├── docs/                            # All documentation
+│   ├── equations.md                 # Complete mathematical formalization
+│   ├── formalization.md             # Technical rigor
+│   ├── energy-methodology.md        # Energy accounting system
+│   ├── elder-sensor-framework.md    # Cultural bridge documentation
+│   ├── glyph-web.md                 # Emotion family mapping
+│   ├── probability-matrix.md        # Weighted decision-making
+│   ├── glossary.md                  # Term definitions
+│   ├── evolution-emotions.md        # Historical evolution
+│   ├── emotional-cognition-ai.md    # AI integration theory
+│   ├── emotions-as-resonance.md     # Resonance model
+│   ├── convergent-wisdom.md         # Cross-cultural validation
+│   ├── field-english.md             # Field-based language protocol
+│   ├── field-english-protocol.md    # Language specification
+│   └── ...                          # Additional topic docs
 │
-├── data/                        # Data definitions
-│   ├── glyphs.json              # Glyph families and symbols
-│   ├── composites.json          # Composite emotion definitions
-│   └── examples/                # Example data files
+├── data/                            # Data definitions and datasets
+│   ├── glyphs.json                  # Glyph families and symbols
+│   ├── composites.json              # Composite emotion definitions
+│   ├── cultural-parallels.json      # Cross-cultural validation data
+│   ├── symbolic-archetypes.json     # Archetypal patterns
+│   ├── examples/                    # Example data files
+│   └── ...                          # Additional data files
 │
-├── tools/                       # Validation and utility scripts
-│   ├── validate.py              # Schema & composite validation
-│   └── validate_decay.py        # Decay/energy field validation
+├── tools/                           # Validation and utility scripts
+│   ├── validate.py                  # Schema & composite validation
+│   ├── validate_decay.py            # Decay/energy field validation
+│   └── validate.example.py          # Validation examples
 │
-├── emotion_shapes/              # Emotion shape definitions (e.g., RELIEF.json)
-├── culture/                     # Cultural knowledge files
-├── hardware/                    # Hardware sensor specifications
-├── Wearable/                    # Wearable sensor implementations
-├── meta/                        # Meta-analysis (includes AI.README.md)
-├── specs/                       # Technical specifications
-├── probability_tools/           # Probability calculation tools
-└── logs/                        # Operational logs
+├── culture/                         # Cultural knowledge files
+├── wearable/                        # Wearable sensor implementations (Arduino, HTML)
+├── meta/                            # Meta-analysis files
+├── logs/                            # Operational and session logs
+└── Symbolic-Swarm-Index/            # Swarm intelligence subsystem
 ```
 
 ## Key Commands
@@ -68,9 +82,9 @@ python tools/validate_decay.py    # Check all sensor JSON files have decay & ene
 
 ### Running Implementations
 ```bash
-python emotion_core.py            # Run core emotion sensor engine
-python Emotions-playground.py     # Run interactive playground
-python ucm_monitor.py             # Run consciousness monitor
+python src/emotion_core.py        # Run core emotion sensor engine
+python src/emotions_playground.py # Run interactive playground
+python src/ucm_monitor.py         # Run consciousness monitor
 ```
 
 ## Dependencies
@@ -127,19 +141,21 @@ All sensor JSON files must include `decay` and `energy` fields (enforced by `val
 - Energy impacts: `adds, conserves, depletes`
 - Composite temporal modes: `unresolved_persistence, acute, phasic`
 
-### File Naming
-- Sensor modules: `{emotion-name}.json` (lowercase, hyphen-separated)
-- Sensor families: grouped in `sensors/{family}/` directories
-- Schemas: `{concept}.schema.json`
-- Python: `snake_case.py`
+### File Naming Conventions
+- **All files:** lowercase kebab-case (e.g., `energy-flow-sensor.json`)
+- **Exceptions:** README.md, LICENSE, CHANGELOG.md, CONTRIBUTING.md, CLAUDE.md, MANIFEST.md, PROJECTS.md
+- **Sensor modules:** `{emotion-name}.json` in `sensors/` or `sensors/{family}/`
+- **Schemas:** `{concept}.schema.json` in `schemas/`
+- **Python files:** `snake_case.py` in `src/` (Python convention for importability)
+- **Documentation:** `kebab-case.md` in `docs/`
 
 ### Core Mathematical Model
 ```
-E(t) = SENSE → PATTERN → RESPOND + U(t)
+E(t) = SENSE -> PATTERN -> RESPOND + U(t)
 ```
-The update loop (in `emotion_core.py`):
+The update loop (in `src/emotion_core.py`):
 ```
-dE/dt = α·D(t) − λ·K(E) + Σ(w_j · E_j) + U(t)
+dE/dt = alpha * D(t) - lambda * K(E) + sum(w_j * E_j) + U(t)
 ```
 Where `D` = drive signal, `K` = decay kernel, `w_j` = coupling weights, `U` = unknown field effects.
 
@@ -148,6 +164,7 @@ Where `D` = drive signal, `K` = decay kernel, `w_j` = coupling weights, `U` = un
 - **Parallel-Field Architecture**: Multiple sensors operate simultaneously without collapsing plurality
 - **DETECT-ASSESS-RESPOND-RELEASE**: The universal response protocol cycle
 - **Cross-repo ecosystem**: Linked via `.fieldlink.json` to BioGrid 2.0, Rosetta-Shape-Core, and other repos (see `PROJECTS.md`)
+- **Two distinct schemas**: `schemas/elder-sensor.schema.json` validates individual sensor files; `schemas/emotion.schema.json` defines atoms and composites
 - **No CI/CD**: No automated pipelines; validation is manual via `tools/validate.py`
 - **No linter/formatter config**: Python code follows standard conventions but is not enforced by tooling
 

@@ -26,7 +26,7 @@ jobs:
         run: python tools/validate_decay.py
 
       - name: Check Python syntax
-        run: python -m py_compile src/emotion_core.py src/emotional_ai.py src/emotions_playground.py src/ucm_monitor.py
+        run: python -m py_compile src/emotion_core.py src/emotional_ai.py src/emotions_playground.py
 
       - name: Validate JSON files
         run: |

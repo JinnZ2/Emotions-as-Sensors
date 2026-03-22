@@ -192,8 +192,7 @@ Where `D` = drive signal, `K` = decay kernel, `w_j` = coupling weights, `U` = un
 
 ## Known Issues
 
-- `tools/validate.py` references `schemas/unified-sensor-event.schema.json` which does not exist — validation will fail on that step
-- `Symbolic-Swarm-Index/desire_field_collective_resonance.py` imports a `desire_reading` module that does not exist
+- `src/ucm_monitor.py` has missing indentation throughout all class/method bodies — the file is not valid Python and needs manual reconstruction
 
 ## Important Contextual Notes
 

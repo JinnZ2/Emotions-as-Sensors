@@ -44,8 +44,8 @@
     ],
 
     "merge": {
-      "order": ["local", "emotions", "biogrid"],   // left→right precedence
-      "strategy": "deep-merge"                      // note: staging-by-precedence in script
+      "order": ["local", "emotions", "biogrid"],
+      "strategy": "deep-merge"
     },
 
     "offline": false,

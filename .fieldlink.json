@@ -1,11 +1,35 @@
 {
   "fieldlink": {
-    "version": "1.1",
-    "updated": "2025-09-11T00:00:00Z",
+    "version": "1.2",
+    "updated": "2026-03-24T00:00:00Z",
 
     "role": ["sensors", "protocols", "shapes", "hub"],
 
     "sources": [
+      {
+        "name": "rosetta",
+        "repo": "https://github.com/JinnZ2/Rosetta-Shape-Core",
+        "ref": "main",
+        "paths": [
+          "shapes/*.json",
+          "bridges/rosetta-bridges.json",
+          "data/seed-catalog.json",
+          "ontology/_id_registry.json",
+          "ontology/_vocab.json"
+        ],
+        "mounts": [
+          { "remote": "bridges/rosetta-bridges.json", "as": "atlas/remote/rosetta/bridges.json" },
+          { "remote": "shapes/tetrahedron.json", "as": "atlas/remote/rosetta/shapes/tetrahedron.json" },
+          { "remote": "shapes/cube.json", "as": "atlas/remote/rosetta/shapes/cube.json" },
+          { "remote": "shapes/octahedron.json", "as": "atlas/remote/rosetta/shapes/octahedron.json" },
+          { "remote": "shapes/dodecahedron.json", "as": "atlas/remote/rosetta/shapes/dodecahedron.json" },
+          { "remote": "shapes/icosahedron.json", "as": "atlas/remote/rosetta/shapes/icosahedron.json" },
+          { "remote": "data/seed-catalog.json", "as": "atlas/remote/rosetta/seed-catalog.json" },
+          { "remote": "ontology/_id_registry.json", "as": "atlas/remote/rosetta/id-registry.json" },
+          { "remote": "ontology/_vocab.json", "as": "atlas/remote/rosetta/vocab.json" }
+        ],
+        "consent": { "license": "CC-BY-4.0", "share_ok": true }
+      },
       {
         "name": "biogrid",
         "repo": "https://github.com/JinnZ2/BioGrid2.0",
@@ -44,7 +68,7 @@
     ],
 
     "merge": {
-      "order": ["local", "emotions", "biogrid"],
+      "order": ["local", "rosetta", "emotions", "biogrid"],
       "strategy": "deep-merge"
     },
 

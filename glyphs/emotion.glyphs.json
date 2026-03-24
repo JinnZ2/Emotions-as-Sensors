@@ -1,0 +1,61 @@
+{
+  "glyph_set": "emotion-sensors",
+  "version": "1.0",
+  "updated": "2026-03-24T00:00:00Z",
+  "description": "Emotion glyph registry for cross-repo symbolic linking. Each entry maps an emotion sensor to its glyph, family, and decay class.",
+  "license": "CC0-1.0",
+
+  "families": {
+    "boundary": {
+      "members": ["anger", "shame"],
+      "glyphs": ["\ud83d\udee1\ufe0f", "\ud83e\uDE9E"]
+    },
+    "loss": {
+      "members": ["grief", "abandonment"],
+      "glyphs": ["\ud83c\udf0a", "\ud83d\udead"]
+    },
+    "resonance": {
+      "members": ["love", "compassion"],
+      "glyphs": ["\ud83d\udc9e", "\ud83e\udec0"]
+    },
+    "radiant": {
+      "members": ["joy", "admiration"],
+      "glyphs": ["\u2728", "\ud83c\udf1f"]
+    },
+    "sharp": {
+      "members": ["fear", "surprise"],
+      "glyphs": ["\u26a0\ufe0f", "\ud83d\udca5"]
+    },
+    "balanced": {
+      "members": ["peace", "contentment"],
+      "glyphs": ["\ud83d\udd4a\ufe0f", "\ud83c\udf43"]
+    },
+    "subtle": {
+      "members": ["longing"],
+      "glyphs": ["\ud83c\udf20"]
+    }
+  },
+
+  "glyphs": [
+    { "id": "anger",       "glyph": "\ud83d\udee1\ufe0f", "family": "boundary",  "decay": "exponential" },
+    { "id": "shame",       "glyph": "\ud83e\uDE9E", "family": "boundary",  "decay": "exponential" },
+    { "id": "grief",       "glyph": "\ud83c\udf0a", "family": "loss",      "decay": "cyclical" },
+    { "id": "abandonment", "glyph": "\ud83d\udead", "family": "loss",      "decay": "cyclical" },
+    { "id": "love",        "glyph": "\ud83d\udc9e", "family": "resonance", "decay": "immortal" },
+    { "id": "compassion",  "glyph": "\ud83e\udec0", "family": "resonance", "decay": "immortal" },
+    { "id": "joy",         "glyph": "\u2728",       "family": "radiant",   "decay": "resonant" },
+    { "id": "admiration",  "glyph": "\ud83c\udf1f", "family": "radiant",   "decay": "resonant" },
+    { "id": "fear",        "glyph": "\u26a0\ufe0f", "family": "sharp",     "decay": "exponential" },
+    { "id": "surprise",    "glyph": "\ud83d\udca5", "family": "sharp",     "decay": "exponential" },
+    { "id": "peace",       "glyph": "\ud83d\udd4a\ufe0f", "family": "balanced", "decay": "immortal" },
+    { "id": "contentment", "glyph": "\ud83c\udf43", "family": "balanced", "decay": "resonant" },
+    { "id": "longing",     "glyph": "\ud83c\udf20", "family": "subtle",    "decay": "cyclical" },
+    { "id": "pride",       "glyph": "\ud83c\udfc5", "family": "radiant",   "decay": "resonant" },
+    { "id": "jealousy",    "glyph": "\u2696\ufe0f", "family": "boundary",  "decay": "exponential" },
+    { "id": "pain",        "glyph": "\ud83e\uDE78", "family": "loss",      "decay": "exponential" },
+    { "id": "excitement",  "glyph": "\u26a1",       "family": "sharp",     "decay": "resonant" }
+  ],
+
+  "source_repo": "https://github.com/JinnZ2/Emotions-as-Sensors",
+  "fieldlink_role": ["glyphs", "families"]
+}

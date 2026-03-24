@@ -48,15 +48,26 @@
         "name": "emotions",
         "repo": "https://github.com/JinnZ2/Emotions-as-Sensors",
         "ref": "main",
+        "direction": "bidirectional",
         "paths": [
           "atlas/emotions.json",
-          "glyphs/emotion.glyphs.json"
+          "glyphs/emotion.glyphs.json",
+          "sensors/shapes/*.json",
+          "sensors/decay-families.json",
+          "sensors/glyph-map.json"
+        ],
+        "exports": [
+          { "local": "atlas/emotions.json",        "description": "Sensor atlas with decay families and shape linkages" },
+          { "local": "glyphs/emotion.glyphs.json",  "description": "Glyph registry with family groupings" },
+          { "local": "sensors/shapes/*.json",        "description": "Operationalized shape definitions" },
+          { "local": "sensors/decay-families.json",  "description": "Decay family taxonomy" },
+          { "local": "sensors/glyph-map.json",       "description": "Sensor-to-glyph symbolic mappings" }
         ],
         "mounts": [
           { "remote": "atlas/emotions.json", "as": "atlas/remote/emotions/atlas.json" },
           { "remote": "glyphs/emotion.glyphs.json", "as": "atlas/remote/emotions/glyphs.json" }
         ],
-        "consent": { "license": "CC-BY-4.0", "share_ok": true }
+        "consent": { "license": "CC0-1.0", "share_ok": true }
       }
     ],
 

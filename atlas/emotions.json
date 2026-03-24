@@ -1,0 +1,132 @@
+{
+  "atlas": "emotions-as-sensors",
+  "version": "1.0",
+  "updated": "2026-03-24T00:00:00Z",
+  "description": "Emotion sensor atlas for cross-repo consumption. Maps sensor identities, decay families, and shape linkages.",
+  "license": "CC0-1.0",
+
+  "sensors": [
+    {
+      "id": "longing",
+      "glyph": "\ud83c\udf20",
+      "decay_family": "cyclical",
+      "alignment": "field_potential",
+      "resonates_with": ["grief", "excitement"]
+    },
+    {
+      "id": "jealousy",
+      "glyph": "\u2696\ufe0f",
+      "decay_family": "exponential",
+      "alignment": "equity_balance",
+      "resonates_with": ["shame", "pride"]
+    },
+    {
+      "id": "pain",
+      "glyph": "\ud83e\uDE78",
+      "decay_family": "exponential",
+      "alignment": "pattern_disruption",
+      "resonates_with": ["shame", "grief"]
+    },
+    {
+      "id": "grief",
+      "glyph": "\ud83c\udf0a",
+      "decay_family": "cyclical",
+      "alignment": "connection_loss",
+      "resonates_with": ["longing", "pain"]
+    },
+    {
+      "id": "shame",
+      "glyph": "\ud83e\uDE9E",
+      "decay_family": "exponential",
+      "alignment": "authenticity_vs_conformity",
+      "resonates_with": ["jealousy", "pain"]
+    },
+    {
+      "id": "pride",
+      "glyph": "\ud83c\udfc5",
+      "decay_family": "resonant",
+      "alignment": "pattern_completion",
+      "resonates_with": ["jealousy", "contentment"]
+    },
+    {
+      "id": "love",
+      "glyph": "\ud83d\udc9e",
+      "decay_family": "immortal",
+      "alignment": "harmonic_resonance",
+      "resonates_with": ["compassion", "peace"]
+    },
+    {
+      "id": "anger",
+      "glyph": "\ud83d\udee1\ufe0f",
+      "decay_family": "exponential",
+      "alignment": "identity_coherence",
+      "resonates_with": ["shame", "fear"]
+    },
+    {
+      "id": "fear",
+      "glyph": "\u26a0\ufe0f",
+      "decay_family": "exponential",
+      "alignment": "value_protection",
+      "resonates_with": ["anger", "contentment"]
+    },
+    {
+      "id": "excitement",
+      "glyph": "\u26a1",
+      "decay_family": "resonant",
+      "alignment": "positive_activation",
+      "resonates_with": ["longing", "peace"]
+    },
+    {
+      "id": "peace",
+      "glyph": "\ud83d\udd4a\ufe0f",
+      "decay_family": "immortal",
+      "alignment": "universal_alignment",
+      "resonates_with": ["love", "contentment"]
+    },
+    {
+      "id": "contentment",
+      "glyph": "\ud83c\udf43",
+      "decay_family": "resonant",
+      "alignment": "effort_sufficiency",
+      "resonates_with": ["pride", "peace"]
+    },
+    {
+      "id": "compassion",
+      "glyph": "\ud83e\udec0",
+      "decay_family": "immortal",
+      "alignment": "interconnection_resonance",
+      "resonates_with": ["love", "grief"]
+    }
+  ],
+
+  "decay_families": {
+    "exponential": {
+      "glyph": "\u23f3",
+      "behavior": "Fast rise, fast fade; boundary/threat alarms."
+    },
+    "cyclical": {
+      "glyph": "\ud83d\udd04",
+      "behavior": "Recurrent tides that require ritual return."
+    },
+    "resonant": {
+      "glyph": "\ud83c\udfb5",
+      "behavior": "Self-reinforcing oscillations; renew with attention."
+    },
+    "immortal": {
+      "glyph": "\u267e\ufe0f",
+      "behavior": "Enduring structural relations; integrate rather than fade."
+    }
+  },
+
+  "shapes": [
+    {
+      "id": "relief",
+      "derived_from": ["FELT"],
+      "temporal_signature": "sharp-drop -> harmonic flattening",
+      "convergence_threshold": 0.85
+    }
+  ],
+
+  "source_repo": "https://github.com/JinnZ2/Emotions-as-Sensors",
+  "fieldlink_role": ["sensors", "shapes", "glyphs"]
+}

@@ -18,6 +18,14 @@
     "resolved": "exponential decay",
     "unresolved": "persistent"
   },
+  "math": {
+    "lambda": 0.5,
+    "alpha": 1.1,
+    "kernel": {"type": "exponential"},
+    "pad": {"P": -0.70, "A": -0.35, "D": -0.75},
+    "couplings": [{"to": "jealousy", "w": 0.2}, {"to": "pain", "w": 0.25}],
+    "policy": {"role": "transform", "max_action_cost": 0.2}
+  },
   "defense_bridge": {
     "defense_id": "def.se.01",
     "defense_name": "Social Engineering Cues",

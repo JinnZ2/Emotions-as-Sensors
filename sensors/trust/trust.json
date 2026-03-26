@@ -9,6 +9,14 @@
   },
   "compression_group": "trust",
   "causal_awareness": ["repeated integrity", "predictable behavior", "relational consistency"],
+  "math": {
+    "lambda": 0.05,
+    "alpha": 0.8,
+    "kernel": {"type": "immortal", "floor": 0.2},
+    "pad": {"P": 0.60, "A": -0.20, "D": 0.35},
+    "couplings": [{"to": "admiration", "w": 0.2}, {"to": "peace", "w": 0.25}],
+    "policy": {"role": "stabilize", "max_action_cost": 0.1}
+  },
   "defense_bridge": {
     "defense_id": "def.fr.06",
     "defense_name": "Consensus / Bandwagon",

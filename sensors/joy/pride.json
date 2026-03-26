@@ -15,6 +15,14 @@
   "sensor_group": ["identity", "achievement", "continuity", "self-reflection"],
   "resonance_links": ["joy", "gratitude", "shame"],
   "decay_model": "manual",
+  "math": {
+    "lambda": 0.3,
+    "alpha": 0.9,
+    "kernel": {"type": "resonant"},
+    "pad": {"P": 0.80, "A": 0.40, "D": 0.80},
+    "couplings": [{"to": "contentment", "w": 0.25}, {"to": "admiration", "w": 0.15}],
+    "policy": {"role": "add", "max_action_cost": 0.15}
+  },
   "defense_bridge": {
     "defense_id": "def.fr.03",
     "defense_name": "Framing / Leading Question",

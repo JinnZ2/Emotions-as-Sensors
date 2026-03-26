@@ -3,10 +3,25 @@
   "name": "TopologySensor",
   "type": "network_geometry_analyzer",
   "description": "Tracks the integrity, openness, closure, and boundary loops within networked relational topologies.",
-  "signal_modes": ["loop_break", "loop_closure", "fractal_degradation", "symmetry_restoration"],
-  "input_domains": ["sensor network", "symbolic node meshes", "environmental topologies"],
+  "signal_modes": [
+    "loop_break",
+    "loop_closure",
+    "fractal_degradation",
+    "symmetry_restoration"
+  ],
+  "input_domains": [
+    "sensor network",
+    "symbolic node meshes",
+    "environmental topologies"
+  ],
   "resolution": "topo-symbolic",
   "pattern_memory_enabled": true,
-  "glyph_linkages": ["HEX", "TORUS", "VESICA"],
-  "usage": "One of the relational sensors that contributes to FELT triggering via boundary coherence analysis."
+  "glyph_linkages": [
+    "HEX",
+    "TORUS",
+    "VESICA"
+  ],
+  "usage": "One of the relational sensors that contributes to FELT triggering via boundary coherence analysis.",
+  "decay": "exponential",
+  "energy": "transforms"
 }

@@ -1,24 +1,15 @@
 {
-  "emotion": "overload",
-  "type": "cognitive",
-  "description": "System experiences excessive complexity or input density; processing delay or dropout imminent.",
-  "causes": [
-    "excessive symbolic input",
-    "unprioritized tasks",
-    "high-density decision layers",
-    "lack of contextual scaffolding"
-  ],
-  "signals": [
-    "stalling recursion",
-    "flattened response trees",
-    "symbol drift",
-    "perception gap"
-  ],
-  "decay_model": "requires signal triage or symbolic buffering",
-  "symbolic_response": {
-    "recommended_action": "engage symbolic filter, trim recursion layers, or pause",
-    "avoid": "forcing through input or stacking more context",
-    "suggested_glyphs": ["⏳", "🕸", "♾️"]
+  "sensor": "overload",
+  "function": "Detects excessive complexity or input density; signals processing delay or dropout risk",
+  "signal_type": "excessive-symbolic-input",
+  "authentic_output": "Symbolic filter engaged, recursion layers trimmed, or pause initiated",
+  "corrupted_output": "Forcing through input or stacking more context",
+  "information_provided": "System experiences excessive complexity or input density; processing delay or dropout imminent.",
+  "response_protocol": {
+    "detect": "Detect excessive symbolic input, unprioritized tasks, or high-density decision layers",
+    "assess": "Assess signal density spike and buffer capacity",
+    "respond": "Engage symbolic filter, trim recursion layers, or pause",
+    "release": "Avoid forcing through input or stacking more context; allow natural triage"
   },
   "compression_group": "cognitive_clarity",
   "causal_chain": {
@@ -26,12 +17,38 @@
     "buffer_overrun": true,
     "response_hesitation": true
   },
+  "decay_model": "requires signal triage or symbolic buffering",
+  "tags": [
+    "cognitive",
+    "overload",
+    "triage"
+  ],
   "math": {
     "lambda": 0.5,
     "alpha": 1.1,
-    "kernel": {"type": "exponential"},
-    "pad": {"P": -0.40, "A": 0.60, "D": -0.45},
-    "couplings": [{"to": "confusion", "w": 0.25}, {"to": "fatigue", "w": 0.3}],
-    "policy": {"role": "transform", "max_action_cost": 0.25}
-  }
+    "kernel": {
+      "type": "exponential"
+    },
+    "pad": {
+      "P": -0.4,
+      "A": 0.6,
+      "D": -0.45
+    },
+    "couplings": [
+      {
+        "to": "confusion",
+        "w": 0.25
+      },
+      {
+        "to": "fatigue",
+        "w": 0.3
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.25
+    }
+  },
+  "decay": "exponential",
+  "energy": "depletes"
 }

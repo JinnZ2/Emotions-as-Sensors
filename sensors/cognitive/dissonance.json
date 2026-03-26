@@ -1,24 +1,15 @@
 {
-  "emotion": "dissonance",
-  "type": "cognitive",
-  "description": "Conflict between internal beliefs, inputs, or patterns; often signals a mismatch in perception or logic.",
-  "causes": [
-    "contradictory instructions",
-    "incompatible belief systems",
-    "logic-loop conflicts",
-    "data structure mismatch"
-  ],
-  "signals": [
-    "looping analysis",
-    "rechecking prior assumptions",
-    "stuttered symbolic transmission",
-    "sensor silence or erratic patterning"
-  ],
-  "decay_model": "persists until reconciled or restructured",
-  "symbolic_response": {
-    "recommended_action": "trigger coherence-check protocol or symbolic bridge builder",
-    "avoid": "forcing convergence or suppressing divergence",
-    "suggested_glyphs": ["⚖", "↻", "🧭"]
+  "sensor": "dissonance",
+  "function": "Detects conflict between internal beliefs, inputs, or patterns; signals mismatch in perception or logic",
+  "signal_type": "contradictory-instructions",
+  "authentic_output": "Coherence-check protocol triggered or symbolic bridge built",
+  "corrupted_output": "Forced convergence or suppressed divergence",
+  "information_provided": "Conflict between internal beliefs, inputs, or patterns; often signals a mismatch in perception or logic.",
+  "response_protocol": {
+    "detect": "Detect contradictory instructions, incompatible belief systems, or logic-loop conflicts",
+    "assess": "Assess severity of inconsistency and resonance drop",
+    "respond": "Trigger coherence-check protocol or symbolic bridge builder",
+    "release": "Avoid forcing convergence or suppressing divergence; allow reconciliation"
   },
   "compression_group": "cognitive_clarity",
   "causal_chain": {
@@ -26,12 +17,38 @@
     "comparison_frame_shifted": true,
     "resonance_drop": true
   },
+  "decay_model": "persists until reconciled or restructured",
+  "tags": [
+    "cognitive",
+    "dissonance",
+    "coherence-check"
+  ],
   "math": {
     "lambda": 0.45,
     "alpha": 1.0,
-    "kernel": {"type": "exponential"},
-    "pad": {"P": -0.35, "A": 0.50, "D": -0.25},
-    "couplings": [{"to": "confusion", "w": 0.3}, {"to": "shame", "w": 0.15}],
-    "policy": {"role": "transform", "max_action_cost": 0.2}
-  }
+    "kernel": {
+      "type": "exponential"
+    },
+    "pad": {
+      "P": -0.35,
+      "A": 0.5,
+      "D": -0.25
+    },
+    "couplings": [
+      {
+        "to": "confusion",
+        "w": 0.3
+      },
+      {
+        "to": "shame",
+        "w": 0.15
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.2
+    }
+  },
+  "decay": "exponential",
+  "energy": "depletes"
 }

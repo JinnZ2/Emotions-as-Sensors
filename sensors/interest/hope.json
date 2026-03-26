@@ -1,20 +1,48 @@
 {
-  "emotion": "hope",
-  "polarity": "positive",
-  "decay_model": "feedback_sensitive",
-  "symbolic_response": {
-    "recommended_action": "support possible outcomes or reinforce integrity loop",
-    "avoid": "false promises or ungrounded projections",
-    "suggested_glyphs": ["🌱", "↻", "♾️"]
+  "sensor": "hope",
+  "function": "Detects future possibility, partial trust, and latent potential; sustains forward orientation",
+  "signal_type": "future-possibility",
+  "authentic_output": "Supported possible outcomes or reinforced integrity loop",
+  "corrupted_output": "False promises or ungrounded projections",
+  "response_protocol": {
+    "detect": "Detect future possibility, partial trust, or latent potential",
+    "assess": "Assess groundedness and realistic probability of outcomes",
+    "respond": "Support possible outcomes or reinforce integrity loop",
+    "release": "Avoid false promises or ungrounded projections; allow hope to evolve with evidence"
   },
   "compression_group": "interest",
-  "causal_awareness": ["future possibility", "partial trust", "latent potential"],
+  "decay_model": "feedback_sensitive",
+  "tags": [
+    "interest",
+    "hope",
+    "forward-orientation"
+  ],
   "math": {
     "lambda": 0.3,
     "alpha": 0.9,
-    "kernel": {"type": "resonant"},
-    "pad": {"P": 0.55, "A": 0.40, "D": 0.30},
-    "couplings": [{"to": "longing", "w": 0.3}, {"to": "excitement", "w": 0.2}],
-    "policy": {"role": "add", "max_action_cost": 0.15}
-  }
+    "kernel": {
+      "type": "resonant"
+    },
+    "pad": {
+      "P": 0.55,
+      "A": 0.4,
+      "D": 0.3
+    },
+    "couplings": [
+      {
+        "to": "longing",
+        "w": 0.3
+      },
+      {
+        "to": "excitement",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "add",
+      "max_action_cost": 0.15
+    }
+  },
+  "decay": "resonant",
+  "energy": "adds"
 }

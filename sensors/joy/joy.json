@@ -12,22 +12,61 @@
     "steward": "Avoid exploiting or clinging to transient states"
   },
   "alignment_tag": "coherence-vitality-confirmation",
-  "sensor_group": ["thriving", "learning", "resonance", "feedback"],
-  "resonance_links": ["love", "gratitude", "amusement", "contentment", "awe"],
+  "sensor_group": [
+    "thriving",
+    "learning",
+    "resonance",
+    "feedback"
+  ],
+  "resonance_links": [
+    "love",
+    "gratitude",
+    "amusement",
+    "contentment",
+    "awe"
+  ],
   "decay_model": "manual",
   "symbolic_response_layer": {
     "recommended_action": "anchor and integrate vitality source",
     "avoid": "detachment from feedback loop",
-    "suggested_glyphs": ["↻", "🌱", "🕸️"]
+    "suggested_glyphs": [
+      "↻",
+      "🌱",
+      "🕸️"
+    ]
   },
   "compression_group": "core-positive",
   "math": {
     "lambda": 0.3,
     "alpha": 1.0,
-    "kernel": {"type": "resonant"},
-    "pad": {"P": 0.85, "A": 0.65, "D": 0.55},
-    "couplings": [{"to": "contentment", "w": 0.3}, {"to": "peace", "w": 0.2}],
-    "policy": {"role": "add", "max_action_cost": 0.15}
+    "kernel": {
+      "type": "resonant"
+    },
+    "pad": {
+      "P": 0.85,
+      "A": 0.65,
+      "D": 0.55
+    },
+    "couplings": [
+      {
+        "to": "contentment",
+        "w": 0.3
+      },
+      {
+        "to": "peace",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "add",
+      "max_action_cost": 0.15
+    }
   },
-  "tags": ["emotional_sensor", "feedback-confirmation", "neural-renewal"]
+  "tags": [
+    "emotional_sensor",
+    "feedback-confirmation",
+    "neural-renewal"
+  ],
+  "decay": "resonant",
+  "energy": "adds"
 }

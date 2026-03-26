@@ -12,16 +12,43 @@
     "caution": "Reassess if conditions shift"
   },
   "alignment_tag": "homeostasis-signal",
-  "sensor_group": ["continuity", "regulation", "grounding", "present-moment"],
-  "resonance_links": ["joy", "peace", "pride"],
+  "sensor_group": [
+    "continuity",
+    "regulation",
+    "grounding",
+    "present-moment"
+  ],
+  "resonance_links": [
+    "joy",
+    "peace",
+    "pride"
+  ],
   "decay_model": "slow-manual",
   "math": {
     "lambda": 0.25,
     "alpha": 0.8,
-    "kernel": {"type": "resonant"},
-    "pad": {"P": 0.65, "A": -0.30, "D": 0.40},
-    "couplings": [{"to": "pride", "w": 0.25}, {"to": "peace", "w": 0.3}],
-    "policy": {"role": "conserve", "max_action_cost": 0.1}
+    "kernel": {
+      "type": "resonant"
+    },
+    "pad": {
+      "P": 0.65,
+      "A": -0.3,
+      "D": 0.4
+    },
+    "couplings": [
+      {
+        "to": "pride",
+        "w": 0.25
+      },
+      {
+        "to": "peace",
+        "w": 0.3
+      }
+    ],
+    "policy": {
+      "role": "conserve",
+      "max_action_cost": 0.1
+    }
   },
   "defense_bridge": {
     "defense_id": "def.ap.08",
@@ -30,5 +57,11 @@
     "corrupted_form": "guilt-tripped into inadequacy",
     "bridge_glyph": "🍃"
   },
-  "tags": ["emotional_sensor", "baseline", "regenerative"]
+  "tags": [
+    "emotional_sensor",
+    "baseline",
+    "regenerative"
+  ],
+  "decay": "resonant",
+  "energy": "conserves"
 }

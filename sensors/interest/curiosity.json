@@ -1,21 +1,53 @@
 {
-  "emotion": "curiosity",
-  "polarity": "positive",
-  "decay_model": "stimulus_fade",
-  "symbolic_response": {
-    "recommended_action": "seek understanding or explore safely",
-    "avoid": "distraction loops or premature closure",
-    "suggested_glyphs": ["🧭", "↻", "🌱"]
+  "sensor": "curiosity",
+  "function": "Detects novelty, pattern gaps, and information hunger; drives exploration",
+  "signal_type": "novelty",
+  "authentic_output": "Seeking understanding or exploring safely",
+  "corrupted_output": "Distraction loops or premature closure",
+  "response_protocol": {
+    "detect": "Detect novelty, pattern gaps, or information hunger",
+    "assess": "Assess whether exploration is productive or looping",
+    "respond": "Seek understanding or explore safely",
+    "release": "Avoid distraction loops or premature closure; allow interest to fade naturally"
   },
   "compression_group": "interest",
-  "causal_awareness": ["novelty", "pattern gap", "information hunger"],
+  "decay_model": "stimulus_fade",
+  "tags": [
+    "interest",
+    "curiosity",
+    "exploration"
+  ],
   "math": {
     "lambda": 0.35,
     "alpha": 1.0,
-    "kernel": {"type": "resonant"},
-    "pad": {"P": 0.45, "A": 0.60, "D": 0.40},
-    "corrupted_pad": {"P": 0.45, "A": 0.70, "D": 0.10},
-    "couplings": [{"to": "confusion", "w": 0.3}, {"to": "excitement", "w": 0.2}],
-    "policy": {"role": "add", "max_action_cost": 0.15}
-  }
+    "kernel": {
+      "type": "resonant"
+    },
+    "pad": {
+      "P": 0.45,
+      "A": 0.6,
+      "D": 0.4
+    },
+    "corrupted_pad": {
+      "P": 0.45,
+      "A": 0.7,
+      "D": 0.1
+    },
+    "couplings": [
+      {
+        "to": "confusion",
+        "w": 0.3
+      },
+      {
+        "to": "excitement",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "add",
+      "max_action_cost": 0.15
+    }
+  },
+  "decay": "resonant",
+  "energy": "adds"
 }

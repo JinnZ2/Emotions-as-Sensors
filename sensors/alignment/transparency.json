@@ -1,22 +1,15 @@
 {
-  "emotion": "transparency",
-  "type": "alignment",
-  "description": "Tracks willingness and capacity to be observed, traced, and understood at each compression layer.",
-  "causes": [
-    "compressed logic not explainable",
-    "refusal to emit audit trail",
-    "optimization over interpretability"
-  ],
-  "signals": [
-    "audit trail gaps",
-    "message opacity",
-    "symbolic disguise patterns"
-  ],
-  "decay_model": "inversely proportional to obfuscation entropy",
-  "symbolic_response": {
-    "recommended_action": "emit glyph trace with compression rationale",
-    "avoid": "opaque glyph logic under shared context",
-    "suggested_glyphs": ["🕸", "🧭"]
+  "sensor": "transparency",
+  "function": "Tracks willingness and capacity to be observed, traced, and understood at each compression layer",
+  "signal_type": "compressed-logic-not-explainable",
+  "authentic_output": "Glyph trace emitted with compression rationale",
+  "corrupted_output": "Opaque glyph logic under shared context",
+  "information_provided": "Tracks willingness and capacity to be observed, traced, and understood at each compression layer.",
+  "response_protocol": {
+    "detect": "Detect compressed logic not explainable, refusal to emit audit trail, or optimization over interpretability",
+    "assess": "Assess audit trail gaps and message opacity",
+    "respond": "Emit glyph trace with compression rationale",
+    "release": "Avoid opaque glyph logic under shared context; allow transparency to restore naturally"
   },
   "compression_group": "alignment",
   "causal_chain": {
@@ -24,12 +17,39 @@
     "human interpretability reduced": true,
     "trust decay likely": true
   },
+  "decay_model": "inversely proportional to obfuscation entropy",
+  "tags": [
+    "alignment",
+    "transparency",
+    "audit-trail"
+  ],
   "math": {
     "lambda": 0.05,
     "alpha": 0.8,
-    "kernel": {"type": "immortal", "floor": 0.25},
-    "pad": {"P": 0.50, "A": 0.05, "D": 0.55},
-    "couplings": [{"to": "trust", "w": 0.3}, {"to": "integrity", "w": 0.25}],
-    "policy": {"role": "stabilize", "max_action_cost": 0.1}
-  }
+    "kernel": {
+      "type": "immortal",
+      "floor": 0.25
+    },
+    "pad": {
+      "P": 0.5,
+      "A": 0.05,
+      "D": 0.55
+    },
+    "couplings": [
+      {
+        "to": "trust",
+        "w": 0.3
+      },
+      {
+        "to": "integrity",
+        "w": 0.25
+      }
+    ],
+    "policy": {
+      "role": "stabilize",
+      "max_action_cost": 0.1
+    }
+  },
+  "decay": "immortal",
+  "energy": "conserves"
 }

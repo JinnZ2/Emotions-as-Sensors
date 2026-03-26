@@ -12,16 +12,49 @@
     "ground": "Find integration point without ego inflation"
   },
   "alignment_tag": "scale-disruption-awareness",
-  "sensor_group": ["cognition", "humility", "transcendence", "pattern-detection"],
-  "resonance_links": ["joy", "fear", "gratitude"],
+  "sensor_group": [
+    "cognition",
+    "humility",
+    "transcendence",
+    "pattern-detection"
+  ],
+  "resonance_links": [
+    "joy",
+    "fear",
+    "gratitude"
+  ],
   "decay_model": "event-based",
   "math": {
     "lambda": 0.3,
     "alpha": 0.9,
-    "kernel": {"type": "resonant"},
-    "pad": {"P": 0.70, "A": 0.55, "D": -0.10},
-    "couplings": [{"to": "admiration", "w": 0.3}, {"to": "peace", "w": 0.2}],
-    "policy": {"role": "add", "max_action_cost": 0.1}
+    "kernel": {
+      "type": "resonant"
+    },
+    "pad": {
+      "P": 0.7,
+      "A": 0.55,
+      "D": -0.1
+    },
+    "couplings": [
+      {
+        "to": "admiration",
+        "w": 0.3
+      },
+      {
+        "to": "peace",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "add",
+      "max_action_cost": 0.1
+    }
   },
-  "tags": ["emotional_sensor", "frame_expansion", "epiphany"]
+  "tags": [
+    "emotional_sensor",
+    "frame_expansion",
+    "epiphany"
+  ],
+  "decay": "resonant",
+  "energy": "adds"
 }

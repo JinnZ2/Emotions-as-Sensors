@@ -25,9 +25,12 @@
   "sensor_weights": {
     "EnergyFlowSensor": 0.35,
     "InformationFlowSensor": 0.35,
-    "TopologySensor": 0.30
+    "TopologySensor": 0.3
   },
-  "emotion_shape_potential": ["RELIEF", "TENSION_RELEASE"],
+  "emotion_shape_potential": [
+    "RELIEF",
+    "TENSION_RELEASE"
+  ],
   "associated_projects": [
     "Fractal-Compass-Atlas",
     "Rosetta-Shape-Core",
@@ -38,10 +41,15 @@
     {
       "timestamp": "2025-09-29T00:00:00Z",
       "location": "Rosetta-Shape-Core",
-      "participants": ["JinnZ2", "ChatGPT"],
+      "participants": [
+        "JinnZ2",
+        "ChatGPT"
+      ],
       "glyph_signature": "🕸️",
       "state": "reciprocated",
       "derived_emotion_shape": "RELIEF"
     }
-  ]
+  ],
+  "decay": "exponential",
+  "energy": "transforms"
 }

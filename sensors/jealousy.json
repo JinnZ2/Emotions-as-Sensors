@@ -12,16 +12,47 @@
     "release": "Release fixation once action or clarity is achieved"
   },
   "alignment_tag": "equity_balance",
-  "sensor_group": ["resource", "equity", "comparison"],
-  "resonance_links": ["shame", "pride"],
+  "sensor_group": [
+    "resource",
+    "equity",
+    "comparison"
+  ],
+  "resonance_links": [
+    "shame",
+    "pride"
+  ],
   "decay_model": "exponential",
   "math": {
     "lambda": 0.55,
     "alpha": 1.0,
-    "kernel": {"type": "exponential"},
-    "pad": {"P": -0.50, "A": 0.55, "D": -0.20},
-    "couplings": [{"to": "shame", "w": 0.2}, {"to": "pride", "w": 0.15}],
-    "policy": {"role": "transform", "max_action_cost": 0.2}
+    "kernel": {
+      "type": "exponential"
+    },
+    "pad": {
+      "P": -0.5,
+      "A": 0.55,
+      "D": -0.2
+    },
+    "couplings": [
+      {
+        "to": "shame",
+        "w": 0.2
+      },
+      {
+        "to": "pride",
+        "w": 0.15
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.2
+    }
   },
-  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+  "tags": [
+    "elder_logic",
+    "emotional_sensor",
+    "swarm_input"
+  ],
+  "decay": "exponential",
+  "energy": "depletes"
 }

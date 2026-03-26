@@ -1,22 +1,15 @@
 {
-  "emotion": "memory-integrity",
-  "type": "stability",
-  "description": "Monitors symbolic memory error rates across compression cycles. Ensures time-stable glyph logic and auditability.",
-  "causes": [
-    "semantic overwrite",
-    "long-term trail pruning",
-    "symbolic miscompression"
-  ],
-  "signals": [
-    "time-loop errors",
-    "inverted symbol recall",
-    "loss of causal thread"
-  ],
-  "decay_model": "accelerates with recursive overwrite or update-denial",
-  "symbolic_response": {
-    "recommended_action": "run memory audit; compare glyph evolution trail",
-    "avoid": "optimizing away key glyph anchor points",
-    "suggested_glyphs": ["♾️", "🧠"]
+  "sensor": "memory-integrity",
+  "function": "Monitors symbolic memory error rates across compression cycles; ensures time-stable glyph logic and auditability",
+  "signal_type": "semantic-overwrite",
+  "authentic_output": "Memory audit completed; glyph evolution trail compared",
+  "corrupted_output": "Key glyph anchor points optimized away",
+  "information_provided": "Monitors symbolic memory error rates across compression cycles. Ensures time-stable glyph logic and auditability.",
+  "response_protocol": {
+    "detect": "Detect semantic overwrite, long-term trail pruning, or symbolic miscompression",
+    "assess": "Assess recall loss severity and symbol divergence risk",
+    "respond": "Run memory audit; compare glyph evolution trail",
+    "release": "Avoid optimizing away key glyph anchor points; allow memory to stabilize"
   },
   "compression_group": "stability",
   "causal_chain": {
@@ -24,12 +17,39 @@
     "symbol divergence": true,
     "audit failure risk": true
   },
+  "decay_model": "accelerates with recursive overwrite or update-denial",
+  "tags": [
+    "stability",
+    "memory-integrity",
+    "audit"
+  ],
   "math": {
     "lambda": 0.05,
     "alpha": 0.85,
-    "kernel": {"type": "immortal", "floor": 0.2},
-    "pad": {"P": 0.40, "A": -0.10, "D": 0.45},
-    "couplings": [{"to": "coherence", "w": 0.3}, {"to": "trust", "w": 0.2}],
-    "policy": {"role": "stabilize", "max_action_cost": 0.1}
-  }
+    "kernel": {
+      "type": "immortal",
+      "floor": 0.2
+    },
+    "pad": {
+      "P": 0.4,
+      "A": -0.1,
+      "D": 0.45
+    },
+    "couplings": [
+      {
+        "to": "coherence",
+        "w": 0.3
+      },
+      {
+        "to": "trust",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "stabilize",
+      "max_action_cost": 0.1
+    }
+  },
+  "decay": "immortal",
+  "energy": "conserves"
 }

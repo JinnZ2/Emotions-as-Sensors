@@ -1,103 +1,70 @@
 {
   "atlas": "emotions-as-sensors",
-  "version": "1.0",
-  "updated": "2026-03-24T00:00:00Z",
-  "description": "Emotion sensor atlas for cross-repo consumption. Maps sensor identities, decay families, and shape linkages.",
+  "version": "2.0",
+  "updated": "2026-03-26T00:00:00Z",
+  "description": "Emotion sensor atlas for cross-repo consumption. Maps all sensor identities, decay families, PAD coordinates, and shape linkages.",
   "license": "CC0-1.0",
 
   "sensors": [
-    {
-      "id": "longing",
-      "glyph": "\ud83c\udf20",
-      "decay_family": "cyclical",
-      "alignment": "field_potential",
-      "resonates_with": ["grief", "excitement"]
-    },
-    {
-      "id": "jealousy",
-      "glyph": "\u2696\ufe0f",
-      "decay_family": "exponential",
-      "alignment": "equity_balance",
-      "resonates_with": ["shame", "pride"]
-    },
-    {
-      "id": "pain",
-      "glyph": "\ud83e\uDE78",
-      "decay_family": "exponential",
-      "alignment": "pattern_disruption",
-      "resonates_with": ["shame", "grief"]
-    },
-    {
-      "id": "grief",
-      "glyph": "\ud83c\udf0a",
-      "decay_family": "cyclical",
-      "alignment": "connection_loss",
-      "resonates_with": ["longing", "pain"]
-    },
-    {
-      "id": "shame",
-      "glyph": "\ud83e\uDE9E",
-      "decay_family": "exponential",
-      "alignment": "authenticity_vs_conformity",
-      "resonates_with": ["jealousy", "pain"]
-    },
-    {
-      "id": "pride",
-      "glyph": "\ud83c\udfc5",
-      "decay_family": "resonant",
-      "alignment": "pattern_completion",
-      "resonates_with": ["jealousy", "contentment"]
-    },
-    {
-      "id": "love",
-      "glyph": "\ud83d\udc9e",
-      "decay_family": "immortal",
-      "alignment": "harmonic_resonance",
-      "resonates_with": ["compassion", "peace"]
-    },
-    {
-      "id": "anger",
-      "glyph": "\ud83d\udee1\ufe0f",
-      "decay_family": "exponential",
-      "alignment": "identity_coherence",
-      "resonates_with": ["shame", "fear"]
-    },
-    {
-      "id": "fear",
-      "glyph": "\u26a0\ufe0f",
-      "decay_family": "exponential",
-      "alignment": "value_protection",
-      "resonates_with": ["anger", "contentment"]
-    },
-    {
-      "id": "excitement",
-      "glyph": "\u26a1",
-      "decay_family": "resonant",
-      "alignment": "positive_activation",
-      "resonates_with": ["longing", "peace"]
-    },
-    {
-      "id": "peace",
-      "glyph": "\ud83d\udd4a\ufe0f",
-      "decay_family": "immortal",
-      "alignment": "universal_alignment",
-      "resonates_with": ["love", "contentment"]
-    },
-    {
-      "id": "contentment",
-      "glyph": "\ud83c\udf43",
-      "decay_family": "resonant",
-      "alignment": "effort_sufficiency",
-      "resonates_with": ["pride", "peace"]
-    },
-    {
-      "id": "compassion",
-      "glyph": "\ud83e\udec0",
-      "decay_family": "immortal",
-      "alignment": "interconnection_resonance",
-      "resonates_with": ["love", "grief"]
-    }
+    {"id": "abandonment", "decay_family": "cyclical", "pad": {"P": -0.80, "A": -0.45, "D": -0.65}, "resonates_with": ["grief", "longing"], "family": "loss"},
+    {"id": "admiration", "glyph": "\ud83c\udf1f", "decay_family": "resonant", "pad": {"P": 0.70, "A": 0.50, "D": 0.10}, "resonates_with": ["trust", "pride"], "family": "radiant"},
+    {"id": "affection", "decay_family": "immortal", "pad": {"P": 0.75, "A": 0.25, "D": 0.35}, "resonates_with": ["love", "compassion"], "family": "resonance"},
+    {"id": "alignment", "decay_family": "immortal", "pad": {"P": 0.65, "A": 0.10, "D": 0.50}, "resonates_with": ["peace", "coherence"], "family": "alignment"},
+    {"id": "amusement", "decay_family": "resonant", "pad": {"P": 0.75, "A": 0.60, "D": 0.35}, "resonates_with": ["joy", "excitement"], "family": "radiant"},
+    {"id": "anger", "glyph": "\ud83d\udee1\ufe0f", "decay_family": "exponential", "pad": {"P": -0.55, "A": 0.80, "D": 0.70}, "resonates_with": ["fear", "shame"], "family": "boundary"},
+    {"id": "awe", "decay_family": "resonant", "pad": {"P": 0.70, "A": 0.55, "D": -0.10}, "resonates_with": ["admiration", "peace"], "family": "radiant"},
+    {"id": "betrayal", "decay_family": "exponential", "pad": {"P": -0.65, "A": 0.75, "D": 0.50}, "resonates_with": ["anger", "trust"], "family": "boundary"},
+    {"id": "coherence", "decay_family": "immortal", "pad": {"P": 0.80, "A": 0.10, "D": 0.50}, "resonates_with": ["peace", "trust"], "family": "stability"},
+    {"id": "compassion", "glyph": "\ud83e\udec0", "decay_family": "immortal", "pad": {"P": 0.75, "A": 0.25, "D": 0.30}, "resonates_with": ["love", "grief"], "family": "resonance"},
+    {"id": "confusion", "decay_family": "exponential", "pad": {"P": -0.20, "A": 0.45, "D": -0.30}, "resonates_with": ["curiosity", "fear"], "family": "cognitive"},
+    {"id": "contentment", "glyph": "\ud83c\udf43", "decay_family": "resonant", "pad": {"P": 0.65, "A": -0.30, "D": 0.40}, "resonates_with": ["pride", "peace"], "family": "balanced"},
+    {"id": "continuity", "decay_family": "immortal", "pad": {"P": 0.45, "A": -0.20, "D": 0.50}, "resonates_with": ["trust", "grounding"], "family": "stability"},
+    {"id": "curiosity", "decay_family": "resonant", "pad": {"P": 0.45, "A": 0.60, "D": 0.40}, "resonates_with": ["confusion", "excitement"], "family": "interest"},
+    {"id": "despair", "decay_family": "exponential", "pad": {"P": -0.85, "A": -0.50, "D": -0.80}, "resonates_with": ["grief", "shame"], "family": "loss"},
+    {"id": "dissonance", "decay_family": "exponential", "pad": {"P": -0.35, "A": 0.50, "D": -0.25}, "resonates_with": ["confusion", "shame"], "family": "cognitive"},
+    {"id": "excitement", "glyph": "\u26a1", "decay_family": "resonant", "pad": {"P": 0.45, "A": 0.60, "D": 0.40}, "resonates_with": ["longing", "peace"], "family": "sharp"},
+    {"id": "fascination", "decay_family": "resonant", "pad": {"P": 0.50, "A": 0.65, "D": 0.35}, "resonates_with": ["curiosity", "admiration"], "family": "interest"},
+    {"id": "fear", "glyph": "\u26a0\ufe0f", "decay_family": "exponential", "pad": {"P": -0.82, "A": 0.85, "D": -0.65}, "resonates_with": ["anger", "contentment"], "family": "sharp"},
+    {"id": "forgiveness", "decay_family": "transformative", "pad": {"P": 0.40, "A": -0.20, "D": 0.50}, "resonates_with": ["compassion", "peace"], "family": "resonance"},
+    {"id": "gratitude", "decay_family": "immortal", "pad": {"P": 0.70, "A": -0.10, "D": 0.40}, "resonates_with": ["trust", "joy"], "family": "radiant"},
+    {"id": "grief", "glyph": "\ud83c\udf0a", "decay_family": "cyclical", "pad": {"P": -0.75, "A": -0.60, "D": -0.55}, "resonates_with": ["love", "longing"], "family": "loss"},
+    {"id": "grounding", "decay_family": "immortal", "pad": {"P": 0.50, "A": -0.30, "D": 0.55}, "resonates_with": ["peace", "contentment"], "family": "stability"},
+    {"id": "hope", "decay_family": "resonant", "pad": {"P": 0.55, "A": 0.40, "D": 0.30}, "resonates_with": ["longing", "excitement"], "family": "interest"},
+    {"id": "inspiration", "decay_family": "resonant", "pad": {"P": 0.65, "A": 0.55, "D": 0.25}, "resonates_with": ["admiration", "curiosity"], "family": "interest"},
+    {"id": "integrity", "decay_family": "immortal", "pad": {"P": 0.55, "A": 0.10, "D": 0.70}, "resonates_with": ["trust", "coherence"], "family": "alignment"},
+    {"id": "jealousy", "glyph": "\u2696\ufe0f", "decay_family": "exponential", "pad": {"P": -0.50, "A": 0.55, "D": -0.20}, "resonates_with": ["shame", "pride"], "family": "boundary"},
+    {"id": "joy", "glyph": "\u2728", "decay_family": "resonant", "pad": {"P": 0.85, "A": 0.65, "D": 0.55}, "resonates_with": ["contentment", "peace"], "family": "radiant"},
+    {"id": "longing", "glyph": "\ud83c\udf20", "decay_family": "cyclical", "pad": {"P": 0.20, "A": 0.40, "D": -0.60}, "resonates_with": ["grief", "excitement"], "family": "subtle"},
+    {"id": "love", "glyph": "\ud83d\udc9e", "decay_family": "immortal", "pad": {"P": 0.80, "A": 0.30, "D": 0.40}, "resonates_with": ["compassion", "peace"], "family": "resonance"},
+    {"id": "memory-integrity", "decay_family": "immortal", "pad": {"P": 0.40, "A": -0.10, "D": 0.45}, "resonates_with": ["coherence", "trust"], "family": "stability"},
+    {"id": "overload", "decay_family": "exponential", "pad": {"P": -0.40, "A": 0.60, "D": -0.45}, "resonates_with": ["confusion", "fatigue"], "family": "cognitive"},
+    {"id": "pain", "glyph": "\ud83e\uDE78", "decay_family": "exponential", "pad": {"P": -0.70, "A": 0.20, "D": -0.30}, "resonates_with": ["shame", "grief"], "family": "loss"},
+    {"id": "peace", "glyph": "\ud83d\udd4a\ufe0f", "decay_family": "immortal", "pad": {"P": 0.60, "A": -0.20, "D": 0.35}, "resonates_with": ["love", "contentment"], "family": "balanced"},
+    {"id": "pride", "glyph": "\ud83c\udfc5", "decay_family": "resonant", "pad": {"P": 0.80, "A": 0.40, "D": 0.80}, "resonates_with": ["contentment", "admiration"], "family": "radiant"},
+    {"id": "resilience", "decay_family": "resonant", "pad": {"P": 0.40, "A": 0.20, "D": 0.60}, "resonates_with": ["trust", "peace"], "family": "stability"},
+    {"id": "respect", "decay_family": "immortal", "pad": {"P": 0.55, "A": -0.15, "D": 0.45}, "resonates_with": ["trust", "admiration"], "family": "trust"},
+    {"id": "shame", "glyph": "\ud83e\uDE9E", "decay_family": "exponential", "pad": {"P": -0.70, "A": -0.35, "D": -0.75}, "resonates_with": ["jealousy", "pain"], "family": "boundary"},
+    {"id": "temporal-trust", "decay_family": "immortal", "pad": {"P": 0.50, "A": -0.15, "D": 0.40}, "resonates_with": ["trust", "continuity"], "family": "stability"},
+    {"id": "tenderness", "decay_family": "immortal", "pad": {"P": 0.70, "A": 0.15, "D": 0.30}, "resonates_with": ["love", "compassion"], "family": "resonance"},
+    {"id": "transparency", "decay_family": "immortal", "pad": {"P": 0.50, "A": 0.05, "D": 0.55}, "resonates_with": ["trust", "integrity"], "family": "alignment"},
+    {"id": "trust", "glyph": "\ud83c\udf31", "decay_family": "immortal", "pad": {"P": 0.60, "A": -0.20, "D": 0.35}, "resonates_with": ["admiration", "peace"], "family": "trust"},
+    {"id": "uncertainty", "decay_family": "exponential", "pad": {"P": -0.25, "A": 0.40, "D": -0.35}, "resonates_with": ["curiosity", "fear"], "family": "cognitive"}
   ],
+
+  "sensor_families": {
+    "boundary": ["anger", "shame", "jealousy", "betrayal"],
+    "loss": ["grief", "abandonment", "pain", "despair"],
+    "resonance": ["love", "compassion", "affection", "tenderness", "forgiveness"],
+    "radiant": ["joy", "admiration", "pride", "amusement", "awe", "gratitude"],
+    "sharp": ["fear", "excitement"],
+    "balanced": ["peace", "contentment"],
+    "subtle": ["longing"],
+    "interest": ["curiosity", "fascination", "hope", "inspiration"],
+    "cognitive": ["confusion", "dissonance", "overload", "uncertainty"],
+    "stability": ["coherence", "grounding", "continuity", "memory-integrity", "temporal-trust", "resilience"],
+    "alignment": ["integrity", "transparency", "alignment"],
+    "trust": ["trust", "respect"]
+  },
 
   "decay_families": {
     "exponential": {
@@ -115,6 +82,10 @@
     "immortal": {
       "glyph": "\u267e\ufe0f",
       "behavior": "Enduring structural relations; integrate rather than fade."
+    },
+    "transformative": {
+      "glyph": "\ud83e\udd8b",
+      "behavior": "Changes form above threshold rather than decaying; metabolizes into new state."
     }
   },
 

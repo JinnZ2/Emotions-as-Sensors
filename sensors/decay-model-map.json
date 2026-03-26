@@ -48,5 +48,7 @@
       "if hidden or punished": "persistent",
       "if externally imposed": "stuck_loop"
     }
-  }
+  },
+  "decay": "exponential",
+  "energy": "transforms"
 }

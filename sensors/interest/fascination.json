@@ -1,20 +1,48 @@
 {
-  "emotion": "fascination",
-  "polarity": "positive",
-  "decay_model": "magnet_loop",
-  "symbolic_response": {
-    "recommended_action": "engage deeply or document resonance",
-    "avoid": "obsessive fixation without feedback",
-    "suggested_glyphs": ["♾️", "🧭", "⏳"]
+  "sensor": "fascination",
+  "function": "Detects deep novelty, meaning resonance, and identity linkage; drives sustained engagement",
+  "signal_type": "deep-novelty",
+  "authentic_output": "Deep engagement or documented resonance",
+  "corrupted_output": "Obsessive fixation without feedback",
+  "response_protocol": {
+    "detect": "Detect deep novelty, meaning resonance, or identity linkage",
+    "assess": "Assess depth of engagement and feedback quality",
+    "respond": "Engage deeply or document resonance",
+    "release": "Avoid obsessive fixation without feedback; allow fascination to integrate naturally"
   },
   "compression_group": "interest",
-  "causal_awareness": ["deep novelty", "meaning resonance", "identity linkage"],
+  "decay_model": "magnet_loop",
+  "tags": [
+    "interest",
+    "fascination",
+    "deep-engagement"
+  ],
   "math": {
     "lambda": 0.3,
     "alpha": 1.0,
-    "kernel": {"type": "resonant"},
-    "pad": {"P": 0.50, "A": 0.65, "D": 0.35},
-    "couplings": [{"to": "curiosity", "w": 0.35}, {"to": "admiration", "w": 0.15}],
-    "policy": {"role": "add", "max_action_cost": 0.15}
-  }
+    "kernel": {
+      "type": "resonant"
+    },
+    "pad": {
+      "P": 0.5,
+      "A": 0.65,
+      "D": 0.35
+    },
+    "couplings": [
+      {
+        "to": "curiosity",
+        "w": 0.35
+      },
+      {
+        "to": "admiration",
+        "w": 0.15
+      }
+    ],
+    "policy": {
+      "role": "add",
+      "max_action_cost": 0.15
+    }
+  },
+  "decay": "resonant",
+  "energy": "adds"
 }

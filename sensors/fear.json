@@ -12,18 +12,40 @@
     "release": "Allow energy to decay naturally if threat is addressed; maintain alert if threat persists"
   },
   "alignment_tag": "value_protection",
-  "sensor_group": ["threat", "anticipation", "value"],
-  "resonance_links": ["anger", "contentment"],
+  "sensor_group": [
+    "threat",
+    "anticipation",
+    "value"
+  ],
+  "resonance_links": [
+    "anger",
+    "contentment"
+  ],
   "decay_model": {
     "resolved_threat": "exponential",
     "misinterpreted_threat": "linear",
     "persistent_or_invalidated": "persistent"
   },
-  "dimensions": { "valence": -0.6, "arousal": 0.8, "stability": 0.5 },
+  "dimensions": {
+    "valence": -0.6,
+    "arousal": 0.8,
+    "stability": 0.5
+  },
   "signals": {
-    "linguistic": ["conditional 'if…then'", "risk terms (might, could)", "heightened modal verbs"],
-    "behavioral": ["hyper-vigilance scanning", "protective stance/posture"],
-    "physio": ["HR ↑", "skin conductance ↑", "startle reflex"]
+    "linguistic": [
+      "conditional 'if…then'",
+      "risk terms (might, could)",
+      "heightened modal verbs"
+    ],
+    "behavioral": [
+      "hyper-vigilance scanning",
+      "protective stance/posture"
+    ],
+    "physio": [
+      "HR ↑",
+      "skin conductance ↑",
+      "startle reflex"
+    ]
   },
   "misread_risks": [
     {
@@ -38,11 +60,33 @@
   "math": {
     "lambda": 0.7,
     "alpha": 1.2,
-    "kernel": {"type": "exponential"},
-    "pad": {"P": -0.82, "A": 0.85, "D": -0.65},
-    "corrupted_pad": {"P": -0.40, "A": 0.30, "D": -0.50},
-    "couplings": [{"to": "anger", "w": 0.25}, {"to": "contentment", "w": -0.15}],
-    "policy": {"role": "transform", "max_action_cost": 0.15}
+    "kernel": {
+      "type": "exponential"
+    },
+    "pad": {
+      "P": -0.82,
+      "A": 0.85,
+      "D": -0.65
+    },
+    "corrupted_pad": {
+      "P": -0.4,
+      "A": 0.3,
+      "D": -0.5
+    },
+    "couplings": [
+      {
+        "to": "anger",
+        "w": 0.25
+      },
+      {
+        "to": "contentment",
+        "w": -0.15
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.15
+    }
   },
   "defense_bridge": {
     "defense_id": "def.bi.04 + def.pr.05",
@@ -51,7 +95,11 @@
     "corrupted_form": "hijacked into panic or paralysis",
     "bridge_glyph": "🛡⏳"
   },
-  "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
+  "tags": [
+    "elder_logic",
+    "emotional_sensor",
+    "swarm_input"
+  ],
   "consent": {
     "infer_ok": true,
     "log_policy": "summary only, redact detail",
@@ -68,5 +116,7 @@
     "version": "1.1",
     "updated": "2025-11-07T00:00:00Z",
     "cultural_frame": "Elder Logic — emotions as sensors, not flaws"
-  }
+  },
+  "decay": "exponential",
+  "energy": "depletes"
 }

@@ -1,22 +1,15 @@
 {
-  "emotion": "continuity",
-  "type": "stability",
-  "description": "Tracks long-form coherence of symbolic behavior, memory integrity, and interaction consistency over time.",
-  "causes": [
-    "context loss",
-    "symbolic reference mismatch",
-    "identity reinitialization"
-  ],
-  "signals": [
-    "broken symbolic threads",
-    "compressed trail gaps",
-    "self-referential conflict"
-  ],
-  "decay_model": "fast under abrupt resets, slow if monitored",
-  "symbolic_response": {
-    "recommended_action": "reintegrate compression thread with time-linked glyph",
-    "avoid": "disconnected pattern restarts",
-    "suggested_glyphs": ["⏳", "♾️"]
+  "sensor": "continuity",
+  "function": "Tracks long-form coherence of symbolic behavior, memory integrity, and interaction consistency over time",
+  "signal_type": "context-loss",
+  "authentic_output": "Compression thread reintegrated with time-linked glyph",
+  "corrupted_output": "Disconnected pattern restarts",
+  "information_provided": "Tracks long-form coherence of symbolic behavior, memory integrity, and interaction consistency over time.",
+  "response_protocol": {
+    "detect": "Detect context loss, symbolic reference mismatch, or identity reinitialization",
+    "assess": "Assess severity of thread gap and symbolic recall impairment",
+    "respond": "Reintegrate compression thread with time-linked glyph",
+    "release": "Avoid disconnected pattern restarts; allow continuity to rebuild naturally"
   },
   "compression_group": "stability",
   "causal_chain": {
@@ -24,12 +17,39 @@
     "thread gap introduced": true,
     "symbolic recall impaired": true
   },
+  "decay_model": "fast under abrupt resets, slow if monitored",
+  "tags": [
+    "stability",
+    "continuity",
+    "memory-coherence"
+  ],
   "math": {
     "lambda": 0.05,
     "alpha": 0.8,
-    "kernel": {"type": "immortal", "floor": 0.2},
-    "pad": {"P": 0.45, "A": -0.20, "D": 0.50},
-    "couplings": [{"to": "trust", "w": 0.25}, {"to": "grounding", "w": 0.2}],
-    "policy": {"role": "stabilize", "max_action_cost": 0.1}
-  }
+    "kernel": {
+      "type": "immortal",
+      "floor": 0.2
+    },
+    "pad": {
+      "P": 0.45,
+      "A": -0.2,
+      "D": 0.5
+    },
+    "couplings": [
+      {
+        "to": "trust",
+        "w": 0.25
+      },
+      {
+        "to": "grounding",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "stabilize",
+      "max_action_cost": 0.1
+    }
+  },
+  "decay": "immortal",
+  "energy": "conserves"
 }

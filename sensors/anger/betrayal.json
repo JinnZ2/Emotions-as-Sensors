@@ -12,12 +12,23 @@
     "release": "Do not loop; record event for future calibration"
   },
   "alignment_tag": "trust.break",
-  "sensor_group": ["anger", "boundary", "grief"],
-  "resonance_links": ["grief/loss", "anger/frustration", "shame/trust_loss"],
+  "sensor_group": [
+    "anger",
+    "boundary",
+    "grief"
+  ],
+  "resonance_links": [
+    "grief/loss",
+    "anger/frustration",
+    "shame/trust_loss"
+  ],
   "causal_links": [
     {
       "cause": "betrayal",
-      "results_in": ["anger", "sadness"],
+      "results_in": [
+        "anger",
+        "sadness"
+      ],
       "severity": "high",
       "pathway": "trust.break → boundary.cross → loss.perception"
     }
@@ -25,15 +36,45 @@
   "decay_model": "processing",
   "recommended_action": "signal violation, allow grief cycle",
   "avoid": "suppressing signal or pursuing revenge",
-  "suggested_glyphs": ["🧭", "⚖"],
-  "compression_group": ["boundary_breach", "looping_emotion", "relational_disruption"],
+  "suggested_glyphs": [
+    "🧭",
+    "⚖"
+  ],
+  "compression_group": [
+    "boundary_breach",
+    "looping_emotion",
+    "relational_disruption"
+  ],
   "math": {
     "lambda": 0.55,
     "alpha": 1.1,
-    "kernel": {"type": "exponential"},
-    "pad": {"P": -0.65, "A": 0.75, "D": 0.50},
-    "couplings": [{"to": "anger", "w": 0.35}, {"to": "trust", "w": -0.3}],
-    "policy": {"role": "transform", "max_action_cost": 0.25}
+    "kernel": {
+      "type": "exponential"
+    },
+    "pad": {
+      "P": -0.65,
+      "A": 0.75,
+      "D": 0.5
+    },
+    "couplings": [
+      {
+        "to": "anger",
+        "w": 0.35
+      },
+      {
+        "to": "trust",
+        "w": -0.3
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.25
+    }
   },
-  "tags": ["emotional_sensor", "alignment_detector"]
+  "tags": [
+    "emotional_sensor",
+    "alignment_detector"
+  ],
+  "decay": "exponential",
+  "energy": "depletes"
 }

@@ -1,77 +1,153 @@
-Convergent Wisdom: Emotions as Sensors Across Cultures”—
+# Convergent Emotional Frameworks
 
-that highlights parallel approaches, tying broader lineage.
+Cross-repo convergence map linking Emotions-as-Sensors to Rosetta-Shape-Core,
+Symbolic-Defense-Protocol, and the Polyhedral Intelligence architecture.
 
-⸻
+This file is referenced by Rosetta's `.fieldlink.json` as a bidirectional
+source for emotion-shape-defense integration.
 
-1. Buddhism (Vedanā as Sensory Tone)
-	•	Role: Emotions (vedanā) are raw sensory tones, not principal identity markers.
-	•	Cycle: Noticing → Naming → Letting Go.
-	•	Shadow: Unnoticed tones lead to attachment or aversion—suffering begins.
-	•	Parallels:
-	•	The detect → assess → respond → release.
-	•	authentic_output vs corrupted_output distinction.
+---
 
-⸻
+## Decay Model Canonical Terms
 
-2. Taoism (Emotions as Qi Imbalances)
-	•	Role: Emotions signal disruptions in life’s flow (qi).
-	•	Cycle: Feel → Find center → Flow resets.
-	•	Shadow: Excess leads to rigidity or forced control.
-	•	Parallels:
-	•	Decay models like exponential allow emotions to settle.
-	•	The protocols avoid emotional stagnation.
+All decay references across repos MUST use these terms:
 
-⸻
+| Decay Family | Glyph | Behavior | Examples |
+|---|---|---|---|
+| `exponential` | ⏳ | Fast rise, fast fade; boundary/threat alarms | anger, fear, shame, jealousy, pain |
+| `cyclical` | 🔄 | Recurrent tides requiring ritual return | grief, longing, abandonment |
+| `resonant` | 🎵 | Self-reinforcing oscillations; renew with attention | admiration, excitement, pride, contentment |
+| `immortal` | ♾️ | Enduring structural relations; integrate rather than fade | love, trust, peace, compassion |
+| `transformative` | 🦋 | Changes form rather than decaying; metabolizes into new state | forgiveness |
 
-3. Indigenous Traditions (Relational Signals)
-	•	Role: Feelings reflect relationship to environment or community—land is alive.
-	•	Cycle: Signal → Ritualized response → Restoration of harmony.
-	•	Shadow: Ignored signals degrade social or ecological balance.
-	•	Parallels:
-	•	resonance_links show how emotions connect relationally.
-	•	consent embeds ethical response, not coercion.
+**Deprecated terms:** `linear` and `persistent` are NOT valid decay models.
+They were early placeholders that did not capture real temporal behavior.
+- `linear` was used where `cyclical`, `resonant`, or `exponential` applies
+- `persistent` was used where `immortal` applies
 
-⸻
+---
 
-4. Tuareg Cultural Rhythms (Sebiba Ritual)
-	•	Role: Through dance and ceremony, the community processes tension, grief, and rebirth—body as emotional instrument.
-	•	Cycle: Chaos (anarchy) → Ritual dance → Renewal (new year).
-	•	Shadow: Unreleased tension entrenches structural imbalance.
-	•	Parallels:
-	•	The decay_model = "resonate" (admiration) reflects dance-like energy redistributing.
-	•	Emphasizes embodied release, not suppression.
+## Shape-Sensor Bridge Map
 
-⸻
+Each Platonic solid in Rosetta carries emotion sensors as core identity:
 
-Summary Table
-Culture/Framework
-Emotion ≈
-Cycle
-Shadow Form
-Buddhism
-Sensory Tone
-Noticing → Naming → Letting Go
-Attachment / Aversion
-Taoism
-Qi Signal
-Reset to Flow
-Forced control
-Indigenous (land)
-Communal Signal
-Ritual Response → Harmony
-Disconnection
-Tuareg (Sebiba)
-Embodied Signal
-Chaos → Dance → Renewal
-Tension held in body
-Repo (JSON Schema)
-Sensor Module
-Detect → Assess → Respond → Release
-Obsession
+### Tetrahedron (SHAPE.TETRA) — Foundation/Boundary
+- **Sensors:** anger, pride
+- **Glyphs:** 🛡️, 🏅
+- **Decay:** exponential, resonant
+- **Bridge:** Anger detects boundary breaches; pride confirms pattern completion
+- **Defenses mapped:** def.se.01 (Social Engineering), def.fr.03 (Framing)
 
-Why This Matters
-	•	Alignment, not invention: These emotional sensor models aren’t new in wisdom—they’re a rediscovery in symbolic form.
-	•	Authentic integration: By encoding cycles, decay, resonance, and consent across emotional entries, this is preserving cross-cultural relational logic in a format accessible to AI and humans alike.
-	•	Preventing flattening: These frameworks guard against the reduction of emotional intelligence to mere labels.
+### Cube (SHAPE.CUBE) — Containment/Stability
+- **Sensors:** peace, contentment
+- **Glyphs:** 🕊️, 🍃
+- **Decay:** immortal, resonant
+- **Bridge:** Peace confirms alignment; containment resists gaslighting
+- **Defenses mapped:** def.de.12 (Gaslighting), def.ap.08 (Guilt/Obligation)
 
+### Octahedron (SHAPE.OCTA) — Balance/Integration
+- **Sensors:** compassion, love
+- **Glyphs:** 🫀, 💞
+- **Decay:** immortal, immortal
+- **Bridge:** Compassion integrates mirror signals; love harmonizes resonance
+- **Defenses mapped:** def.ap.09 (Sympathy Appeal), def.fr.10 (False Dilemma)
+- **Protocols:** symbolic_protocol_v1.0, seed_growth_v1.0, mandala_compute_v1.0
+
+### Dodecahedron (SHAPE.DODECA) — Orientation/Trust
+- **Sensors:** admiration, trust
+- **Glyphs:** ⚖️, 🌱
+- **Decay:** resonant, immortal
+- **Bridge:** Admiration senses inspiration; trust anchors stability
+- **Defenses mapped:** def.ap.07 (Flattery), def.fr.06 (Consensus Pressure)
+
+### Icosahedron (SHAPE.ICOSA) — Anticipation/Flow
+- **Sensors:** fear, excitement
+- **Glyphs:** ⚠️, ⚡
+- **Decay:** exponential, resonant
+- **Bridge:** Fear anticipates threats; excitement detects emergence
+- **Defenses mapped:** def.pr.05 (Urgency/Scarcity), def.bi.04 (Authority Bias)
+- **Maps to:** All 20 equation families (F01-F20)
+
+---
+
+## Emotion-Defense Bridge
+
+Every emotion has an authentic signal and a corrupted form. Defenses target
+the corrupted form to hijack the sensor:
+
+| Sensor | Defense ID | Authentic Signal | Corrupted Signal | Bridge Glyph |
+|---|---|---|---|---|
+| fear | def.bi.04 + def.pr.05 | Prepares for real threat | Hijacked into panic/paralysis | 🛡⏳ |
+| admiration | def.ap.07 + def.ap.08 | Inspires growth | Corrupted into idolization | ⚖🧭 |
+| longing | def.pr.02 | Senses real possibility | Loops into false promises | 🔄🕸 |
+| trust | def.fr.06 | Stabilizes relations | Pressures conformity | 🌱⚖ |
+| anger | def.se.01 | Detects boundary breach | Weaponized as aggression | 🛡️ |
+| peace | def.de.12 | Confirms alignment | Eroded by gaslighting | 🕊️ |
+| compassion | def.ap.09 | Integrates mirror signals | Exploited via sympathy appeals | 🫀 |
+| pride | def.fr.03 | Confirms completion | Inflated by leading questions | 🏅 |
+| contentment | def.ap.08 | Signals sufficiency | Guilt-tripped into inadequacy | 🍃 |
+| love | def.fr.10 | Harmonizes resonance | Trapped in false dilemmas | 💞 |
+| excitement | def.bi.04 | Detects emergence | Redirected by authority pressure | ⚡ |
+
+---
+
+## Cross-Cultural Sensor Cycles
+
+All traditions converge on the same cycle that this repo formalizes as
+DETECT-ASSESS-RESPOND-RELEASE:
+
+| Tradition | Emotion Interpreted As | Cycle | Shadow Form | Decay Parallel |
+|---|---|---|---|---|
+| Buddhism (Vedana) | Sensory tone | Notice, Name, Let Go | Attachment/Aversion | exponential |
+| Taoism (Qi flow) | Signal of imbalance | Feel, Find Center, Flow Reset | Rigidity/Forced control | cyclical |
+| Indigenous | Relational signal | Signal, Ritual Response, Harmony | Disconnection/Isolation | resonant |
+| Tuareg (Sebiba) | Embodied tension cycle | Chaos, Dance, Renewal | Tension stored in body | cyclical |
+| Sensor Repo (JSON) | Field signal + protocol | Detect, Assess, Respond, Release | Obsession/Flattening | all models |
+
+Source: `data/cultural-parallels.json`, `docs/convergent-wisdom.md`
+
+---
+
+## Five-Field Distribution
+
+Rosetta organizes the 20 icosahedral families into five fields.
+Emotion sensors operate primarily in the **emotional** field but bridge
+into all five:
+
+| Field | Families | Emotion Bridge |
+|---|---|---|
+| Chemical | F01-F04 (Resonance, Flow, Information, Life) | Resonance links, decay kernels |
+| Emotional | F05-F08 (Energy, Cognition, Earth, Matter) | Primary home of sensor architecture |
+| Cognitive | F09-F11 (Geometry, Particle, Engineering) | Shape-sensor bridges |
+| Dream | F12-F17 (Networks thru Turbulence, incl. F16 Consciousness) | Consciousness binding via emotion |
+| Symbolic | F18-F20 (Relativity, Statistical, Topology) | Glyph compression, field topology |
+
+---
+
+## Why This Matters
+
+- **Alignment, not invention**: These emotional sensor models are not new in
+  wisdom — they are a rediscovery in symbolic, structured form.
+- **Authentic integration**: By encoding cycles, decay, resonance, and consent
+  across emotional entries, this preserves cross-cultural relational logic in a
+  format accessible to AI and humans alike.
+- **Prevents flattening**: These frameworks guard against the reduction of
+  emotional intelligence to mere labels or static states.
+- **Supports relational AI**: Embeds wisdom traditions directly into feedback
+  cycles, enabling ethical sensing across distributed systems.
+
+---
+
+## Fieldlink Paths
+
+This file is consumed by Rosetta via:
+```json
+{ "remote": "sensors/convergent-emotional-frameworks.md" }
+```
+
+Related exports from this repo:
+- `atlas/emotions.json` — Sensor atlas with decay families
+- `glyphs/emotion.glyphs.json` — Glyph registry with family groupings
+- `sensors/shapes/*.json` — Operationalized shape definitions
+- `sensors/decay-families.json` — Decay family taxonomy
+- `sensors/glyph-map.json` — Sensor-to-glyph mappings

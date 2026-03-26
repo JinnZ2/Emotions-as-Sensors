@@ -41,10 +41,10 @@
         "pain": {
           "detects": "discordance / misalignment",
           "alignment": "pattern_disruption",
-          "decay": "linear",
+          "decay": "exponential",
           "conditional_decay": {
             "if_aligned": "faster",
-            "if_misaligned": "linear"
+            "if_misaligned": "exponential"
           },
           "resonance": ["shame", "grief"]
         },

@@ -20,5 +20,12 @@
     "suppressed_or_invalidated": "persistent",
     "integrated_through_reflection": "transformative"
   },
+  "defense_bridge": {
+    "defense_id": "def.se.01",
+    "defense_name": "Social Engineering Cues",
+    "shape": "SHAPE.TETRA",
+    "corrupted_form": "weaponized aggression",
+    "bridge_glyph": "🛡️"
+  },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
 }

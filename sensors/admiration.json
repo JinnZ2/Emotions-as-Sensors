@@ -18,6 +18,13 @@
   "resonance_links": ["gratitude", "inspiration", "envy?"],
   "compression_group": "trust",
   "glyphs": ["🧭", "♾️", "🌱"],
+  "defense_bridge": {
+    "defense_id": "def.ap.07 + def.ap.08",
+    "defense_name": "Flattery/Ego Appeal + Guilt/Obligation",
+    "shape": "SHAPE.DODECA",
+    "corrupted_form": "corrupted into idolization",
+    "bridge_glyph": "⚖🧭"
+  },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
   "version": "0.3",
   "provenance": {

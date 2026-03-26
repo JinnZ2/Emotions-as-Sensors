@@ -35,6 +35,13 @@
       "disambiguate": "fear decays naturally; paranoia persists without external signal"
     }
   ],
+  "defense_bridge": {
+    "defense_id": "def.bi.04 + def.pr.05",
+    "defense_name": "Authority Bias + Urgency/Scarcity Pressure",
+    "shape": "SHAPE.ICOSA",
+    "corrupted_form": "hijacked into panic or paralysis",
+    "bridge_glyph": "🛡⏳"
+  },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
   "consent": {
     "infer_ok": true,

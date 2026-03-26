@@ -14,6 +14,13 @@
   "alignment_tag": "positive_activation",
   "sensor_group": ["energy", "opportunity", "future"],
   "resonance_links": ["longing", "peace"],
-  "decay_model": "linear",
+  "decay_model": "resonant",
+  "defense_bridge": {
+    "defense_id": "def.bi.04",
+    "defense_name": "Authority Bias",
+    "shape": "SHAPE.ICOSA",
+    "corrupted_form": "redirected by authority pressure",
+    "bridge_glyph": "⚡"
+  },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
 }

@@ -16,6 +16,13 @@
   "decay_model": "processing_based",
   "energy": "redistributive",
   "polarity": "positive",
+  "defense_bridge": {
+    "defense_id": "def.ap.09",
+    "defense_name": "Sympathy Hardship Appeal",
+    "shape": "SHAPE.OCTA",
+    "corrupted_form": "exploited via sympathy appeals",
+    "bridge_glyph": "🫀"
+  },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
   "symbolic_response": {
     "recommended_action": "act with care and understanding",

@@ -28,5 +28,15 @@
   ],
 
   "decay_model": "generative",
-  "decay_behavior": "Confusion persists until resolved but fuels curiosity and creativity rather than degrading."
+  "decay_behavior": "Confusion persists until resolved but fuels curiosity and creativity rather than degrading.",
+
+  "math": {
+    "lambda": 0.45,
+    "alpha": 1.0,
+    "kernel": {"type": "exponential"},
+    "pad": {"P": -0.20, "A": 0.45, "D": -0.30},
+    "corrupted_pad": {"P": -0.40, "A": 0.15, "D": -0.60},
+    "couplings": [{"to": "curiosity", "w": 0.3}, {"to": "fear", "w": 0.15}],
+    "policy": {"role": "transform", "max_action_cost": 0.2}
+  }
 }

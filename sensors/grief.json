@@ -78,6 +78,16 @@
     "pattern_reweaving"
   ],
 
+  "math": {
+    "lambda": 0.3,
+    "alpha": 0.9,
+    "kernel": {"type": "cyclical", "omega_0": 0.017, "zeta": 0.15},
+    "pad": {"P": -0.75, "A": -0.60, "D": -0.55},
+    "corrupted_pad": {"P": -0.75, "A": -0.20, "D": -0.70},
+    "couplings": [{"to": "love", "w": 0.25}, {"to": "longing", "w": 0.35}],
+    "policy": {"role": "transform", "max_action_cost": 0.3}
+  },
+
   "tags": [
     "elder_logic",
     "emotional_sensor",

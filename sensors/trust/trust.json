@@ -14,6 +14,7 @@
     "alpha": 0.8,
     "kernel": {"type": "immortal", "floor": 0.2},
     "pad": {"P": 0.60, "A": -0.20, "D": 0.35},
+    "corrupted_pad": {"P": 0.20, "A": 0.10, "D": -0.40},
     "couplings": [{"to": "admiration", "w": 0.2}, {"to": "peace", "w": 0.25}],
     "policy": {"role": "stabilize", "max_action_cost": 0.1}
   },

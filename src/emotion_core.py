@@ -85,6 +85,13 @@ class EmotionSensor:
         self.pad_a = pad_cfg.get("A", 0.0)
         self.pad_d = pad_cfg.get("D", 0.0)
 
+        # Corrupted PAD signature (from pad_biology.json)
+        # When a sensor is corrupted, its PAD shifts toward these values
+        corrupted_pad = math_cfg.get("corrupted_pad", {})
+        self.corrupted_pad_p = corrupted_pad.get("P", None)
+        self.corrupted_pad_a = corrupted_pad.get("A", None)
+        self.corrupted_pad_d = corrupted_pad.get("D", None)
+
         # kernel-specific parameters
         kernel_cfg = math_cfg.get("kernel", {})
         self.omega_0 = kernel_cfg.get("omega_0", 1.0)
@@ -94,7 +101,7 @@ class EmotionSensor:
 
         # dynamic state
         self.E = 0.0       # activation amplitude
-        self.E_dot = 0.0   # velocity (for cyclical kernel)
+        self.V = 0.0       # velocity (second state variable for cyclical kernel)
         self.U = 0.0       # unknown field
         self.authentic = True
         self.corruption_cycles = 0
@@ -119,7 +126,7 @@ class EmotionSensor:
         elif self.decay_model == "cyclical":
             # Damped harmonic oscillator: d2E/dt2 + 2*zeta*omega_0*dE/dt + omega_0^2*E = 0
             # Converted to first-order: K(E) returns the restoring force term
-            return self.omega_0 ** 2 * E + 2 * self.zeta * self.omega_0 * self.E_dot
+            return self.omega_0 ** 2 * E + 2 * self.zeta * self.omega_0 * self.V
         elif self.decay_model == "resonant":
             # Self-reinforcing with logistic saturation
             # Low E: K ~ 0 (barely decays, self-sustains)
@@ -138,16 +145,34 @@ class EmotionSensor:
         return E
 
     def update(self, dt, inputs, neighbors):
-        """Integrate one timestep: dE/dt = I - lambda*K(E) + sum(w*g(E_j)) + U."""
+        """Integrate one timestep: dE/dt = I - lambda*K(E) + sum(w*g(E_j)) + U.
+
+        For cyclical kernels, integrates the second-order system:
+            dE/dt = V
+            dV/dt = I - 2*zeta*omega_0*V - omega_0^2*E + coupling + U
+        This gives proper damped oscillation (grief tides, longing waves).
+        """
         drive = self.sense(inputs)
         coupling = sum(
             self.couplings.get(n.name, 0.0) * math.tanh(n.E)
             for n in neighbors
         )
-        decay = self.lambda_ * self.kernel(self.E)
-        dE = drive - decay + coupling + self.U
-        self.E_dot = dE
-        self.E += dt * dE
+
+        if self.decay_model == "cyclical":
+            # Second-order: position E, velocity V
+            # dV/dt = drive - 2*zeta*w0*V - w0^2*E + coupling + U
+            dV = (drive
+                  - 2 * self.zeta * self.omega_0 * self.V
+                  - self.lambda_ * self.omega_0 ** 2 * self.E
+                  + coupling + self.U)
+            self.V += dt * dV
+            self.E += dt * self.V
+        else:
+            decay = self.lambda_ * self.kernel(self.E)
+            dE = drive - decay + coupling + self.U
+            self.V = dE  # store velocity for diagnostics
+            self.E += dt * dE
+
         self.E = max(0.0, min(1.0, self.E))
 
         # Authenticity gate: check for corrupted signal
@@ -156,15 +181,18 @@ class EmotionSensor:
     def _check_authenticity(self, drive):
         """Authenticity gate A_i(t).
 
-        If no active drive signal but activation persists beyond decay
-        expectations, flag as potentially corrupted. Uses defense_bridge
-        data when available.
+        Two detection methods:
+        1. Temporal: activation persists without input beyond decay expectations
+        2. PAD signature: current PAD drifts toward known corrupted centroid
+           (from pad_biology.json corrupted_signal data)
+
+        Uses defense_bridge data when available.
         """
         if not self.defense_bridge:
             self.authentic = True
             return
 
-        # Corrupted signal detection: activation without active input
+        # Method 1: Temporal — activation without active input
         if drive < 0.05 and self.E > 0.3:
             self.corruption_cycles += 1
         else:
@@ -181,9 +209,33 @@ class EmotionSensor:
         elif self.decay_model == "resonant":
             threshold = 6
         else:
-            threshold = 50  # immortal/transformative — very unlikely corrupted
+            threshold = 50  # immortal/transformative
 
-        self.authentic = self.corruption_cycles < threshold
+        temporal_ok = self.corruption_cycles < threshold
+
+        # Method 2: PAD signature — check if current PAD is closer to
+        # corrupted centroid than authentic centroid
+        pad_ok = True
+        if self.corrupted_pad_p is not None and self.E > 0.1:
+            # Distance from authentic centroid
+            d_auth = math.sqrt(
+                (self.pad_p - self.pad_p) ** 2 +
+                (self.pad_a - self.pad_a) ** 2 +
+                (self.pad_d - self.pad_d) ** 2
+            )  # always 0 for static centroids — compare arousal dampening
+            # Key insight from pad_biology.json: corrupted signals have
+            # dampened A (arousal drops) and shifted D (control changes)
+            # Check if arousal is abnormally low for this sensor
+            a_ratio = abs(self.pad_a)
+            corrupted_a = abs(self.corrupted_pad_a)
+            if a_ratio > 0 and corrupted_a < a_ratio:
+                # If current effective arousal (scaled by E) matches
+                # corrupted profile more than authentic profile
+                effective_a = abs(self.pad_a * self.E)
+                if effective_a < corrupted_a * 1.2 and self.E > 0.3:
+                    pad_ok = False
+
+        self.authentic = temporal_ok and pad_ok
 
     def release(self, rate=0.95):
         """Release / decay control: lambda *= r(t), r <= 1."""

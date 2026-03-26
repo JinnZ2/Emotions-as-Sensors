@@ -25,6 +25,7 @@
     "alpha": 1.0,
     "kernel": {"type": "exponential"},
     "pad": {"P": -0.55, "A": 0.80, "D": 0.70},
+    "corrupted_pad": {"P": -0.55, "A": 0.30, "D": 0.20},
     "couplings": [{"to": "fear", "w": 0.3}, {"to": "shame", "w": 0.2}],
     "policy": {"role": "transform", "max_action_cost": 0.2}
   },

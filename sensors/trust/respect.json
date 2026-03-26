@@ -13,13 +13,38 @@
   },
   "compression_group": "trust",
   "decay_model": "processing_based",
-  "tags": ["trust", "respect", "boundary-recognition"],
+  "tags": [
+    "trust",
+    "respect",
+    "boundary-recognition"
+  ],
   "math": {
     "lambda": 0.05,
     "alpha": 0.8,
-    "kernel": {"type": "immortal", "floor": 0.15},
-    "pad": {"P": 0.55, "A": -0.15, "D": 0.45},
-    "couplings": [{"to": "trust", "w": 0.3}, {"to": "admiration", "w": 0.2}],
-    "policy": {"role": "stabilize", "max_action_cost": 0.1}
-  }
+    "kernel": {
+      "type": "immortal",
+      "floor": 0.15
+    },
+    "pad": {
+      "P": 0.55,
+      "A": -0.15,
+      "D": 0.45
+    },
+    "couplings": [
+      {
+        "to": "trust",
+        "w": 0.3
+      },
+      {
+        "to": "admiration",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "stabilize",
+      "max_action_cost": 0.1
+    }
+  },
+  "decay": "immortal",
+  "energy": "conserves"
 }

@@ -18,13 +18,37 @@
     "semantic oscillation": true
   },
   "decay_model": "persists until sufficient grounding or orientation input is received",
-  "tags": ["cognitive", "uncertainty", "orientation"],
+  "tags": [
+    "cognitive",
+    "uncertainty",
+    "orientation"
+  ],
   "math": {
     "lambda": 0.45,
     "alpha": 1.0,
-    "kernel": {"type": "exponential"},
-    "pad": {"P": -0.25, "A": 0.40, "D": -0.35},
-    "couplings": [{"to": "curiosity", "w": 0.25}, {"to": "fear", "w": 0.15}],
-    "policy": {"role": "transform", "max_action_cost": 0.2}
-  }
+    "kernel": {
+      "type": "exponential"
+    },
+    "pad": {
+      "P": -0.25,
+      "A": 0.4,
+      "D": -0.35
+    },
+    "couplings": [
+      {
+        "to": "curiosity",
+        "w": 0.25
+      },
+      {
+        "to": "fear",
+        "w": 0.15
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.2
+    }
+  },
+  "decay": "exponential",
+  "energy": "depletes"
 }

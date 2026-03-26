@@ -12,13 +12,37 @@
   },
   "compression_group": "interest",
   "decay_model": "feedback_sensitive",
-  "tags": ["interest", "hope", "forward-orientation"],
+  "tags": [
+    "interest",
+    "hope",
+    "forward-orientation"
+  ],
   "math": {
     "lambda": 0.3,
     "alpha": 0.9,
-    "kernel": {"type": "resonant"},
-    "pad": {"P": 0.55, "A": 0.40, "D": 0.30},
-    "couplings": [{"to": "longing", "w": 0.3}, {"to": "excitement", "w": 0.2}],
-    "policy": {"role": "add", "max_action_cost": 0.15}
-  }
+    "kernel": {
+      "type": "resonant"
+    },
+    "pad": {
+      "P": 0.55,
+      "A": 0.4,
+      "D": 0.3
+    },
+    "couplings": [
+      {
+        "to": "longing",
+        "w": 0.3
+      },
+      {
+        "to": "excitement",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "add",
+      "max_action_cost": 0.15
+    }
+  },
+  "decay": "resonant",
+  "energy": "adds"
 }

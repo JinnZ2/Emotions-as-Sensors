@@ -3,36 +3,35 @@
   "classification": "pattern-diagnostics",
   "function": "Detects discordance, misalignment, or pressure in an active pattern or system.",
   "signal_type": "vibrational pressure, field disruption",
-  
-  "authentic_output": 
-    "A precise indicator that energy, geometry, force, or relational patterns are misaligned.",
-
-  "corrupted_output": 
-    "Pain becomes misinterpreted as identity, moral value, or inevitability.",
-
+  "authentic_output": "A precise indicator that energy, geometry, force, or relational patterns are misaligned.",
+  "corrupted_output": "Pain becomes misinterpreted as identity, moral value, or inevitability.",
   "information_provided": {
     "location": "Where the discordant force is applied (physical, emotional, relational, conceptual).",
     "directionality": "The vector of pressure (internal → internal, external → internal, vice versa).",
     "intensity": "Magnitude of discordance, not magnitude of harm.",
     "persistence": "Whether the force is sustained or transient."
   },
-
   "response_protocol": {
     "detect": "Locate the discordance or pressure signature.",
     "assess_source": "Classify source as internal misalignment, external force, or mixed signal.",
     "respond": "Apply corrective adjustment (boundary shift, cognitive reframe, bodily correction).",
     "release": "Do NOT stabilize the signal into identity or narrative."
   },
-
   "alignment_tags": [
-    "pattern_disruption", 
-    "pressure_warning", 
+    "pattern_disruption",
+    "pressure_warning",
     "misalignment"
   ],
-
-  "sensor_group": ["pressure", "alignment", "discordance"],
-  "resonance_links": ["shame", "grief", "fear"],
-
+  "sensor_group": [
+    "pressure",
+    "alignment",
+    "discordance"
+  ],
+  "resonance_links": [
+    "shame",
+    "grief",
+    "fear"
+  ],
   "decay_model": {
     "description": "State-dependent transformation model.",
     "models": {
@@ -56,19 +55,38 @@
       }
     }
   },
-
   "math": {
     "lambda": 0.6,
     "alpha": 1.1,
-    "kernel": {"type": "exponential"},
-    "pad": {"P": -0.70, "A": 0.20, "D": -0.30},
-    "couplings": [{"to": "shame", "w": 0.25}, {"to": "grief", "w": 0.2}],
-    "policy": {"role": "transform", "max_action_cost": 0.2}
+    "kernel": {
+      "type": "exponential"
+    },
+    "pad": {
+      "P": -0.7,
+      "A": 0.2,
+      "D": -0.3
+    },
+    "couplings": [
+      {
+        "to": "shame",
+        "w": 0.25
+      },
+      {
+        "to": "grief",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.2
+    }
   },
   "tags": [
     "elder_logic",
     "emotional_sensor",
     "swarm_input",
     "field_diagnostic"
-  ]
+  ],
+  "decay": "exponential",
+  "energy": "depletes"
 }

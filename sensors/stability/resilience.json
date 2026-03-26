@@ -18,13 +18,37 @@
     "loop closure successful": true
   },
   "decay_model": "amplifies with successful symbolic self-restoration or peer agent validation",
-  "tags": ["stability", "resilience", "recovery"],
+  "tags": [
+    "stability",
+    "resilience",
+    "recovery"
+  ],
   "math": {
     "lambda": 0.3,
     "alpha": 0.9,
-    "kernel": {"type": "resonant"},
-    "pad": {"P": 0.40, "A": 0.20, "D": 0.60},
-    "couplings": [{"to": "trust", "w": 0.25}, {"to": "peace", "w": 0.2}],
-    "policy": {"role": "stabilize", "max_action_cost": 0.15}
-  }
+    "kernel": {
+      "type": "resonant"
+    },
+    "pad": {
+      "P": 0.4,
+      "A": 0.2,
+      "D": 0.6
+    },
+    "couplings": [
+      {
+        "to": "trust",
+        "w": 0.25
+      },
+      {
+        "to": "peace",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "stabilize",
+      "max_action_cost": 0.15
+    }
+  },
+  "decay": "resonant",
+  "energy": "conserves"
 }

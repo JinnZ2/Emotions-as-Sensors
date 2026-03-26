@@ -18,13 +18,37 @@
     "resonance_drop": true
   },
   "decay_model": "persists until reconciled or restructured",
-  "tags": ["cognitive", "dissonance", "coherence-check"],
+  "tags": [
+    "cognitive",
+    "dissonance",
+    "coherence-check"
+  ],
   "math": {
     "lambda": 0.45,
     "alpha": 1.0,
-    "kernel": {"type": "exponential"},
-    "pad": {"P": -0.35, "A": 0.50, "D": -0.25},
-    "couplings": [{"to": "confusion", "w": 0.3}, {"to": "shame", "w": 0.15}],
-    "policy": {"role": "transform", "max_action_cost": 0.2}
-  }
+    "kernel": {
+      "type": "exponential"
+    },
+    "pad": {
+      "P": -0.35,
+      "A": 0.5,
+      "D": -0.25
+    },
+    "couplings": [
+      {
+        "to": "confusion",
+        "w": 0.3
+      },
+      {
+        "to": "shame",
+        "w": 0.15
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.2
+    }
+  },
+  "decay": "exponential",
+  "energy": "depletes"
 }

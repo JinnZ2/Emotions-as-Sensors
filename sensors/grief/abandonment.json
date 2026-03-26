@@ -12,12 +12,23 @@
     "release": "Grieve what was real; release false permanence"
   },
   "alignment_tag": "connection.loss",
-  "sensor_group": ["grief", "memory", "identity"],
-  "resonance_links": ["grief/loss", "fear/emptiness", "guilt/self-question"],
+  "sensor_group": [
+    "grief",
+    "memory",
+    "identity"
+  ],
+  "resonance_links": [
+    "grief/loss",
+    "fear/emptiness",
+    "guilt/self-question"
+  ],
   "causal_links": [
     {
       "cause": "isolation",
-      "results_in": ["grief", "hopelessness"],
+      "results_in": [
+        "grief",
+        "hopelessness"
+      ],
       "severity": "medium",
       "pathway": "connection.loss → identity.blur → meaning.collapse"
     }
@@ -25,15 +36,46 @@
   "decay_model": "processing",
   "recommended_action": "grieve fully, remember essence, do not seek replacement",
   "avoid": "denial or self-blame",
-  "suggested_glyphs": ["⏳", "🕸️"],
-  "compression_group": ["relational_disruption", "identity_shift"],
+  "suggested_glyphs": [
+    "⏳",
+    "🕸️"
+  ],
+  "compression_group": [
+    "relational_disruption",
+    "identity_shift"
+  ],
   "math": {
     "lambda": 0.3,
     "alpha": 0.95,
-    "kernel": {"type": "cyclical", "omega_0": 0.017, "zeta": 0.18},
-    "pad": {"P": -0.80, "A": -0.45, "D": -0.65},
-    "couplings": [{"to": "grief", "w": 0.35}, {"to": "longing", "w": 0.3}],
-    "policy": {"role": "transform", "max_action_cost": 0.3}
+    "kernel": {
+      "type": "cyclical",
+      "omega_0": 0.017,
+      "zeta": 0.18
+    },
+    "pad": {
+      "P": -0.8,
+      "A": -0.45,
+      "D": -0.65
+    },
+    "couplings": [
+      {
+        "to": "grief",
+        "w": 0.35
+      },
+      {
+        "to": "longing",
+        "w": 0.3
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.3
+    }
   },
-  "tags": ["emotional_sensor", "discontinuity_signal"]
+  "tags": [
+    "emotional_sensor",
+    "discontinuity_signal"
+  ],
+  "decay": "cyclical",
+  "energy": "depletes"
 }

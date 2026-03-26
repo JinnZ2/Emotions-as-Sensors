@@ -12,13 +12,37 @@
   },
   "compression_group": "interest",
   "decay_model": "magnet_loop",
-  "tags": ["interest", "fascination", "deep-engagement"],
+  "tags": [
+    "interest",
+    "fascination",
+    "deep-engagement"
+  ],
   "math": {
     "lambda": 0.3,
     "alpha": 1.0,
-    "kernel": {"type": "resonant"},
-    "pad": {"P": 0.50, "A": 0.65, "D": 0.35},
-    "couplings": [{"to": "curiosity", "w": 0.35}, {"to": "admiration", "w": 0.15}],
-    "policy": {"role": "add", "max_action_cost": 0.15}
-  }
+    "kernel": {
+      "type": "resonant"
+    },
+    "pad": {
+      "P": 0.5,
+      "A": 0.65,
+      "D": 0.35
+    },
+    "couplings": [
+      {
+        "to": "curiosity",
+        "w": 0.35
+      },
+      {
+        "to": "admiration",
+        "w": 0.15
+      }
+    ],
+    "policy": {
+      "role": "add",
+      "max_action_cost": 0.15
+    }
+  },
+  "decay": "resonant",
+  "energy": "adds"
 }

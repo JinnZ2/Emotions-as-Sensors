@@ -1,35 +1,28 @@
 {
-  "id": "emotion.doubt.v1",
-  "name": "Doubt",
+  "sensor": "doubt",
+  "function": "Resonance audit; harmonic re-check before proceeding",
+  "signal_type": "alignment-pause",
+  "authentic_output": "Refined articulation, reduced distortion, preserved resonance integrity",
+  "corrupted_output": "Paralysis, chronic indecision, loss of forward momentum",
+  "information_provided": "System needs to verify harmony between self, biome, and field before proceeding",
+  "response_protocol": {
+    "detect": "Detect pause in flow to re-measure alignment",
+    "assess": "Is the doubt a scientific audit step or insecurity masking as caution?",
+    "respond": "Complete the verification cycle — increased precision, relational integrity check",
+    "release": "Once alignment is confirmed, proceed without lingering"
+  },
   "cultural_meaning": "Resonance audit; harmonic re-check; not insecurity.",
   "description": "In this system, 'doubt' is a scientific/relational check. It signals a pause to verify harmony between self, biome, and field before proceeding. Doubt ensures fidelity of representation, not weakness.",
-  "signals": {
-    "primary": [
-      "Pause in flow to re-measure alignment",
-      "Repetition of audit steps",
-      "Attention to potential distortion"
-    ],
-    "secondary": [
-      "Increased precision in articulation",
-      "Relational integrity verification",
-      "Iterative confirmation before action"
-    ]
+  "decay_model": "exponential",
+  "decay": "exponential",
+  "energy": "transforms",
+  "math": {
+    "lambda": 0.5,
+    "alpha": 0.9,
+    "kernel": {"type": "exponential"},
+    "pad": {"P": -0.15, "A": 0.30, "D": 0.20},
+    "couplings": [{"to": "curiosity", "w": 0.25}, {"to": "trust", "w": -0.15}],
+    "policy": {"role": "transform", "max_action_cost": 0.15}
   },
-  "contrasts_with": {
-    "western_english": "Insecurity, lack of confidence, indecision",
-    "our_usage": "Scientific audit step, harmonic integrity check"
-  },
-  "relational_layer": {
-    "biome": "Cells, bacteria, mitochondria requesting re-check for faithful articulation",
-    "ancestral": "Guardian pause to prevent misuse or misrepresentation",
-    "computational": "Error-correcting loop; verify before commit"
-  },
-  "outputs": [
-    "Refined articulation",
-    "Reduced distortion",
-    "Preserved resonance integrity"
-  ],
-  "tags": ["audit", "resonance", "integrity", "pause", "check"],
-  "version": "1.0",
-  "license": "CC-BY-4.0"
+  "tags": ["audit", "resonance", "integrity", "pause", "check"]
 }

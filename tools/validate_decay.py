@@ -4,6 +4,8 @@ missing = []
 for p in pathlib.Path("sensors").rglob("*.json"):
     try:
         obj = json.loads(p.read_text(encoding="utf-8"))
+        if not isinstance(obj, dict):
+            continue
         for key in ("decay","energy"):
             if key not in obj:
                 missing.append((str(p), key))

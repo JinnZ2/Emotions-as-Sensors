@@ -1,25 +1,16 @@
 {
   "sensor": "grief",
   "classification": "pattern-evolution",
-  
-  "function": 
-    "Detects the removal, collapse, or departure of an essential pattern and initiates the integration cycle.",
-
+  "function": "Detects the removal, collapse, or departure of an essential pattern and initiates the integration cycle.",
   "signal_type": "loss-pattern pressure / vacuum formation",
-
-  "authentic_output": 
-    "Transforms loss into coherence: memory, lesson, legacy, new roles, new bonds, expanded capacity.",
-
-  "corrupted_output": 
-    "Looping collapse, stasis, identity fusion with loss, refusal or inability to reweave patterns.",
-
+  "authentic_output": "Transforms loss into coherence: memory, lesson, legacy, new roles, new bonds, expanded capacity.",
+  "corrupted_output": "Looping collapse, stasis, identity fusion with loss, refusal or inability to reweave patterns.",
   "information_provided": {
     "what_was_lost": "Identity, pattern, role, connection, possibility, territory.",
     "what_is_irreplaceable": "Elements that cannot be recreated exactly in form.",
     "what_is_regenerable": "Functions, lessons, bonds, structures that can be rewoven.",
     "void_geometry": "Shape and pressure-pattern of the absence (defines what must be integrated)."
   },
-
   "response_protocol": {
     "detect": "Recognize the rupture or removal — no minimizing, no bypassing.",
     "assess": "Differentiate the non-returning forms vs. the functions that can be re-instantiated.",
@@ -27,18 +18,20 @@
     "reweave": "Redistribute roles, rebuild pattern links, redesign the system to accommodate new shape.",
     "release": "Transition from active grief-signal to integrated coherence (memory without collapse)."
   },
-
   "alignment_tag": "loss_integration",
-  "sensor_group": ["loss", "adaptation", "memory", "pattern-evolution"],
-
+  "sensor_group": [
+    "loss",
+    "adaptation",
+    "memory",
+    "pattern-evolution"
+  ],
   "resonance_links": [
-    "love", 
-    "admiration", 
-    "longing", 
-    "devotion", 
+    "love",
+    "admiration",
+    "longing",
+    "devotion",
     "identity-shift"
   ],
-
   "decay_model": {
     "description": "Grief does not decay; it transforms.",
     "models": {
@@ -62,13 +55,10 @@
       }
     }
   },
-
   "energy": {
     "type": "conservative-transformative",
-    "description": 
-      "Loss energy cannot be destroyed; it is converted into memory, skill, love, and new pattern-links."
+    "description": "Loss energy cannot be destroyed; it is converted into memory, skill, love, and new pattern-links."
   },
-
   "transformation_protocol": [
     "ritual",
     "story-keeping",
@@ -77,21 +67,44 @@
     "legacy creation",
     "pattern_reweaving"
   ],
-
   "math": {
     "lambda": 0.3,
     "alpha": 0.9,
-    "kernel": {"type": "cyclical", "omega_0": 0.017, "zeta": 0.15},
-    "pad": {"P": -0.75, "A": -0.60, "D": -0.55},
-    "corrupted_pad": {"P": -0.75, "A": -0.20, "D": -0.70},
-    "couplings": [{"to": "love", "w": 0.25}, {"to": "longing", "w": 0.35}],
-    "policy": {"role": "transform", "max_action_cost": 0.3}
+    "kernel": {
+      "type": "cyclical",
+      "omega_0": 0.017,
+      "zeta": 0.15
+    },
+    "pad": {
+      "P": -0.75,
+      "A": -0.6,
+      "D": -0.55
+    },
+    "corrupted_pad": {
+      "P": -0.75,
+      "A": -0.2,
+      "D": -0.7
+    },
+    "couplings": [
+      {
+        "to": "love",
+        "w": 0.25
+      },
+      {
+        "to": "longing",
+        "w": 0.35
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.3
+    }
   },
-
   "tags": [
     "elder_logic",
     "emotional_sensor",
     "swarm_input",
     "pattern_reconstruction"
-  ]
+  ],
+  "decay": "cyclical"
 }

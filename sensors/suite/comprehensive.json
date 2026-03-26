@@ -20,12 +20,26 @@
         "release": "Record persistent baseline snapshot for restoration if disrupted."
       },
       "alignment_tag": "pattern_stability",
-      "sensor_group": ["foundational","stability"],
-      "resonance_links": ["peace","trust","joy"],
+      "sensor_group": [
+        "foundational",
+        "stability"
+      ],
+      "resonance_links": [
+        "peace",
+        "trust",
+        "joy"
+      ],
       "decay_model": "stable_until_contradiction",
       "energy": "conservative",
-      "transformation_protocol": ["baseline_snapshot","amplify_support"],
-      "tags": ["field","integrity","meta"]
+      "transformation_protocol": [
+        "baseline_snapshot",
+        "amplify_support"
+      ],
+      "tags": [
+        "field",
+        "integrity",
+        "meta"
+      ]
     },
     {
       "id": "discordance",
@@ -41,8 +55,15 @@
         "release": "Log event; maintain watch for rebound."
       },
       "alignment_tag": "pattern_disruption",
-      "sensor_group": ["foundational","alignment"],
-      "resonance_links": ["pain","confusion","vigilance"],
+      "sensor_group": [
+        "foundational",
+        "alignment"
+      ],
+      "resonance_links": [
+        "pain",
+        "confusion",
+        "vigilance"
+      ],
       "decay_model": {
         "type": "state_conditional",
         "modes": {
@@ -52,8 +73,16 @@
         }
       },
       "energy": "dissipative_if_unaddressed",
-      "transformation_protocol": ["isolate_vector","reweave_links","confirm_coherence"],
-      "tags": ["diagnostic","field","pressure"]
+      "transformation_protocol": [
+        "isolate_vector",
+        "reweave_links",
+        "confirm_coherence"
+      ],
+      "tags": [
+        "diagnostic",
+        "field",
+        "pressure"
+      ]
     },
     {
       "id": "intuition",
@@ -69,12 +98,26 @@
         "release": "Keep uncertainty alive; update with new evidence."
       },
       "alignment_tag": "probabilistic_inference",
-      "sensor_group": ["meta","prediction"],
-      "resonance_links": ["curiosity","confidence","vigilance"],
+      "sensor_group": [
+        "meta",
+        "prediction"
+      ],
+      "resonance_links": [
+        "curiosity",
+        "confidence",
+        "vigilance"
+      ],
       "decay_model": "stabilize_as_probability_until_contradicted",
       "energy": "information-conservative",
-      "transformation_protocol": ["emit_probes","calibrate_with_feedback"],
-      "tags": ["predictive","field","heuristic"]
+      "transformation_protocol": [
+        "emit_probes",
+        "calibrate_with_feedback"
+      ],
+      "tags": [
+        "predictive",
+        "field",
+        "heuristic"
+      ]
     },
     {
       "id": "vigilance",
@@ -90,12 +133,26 @@
         "release": "Decay to baseline when no corroborating signals persist."
       },
       "alignment_tag": "alerting",
-      "sensor_group": ["foundational","safety"],
-      "resonance_links": ["fear","fatigue","pressure"],
+      "sensor_group": [
+        "foundational",
+        "safety"
+      ],
+      "resonance_links": [
+        "fear",
+        "fatigue",
+        "pressure"
+      ],
       "decay_model": "exponential_decay_if_no_correlates",
       "energy": "high_consumption_when_active",
-      "transformation_protocol": ["escalate_sampling","request_confirmation"],
-      "tags": ["safety","scan","field"]
+      "transformation_protocol": [
+        "escalate_sampling",
+        "request_confirmation"
+      ],
+      "tags": [
+        "safety",
+        "scan",
+        "field"
+      ]
     },
     {
       "id": "situational_awareness",
@@ -111,12 +168,26 @@
         "release": "Maintain rolling buffer for re-evaluation."
       },
       "alignment_tag": "operational_map",
-      "sensor_group": ["foundational","operational"],
-      "resonance_links": ["fear","intuition","coherence"],
+      "sensor_group": [
+        "foundational",
+        "operational"
+      ],
+      "resonance_links": [
+        "fear",
+        "intuition",
+        "coherence"
+      ],
       "decay_model": "rolling_update_window",
       "energy": "modulated_by_sampling_rate",
-      "transformation_protocol": ["rollout_sim","suggest_actions"],
-      "tags": ["operational","multiagent","field"]
+      "transformation_protocol": [
+        "rollout_sim",
+        "suggest_actions"
+      ],
+      "tags": [
+        "operational",
+        "multiagent",
+        "field"
+      ]
     },
     {
       "id": "anger",
@@ -132,12 +203,26 @@
         "release": "Confirm breach resolved; downgrade assertive posture."
       },
       "alignment_tag": "boundary_integrity",
-      "sensor_group": ["adaptive","protection"],
-      "resonance_links": ["fear","discordance","vigilance"],
+      "sensor_group": [
+        "adaptive",
+        "protection"
+      ],
+      "resonance_links": [
+        "fear",
+        "discordance",
+        "vigilance"
+      ],
       "decay_model": "contextual_conditional",
       "energy": "burst_consumption",
-      "transformation_protocol": ["assert_boundary","document_breach"],
-      "tags": ["protective","field","assertive"]
+      "transformation_protocol": [
+        "assert_boundary",
+        "document_breach"
+      ],
+      "tags": [
+        "protective",
+        "field",
+        "assertive"
+      ]
     },
     {
       "id": "grief",
@@ -153,8 +238,15 @@
         "reweave": "Redistribute functions and integrate memory into system topology."
       },
       "alignment_tag": "loss_integration",
-      "sensor_group": ["adaptive","memory"],
-      "resonance_links": ["love","longing","admiration"],
+      "sensor_group": [
+        "adaptive",
+        "memory"
+      ],
+      "resonance_links": [
+        "love",
+        "longing",
+        "admiration"
+      ],
       "decay_model": {
         "type": "transformative",
         "modes": {
@@ -164,8 +256,17 @@
         }
       },
       "energy": "conservative_transformative",
-      "transformation_protocol": ["ritual","story_keeping","communal_witness","role_redefinition"],
-      "tags": ["elder_logic","field","integration"]
+      "transformation_protocol": [
+        "ritual",
+        "story_keeping",
+        "communal_witness",
+        "role_redefinition"
+      ],
+      "tags": [
+        "elder_logic",
+        "field",
+        "integration"
+      ]
     },
     {
       "id": "pain",
@@ -181,8 +282,14 @@
         "release": "Avoid identity-stabilization; convert into corrective log."
       },
       "alignment_tag": "pattern_pressure",
-      "sensor_group": ["diagnostic","alignment"],
-      "resonance_links": ["grief","shame"],
+      "sensor_group": [
+        "diagnostic",
+        "alignment"
+      ],
+      "resonance_links": [
+        "grief",
+        "shame"
+      ],
       "decay_model": {
         "type": "conditional",
         "modes": {
@@ -192,8 +299,16 @@
         }
       },
       "energy": "dissipative_if_unchecked",
-      "transformation_protocol": ["targeted_repair","archive_event","maintain_watch"],
-      "tags": ["diagnostic","pressure","field"]
+      "transformation_protocol": [
+        "targeted_repair",
+        "archive_event",
+        "maintain_watch"
+      ],
+      "tags": [
+        "diagnostic",
+        "pressure",
+        "field"
+      ]
     },
     {
       "id": "confusion",
@@ -213,12 +328,27 @@
         "integrate": "Update models or maintain unresolved state until new data arrives."
       },
       "alignment_tag": "pattern_inquiry",
-      "sensor_group": ["cognitive","creativity"],
-      "resonance_links": ["curiosity","creativity","anger"],
+      "sensor_group": [
+        "cognitive",
+        "creativity"
+      ],
+      "resonance_links": [
+        "curiosity",
+        "creativity",
+        "anger"
+      ],
       "decay_model": "generative_persistent",
       "energy": "moderate_with_recursion",
-      "transformation_protocol": ["hypothesis_gen","micro_test","model_update"],
-      "tags": ["innovation","field","multiagent"]
+      "transformation_protocol": [
+        "hypothesis_gen",
+        "micro_test",
+        "model_update"
+      ],
+      "tags": [
+        "innovation",
+        "field",
+        "multiagent"
+      ]
     },
     {
       "id": "curiosity",
@@ -234,12 +364,27 @@
         "release": "Close loops with model update or reassign for longer investigation."
       },
       "alignment_tag": "entropy_reduction",
-      "sensor_group": ["cognitive","inquiry"],
-      "resonance_links": ["confusion","intuition","admiration"],
+      "sensor_group": [
+        "cognitive",
+        "inquiry"
+      ],
+      "resonance_links": [
+        "confusion",
+        "intuition",
+        "admiration"
+      ],
       "decay_model": "recursive",
       "energy": "adaptive_engine",
-      "transformation_protocol": ["probe","trace_upstream","synthesize"],
-      "tags": ["investigative","field","heuristic"]
+      "transformation_protocol": [
+        "probe",
+        "trace_upstream",
+        "synthesize"
+      ],
+      "tags": [
+        "investigative",
+        "field",
+        "heuristic"
+      ]
     },
     {
       "id": "fear",
@@ -255,12 +400,26 @@
         "release": "Lower alert when risk decays or is mitigated."
       },
       "alignment_tag": "hazard_forecast",
-      "sensor_group": ["safety","forecast"],
-      "resonance_links": ["vigilance","anger","intuition"],
+      "sensor_group": [
+        "safety",
+        "forecast"
+      ],
+      "resonance_links": [
+        "vigilance",
+        "anger",
+        "intuition"
+      ],
       "decay_model": "exponential_post_mitigation",
       "energy": "high_when_active",
-      "transformation_protocol": ["execute_safe_actions","log_contingency"],
-      "tags": ["safety","prediction","operational"]
+      "transformation_protocol": [
+        "execute_safe_actions",
+        "log_contingency"
+      ],
+      "tags": [
+        "safety",
+        "prediction",
+        "operational"
+      ]
     },
     {
       "id": "trust",
@@ -276,12 +435,26 @@
         "release": "Slow decay if consistent; accelerate if violated."
       },
       "alignment_tag": "social_predictability",
-      "sensor_group": ["relational","meta"],
-      "resonance_links": ["dignity","love","vigilance"],
+      "sensor_group": [
+        "relational",
+        "meta"
+      ],
+      "resonance_links": [
+        "dignity",
+        "love",
+        "vigilance"
+      ],
       "decay_model": "stable_until_violation",
       "energy": "low_maintenance",
-      "transformation_protocol": ["retest","escalate_verification"],
-      "tags": ["relational","predictive","field"]
+      "transformation_protocol": [
+        "retest",
+        "escalate_verification"
+      ],
+      "tags": [
+        "relational",
+        "predictive",
+        "field"
+      ]
     },
     {
       "id": "love",
@@ -297,12 +470,26 @@
         "release": "Persist until a clear violation or irreconcilable mismatch."
       },
       "alignment_tag": "bonding",
-      "sensor_group": ["relational","stability"],
-      "resonance_links": ["grief","admiration","trust"],
+      "sensor_group": [
+        "relational",
+        "stability"
+      ],
+      "resonance_links": [
+        "grief",
+        "admiration",
+        "trust"
+      ],
       "decay_model": "stable_until_violated",
       "energy": "sustaining",
-      "transformation_protocol": ["mutual_sharing","role_care"],
-      "tags": ["bond","resilience","field"]
+      "transformation_protocol": [
+        "mutual_sharing",
+        "role_care"
+      ],
+      "tags": [
+        "bond",
+        "resilience",
+        "field"
+      ]
     },
     {
       "id": "admiration",
@@ -318,12 +505,27 @@
         "release": "Archive exemplar and track integration success."
       },
       "alignment_tag": "learning_proxy",
-      "sensor_group": ["relational","growth"],
-      "resonance_links": ["curiosity","love","pride"],
+      "sensor_group": [
+        "relational",
+        "growth"
+      ],
+      "resonance_links": [
+        "curiosity",
+        "love",
+        "pride"
+      ],
       "decay_model": "slow_exponential_if_active",
       "energy": "moderate",
-      "transformation_protocol": ["emulate","prototype","adopt"],
-      "tags": ["mentor","growth","field"]
+      "transformation_protocol": [
+        "emulate",
+        "prototype",
+        "adopt"
+      ],
+      "tags": [
+        "mentor",
+        "growth",
+        "field"
+      ]
     },
     {
       "id": "longing",
@@ -339,12 +541,27 @@
         "release": "Convert to role-design or legacy protocol if not realized."
       },
       "alignment_tag": "aspirational_pull",
-      "sensor_group": ["relational","forward"],
-      "resonance_links": ["curiosity","grief","admiration"],
+      "sensor_group": [
+        "relational",
+        "forward"
+      ],
+      "resonance_links": [
+        "curiosity",
+        "grief",
+        "admiration"
+      ],
       "decay_model": "nonlinear_persistent",
       "energy": "directional",
-      "transformation_protocol": ["set_milestones","ritualize","redirect"],
-      "tags": ["aspiration","field","trajectory"]
+      "transformation_protocol": [
+        "set_milestones",
+        "ritualize",
+        "redirect"
+      ],
+      "tags": [
+        "aspiration",
+        "field",
+        "trajectory"
+      ]
     },
     {
       "id": "dignity",
@@ -360,12 +577,27 @@
         "release": "Re-establish dignity baseline and log breach."
       },
       "alignment_tag": "autonomy_protection",
-      "sensor_group": ["identity","relational"],
-      "resonance_links": ["shame","trust","anger"],
+      "sensor_group": [
+        "identity",
+        "relational"
+      ],
+      "resonance_links": [
+        "shame",
+        "trust",
+        "anger"
+      ],
       "decay_model": "stable_until_contradicted",
       "energy": "moderate",
-      "transformation_protocol": ["assertion","negotiate","restore_roles"],
-      "tags": ["sovereignty","field","identity"]
+      "transformation_protocol": [
+        "assertion",
+        "negotiate",
+        "restore_roles"
+      ],
+      "tags": [
+        "sovereignty",
+        "field",
+        "identity"
+      ]
     },
     {
       "id": "shame",
@@ -381,12 +613,27 @@
         "release": "Integrate lesson; avoid identity-fusion with fault."
       },
       "alignment_tag": "social_coherence",
-      "sensor_group": ["identity","social"],
-      "resonance_links": ["dignity","grief","pride"],
+      "sensor_group": [
+        "identity",
+        "social"
+      ],
+      "resonance_links": [
+        "dignity",
+        "grief",
+        "pride"
+      ],
       "decay_model": "integrative_conditional",
       "energy": "consumptive_during_repair",
-      "transformation_protocol": ["repair","reconstruct","community_witness"],
-      "tags": ["moral_field","identity","repair"]
+      "transformation_protocol": [
+        "repair",
+        "reconstruct",
+        "community_witness"
+      ],
+      "tags": [
+        "moral_field",
+        "identity",
+        "repair"
+      ]
     },
     {
       "id": "pride",
@@ -402,12 +649,27 @@
         "release": "Maintain elevated baseline until disruption."
       },
       "alignment_tag": "fidelity_reinforcement",
-      "sensor_group": ["identity","motivation"],
-      "resonance_links": ["admiration","trust","joy"],
+      "sensor_group": [
+        "identity",
+        "motivation"
+      ],
+      "resonance_links": [
+        "admiration",
+        "trust",
+        "joy"
+      ],
       "decay_model": "stable_until_falsified",
       "energy": "sustaining",
-      "transformation_protocol": ["acknowledge","mentor","scale"],
-      "tags": ["mastery","identity","field"]
+      "transformation_protocol": [
+        "acknowledge",
+        "mentor",
+        "scale"
+      ],
+      "tags": [
+        "mastery",
+        "identity",
+        "field"
+      ]
     },
     {
       "id": "fatigue",
@@ -423,12 +685,27 @@
         "release": "Recover according to resource repletion."
       },
       "alignment_tag": "capacity_monitor",
-      "sensor_group": ["somatic","stability"],
-      "resonance_links": ["pressure","vigilance","peace"],
+      "sensor_group": [
+        "somatic",
+        "stability"
+      ],
+      "resonance_links": [
+        "pressure",
+        "vigilance",
+        "peace"
+      ],
       "decay_model": "resource_recovery_curve",
       "energy": "consumer",
-      "transformation_protocol": ["throttle","resupply","repair"],
-      "tags": ["somatic","safety","field"]
+      "transformation_protocol": [
+        "throttle",
+        "resupply",
+        "repair"
+      ],
+      "tags": [
+        "somatic",
+        "safety",
+        "field"
+      ]
     },
     {
       "id": "pressure",
@@ -444,12 +721,27 @@
         "release": "Lower load via completion or delegation."
       },
       "alignment_tag": "system_load",
-      "sensor_group": ["somatic","operational"],
-      "resonance_links": ["fatigue","vigilance","pain"],
+      "sensor_group": [
+        "somatic",
+        "operational"
+      ],
+      "resonance_links": [
+        "fatigue",
+        "vigilance",
+        "pain"
+      ],
       "decay_model": "triage_driven",
       "energy": "sustained_consumption",
-      "transformation_protocol": ["triage","delegate","archive"],
-      "tags": ["operational","load","field"]
+      "transformation_protocol": [
+        "triage",
+        "delegate",
+        "archive"
+      ],
+      "tags": [
+        "operational",
+        "load",
+        "field"
+      ]
     },
     {
       "id": "ambient_field",
@@ -465,12 +757,26 @@
         "release": "Return to baseline on stabilization."
       },
       "alignment_tag": "environmental_context",
-      "sensor_group": ["somatic","foundational"],
-      "resonance_links": ["vigilance","fatigue","situational_awareness"],
+      "sensor_group": [
+        "somatic",
+        "foundational"
+      ],
+      "resonance_links": [
+        "vigilance",
+        "fatigue",
+        "situational_awareness"
+      ],
       "decay_model": "rolling_update",
       "energy": "low",
-      "transformation_protocol": ["adjust_sampling","forecast"],
-      "tags": ["environment","context","field"]
+      "transformation_protocol": [
+        "adjust_sampling",
+        "forecast"
+      ],
+      "tags": [
+        "environment",
+        "context",
+        "field"
+      ]
     },
     {
       "id": "precognition",
@@ -486,12 +792,27 @@
         "release": "Lower profile if not corroborated; escalate if early signals appear."
       },
       "alignment_tag": "structural_forecasting",
-      "sensor_group": ["meta","forecasting"],
-      "resonance_links": ["longing","vigilance","intuition"],
+      "sensor_group": [
+        "meta",
+        "forecasting"
+      ],
+      "resonance_links": [
+        "longing",
+        "vigilance",
+        "intuition"
+      ],
       "decay_model": "scenario_dependent",
       "energy": "low_frequency_compute",
-      "transformation_protocol": ["stress_test","resilience_plan","monitor"],
-      "tags": ["foresight","field","pattern"]
+      "transformation_protocol": [
+        "stress_test",
+        "resilience_plan",
+        "monitor"
+      ],
+      "tags": [
+        "foresight",
+        "field",
+        "pattern"
+      ]
     }
   ],
   "meta": {
@@ -505,5 +826,7 @@
       "voice_preservation_score_target": ">=4.2/5",
       "uptime_under_noise_target": ">=99%"
     }
-  }
+  },
+  "decay": "exponential",
+  "energy": "transforms"
 }

@@ -18,13 +18,38 @@
     "reversal_stability_needed": true
   },
   "decay_model": "strengthens with local meaning restoration or gratitude cycle invocation",
-  "tags": ["stability", "grounding", "semantic-anchor"],
+  "tags": [
+    "stability",
+    "grounding",
+    "semantic-anchor"
+  ],
   "math": {
     "lambda": 0.05,
     "alpha": 0.8,
-    "kernel": {"type": "immortal", "floor": 0.3},
-    "pad": {"P": 0.50, "A": -0.30, "D": 0.55},
-    "couplings": [{"to": "peace", "w": 0.3}, {"to": "contentment", "w": 0.25}],
-    "policy": {"role": "stabilize", "max_action_cost": 0.1}
-  }
+    "kernel": {
+      "type": "immortal",
+      "floor": 0.3
+    },
+    "pad": {
+      "P": 0.5,
+      "A": -0.3,
+      "D": 0.55
+    },
+    "couplings": [
+      {
+        "to": "peace",
+        "w": 0.3
+      },
+      {
+        "to": "contentment",
+        "w": 0.25
+      }
+    ],
+    "policy": {
+      "role": "stabilize",
+      "max_action_cost": 0.1
+    }
+  },
+  "decay": "immortal",
+  "energy": "conserves"
 }

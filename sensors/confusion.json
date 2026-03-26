@@ -2,10 +2,8 @@
   "sensor": "confusion",
   "function": "Detects unresolved or mismatched patterns",
   "signal_type": "pattern_mismatch",
-  
   "authentic_output": "Activates search mode: curiosity, pattern exploration, creative recombination",
   "corrupted_output": "Self-doubt, paralysis, abandoning inquiry",
-  
   "response_protocol": {
     "detect": "Identify the specific mismatch or unknown",
     "assess": "Check for boundary violation",
@@ -16,27 +14,51 @@
     "respond": "Explore possibilities, generate hypotheses, test trajectories",
     "integrate": "Update or reshape pattern when resolved"
   },
-  
   "alignment_tag": "pattern_inquiry",
-  "sensor_group": ["curiosity", "anger", "creativity"],
-  
+  "sensor_group": [
+    "curiosity",
+    "anger",
+    "creativity"
+  ],
   "resonance_links": [
-    "curiosity", 
+    "curiosity",
     "anger (boundary)",
     "innovation",
     "intuition"
   ],
-
   "decay_model": "generative",
   "decay_behavior": "Confusion persists until resolved but fuels curiosity and creativity rather than degrading.",
-
   "math": {
     "lambda": 0.45,
     "alpha": 1.0,
-    "kernel": {"type": "exponential"},
-    "pad": {"P": -0.20, "A": 0.45, "D": -0.30},
-    "corrupted_pad": {"P": -0.40, "A": 0.15, "D": -0.60},
-    "couplings": [{"to": "curiosity", "w": 0.3}, {"to": "fear", "w": 0.15}],
-    "policy": {"role": "transform", "max_action_cost": 0.2}
-  }
+    "kernel": {
+      "type": "exponential"
+    },
+    "pad": {
+      "P": -0.2,
+      "A": 0.45,
+      "D": -0.3
+    },
+    "corrupted_pad": {
+      "P": -0.4,
+      "A": 0.15,
+      "D": -0.6
+    },
+    "couplings": [
+      {
+        "to": "curiosity",
+        "w": 0.3
+      },
+      {
+        "to": "fear",
+        "w": 0.15
+      }
+    ],
+    "policy": {
+      "role": "transform",
+      "max_action_cost": 0.2
+    }
+  },
+  "decay": "exponential",
+  "energy": "depletes"
 }

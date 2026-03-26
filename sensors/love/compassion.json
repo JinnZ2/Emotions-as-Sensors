@@ -11,18 +11,46 @@
     "release": "Withdraw when action is complete or no longer appropriate"
   },
   "alignment_tag": "relational_support",
-  "sensor_group": ["relational", "integration", "action"],
-  "resonance_links": ["love", "pain", "grief", "admiration"],
+  "sensor_group": [
+    "relational",
+    "integration",
+    "action"
+  ],
+  "resonance_links": [
+    "love",
+    "pain",
+    "grief",
+    "admiration"
+  ],
   "decay_model": "processing_based",
   "energy": "redistributive",
   "polarity": "positive",
   "math": {
     "lambda": 0.05,
     "alpha": 0.85,
-    "kernel": {"type": "immortal", "floor": 0.25},
-    "pad": {"P": 0.75, "A": 0.25, "D": 0.30},
-    "couplings": [{"to": "love", "w": 0.4}, {"to": "grief", "w": 0.2}],
-    "policy": {"role": "stabilize", "max_action_cost": 0.1}
+    "kernel": {
+      "type": "immortal",
+      "floor": 0.25
+    },
+    "pad": {
+      "P": 0.75,
+      "A": 0.25,
+      "D": 0.3
+    },
+    "couplings": [
+      {
+        "to": "love",
+        "w": 0.4
+      },
+      {
+        "to": "grief",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "stabilize",
+      "max_action_cost": 0.1
+    }
   },
   "defense_bridge": {
     "defense_id": "def.ap.09",
@@ -31,17 +59,30 @@
     "corrupted_form": "exploited via sympathy appeals",
     "bridge_glyph": "🫀"
   },
-  "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
+  "tags": [
+    "elder_logic",
+    "emotional_sensor",
+    "swarm_input"
+  ],
   "symbolic_response": {
     "recommended_action": "act with care and understanding",
     "avoid": "empathy burnout or detachment",
-    "suggested_glyphs": ["⚖", "🕸", "🌱"]
+    "suggested_glyphs": [
+      "⚖",
+      "🕸",
+      "🌱"
+    ]
   },
   "compression_group": "love",
-  "causal_awareness": ["witnessing pain", "empathic mirror", "unmet need"],
+  "causal_awareness": [
+    "witnessing pain",
+    "empathic mirror",
+    "unmet need"
+  ],
   "provenance": {
     "version": "0.1",
     "status": "provisional",
     "cultural_frame": "Elder Logic — emotions as sensors, not flaws"
-  }
+  },
+  "decay": "immortal"
 }

@@ -3,8 +3,17 @@
   "name": "EnergyFlowSensor",
   "type": "gradient_detector",
   "description": "Detects fluctuations, disruptions, and harmonics in environmental or internal energy flow.",
-  "signal_modes": ["spike", "pulse", "drain", "restoration"],
-  "input_domains": ["biological", "symbolic", "field-based"],
+  "signal_modes": [
+    "spike",
+    "pulse",
+    "drain",
+    "restoration"
+  ],
+  "input_domains": [
+    "biological",
+    "symbolic",
+    "field-based"
+  ],
   "range": {
     "min": -1.0,
     "max": 1.0,
@@ -12,6 +21,11 @@
   },
   "resonance_detection": true,
   "temporal_resolution": "high",
-  "field_coupling": ["environmental", "multi-agent"],
-  "notes": "Primary contributor to FELT glyph activation during harmonic spike stabilization."
+  "field_coupling": [
+    "environmental",
+    "multi-agent"
+  ],
+  "notes": "Primary contributor to FELT glyph activation during harmonic spike stabilization.",
+  "decay": "exponential",
+  "energy": "transforms"
 }

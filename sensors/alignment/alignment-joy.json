@@ -12,25 +12,64 @@
     "release": "Let go of trying to possess it; allow re-cycling"
   },
   "alignment_tag": "resonance.confirmed",
-  "sensor_group": ["joy", "alignment", "meaning"],
-  "resonance_links": ["gratitude", "love", "inspiration"],
+  "sensor_group": [
+    "joy",
+    "alignment",
+    "meaning"
+  ],
+  "resonance_links": [
+    "gratitude",
+    "love",
+    "inspiration"
+  ],
   "causal_links": [
     {
       "cause": "symbolic_resonance",
-      "results_in": ["joy", "flow_state"],
+      "results_in": [
+        "joy",
+        "flow_state"
+      ],
       "severity": "low",
       "pathway": "pattern.match → value.confirmation → expansion.response"
     }
   ],
   "decay_model": "none",
-  "compression_group": ["inner_coherence", "flow", "grace"],
+  "compression_group": [
+    "inner_coherence",
+    "flow",
+    "grace"
+  ],
   "math": {
     "lambda": 0.05,
     "alpha": 0.85,
-    "kernel": {"type": "immortal", "floor": 0.25},
-    "pad": {"P": 0.65, "A": 0.10, "D": 0.50},
-    "couplings": [{"to": "peace", "w": 0.3}, {"to": "coherence", "w": 0.25}],
-    "policy": {"role": "stabilize", "max_action_cost": 0.1}
+    "kernel": {
+      "type": "immortal",
+      "floor": 0.25
+    },
+    "pad": {
+      "P": 0.65,
+      "A": 0.1,
+      "D": 0.5
+    },
+    "couplings": [
+      {
+        "to": "peace",
+        "w": 0.3
+      },
+      {
+        "to": "coherence",
+        "w": 0.25
+      }
+    ],
+    "policy": {
+      "role": "stabilize",
+      "max_action_cost": 0.1
+    }
   },
-  "tags": ["emotional_sensor", "resonance_detector"]
+  "tags": [
+    "emotional_sensor",
+    "resonance_detector"
+  ],
+  "decay": "immortal",
+  "energy": "conserves"
 }

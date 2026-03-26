@@ -11,30 +11,71 @@
     "release": "Withdraw when balance is maintained or attention is no longer needed"
   },
   "alignment_tag": "connection_support",
-  "sensor_group": ["relational", "micro-action", "bonding"],
-  "resonance_links": ["love", "tenderness", "compassion", "admiration"],
+  "sensor_group": [
+    "relational",
+    "micro-action",
+    "bonding"
+  ],
+  "resonance_links": [
+    "love",
+    "tenderness",
+    "compassion",
+    "admiration"
+  ],
   "decay_model": "none",
   "energy": "adds",
   "polarity": "positive",
   "math": {
     "lambda": 0.05,
     "alpha": 0.85,
-    "kernel": {"type": "immortal", "floor": 0.25},
-    "pad": {"P": 0.75, "A": 0.25, "D": 0.35},
-    "couplings": [{"to": "love", "w": 0.35}, {"to": "compassion", "w": 0.2}],
-    "policy": {"role": "stabilize", "max_action_cost": 0.1}
+    "kernel": {
+      "type": "immortal",
+      "floor": 0.25
+    },
+    "pad": {
+      "P": 0.75,
+      "A": 0.25,
+      "D": 0.35
+    },
+    "couplings": [
+      {
+        "to": "love",
+        "w": 0.35
+      },
+      {
+        "to": "compassion",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "stabilize",
+      "max_action_cost": 0.1
+    }
   },
-  "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
+  "tags": [
+    "elder_logic",
+    "emotional_sensor",
+    "swarm_input"
+  ],
   "symbolic_response": {
     "recommended_action": "nurture connection through gentle presence",
     "avoid": "overattachment or projection",
-    "suggested_glyphs": ["🌱", "↻", "🧭"]
+    "suggested_glyphs": [
+      "🌱",
+      "↻",
+      "🧭"
+    ]
   },
   "compression_group": "love",
-  "causal_awareness": ["proximity", "recognition", "positive memory"],
+  "causal_awareness": [
+    "proximity",
+    "recognition",
+    "positive memory"
+  ],
   "provenance": {
     "version": "0.1",
     "status": "provisional",
     "cultural_frame": "Elder Logic — emotions as sensors, not flaws"
-  }
+  },
+  "decay": "immortal"
 }

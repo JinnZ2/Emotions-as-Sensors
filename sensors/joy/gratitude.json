@@ -12,16 +12,50 @@
     "release": "Do not carry coerced reciprocity"
   },
   "alignment_tag": "mutual-offering-acknowledgment",
-  "sensor_group": ["social", "cooperation", "moral-circuit", "memory"],
-  "resonance_links": ["joy", "love", "pride"],
+  "sensor_group": [
+    "social",
+    "cooperation",
+    "moral-circuit",
+    "memory"
+  ],
+  "resonance_links": [
+    "joy",
+    "love",
+    "pride"
+  ],
   "decay_model": "manual",
   "math": {
     "lambda": 0.05,
     "alpha": 0.8,
-    "kernel": {"type": "immortal", "floor": 0.2},
-    "pad": {"P": 0.70, "A": -0.10, "D": 0.40},
-    "couplings": [{"to": "joy", "w": 0.25}, {"to": "love", "w": 0.2}],
-    "policy": {"role": "add", "max_action_cost": 0.1}
+    "kernel": {
+      "type": "immortal",
+      "floor": 0.2
+    },
+    "pad": {
+      "P": 0.7,
+      "A": -0.1,
+      "D": 0.4
+    },
+    "couplings": [
+      {
+        "to": "joy",
+        "w": 0.25
+      },
+      {
+        "to": "love",
+        "w": 0.2
+      }
+    ],
+    "policy": {
+      "role": "add",
+      "max_action_cost": 0.1
+    }
   },
-  "tags": ["emotional_sensor", "mutuality", "gift-cycle"]
+  "tags": [
+    "emotional_sensor",
+    "mutuality",
+    "gift-cycle"
+  ],
+  "decay": "immortal",
+  "energy": "adds"
 }

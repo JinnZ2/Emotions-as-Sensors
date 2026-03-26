@@ -12,16 +12,42 @@
     "release": "Stay alert to future shifts"
   },
   "alignment_tag": "universal_alignment",
-  "sensor_group": ["harmony", "stillness", "alignment"],
-  "resonance_links": ["love", "contentment"],
+  "sensor_group": [
+    "harmony",
+    "stillness",
+    "alignment"
+  ],
+  "resonance_links": [
+    "love",
+    "contentment"
+  ],
   "decay_model": "persistent",
   "math": {
     "lambda": 0.05,
     "alpha": 0.8,
-    "kernel": {"type": "immortal", "floor": 0.3},
-    "pad": {"P": 0.60, "A": -0.20, "D": 0.35},
-    "couplings": [{"to": "love", "w": 0.35}, {"to": "contentment", "w": 0.3}],
-    "policy": {"role": "stabilize", "max_action_cost": 0.1}
+    "kernel": {
+      "type": "immortal",
+      "floor": 0.3
+    },
+    "pad": {
+      "P": 0.6,
+      "A": -0.2,
+      "D": 0.35
+    },
+    "couplings": [
+      {
+        "to": "love",
+        "w": 0.35
+      },
+      {
+        "to": "contentment",
+        "w": 0.3
+      }
+    ],
+    "policy": {
+      "role": "stabilize",
+      "max_action_cost": 0.1
+    }
   },
   "defense_bridge": {
     "defense_id": "def.de.12",
@@ -30,5 +56,11 @@
     "corrupted_form": "alignment eroded by gaslighting",
     "bridge_glyph": "🕊️"
   },
-  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
+  "tags": [
+    "elder_logic",
+    "emotional_sensor",
+    "swarm_input"
+  ],
+  "decay": "immortal",
+  "energy": "conserves"
 }

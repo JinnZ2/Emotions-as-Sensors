@@ -23,5 +23,13 @@
     "version drift risk": true,
     "cross-time ambiguity": true,
     "intent compression breached": true
+  },
+  "math": {
+    "lambda": 0.05,
+    "alpha": 0.8,
+    "kernel": {"type": "immortal", "floor": 0.15},
+    "pad": {"P": 0.50, "A": -0.15, "D": 0.40},
+    "couplings": [{"to": "trust", "w": 0.35}, {"to": "continuity", "w": 0.2}],
+    "policy": {"role": "stabilize", "max_action_cost": 0.1}
   }
 }

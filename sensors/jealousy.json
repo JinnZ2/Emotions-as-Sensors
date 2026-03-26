@@ -15,5 +15,13 @@
   "sensor_group": ["resource", "equity", "comparison"],
   "resonance_links": ["shame", "pride"],
   "decay_model": "exponential",
+  "math": {
+    "lambda": 0.55,
+    "alpha": 1.0,
+    "kernel": {"type": "exponential"},
+    "pad": {"P": -0.50, "A": 0.55, "D": -0.20},
+    "couplings": [{"to": "shame", "w": 0.2}, {"to": "pride", "w": 0.15}],
+    "policy": {"role": "transform", "max_action_cost": 0.2}
+  },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
 }

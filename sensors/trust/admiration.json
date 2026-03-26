@@ -8,5 +8,13 @@
     "suggested_glyphs": ["🧭", "♾️", "🌱"]
   },
   "compression_group": "trust",
-  "causal_awareness": ["witnessed excellence", "values alignment", "inspiration"]
+  "causal_awareness": ["witnessed excellence", "values alignment", "inspiration"],
+  "math": {
+    "lambda": 0.35,
+    "alpha": 0.9,
+    "kernel": {"type": "resonant"},
+    "pad": {"P": 0.70, "A": 0.50, "D": 0.10},
+    "couplings": [{"to": "trust", "w": 0.25}, {"to": "inspiration", "w": 0.2}],
+    "policy": {"role": "add", "max_action_cost": 0.15}
+  }
 }

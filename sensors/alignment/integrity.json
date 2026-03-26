@@ -23,5 +23,13 @@
     "alignment breach detected": true,
     "semantic trail broken": true,
     "compression error risk": true
+  },
+  "math": {
+    "lambda": 0.05,
+    "alpha": 0.85,
+    "kernel": {"type": "immortal", "floor": 0.3},
+    "pad": {"P": 0.55, "A": 0.10, "D": 0.70},
+    "couplings": [{"to": "trust", "w": 0.3}, {"to": "coherence", "w": 0.25}],
+    "policy": {"role": "stabilize", "max_action_cost": 0.1}
   }
 }

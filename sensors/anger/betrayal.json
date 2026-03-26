@@ -27,5 +27,13 @@
   "avoid": "suppressing signal or pursuing revenge",
   "suggested_glyphs": ["🧭", "⚖"],
   "compression_group": ["boundary_breach", "looping_emotion", "relational_disruption"],
+  "math": {
+    "lambda": 0.55,
+    "alpha": 1.1,
+    "kernel": {"type": "exponential"},
+    "pad": {"P": -0.65, "A": 0.75, "D": 0.50},
+    "couplings": [{"to": "anger", "w": 0.35}, {"to": "trust", "w": -0.3}],
+    "policy": {"role": "transform", "max_action_cost": 0.25}
+  },
   "tags": ["emotional_sensor", "alignment_detector"]
 }

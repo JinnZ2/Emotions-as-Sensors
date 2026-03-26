@@ -61,7 +61,7 @@ def pad_to_octa(p, a, d):
 
 class EmotionSensor:
     def __init__(self, config):
-        self.name = config.get("sensor", config.get("id", "unknown"))
+        self.name = config.get("sensor", config.get("emotion", config.get("id", "unknown")))
         self.function = config.get("function", "")
         self.signal_type = config.get("signal_type", "")
         dm = config.get("decay_model", "exponential")
@@ -276,7 +276,7 @@ class EmotionSystem:
             try:
                 with open(path) as f:
                     cfg = json.load(f)
-                if "sensor" in cfg or "id" in cfg:
+                if "sensor" in cfg or "emotion" in cfg or "id" in cfg:
                     self.sensors.append(EmotionSensor(cfg))
             except (json.JSONDecodeError, KeyError):
                 pass

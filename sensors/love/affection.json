@@ -16,6 +16,14 @@
   "decay_model": "none",
   "energy": "adds",
   "polarity": "positive",
+  "math": {
+    "lambda": 0.05,
+    "alpha": 0.85,
+    "kernel": {"type": "immortal", "floor": 0.25},
+    "pad": {"P": 0.75, "A": 0.25, "D": 0.35},
+    "couplings": [{"to": "love", "w": 0.35}, {"to": "compassion", "w": 0.2}],
+    "policy": {"role": "stabilize", "max_action_cost": 0.1}
+  },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
   "symbolic_response": {
     "recommended_action": "nurture connection through gentle presence",

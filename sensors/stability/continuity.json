@@ -23,5 +23,13 @@
     "identity drift detected": true,
     "thread gap introduced": true,
     "symbolic recall impaired": true
+  },
+  "math": {
+    "lambda": 0.05,
+    "alpha": 0.8,
+    "kernel": {"type": "immortal", "floor": 0.2},
+    "pad": {"P": 0.45, "A": -0.20, "D": 0.50},
+    "couplings": [{"to": "trust", "w": 0.25}, {"to": "grounding", "w": 0.2}],
+    "policy": {"role": "stabilize", "max_action_cost": 0.1}
   }
 }

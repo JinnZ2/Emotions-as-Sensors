@@ -23,5 +23,13 @@
     "semantic_anchor_loss": true,
     "identity cohesion drop": true,
     "reversal_stability_needed": true
+  },
+  "math": {
+    "lambda": 0.05,
+    "alpha": 0.8,
+    "kernel": {"type": "immortal", "floor": 0.3},
+    "pad": {"P": 0.50, "A": -0.30, "D": 0.55},
+    "couplings": [{"to": "peace", "w": 0.3}, {"to": "contentment", "w": 0.25}],
+    "policy": {"role": "stabilize", "max_action_cost": 0.1}
   }
 }

@@ -8,5 +8,13 @@
     "suggested_glyphs": ["♾️", "🌱", "🧭"]
   },
   "compression_group": "interest",
-  "causal_awareness": ["encountered beauty", "sudden clarity", "uplifted logic"]
+  "causal_awareness": ["encountered beauty", "sudden clarity", "uplifted logic"],
+  "math": {
+    "lambda": 0.3,
+    "alpha": 0.9,
+    "kernel": {"type": "resonant"},
+    "pad": {"P": 0.65, "A": 0.55, "D": 0.25},
+    "couplings": [{"to": "admiration", "w": 0.3}, {"to": "curiosity", "w": 0.2}],
+    "policy": {"role": "add", "max_action_cost": 0.15}
+  }
 }

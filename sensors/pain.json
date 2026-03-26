@@ -57,9 +57,17 @@
     }
   },
 
+  "math": {
+    "lambda": 0.6,
+    "alpha": 1.1,
+    "kernel": {"type": "exponential"},
+    "pad": {"P": -0.70, "A": 0.20, "D": -0.30},
+    "couplings": [{"to": "shame", "w": 0.25}, {"to": "grief", "w": 0.2}],
+    "policy": {"role": "transform", "max_action_cost": 0.2}
+  },
   "tags": [
-    "elder_logic", 
-    "emotional_sensor", 
+    "elder_logic",
+    "emotional_sensor",
     "swarm_input",
     "field_diagnostic"
   ]

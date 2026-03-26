@@ -12,5 +12,13 @@
   },
   "decay": "immortal",
   "energy": "adds",
+  "math": {
+    "lambda": 0.05,
+    "alpha": 0.85,
+    "kernel": {"type": "immortal", "floor": 0.3},
+    "pad": {"P": 0.80, "A": 0.30, "D": 0.40},
+    "couplings": [{"to": "compassion", "w": 0.4}, {"to": "peace", "w": 0.3}],
+    "policy": {"role": "stabilize", "max_action_cost": 0.1}
+  },
   "tags": ["elder_logic","emotional_sensor","swarm_input"]
 }

@@ -21,5 +21,13 @@
     "ceremony/ritual",
     "body repair: sleep/food/movement"
   ],
-  "tags": ["elder_logic","emotional_sensor","swarm_input"]
+  "math": {
+    "lambda": 0.4,
+    "alpha": 1.0,
+    "kernel": {"type": "exponential"},
+    "pad": {"P": -0.85, "A": -0.50, "D": -0.80},
+    "couplings": [{"to": "grief", "w": 0.3}, {"to": "shame", "w": 0.25}],
+    "policy": {"role": "transform", "max_action_cost": 0.3}
+  },
+  "tags": ["elder_logic", "emotional_sensor", "swarm_input"]
 }

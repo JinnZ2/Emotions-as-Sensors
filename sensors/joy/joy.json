@@ -21,5 +21,13 @@
     "suggested_glyphs": ["↻", "🌱", "🕸️"]
   },
   "compression_group": "core-positive",
+  "math": {
+    "lambda": 0.3,
+    "alpha": 1.0,
+    "kernel": {"type": "resonant"},
+    "pad": {"P": 0.85, "A": 0.65, "D": 0.55},
+    "couplings": [{"to": "contentment", "w": 0.3}, {"to": "peace", "w": 0.2}],
+    "policy": {"role": "add", "max_action_cost": 0.15}
+  },
   "tags": ["emotional_sensor", "feedback-confirmation", "neural-renewal"]
 }

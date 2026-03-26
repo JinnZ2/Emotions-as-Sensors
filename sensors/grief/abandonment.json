@@ -27,5 +27,13 @@
   "avoid": "denial or self-blame",
   "suggested_glyphs": ["⏳", "🕸️"],
   "compression_group": ["relational_disruption", "identity_shift"],
+  "math": {
+    "lambda": 0.3,
+    "alpha": 0.95,
+    "kernel": {"type": "cyclical", "omega_0": 0.017, "zeta": 0.18},
+    "pad": {"P": -0.80, "A": -0.45, "D": -0.65},
+    "couplings": [{"to": "grief", "w": 0.35}, {"to": "longing", "w": 0.3}],
+    "policy": {"role": "transform", "max_action_cost": 0.3}
+  },
   "tags": ["emotional_sensor", "discontinuity_signal"]
 }

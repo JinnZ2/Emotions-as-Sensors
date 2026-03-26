@@ -15,5 +15,13 @@
   "sensor_group": ["boundary", "memory", "continuity", "moral-circuit"],
   "resonance_links": ["grief", "anger", "shame"],
   "decay_model": "manual",
+  "math": {
+    "lambda": 0.2,
+    "alpha": 0.7,
+    "kernel": {"type": "transformative", "transform_threshold": 0.6},
+    "pad": {"P": 0.40, "A": -0.20, "D": 0.50},
+    "couplings": [{"to": "compassion", "w": 0.3}, {"to": "peace", "w": 0.25}],
+    "policy": {"role": "transform", "max_action_cost": 0.3}
+  },
   "tags": ["elder_logic", "emotional_sensor", "loop_terminator"]
 }

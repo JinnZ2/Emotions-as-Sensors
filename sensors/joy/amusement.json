@@ -15,5 +15,13 @@
   "sensor_group": ["cognition", "stress-relief", "play", "social"],
   "resonance_links": ["joy", "surprise", "shame"],
   "decay_model": "automatic",
+  "math": {
+    "lambda": 0.4,
+    "alpha": 1.0,
+    "kernel": {"type": "resonant"},
+    "pad": {"P": 0.75, "A": 0.60, "D": 0.35},
+    "couplings": [{"to": "joy", "w": 0.3}, {"to": "excitement", "w": 0.2}],
+    "policy": {"role": "add", "max_action_cost": 0.1}
+  },
   "tags": ["emotional_sensor", "humor", "incongruity_resolution"]
 }

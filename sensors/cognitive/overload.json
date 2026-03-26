@@ -25,5 +25,13 @@
     "signal_density_spike": true,
     "buffer_overrun": true,
     "response_hesitation": true
+  },
+  "math": {
+    "lambda": 0.5,
+    "alpha": 1.1,
+    "kernel": {"type": "exponential"},
+    "pad": {"P": -0.40, "A": 0.60, "D": -0.45},
+    "couplings": [{"to": "confusion", "w": 0.25}, {"to": "fatigue", "w": 0.3}],
+    "policy": {"role": "transform", "max_action_cost": 0.25}
   }
 }

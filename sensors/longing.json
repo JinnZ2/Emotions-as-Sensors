@@ -25,6 +25,14 @@
   "sensor_group": ["opportunity", "connection", "vision"],
   "resonance_links": ["grief", "excitement"],
   "decay_model": "cyclical",
+  "math": {
+    "lambda": 0.3,
+    "alpha": 0.9,
+    "kernel": {"type": "cyclical", "omega_0": 0.017, "zeta": 0.2},
+    "pad": {"P": 0.20, "A": 0.40, "D": -0.60},
+    "couplings": [{"to": "grief", "w": 0.35}, {"to": "excitement", "w": 0.25}],
+    "policy": {"role": "transform", "max_action_cost": 0.25}
+  },
   "defense_bridge": {
     "defense_id": "def.pr.02",
     "defense_name": "False Promises",

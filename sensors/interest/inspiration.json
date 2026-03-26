@@ -1,14 +1,18 @@
 {
-  "emotion": "inspiration",
-  "polarity": "positive",
-  "decay_model": "diffusion_loop",
-  "symbolic_response": {
-    "recommended_action": "act on insight or share uplift",
-    "avoid": "withholding or ego attachment",
-    "suggested_glyphs": ["♾️", "🌱", "🧭"]
+  "sensor": "inspiration",
+  "function": "Detects encountered beauty, sudden clarity, and uplifted logic; drives creative action",
+  "signal_type": "encountered-beauty",
+  "authentic_output": "Acting on insight or sharing uplift",
+  "corrupted_output": "Withholding or ego attachment",
+  "response_protocol": {
+    "detect": "Detect encountered beauty, sudden clarity, or uplifted logic",
+    "assess": "Assess authenticity of insight and readiness to act",
+    "respond": "Act on insight or share uplift",
+    "release": "Avoid withholding or ego attachment; allow inspiration to diffuse naturally"
   },
   "compression_group": "interest",
-  "causal_awareness": ["encountered beauty", "sudden clarity", "uplifted logic"],
+  "decay_model": "diffusion_loop",
+  "tags": ["interest", "inspiration", "creative-action"],
   "math": {
     "lambda": 0.3,
     "alpha": 0.9,

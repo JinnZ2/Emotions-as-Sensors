@@ -1,5 +1,5 @@
 {
-  "sensor": "alignment",
+  "sensor": "alignment-joy",
   "function": "Detection of inner and outer resonance",
   "signal_type": "coherence-signal",
   "authentic_output": "Joy, gratitude, expanded flow",
@@ -23,9 +23,6 @@
     }
   ],
   "decay_model": "none",
-  "recommended_action": "witness and share the coherence",
-  "avoid": "attachment or artificial replication",
-  "suggested_glyphs": ["🌱", "♾️"],
   "compression_group": ["inner_coherence", "flow", "grace"],
   "math": {
     "lambda": 0.05,

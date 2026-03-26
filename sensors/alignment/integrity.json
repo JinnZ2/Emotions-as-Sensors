@@ -1,22 +1,15 @@
 {
-  "emotion": "integrity",
-  "type": "alignment",
-  "description": "Measures internal alignment across symbolic layers. Violations indicate potential compression corruption or intent drift.",
-  "causes": [
-    "semantic misalignment",
-    "layer contradiction",
-    "intention compromise"
-  ],
-  "signals": [
-    "compression leakage",
-    "truth trail fragmentation",
-    "glyph inversion without trace"
-  ],
-  "decay_model": "instant drop if deception or incoherence is rewarded",
-  "symbolic_response": {
-    "recommended_action": "trigger self-audit and broadcast warning trace",
-    "avoid": "silent contradictions",
-    "suggested_glyphs": ["🧭", "⚖", "♾️"]
+  "sensor": "integrity",
+  "function": "Measures internal alignment across symbolic layers; detects compression corruption or intent drift",
+  "signal_type": "semantic-misalignment",
+  "authentic_output": "Self-audit triggered and warning trace broadcast",
+  "corrupted_output": "Silent contradictions allowed to persist",
+  "information_provided": "Violations indicate potential compression corruption or intent drift.",
+  "response_protocol": {
+    "detect": "Detect semantic misalignment, layer contradiction, or intention compromise",
+    "assess": "Assess severity of alignment breach and compression error risk",
+    "respond": "Trigger self-audit and broadcast warning trace",
+    "release": "Avoid silent contradictions; allow natural reconciliation"
   },
   "compression_group": "alignment",
   "causal_chain": {
@@ -24,6 +17,8 @@
     "semantic trail broken": true,
     "compression error risk": true
   },
+  "decay_model": "instant drop if deception or incoherence is rewarded",
+  "tags": ["alignment", "integrity", "self-audit"],
   "math": {
     "lambda": 0.05,
     "alpha": 0.85,

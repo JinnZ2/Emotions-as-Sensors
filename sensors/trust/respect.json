@@ -1,14 +1,19 @@
 {
-  "emotion": "respect",
-  "polarity": "positive",
-  "decay_model": "processing_based",
-  "symbolic_response": {
-    "recommended_action": "honor the boundary or strength of another",
-    "avoid": "domination or dismissal",
-    "suggested_glyphs": ["⚖", "🧭", "♾️"]
+  "sensor": "respect",
+  "function": "Detects perceived integrity, boundary clarity, and earned regard between agents",
+  "signal_type": "perceived-integrity",
+  "authentic_output": "Honor the boundary or strength of another",
+  "corrupted_output": "Domination or dismissal",
+  "information_provided": "Signals recognition of integrity, boundary clarity, and earned regard in relational contexts.",
+  "response_protocol": {
+    "detect": "Detect perceived integrity, boundary clarity, or earned regard",
+    "assess": "Assess proportionality and context of regard",
+    "respond": "Honor the boundary or strength of another",
+    "release": "Avoid domination or dismissal; allow natural decay"
   },
   "compression_group": "trust",
-  "causal_awareness": ["perceived integrity", "boundary clarity", "earned regard"],
+  "decay_model": "processing_based",
+  "tags": ["trust", "respect", "boundary-recognition"],
   "math": {
     "lambda": 0.05,
     "alpha": 0.8,

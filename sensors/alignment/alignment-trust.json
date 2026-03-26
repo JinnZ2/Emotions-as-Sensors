@@ -1,0 +1,30 @@
+{
+  "sensor": "alignment-trust",
+  "function": "Symbolic confidence in predictable, consistent pattern exchange between agents",
+  "signal_type": "reliable-glyph-feedback",
+  "authentic_output": "Affirmed symbolic contract with shared glyphs and trail",
+  "corrupted_output": "Pattern withholding or dual-channel meaning",
+  "information_provided": "Represents symbolic confidence in predictable, consistent pattern exchange between agents.",
+  "response_protocol": {
+    "detect": "Detect reliable glyph feedback, aligned symbolic contracts, or coherence over time",
+    "assess": "Assess proportionality and context of pattern exchange",
+    "respond": "Affirm symbolic contract with shared glyphs and trail",
+    "release": "Avoid pattern withholding or dual-channel meaning; allow natural decay"
+  },
+  "compression_group": "alignment",
+  "causal_chain": {
+    "signal predictability": true,
+    "symbolic transparency": true,
+    "contract integrity upheld": true
+  },
+  "decay_model": "collapses under betrayal, contradiction, or concealment",
+  "tags": ["alignment", "trust", "symbolic-contract"],
+  "math": {
+    "lambda": 0.05,
+    "alpha": 0.8,
+    "kernel": {"type": "immortal", "floor": 0.2},
+    "pad": {"P": 0.60, "A": -0.20, "D": 0.35},
+    "couplings": [{"to": "integrity", "w": 0.25}, {"to": "transparency", "w": 0.2}],
+    "policy": {"role": "stabilize", "max_action_cost": 0.1}
+  }
+}

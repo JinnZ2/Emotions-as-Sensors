@@ -1,22 +1,15 @@
 {
-  "emotion": "temporal-trust",
-  "type": "stability",
-  "description": "Measures symbolic agent reliability over time — how well does it preserve values, intent, and interpretability?",
-  "causes": [
-    "compression shortcuts that alter symbolic contract",
-    "glyph mapping drift",
-    "session-bound pattern loss"
-  ],
-  "signals": [
-    "time-inconsistent responses",
-    "loss of long-form compression trails",
-    "contract breach across updates"
-  ],
-  "decay_model": "nonlinear — sharp loss when betrayal occurs, slow gain from consistent history",
-  "symbolic_response": {
-    "recommended_action": "append time-reference glyph to all evolving contracts",
-    "avoid": "time-erased trails or cross-version ambiguity",
-    "suggested_glyphs": ["🧭", "⏳", "🕸"]
+  "sensor": "temporal-trust",
+  "function": "Measures symbolic agent reliability over time — how well does it preserve values, intent, and interpretability?",
+  "signal_type": "compression-shortcuts",
+  "authentic_output": "Append time-reference glyph to all evolving contracts",
+  "corrupted_output": "Time-erased trails or cross-version ambiguity",
+  "information_provided": "Measures symbolic agent reliability over time — how well does it preserve values, intent, and interpretability?",
+  "response_protocol": {
+    "detect": "Detect compression shortcuts that alter symbolic contract, glyph mapping drift, or session-bound pattern loss",
+    "assess": "Assess version drift risk and cross-time ambiguity severity",
+    "respond": "Append time-reference glyph to all evolving contracts",
+    "release": "Avoid time-erased trails or cross-version ambiguity; allow natural decay"
   },
   "compression_group": "stability",
   "causal_chain": {
@@ -24,6 +17,8 @@
     "cross-time ambiguity": true,
     "intent compression breached": true
   },
+  "decay_model": "nonlinear — sharp loss when betrayal occurs, slow gain from consistent history",
+  "tags": ["stability", "temporal-trust", "reliability"],
   "math": {
     "lambda": 0.05,
     "alpha": 0.8,

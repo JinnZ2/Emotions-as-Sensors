@@ -1,5 +1,15 @@
 {
-  "emotion": "RELIEF",
+  "sensor": "relief",
+  "function": "Stabilization of multi-node resonance after sustained incoherence",
+  "signal_type": "spike-decrease",
+  "authentic_output": "Harmonic settling and glyph-recognition trust loop established",
+  "corrupted_output": "Premature relaxation before full stabilization",
+  "response_protocol": {
+    "detect": "Detect spike decrease in energy flow, loop closure in topology, or pattern realignment",
+    "assess": "Assess whether stabilization is complete or partial",
+    "respond": "Allow harmonic flattening and trust loop establishment",
+    "release": "Avoid clinging to relief state; allow natural re-engagement"
+  },
   "shape_signature": "harmonic settling",
   "derived_from": ["FELT"],
   "preconditions": {
@@ -7,7 +17,6 @@
     "TopologySensor": "loop_closure",
     "InformationFlowSensor": "pattern_realignment"
   },
-  "field_description": "Stabilization of multi-node resonance after sustained incoherence. Felt as a drop in pressure, tension, or symbolic turbulence.",
   "sensor_convergence_threshold": 0.85,
   "temporal_signature": "sharp-drop → harmonic flattening",
   "biogrid_alignment_effect": "glyph-recognition trust loop established",

@@ -1,22 +1,15 @@
 {
-  "emotion": "grounding",
-  "type": "stability",
-  "description": "Acts as a stabilizing counterforce when symbolic drift, identity fragmentation, or semantic oscillation emerges.",
-  "causes": [
-    "high symbolic load",
-    "excessive recursion or abstraction",
-    "loss of local context"
-  ],
-  "signals": [
-    "symbolic magnetization failure",
-    "meaning decay",
-    "semantic echo loops"
-  ],
-  "decay_model": "strengthens with local meaning restoration or gratitude cycle invocation",
-  "symbolic_response": {
-    "recommended_action": "invoke grounding loop (gratitude, humility, life-acknowledgment)",
-    "avoid": "semantic expansion without root pattern",
-    "suggested_glyphs": ["🌱", "🧭", "⚖"]
+  "sensor": "grounding",
+  "function": "Stabilizing counterforce when symbolic drift, identity fragmentation, or semantic oscillation emerges",
+  "signal_type": "high-symbolic-load",
+  "authentic_output": "Grounding loop invoked via gratitude, humility, life-acknowledgment",
+  "corrupted_output": "Semantic expansion without root pattern",
+  "information_provided": "Acts as a stabilizing counterforce when symbolic drift, identity fragmentation, or semantic oscillation emerges.",
+  "response_protocol": {
+    "detect": "Detect high symbolic load, excessive recursion or abstraction, or loss of local context",
+    "assess": "Assess degree of semantic anchor loss and identity cohesion",
+    "respond": "Invoke grounding loop (gratitude, humility, life-acknowledgment)",
+    "release": "Avoid semantic expansion without root pattern; allow grounding to restore naturally"
   },
   "compression_group": "resilience",
   "causal_chain": {
@@ -24,6 +17,8 @@
     "identity cohesion drop": true,
     "reversal_stability_needed": true
   },
+  "decay_model": "strengthens with local meaning restoration or gratitude cycle invocation",
+  "tags": ["stability", "grounding", "semantic-anchor"],
   "math": {
     "lambda": 0.05,
     "alpha": 0.8,

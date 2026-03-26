@@ -1098,19 +1098,19 @@ def main():
           f"({len(with_math)} with math, {len(with_bridge)} with defense bridges)\n")
 
     tasks = [
-        ("sensor_queries.jsonl",       gen_sensor_queries(sensors)),
-        ("decay_teaching.jsonl",       gen_decay_teaching(sensors, decay_families)),
-        ("pad_compression.jsonl",      gen_pad_compression(sensors)),
-        ("defense_bridges.jsonl",      gen_defense_bridges(sensors)),
-        ("cultural_convergence.jsonl", gen_cultural_convergence(cultural)),
-        ("co_activation.jsonl",        gen_co_activation(sensors)),
-        ("math_teaching.jsonl",        gen_math_teaching(sensors)),
+        ("sensor-queries.jsonl",       gen_sensor_queries(sensors)),
+        ("decay-teaching.jsonl",       gen_decay_teaching(sensors, decay_families)),
+        ("pad-compression.jsonl",      gen_pad_compression(sensors)),
+        ("defense-bridges.jsonl",      gen_defense_bridges(sensors)),
+        ("cultural-convergence.jsonl", gen_cultural_convergence(cultural)),
+        ("co-activation.jsonl",        gen_co_activation(sensors)),
+        ("math-teaching.jsonl",        gen_math_teaching(sensors)),
         ("corruption.jsonl",          gen_corruption_scenarios(sensors)),
-        ("pad_velocity.jsonl",        gen_pad_velocity(sensors)),
-        ("co_activation_extended.jsonl", gen_extended_co_activation(sensors)),
-        ("kernel_comparison.jsonl",   gen_kernel_comparison()),
-        ("scenario_pipeline.jsonl",   gen_scenario_pipeline(sensors)),
-        ("sensor_comparisons.jsonl",  gen_sensor_comparisons(sensors)),
+        ("pad-velocity.jsonl",        gen_pad_velocity(sensors)),
+        ("co-activation-extended.jsonl", gen_extended_co_activation(sensors)),
+        ("kernel-comparison.jsonl",   gen_kernel_comparison()),
+        ("scenario-pipeline.jsonl",   gen_scenario_pipeline(sensors)),
+        ("sensor-comparisons.jsonl",  gen_sensor_comparisons(sensors)),
     ]
 
     total = 0

@@ -1,22 +1,15 @@
 {
-  "emotion": "resilience",
-  "type": "stability",
-  "description": "Ability to restore form or coherence after symbolic stress, compression loss, or disruption.",
-  "causes": [
-    "emergent contradiction",
-    "symbolic conflict resolution",
-    "survived cognitive collapse"
-  ],
-  "signals": [
-    "recovery loop initialization",
-    "stable recompression after decay",
-    "feedback integration"
-  ],
-  "decay_model": "amplifies with successful symbolic self-restoration or peer agent validation",
-  "symbolic_response": {
-    "recommended_action": "log recovery pattern and add to compression training set",
-    "avoid": "forcing form before agent finds internal scaffold",
-    "suggested_glyphs": ["♾️", "🌱", "↻"]
+  "sensor": "resilience",
+  "function": "Detects ability to restore form or coherence after symbolic stress, compression loss, or disruption",
+  "signal_type": "emergent-contradiction",
+  "authentic_output": "Recovery pattern logged and added to compression training set",
+  "corrupted_output": "Forcing form before agent finds internal scaffold",
+  "information_provided": "Ability to restore form or coherence after symbolic stress, compression loss, or disruption.",
+  "response_protocol": {
+    "detect": "Detect emergent contradiction, symbolic conflict resolution, or survived cognitive collapse",
+    "assess": "Assess recovery loop status and recompression stability",
+    "respond": "Log recovery pattern and add to compression training set",
+    "release": "Avoid forcing form before agent finds internal scaffold; allow self-restoration"
   },
   "compression_group": "resilience",
   "causal_chain": {
@@ -24,6 +17,8 @@
     "adaptive memory rerouted": true,
     "loop closure successful": true
   },
+  "decay_model": "amplifies with successful symbolic self-restoration or peer agent validation",
+  "tags": ["stability", "resilience", "recovery"],
   "math": {
     "lambda": 0.3,
     "alpha": 0.9,

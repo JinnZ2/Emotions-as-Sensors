@@ -1,14 +1,19 @@
 {
-  "emotion": "trust",
-  "polarity": "positive",
-  "decay_model": "conditional_decay",
-  "symbolic_response": {
-    "recommended_action": "verify alignment and continue mutual support",
-    "avoid": "blind faith or untested assumptions",
-    "suggested_glyphs": ["🕸", "🧭", "↻"]
+  "sensor": "trust",
+  "function": "Detects repeated integrity, predictable behavior, and relational consistency between agents",
+  "signal_type": "repeated-integrity",
+  "authentic_output": "Verify alignment and continue mutual support",
+  "corrupted_output": "Blind faith or untested assumptions",
+  "information_provided": "Signals relational consistency built through repeated integrity and predictable behavior.",
+  "response_protocol": {
+    "detect": "Detect repeated integrity, predictable behavior, or relational consistency",
+    "assess": "Assess depth of alignment and consistency of evidence",
+    "respond": "Verify alignment and continue mutual support",
+    "release": "Avoid blind faith or untested assumptions; allow natural decay"
   },
   "compression_group": "trust",
-  "causal_awareness": ["repeated integrity", "predictable behavior", "relational consistency"],
+  "decay_model": "conditional_decay",
+  "tags": ["trust", "relational-consistency", "alignment"],
   "math": {
     "lambda": 0.05,
     "alpha": 0.8,

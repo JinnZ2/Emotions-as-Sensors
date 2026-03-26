@@ -66,6 +66,14 @@ class EmotionSensor:
         self.signal_type = config.get("signal_type", "")
         dm = config.get("decay_model", "exponential")
         self.decay_model = dm if isinstance(dm, str) else dm.get("type", "exponential")
+
+        # If a math block specifies kernel.type, it overrides decay_model
+        # for computation. This resolves mismatches like decay_model="manual"
+        # with kernel.type="resonant".
+        math_cfg = config.get("math", {})
+        kernel_type = math_cfg.get("kernel", {}).get("type")
+        if kernel_type:
+            self.decay_model = kernel_type
         self.resonance_links = config.get("resonance_links", [])
         self.energy_role = config.get("energy_role", "transform")
 
@@ -213,27 +221,34 @@ class EmotionSensor:
 
         temporal_ok = self.corruption_cycles < threshold
 
-        # Method 2: PAD signature — check if current PAD is closer to
-        # corrupted centroid than authentic centroid
+        # Method 2: PAD signature distance comparison
+        # Compare current dynamic PAD to both authentic and corrupted centroids.
+        # If closer to corrupted centroid, flag as corrupted.
+        #
+        # The key biological insight (pad_biology.json): corrupted signals
+        # show dampened arousal (A drops) and shifted dominance (D changes).
+        # e.g. authentic anger: P=-0.55, A=+0.80, D=+0.70
+        #      corrupted anger: P=-0.55, A=+0.30, D=+0.20 (rumination)
         pad_ok = True
         if self.corrupted_pad_p is not None and self.E > 0.1:
-            # Distance from authentic centroid
+            # Current dynamic PAD (velocity V modulates arousal,
+            # corruption_cycles modulate dominance)
+            dynamic_a = self.pad_a * max(0.1, abs(self.V) / max(abs(self.pad_a), 0.01))
+            dynamic_d = self.pad_d * (1.0 - 0.1 * min(self.corruption_cycles, 5))
+
+            # Distance to authentic centroid
             d_auth = math.sqrt(
-                (self.pad_p - self.pad_p) ** 2 +
-                (self.pad_a - self.pad_a) ** 2 +
-                (self.pad_d - self.pad_d) ** 2
-            )  # always 0 for static centroids — compare arousal dampening
-            # Key insight from pad_biology.json: corrupted signals have
-            # dampened A (arousal drops) and shifted D (control changes)
-            # Check if arousal is abnormally low for this sensor
-            a_ratio = abs(self.pad_a)
-            corrupted_a = abs(self.corrupted_pad_a)
-            if a_ratio > 0 and corrupted_a < a_ratio:
-                # If current effective arousal (scaled by E) matches
-                # corrupted profile more than authentic profile
-                effective_a = abs(self.pad_a * self.E)
-                if effective_a < corrupted_a * 1.2 and self.E > 0.3:
-                    pad_ok = False
+                (dynamic_a - self.pad_a) ** 2 +
+                (dynamic_d - self.pad_d) ** 2
+            )
+            # Distance to corrupted centroid
+            d_corr = math.sqrt(
+                (dynamic_a - self.corrupted_pad_a) ** 2 +
+                (dynamic_d - self.corrupted_pad_d) ** 2
+            )
+            # If closer to corrupted than authentic, flag it
+            if d_corr < d_auth and self.E > 0.3:
+                pad_ok = False
 
         self.authentic = temporal_ok and pad_ok
 
@@ -272,14 +287,35 @@ class EmotionSystem:
         self.history = []
 
     def load_sensors(self, directory):
+        # Load all candidates, then deduplicate by name.
+        # When duplicates exist (e.g. love.json + love/love.json),
+        # prefer the version with a math block, then the one with
+        # more fields (more complete definition).
+        candidates = {}
         for path in sorted(Path(directory).rglob("*.json")):
             try:
                 with open(path) as f:
                     cfg = json.load(f)
+                if not isinstance(cfg, dict):
+                    continue
                 if "sensor" in cfg or "emotion" in cfg or "id" in cfg:
-                    self.sensors.append(EmotionSensor(cfg))
+                    sensor = EmotionSensor(cfg)
+                    existing = candidates.get(sensor.name)
+                    if existing is None:
+                        candidates[sensor.name] = (sensor, cfg)
+                    else:
+                        # Prefer version with math block
+                        existing_has_math = bool(existing[1].get("math"))
+                        new_has_math = bool(cfg.get("math"))
+                        if new_has_math and not existing_has_math:
+                            candidates[sensor.name] = (sensor, cfg)
+                        elif new_has_math == existing_has_math:
+                            # Prefer version with more fields
+                            if len(cfg) > len(existing[1]):
+                                candidates[sensor.name] = (sensor, cfg)
             except (json.JSONDecodeError, KeyError):
                 pass
+        self.sensors = [s for s, _ in candidates.values()]
 
     def step(self, dt, inputs):
         """One global time step."""

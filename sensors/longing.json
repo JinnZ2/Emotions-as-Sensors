@@ -24,7 +24,14 @@
   "alignment_tag": "field_potential",
   "sensor_group": ["opportunity", "connection", "vision"],
   "resonance_links": ["grief", "excitement"],
-  "decay_model": "linear",
+  "decay_model": "cyclical",
+  "defense_bridge": {
+    "defense_id": "def.pr.02",
+    "defense_name": "False Promises",
+    "shape": "SHAPE.DODECA",
+    "corrupted_form": "looped into false promises",
+    "bridge_glyph": "🔄🕸"
+  },
   "tags": ["elder_logic", "emotional_sensor", "swarm_input"],
   "consent": {
     "infer_ok": true,

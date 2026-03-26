@@ -15,5 +15,12 @@
   "sensor_group": ["continuity", "regulation", "grounding", "present-moment"],
   "resonance_links": ["joy", "peace", "pride"],
   "decay_model": "slow-manual",
+  "defense_bridge": {
+    "defense_id": "def.ap.08",
+    "defense_name": "Guilt / Obligation",
+    "shape": "SHAPE.CUBE",
+    "corrupted_form": "guilt-tripped into inadequacy",
+    "bridge_glyph": "🍃"
+  },
   "tags": ["emotional_sensor", "baseline", "regenerative"]
 }

@@ -4,7 +4,7 @@
     "glyph": "🌠",
     "resonates_with": ["grief", "excitement"],
     "alignment": "field_potential",
-    "decay": "linear",
+    "decay": "cyclical",
     "symbolic_role": "opportunity field detector"
   },
   {
@@ -20,7 +20,7 @@
     "glyph": "🩸",
     "resonates_with": ["shame", "grief"],
     "alignment": "pattern_disruption",
-    "decay": "linear",
+    "decay": "exponential",
     "symbolic_role": "misalignment pressure sensor"
   },
   {
@@ -36,7 +36,7 @@
     "glyph": "🪞",
     "resonates_with": ["jealousy", "pain"],
     "alignment": "authenticity_vs_conformity",
-    "decay": "persistent",
+    "decay": "exponential",
     "symbolic_role": "approval conflict scanner"
   },
   {
@@ -44,7 +44,7 @@
     "glyph": "🏅",
     "resonates_with": ["jealousy", "contentment"],
     "alignment": "pattern_completion",
-    "decay": "linear",
+    "decay": "resonant",
     "symbolic_role": "completion confirmation sensor"
   },
   {
@@ -52,7 +52,7 @@
     "glyph": "💞",
     "resonates_with": ["compassion", "peace"],
     "alignment": "harmonic_resonance",
-    "decay": "persistent",
+    "decay": "immortal",
     "symbolic_role": "resonance harmonizer"
   },
   {
@@ -76,7 +76,7 @@
     "glyph": "⚡",
     "resonates_with": ["longing", "peace"],
     "alignment": "positive_activation",
-    "decay": "linear",
+    "decay": "resonant",
     "symbolic_role": "positive signal catalyst"
   },
   {
@@ -84,7 +84,7 @@
     "glyph": "🕊️",
     "resonates_with": ["love", "contentment"],
     "alignment": "universal_alignment",
-    "decay": "persistent",
+    "decay": "immortal",
     "symbolic_role": "alignment confirmation sensor"
   },
   {
@@ -92,7 +92,7 @@
     "glyph": "🍃",
     "resonates_with": ["pride", "peace"],
     "alignment": "effort_sufficiency",
-    "decay": "linear",
+    "decay": "resonant",
     "symbolic_role": "current-cycle completion monitor"
   },
   {
@@ -100,7 +100,7 @@
     "glyph": "🫀",
     "resonates_with": ["love", "grief"],
     "alignment": "interconnection_resonance",
-    "decay": "persistent",
+    "decay": "immortal",
     "symbolic_role": "mirror signal integrator"
   }
 ]

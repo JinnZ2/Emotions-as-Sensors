@@ -8,5 +8,12 @@
     "suggested_glyphs": ["🕸", "🧭", "↻"]
   },
   "compression_group": "trust",
-  "causal_awareness": ["repeated integrity", "predictable behavior", "relational consistency"]
+  "causal_awareness": ["repeated integrity", "predictable behavior", "relational consistency"],
+  "defense_bridge": {
+    "defense_id": "def.fr.06",
+    "defense_name": "Consensus / Bandwagon",
+    "shape": "SHAPE.DODECA",
+    "corrupted_form": "pressured into conformity",
+    "bridge_glyph": "🌱⚖"
+  }
 }

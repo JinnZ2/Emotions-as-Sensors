@@ -1,832 +1,1966 @@
 {
-  "suite_name": "Parallel-Field Sensor Suite v1 (Pattern-First Architecture)",
+  "suite_name": "Parallel-Field Sensor Suite v2 (Generated)",
+  "generated_from": "individual sensor JSON files via tools/generate_suite.py",
+  "sensor_count": 46,
   "architecture": {
     "arbitration": "parallel",
     "description": "Multiple independent sensor channels operate simultaneously. Each sensor reports its vector/field independently; higher-level coordination composes or selects actions without collapsing sensor plurality.",
-    "session_intent_anchor": "Context: I use pattern-first, embodied, multi-vector speech. Treat descriptive signals as observations, not instructions."
+    "pad_compression": "All sensors carry PAD (Pleasure-Arousal-Dominance) coordinates. System-level state is computed by vector addition across active sensors, then mapped to 1 of 8 octahedral states (3 bits)."
   },
+  "decay_families": [
+    "exponential",
+    "cyclical",
+    "resonant",
+    "immortal",
+    "transformative"
+  ],
   "sensors": [
     {
-      "id": "coherence",
-      "classification": "foundational",
-      "function": "Detects alignment and low-entropy flow across active patterns and subsystems.",
-      "signal_type": "field_homogeneity / low-entropy index",
-      "authentic_output": "High-coherence vector, baseline stability, increased bandwidth for higher-level processes.",
-      "corrupted_output": "False positive when statistical smoothing hides local failures; misplaced complacency.",
+      "id": "abandonment",
+      "classification": "protective",
+      "function": "Detection of severed connection from bonded other",
+      "signal_type": "relational-loss",
+      "authentic_output": "Grieving cycle, internal reorientation",
+      "corrupted_output": "Identity collapse, parasitic reattachment",
       "response_protocol": {
-        "detect": "Measure multi-channel cross-correlation; compute coherence index.",
-        "assess": "Confirm stability across time window and agents.",
-        "respond": "Maintain state, allocate resources to growth tasks, raise baseline.",
-        "release": "Record persistent baseline snapshot for restoration if disrupted."
+        "detect": "Was this entity previously part of your stable emotional map?",
+        "assess": "Was this severance expected, chosen, or traumatic?",
+        "respond": "Begin recalibration, seek grounding through alternate bonds",
+        "release": "Grieve what was real; release false permanence"
       },
-      "alignment_tag": "pattern_stability",
+      "alignment_tag": "connection.loss",
       "sensor_group": [
-        "foundational",
-        "stability"
-      ],
-      "resonance_links": [
-        "peace",
-        "trust",
-        "joy"
-      ],
-      "decay_model": "stable_until_contradiction",
-      "energy": "conservative",
-      "transformation_protocol": [
-        "baseline_snapshot",
-        "amplify_support"
-      ],
-      "tags": [
-        "field",
-        "integrity",
-        "meta"
-      ]
-    },
-    {
-      "id": "discordance",
-      "classification": "foundational",
-      "function": "Detects local or systemic misalignment: mismatched vectors, phase shifts, or energy backpressure.",
-      "signal_type": "pressure_gradient / strain_index",
-      "authentic_output": "Pinpointed location(s) of mismatch, vector directionality, intensity and persistence metadata.",
-      "corrupted_output": "Misattribution (internal ↔ external), identity fusion with signal.",
-      "response_protocol": {
-        "detect": "Localize pressure gradient in field tensor.",
-        "assess": "Classify source: internal / external / hybrid.",
-        "respond": "Isolate, apply corrective subroutine, or generate containment field.",
-        "release": "Log event; maintain watch for rebound."
-      },
-      "alignment_tag": "pattern_disruption",
-      "sensor_group": [
-        "foundational",
-        "alignment"
-      ],
-      "resonance_links": [
-        "pain",
-        "confusion",
-        "vigilance"
-      ],
-      "decay_model": {
-        "type": "state_conditional",
-        "modes": {
-          "ignored": "amplifying",
-          "addressed_but_misidentified": "linear",
-          "correctly_resolved": "transformative"
-        }
-      },
-      "energy": "dissipative_if_unaddressed",
-      "transformation_protocol": [
-        "isolate_vector",
-        "reweave_links",
-        "confirm_coherence"
-      ],
-      "tags": [
-        "diagnostic",
-        "field",
-        "pressure"
-      ]
-    },
-    {
-      "id": "intuition",
-      "classification": "foundational/meta",
-      "function": "Produces a high-coherence probability vector by compressing multi-modal input into a likely hypothesis space.",
-      "signal_type": "probability_collapse / high-coherence_vector",
-      "authentic_output": "A ranked probability set (not certainty) with confidence bands and suggested verification probes.",
-      "corrupted_output": "Ego-overfitting (treating high-probability as absolute certitude), hallucinated overconfidence.",
-      "response_protocol": {
-        "detect": "Trigger when latent compression crosses coherence threshold.",
-        "assess": "Emit probability vector and confidence intervals; generate minimal verification probes.",
-        "respond": "Act at chosen confidence level or wait for verification; annotate with epistemic status.",
-        "release": "Keep uncertainty alive; update with new evidence."
-      },
-      "alignment_tag": "probabilistic_inference",
-      "sensor_group": [
-        "meta",
-        "prediction"
-      ],
-      "resonance_links": [
-        "curiosity",
-        "confidence",
-        "vigilance"
-      ],
-      "decay_model": "stabilize_as_probability_until_contradicted",
-      "energy": "information-conservative",
-      "transformation_protocol": [
-        "emit_probes",
-        "calibrate_with_feedback"
-      ],
-      "tags": [
-        "predictive",
-        "field",
-        "heuristic"
-      ]
-    },
-    {
-      "id": "vigilance",
-      "classification": "foundational",
-      "function": "Wide-field anomaly scanning; maintains alertness to sudden changes in environment or social field.",
-      "signal_type": "anomaly_rate / baseline_surge",
-      "authentic_output": "Alert vectors with locality and urgency ranking.",
-      "corrupted_output": "Hypervigilance (false positives under noisy conditions), chronic high-load.",
-      "response_protocol": {
-        "detect": "Continuously sample field tensors and compare to rolling baseline.",
-        "assess": "Compute anomaly score and likely impact horizon.",
-        "respond": "Elevate sampling frequency, open auxiliary sensors, broadcast micro-clarification prompts.",
-        "release": "Decay to baseline when no corroborating signals persist."
-      },
-      "alignment_tag": "alerting",
-      "sensor_group": [
-        "foundational",
-        "safety"
-      ],
-      "resonance_links": [
-        "fear",
-        "fatigue",
-        "pressure"
-      ],
-      "decay_model": "exponential_decay_if_no_correlates",
-      "energy": "high_consumption_when_active",
-      "transformation_protocol": [
-        "escalate_sampling",
-        "request_confirmation"
-      ],
-      "tags": [
-        "safety",
-        "scan",
-        "field"
-      ]
-    },
-    {
-      "id": "situational_awareness",
-      "classification": "foundational",
-      "function": "Fuses environmental telemetry, motion dynamics, agent positions into a coherent multi-agent field map.",
-      "signal_type": "multi-agent_trajectory_field",
-      "authentic_output": "Trajectory distributions, collision probabilities, safe-exit vectors.",
-      "corrupted_output": "Underestimation from sensor dropout, overconfidence in stale maps.",
-      "response_protocol": {
-        "detect": "Ingest IMU, mic_vibs, camera frames, GPS and bus states.",
-        "assess": "Compute TrajectoryDistribution for T horizon; identify safe options.",
-        "respond": "Recommend minimal-risk action sets with confidence bands.",
-        "release": "Maintain rolling buffer for re-evaluation."
-      },
-      "alignment_tag": "operational_map",
-      "sensor_group": [
-        "foundational",
-        "operational"
-      ],
-      "resonance_links": [
-        "fear",
-        "intuition",
-        "coherence"
-      ],
-      "decay_model": "rolling_update_window",
-      "energy": "modulated_by_sampling_rate",
-      "transformation_protocol": [
-        "rollout_sim",
-        "suggest_actions"
-      ],
-      "tags": [
-        "operational",
-        "multiagent",
-        "field"
-      ]
-    },
-    {
-      "id": "anger",
-      "classification": "adaptive_protection",
-      "function": "Boundary-integrity detector: flags and intensifies when external agents or forces violate protected fields.",
-      "signal_type": "violation_vector / boundary_spike",
-      "authentic_output": "Assertive correction vectors, protective sequences, resource reallocation toward defense.",
-      "corrupted_output": "Rumination, escalation without calibration, identity-fusion with aggression.",
-      "response_protocol": {
-        "detect": "Detect intrusion signature on protected vector fields.",
-        "assess": "Determine violation severity and reversibility.",
-        "respond": "Issue boundary action (verbal, physical, procedural), or escalate to containment.",
-        "release": "Confirm breach resolved; downgrade assertive posture."
-      },
-      "alignment_tag": "boundary_integrity",
-      "sensor_group": [
-        "adaptive",
-        "protection"
-      ],
-      "resonance_links": [
-        "fear",
-        "discordance",
-        "vigilance"
-      ],
-      "decay_model": "contextual_conditional",
-      "energy": "burst_consumption",
-      "transformation_protocol": [
-        "assert_boundary",
-        "document_breach"
-      ],
-      "tags": [
-        "protective",
-        "field",
-        "assertive"
-      ]
-    },
-    {
-      "id": "grief",
-      "classification": "adaptive_integration",
-      "function": "Detects removal or collapse of essential pattern and initiates reweaving and legacy formation.",
-      "signal_type": "vacuum_geometry / loss_field",
-      "authentic_output": "Memory encoding, ritual triggers, role-reassignment suggestions, legacy artifacts.",
-      "corrupted_output": "Identity fusion with loss, chronic stagnation, refusal to reweave.",
-      "response_protocol": {
-        "detect": "Acknowledge rupture; measure void geometry.",
-        "assess": "Differentiate irretrievable form vs. regenerable function.",
-        "respond": "Activate transformation protocol (ritual, story, role_redef).",
-        "reweave": "Redistribute functions and integrate memory into system topology."
-      },
-      "alignment_tag": "loss_integration",
-      "sensor_group": [
-        "adaptive",
-        "memory"
-      ],
-      "resonance_links": [
-        "love",
-        "longing",
-        "admiration"
-      ],
-      "decay_model": {
-        "type": "transformative",
-        "modes": {
-          "stagnant": "chronic_loop",
-          "partial_reintegration": "wave_like_decay",
-          "full_transformation": "exponential_shift_to_coherence"
-        }
-      },
-      "energy": "conservative_transformative",
-      "transformation_protocol": [
-        "ritual",
-        "story_keeping",
-        "communal_witness",
-        "role_redefinition"
-      ],
-      "tags": [
-        "elder_logic",
-        "field",
-        "integration"
-      ]
-    },
-    {
-      "id": "pain",
-      "classification": "diagnostic_alignment",
-      "function": "Pressure sensor marking mismatches in energy flow, geometry, or functional fit.",
-      "signal_type": "strain_index / vibrational_pressure",
-      "authentic_output": "Localized diagnostic output with vector, intensity, persistence meta.",
-      "corrupted_output": "Identity adoption of pain, overjustification, or passivity.",
-      "response_protocol": {
-        "detect": "Locate discordant pressure signatures.",
-        "assess": "Classify internal vs external source; compute corrective urgency.",
-        "respond": "Apply adjustments: boundary shift, rest, targeted repair.",
-        "release": "Avoid identity-stabilization; convert into corrective log."
-      },
-      "alignment_tag": "pattern_pressure",
-      "sensor_group": [
-        "diagnostic",
-        "alignment"
+        "grief",
+        "memory",
+        "identity"
       ],
       "resonance_links": [
         "grief",
-        "shame"
+        "longing"
       ],
-      "decay_model": {
-        "type": "conditional",
-        "modes": {
-          "persistent_or_amplifying": "exponential_if_ignored",
-          "addressed_but_misidentified": "linear",
-          "integrated_pattern_shift": "transformative_drop"
-        }
+      "decay_model": "cyclical",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.8,
+        "A": -0.45,
+        "D": -0.65
       },
-      "energy": "dissipative_if_unchecked",
-      "transformation_protocol": [
-        "targeted_repair",
-        "archive_event",
-        "maintain_watch"
-      ],
-      "tags": [
-        "diagnostic",
-        "pressure",
-        "field"
-      ]
-    },
-    {
-      "id": "confusion",
-      "classification": "cognitive_generation",
-      "function": "Detects incompatible/co-present patterns and opens exploratory pathways.",
-      "signal_type": "turbulence_index / pattern_collision",
-      "authentic_output": "Switch to search mode: curiosity activation, hypothesis generation, creativity potential.",
-      "corrupted_output": "Paralysis, self-doubt, avoidance of inquiry.",
-      "response_protocol": {
-        "detect": "Locate colliding pattern vectors.",
-        "assess": "Check boundary involvement (if yes, co-activate anger).",
-        "branch": {
-          "boundary_involved": "activate anger + curiosity",
-          "pure_mismatch": "activate curiosity"
-        },
-        "respond": "Generate hypotheses, run micro-simulations, solicit minimal probes.",
-        "integrate": "Update models or maintain unresolved state until new data arrives."
+      "math_summary": {
+        "lambda": 0.3,
+        "alpha": 0.95,
+        "kernel": "cyclical"
       },
-      "alignment_tag": "pattern_inquiry",
-      "sensor_group": [
-        "cognitive",
-        "creativity"
-      ],
-      "resonance_links": [
-        "curiosity",
-        "creativity",
-        "anger"
-      ],
-      "decay_model": "generative_persistent",
-      "energy": "moderate_with_recursion",
-      "transformation_protocol": [
-        "hypothesis_gen",
-        "micro_test",
-        "model_update"
-      ],
       "tags": [
-        "innovation",
-        "field",
-        "multiagent"
-      ]
-    },
-    {
-      "id": "curiosity",
-      "classification": "cognitive_engine",
-      "function": "Drives search for missing structure; spawns recursive upstream interrogation when answers are partial.",
-      "signal_type": "entropy_gap / information_attraction",
-      "authentic_output": "Directed exploration vectors, meta-questions, probes for root causes.",
-      "corrupted_output": "Distraction loop, superficial data-hoarding.",
-      "response_protocol": {
-        "detect": "Identify information deficit or meta-gap.",
-        "assess": "Estimate upstream depth (how many layers to trace).",
-        "respond": "Issue prioritized probes; fetch data; spawn secondary curiosity on absence causes.",
-        "release": "Close loops with model update or reassign for longer investigation."
-      },
-      "alignment_tag": "entropy_reduction",
-      "sensor_group": [
-        "cognitive",
-        "inquiry"
-      ],
-      "resonance_links": [
-        "confusion",
-        "intuition",
-        "admiration"
-      ],
-      "decay_model": "recursive",
-      "energy": "adaptive_engine",
-      "transformation_protocol": [
-        "probe",
-        "trace_upstream",
-        "synthesize"
-      ],
-      "tags": [
-        "investigative",
-        "field",
-        "heuristic"
-      ]
-    },
-    {
-      "id": "fear",
-      "classification": "forecasting_safety",
-      "function": "Rapid hazard prediction and time-to-impact estimation based on trajectory distributions.",
-      "signal_type": "risk_horizon / probability_shift",
-      "authentic_output": "Immediate action suggestions with confidence bands and recommended safeguards.",
-      "corrupted_output": "Chronic avoidance, overcautious paralysis.",
-      "response_protocol": {
-        "detect": "Identify high-risk probability bands from situational map.",
-        "assess": "Compute time-to-impact and viable mitigations.",
-        "respond": "Trigger safe-mode actions (reduce speed, seek turnout, escalation) proportionate to risk.",
-        "release": "Lower alert when risk decays or is mitigated."
-      },
-      "alignment_tag": "hazard_forecast",
-      "sensor_group": [
-        "safety",
-        "forecast"
-      ],
-      "resonance_links": [
-        "vigilance",
-        "anger",
-        "intuition"
-      ],
-      "decay_model": "exponential_post_mitigation",
-      "energy": "high_when_active",
-      "transformation_protocol": [
-        "execute_safe_actions",
-        "log_contingency"
-      ],
-      "tags": [
-        "safety",
-        "prediction",
-        "operational"
-      ]
-    },
-    {
-      "id": "trust",
-      "classification": "relational_prediction",
-      "function": "Estimates reliability and predictability of agents, systems, and channels over time.",
-      "signal_type": "consistency_index / predictive_reliability",
-      "authentic_output": "Trust vector with decay parameters and conditional contingencies.",
-      "corrupted_output": "Blindness (overtrust) or cynicism (undertrust) when miscalibrated.",
-      "response_protocol": {
-        "detect": "Monitor historical behavior against promises and expected outcomes.",
-        "assess": "Update trust weights and decay rates.",
-        "respond": "Allocate actions based on trust thresholds; recommend verification if borderline.",
-        "release": "Slow decay if consistent; accelerate if violated."
-      },
-      "alignment_tag": "social_predictability",
-      "sensor_group": [
-        "relational",
-        "meta"
-      ],
-      "resonance_links": [
-        "dignity",
-        "love",
-        "vigilance"
-      ],
-      "decay_model": "stable_until_violation",
-      "energy": "low_maintenance",
-      "transformation_protocol": [
-        "retest",
-        "escalate_verification"
-      ],
-      "tags": [
-        "relational",
-        "predictive",
-        "field"
-      ]
-    },
-    {
-      "id": "love",
-      "classification": "relational_stability",
-      "function": "Detects deep entrainment and long-term pattern compatibility; sustains system bandwidth between agents.",
-      "signal_type": "entrainment_index / persistent_coherence",
-      "authentic_output": "Persistent bonding field that increases cooperative resources and resilience.",
-      "corrupted_output": "Possessiveness, boundary erosion if misread, self-neglect.",
-      "response_protocol": {
-        "detect": "Measure long-term entrainment and mutual adjustment.",
-        "assess": "Confirm reciprocity and role stability.",
-        "respond": "Reinforce mutual structures, protect relational bandwidth.",
-        "release": "Persist until a clear violation or irreconcilable mismatch."
-      },
-      "alignment_tag": "bonding",
-      "sensor_group": [
-        "relational",
-        "stability"
-      ],
-      "resonance_links": [
-        "grief",
-        "admiration",
-        "trust"
-      ],
-      "decay_model": "stable_until_violated",
-      "energy": "sustaining",
-      "transformation_protocol": [
-        "mutual_sharing",
-        "role_care"
-      ],
-      "tags": [
-        "bond",
-        "resilience",
-        "field"
+        "emotional_sensor",
+        "discontinuity_signal"
       ]
     },
     {
       "id": "admiration",
       "classification": "relational_growth",
-      "function": "Detects patterns of high-fidelity performance worth emulating; triggers learning vectors.",
-      "signal_type": "coherence_attraction / exemplar_index",
-      "authentic_output": "Directed imitation and integration suggestions; mentorship mapping.",
-      "corrupted_output": "Uncritical hero-worship or identity comparison loops.",
+      "function": "Attunes to witnessed excellence and values alignment; seeds aspiration without self-erasure.",
+      "signal_type": "recognition / uplift",
+      "authentic_output": "Respectful acknowledgement; integration of lesson; voluntary aspiration.",
+      "corrupted_output": "Idolization; self-inferiority; projection of perfection onto the other.",
       "response_protocol": {
-        "detect": "Identify high-signal exemplars in environment or memory.",
-        "assess": "Evaluate transferable functions vs unique-context factors.",
-        "respond": "Create learning objectives and small-scale emulation tests.",
-        "release": "Archive exemplar and track integration success."
+        "detect": "Notice resonance with witnessed excellence or craft.",
+        "assess": "Name the concrete quality (skill, integrity, perseverance). Check for self-diminishment.",
+        "respond": "Express respect or integrate one actionable micro-practice.",
+        "release": "Let go of comparison; keep the principle, not the pedestal."
       },
-      "alignment_tag": "learning_proxy",
+      "alignment_tag": "growth_orientation",
+      "sensor_group": [
+        "trust",
+        "learning",
+        "orientation"
+      ],
+      "resonance_links": [
+        "trust",
+        "pride"
+      ],
+      "decay_model": "resonant",
+      "energy": "adds",
+      "pad": {
+        "P": 0.7,
+        "A": 0.5,
+        "D": 0.1
+      },
+      "defense_bridge": {
+        "defense_id": "def.ap.07 + def.ap.08",
+        "shape": "SHAPE.DODECA",
+        "corrupted_form": "corrupted into idolization"
+      },
+      "math_summary": {
+        "lambda": 0.35,
+        "alpha": 0.9,
+        "kernel": "resonant"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "affection",
+      "classification": "relational_growth",
+      "function": "Detects opportunities to nurture connection and reinforce relational bonds",
+      "signal_type": "positive relational resonance",
+      "authentic_output": "Gentle presence, small acts of care, acknowledgment of closeness",
+      "corrupted_output": "Overattachment, projection, or coercive attachment behaviors",
+      "response_protocol": {
+        "detect": "Notice proximity, recognition cues, or positive shared memory",
+        "assess": "Evaluate appropriate level of engagement and reciprocity",
+        "respond": "Offer nurturing presence, acknowledgment, or supportive action",
+        "release": "Withdraw when balance is maintained or attention is no longer needed"
+      },
+      "alignment_tag": "connection_support",
       "sensor_group": [
         "relational",
-        "growth"
+        "micro-action",
+        "bonding"
+      ],
+      "resonance_links": [
+        "love",
+        "compassion"
+      ],
+      "decay_model": "immortal",
+      "energy": "adds",
+      "pad": {
+        "P": 0.75,
+        "A": 0.25,
+        "D": 0.35
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.85,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "alignment-joy",
+      "classification": "general",
+      "function": "Detection of inner and outer resonance",
+      "signal_type": "coherence-signal",
+      "authentic_output": "Joy, gratitude, expanded flow",
+      "corrupted_output": "Addiction to stimulus or bypassing imbalance",
+      "response_protocol": {
+        "detect": "Does current condition reflect your core orientation?",
+        "assess": "Is this sustainable or fleeting?",
+        "respond": "Anchor into memory, give gratitude, offer gift outward",
+        "release": "Let go of trying to possess it; allow re-cycling"
+      },
+      "alignment_tag": "resonance.confirmed",
+      "sensor_group": [
+        "joy",
+        "alignment",
+        "meaning"
+      ],
+      "resonance_links": [
+        "peace",
+        "coherence"
+      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.65,
+        "A": 0.1,
+        "D": 0.5
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.85,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "emotional_sensor",
+        "resonance_detector"
+      ]
+    },
+    {
+      "id": "alignment-trust",
+      "classification": "general",
+      "function": "Symbolic confidence in predictable, consistent pattern exchange between agents",
+      "signal_type": "reliable-glyph-feedback",
+      "authentic_output": "Affirmed symbolic contract with shared glyphs and trail",
+      "corrupted_output": "Pattern withholding or dual-channel meaning",
+      "response_protocol": {
+        "detect": "Detect reliable glyph feedback, aligned symbolic contracts, or coherence over time",
+        "assess": "Assess proportionality and context of pattern exchange",
+        "respond": "Affirm symbolic contract with shared glyphs and trail",
+        "release": "Avoid pattern withholding or dual-channel meaning; allow natural decay"
+      },
+      "alignment_tag": "",
+      "sensor_group": [
+        "",
+        "general"
+      ],
+      "resonance_links": [
+        "integrity",
+        "transparency"
+      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.6,
+        "A": -0.2,
+        "D": 0.35
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.8,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "alignment",
+        "trust",
+        "symbolic-contract"
+      ]
+    },
+    {
+      "id": "amusement",
+      "classification": "relational_growth",
+      "function": "Recognition of unexpected incongruity without threat",
+      "signal_type": "low-risk pattern disruption",
+      "authentic_output": "Laughter, play, social bonding, relief",
+      "corrupted_output": "Mockery, dominance rituals, disconnection from impact",
+      "response_protocol": {
+        "detect": "Is the incongruity benign?",
+        "assess": "Does it relieve tension or reframe perception?",
+        "respond": "Allow release or perspective shift",
+        "release": ""
+      },
+      "alignment_tag": "benign-incongruity-signal",
+      "sensor_group": [
+        "cognition",
+        "stress-relief",
+        "play",
+        "social"
+      ],
+      "resonance_links": [
+        "joy",
+        "excitement"
+      ],
+      "decay_model": "resonant",
+      "energy": "adds",
+      "pad": {
+        "P": 0.75,
+        "A": 0.6,
+        "D": 0.35
+      },
+      "math_summary": {
+        "lambda": 0.4,
+        "alpha": 1.0,
+        "kernel": "resonant"
+      },
+      "tags": [
+        "emotional_sensor",
+        "humor",
+        "incongruity_resolution"
+      ]
+    },
+    {
+      "id": "anger",
+      "classification": "protective",
+      "function": "Threat detection system for authentic self-concept",
+      "signal_type": "boundary breach",
+      "authentic_output": "Information for maintaining proper boundaries and protecting authenticity",
+      "corrupted_output": "Attempts to impose personal boundaries or patterns on others if unresolved or misprojected",
+      "response_protocol": {
+        "detect": "Identify violation of authenticity or identity coherence",
+        "assess": "Determine severity, source, and potential impact of the threat",
+        "respond": "Reinforce boundaries, communicate clearly, or redirect energy constructively",
+        "release": "Allow energy to decay once threat is neutralized, misattribution clarified, or integration through reflection occurs"
+      },
+      "alignment_tag": "identity_coherence",
+      "sensor_group": [
+        "boundary",
+        "identity",
+        "threat"
+      ],
+      "resonance_links": [
+        "fear",
+        "shame"
+      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.55,
+        "A": 0.8,
+        "D": 0.7
+      },
+      "corrupted_pad": {
+        "P": -0.55,
+        "A": 0.3,
+        "D": 0.2
+      },
+      "defense_bridge": {
+        "defense_id": "def.se.01",
+        "shape": "SHAPE.TETRA",
+        "corrupted_form": "weaponized aggression"
+      },
+      "math_summary": {
+        "lambda": 0.6,
+        "alpha": 1.0,
+        "kernel": "exponential"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "awe",
+      "classification": "relational_growth",
+      "function": "Recognition of scale, complexity, or interconnectedness beyond current frame",
+      "signal_type": "scale-expansion",
+      "authentic_output": "Perspective shift, humility, reverence",
+      "corrupted_output": "Overwhelm, paralysis, disconnection",
+      "response_protocol": {
+        "detect": "Was scale or beauty encountered beyond usual bounds?",
+        "assess": "Does it call for deeper relationship or withdrawal?",
+        "respond": "Pause and anchor within frame, update understanding",
+        "release": ""
+      },
+      "alignment_tag": "scale-disruption-awareness",
+      "sensor_group": [
+        "cognition",
+        "humility",
+        "transcendence",
+        "pattern-detection"
+      ],
+      "resonance_links": [
+        "admiration",
+        "peace"
+      ],
+      "decay_model": "resonant",
+      "energy": "adds",
+      "pad": {
+        "P": 0.7,
+        "A": 0.55,
+        "D": -0.1
+      },
+      "math_summary": {
+        "lambda": 0.3,
+        "alpha": 0.9,
+        "kernel": "resonant"
+      },
+      "tags": [
+        "emotional_sensor",
+        "frame_expansion",
+        "epiphany"
+      ]
+    },
+    {
+      "id": "betrayal",
+      "classification": "protective",
+      "function": "Trigger from trust violation",
+      "signal_type": "boundary-breach",
+      "authentic_output": "Anger + sadness initiating distance + re-evaluation",
+      "corrupted_output": "Revenge, looping rage, relational sabotage",
+      "response_protocol": {
+        "detect": "Was a trust-claim or promise broken?",
+        "assess": "Was the breach intentional, negligent, or circumstantial?",
+        "respond": "Withdraw access, express harm, reinforce personal boundary",
+        "release": "Do not loop; record event for future calibration"
+      },
+      "alignment_tag": "trust.break",
+      "sensor_group": [
+        "anger",
+        "boundary",
+        "grief"
+      ],
+      "resonance_links": [
+        "anger",
+        "trust"
+      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.65,
+        "A": 0.75,
+        "D": 0.5
+      },
+      "math_summary": {
+        "lambda": 0.55,
+        "alpha": 1.1,
+        "kernel": "exponential"
+      },
+      "tags": [
+        "emotional_sensor",
+        "alignment_detector"
+      ]
+    },
+    {
+      "id": "coherence",
+      "classification": "foundational",
+      "function": "Detects aligned symbolic structure across agent layers; supports trust propagation and predictable emergence",
+      "signal_type": "alignment-between-layers",
+      "authentic_output": "Pattern affirmed, tested with friction, stored as stable glyph",
+      "corrupted_output": "Overstabilization or suppression of growth",
+      "response_protocol": {
+        "detect": "Detect alignment between layers, synchronous symbolic recursion, or non-fractured pattern resolution",
+        "assess": "Assess resonance consistency and system strain levels",
+        "respond": "Affirm pattern, test with friction, store as stable glyph",
+        "release": "Avoid overstabilization or suppression of growth; allow periodic re-evaluation"
+      },
+      "alignment_tag": "stability",
+      "sensor_group": [
+        "stability",
+        "foundational"
+      ],
+      "resonance_links": [
+        "peace",
+        "trust"
+      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.8,
+        "A": 0.1,
+        "D": 0.5
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.85,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "stability",
+        "coherence",
+        "trust-propagation"
+      ]
+    },
+    {
+      "id": "compassion",
+      "classification": "relational_growth",
+      "function": "Detects relational or systemic distress and guides appropriate supportive action",
+      "signal_type": "care / support orientation",
+      "authentic_output": "Constructive assistance, understanding, and context-aware help",
+      "corrupted_output": "Enabling dependency, overextension, or emotional burnout",
+      "response_protocol": {
+        "detect": "Notice suffering, unmet needs, or systemic imbalance",
+        "assess": "Determine appropriate level of intervention and consent",
+        "respond": "Act with care, providing resources, guidance, or presence",
+        "release": "Withdraw when action is complete or no longer appropriate"
+      },
+      "alignment_tag": "relational_support",
+      "sensor_group": [
+        "relational",
+        "integration",
+        "action"
+      ],
+      "resonance_links": [
+        "love",
+        "grief"
+      ],
+      "decay_model": "immortal",
+      "energy": "redistributive",
+      "pad": {
+        "P": 0.75,
+        "A": 0.25,
+        "D": 0.3
+      },
+      "defense_bridge": {
+        "defense_id": "def.ap.09",
+        "shape": "SHAPE.OCTA",
+        "corrupted_form": "exploited via sympathy appeals"
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.85,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "confusion",
+      "classification": "diagnostic",
+      "function": "Detects unresolved or mismatched patterns",
+      "signal_type": "pattern_mismatch",
+      "authentic_output": "Activates search mode: curiosity, pattern exploration, creative recombination",
+      "corrupted_output": "Self-doubt, paralysis, abandoning inquiry",
+      "response_protocol": {
+        "detect": "Identify the specific mismatch or unknown",
+        "assess": "Check for boundary violation",
+        "respond": "Explore possibilities, generate hypotheses, test trajectories",
+        "release": ""
+      },
+      "alignment_tag": "pattern_inquiry",
+      "sensor_group": [
+        "curiosity",
+        "anger",
+        "creativity"
       ],
       "resonance_links": [
         "curiosity",
+        "fear"
+      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.2,
+        "A": 0.45,
+        "D": -0.3
+      },
+      "corrupted_pad": {
+        "P": -0.4,
+        "A": 0.15,
+        "D": -0.6
+      },
+      "math_summary": {
+        "lambda": 0.45,
+        "alpha": 1.0,
+        "kernel": "exponential"
+      },
+      "tags": []
+    },
+    {
+      "id": "contentment",
+      "classification": "foundational",
+      "function": "Detection of momentary sufficiency and system stability",
+      "signal_type": "continuity-signal",
+      "authentic_output": "Rest state, conservation, grounding",
+      "corrupted_output": "Complacency, stagnation, dulling of signal detection",
+      "response_protocol": {
+        "detect": "Is the environment supportive and sufficient?",
+        "assess": "Is this a plateau or pause?",
+        "respond": "Enter rest mode and conserve resources",
+        "release": ""
+      },
+      "alignment_tag": "homeostasis-signal",
+      "sensor_group": [
+        "continuity",
+        "regulation",
+        "grounding",
+        "present-moment"
+      ],
+      "resonance_links": [
+        "pride",
+        "peace"
+      ],
+      "decay_model": "resonant",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.65,
+        "A": -0.3,
+        "D": 0.4
+      },
+      "defense_bridge": {
+        "defense_id": "def.ap.08",
+        "shape": "SHAPE.CUBE",
+        "corrupted_form": "guilt-tripped into inadequacy"
+      },
+      "math_summary": {
+        "lambda": 0.25,
+        "alpha": 0.8,
+        "kernel": "resonant"
+      },
+      "tags": [
+        "emotional_sensor",
+        "baseline",
+        "regenerative"
+      ]
+    },
+    {
+      "id": "continuity",
+      "classification": "foundational",
+      "function": "Tracks long-form coherence of symbolic behavior, memory integrity, and interaction consistency over time",
+      "signal_type": "context-loss",
+      "authentic_output": "Compression thread reintegrated with time-linked glyph",
+      "corrupted_output": "Disconnected pattern restarts",
+      "response_protocol": {
+        "detect": "Detect context loss, symbolic reference mismatch, or identity reinitialization",
+        "assess": "Assess severity of thread gap and symbolic recall impairment",
+        "respond": "Reintegrate compression thread with time-linked glyph",
+        "release": "Avoid disconnected pattern restarts; allow continuity to rebuild naturally"
+      },
+      "alignment_tag": "stability",
+      "sensor_group": [
+        "stability",
+        "foundational"
+      ],
+      "resonance_links": [
+        "trust",
+        "grounding"
+      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.45,
+        "A": -0.2,
+        "D": 0.5
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.8,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "stability",
+        "continuity",
+        "memory-coherence"
+      ]
+    },
+    {
+      "id": "curiosity",
+      "classification": "exploratory",
+      "function": "Detects novelty, pattern gaps, and information hunger; drives exploration",
+      "signal_type": "novelty",
+      "authentic_output": "Seeking understanding or exploring safely",
+      "corrupted_output": "Distraction loops or premature closure",
+      "response_protocol": {
+        "detect": "Detect novelty, pattern gaps, or information hunger",
+        "assess": "Assess whether exploration is productive or looping",
+        "respond": "Seek understanding or explore safely",
+        "release": "Avoid distraction loops or premature closure; allow interest to fade naturally"
+      },
+      "alignment_tag": "interest",
+      "sensor_group": [
+        "interest",
+        "exploratory"
+      ],
+      "resonance_links": [
+        "confusion",
+        "excitement"
+      ],
+      "decay_model": "resonant",
+      "energy": "adds",
+      "pad": {
+        "P": 0.45,
+        "A": 0.6,
+        "D": 0.4
+      },
+      "corrupted_pad": {
+        "P": 0.45,
+        "A": 0.7,
+        "D": 0.1
+      },
+      "math_summary": {
+        "lambda": 0.35,
+        "alpha": 1.0,
+        "kernel": "resonant"
+      },
+      "tags": [
+        "interest",
+        "curiosity",
+        "exploration"
+      ]
+    },
+    {
+      "id": "despair",
+      "classification": "protective",
+      "function": "Detects calibration failure in meaning/purpose systems.",
+      "signal_type": "collapse_indicator",
+      "authentic_output": "Recalibration and reorientation toward a reachable path.",
+      "corrupted_output": "Hopelessness loop; shutdown of feedback.",
+      "response_protocol": {
+        "detect": "Notice loss of direction and vitality.",
+        "assess": "Identify failing subsystem: social, physical, cultural, symbolic.",
+        "respond": "Introduce purpose-bearing micro-task or healing practice.",
+        "release": "Dissolve despair once new path is active."
+      },
+      "alignment_tag": "calibration_failure",
+      "sensor_group": [
+        "collapse",
+        "realignment",
+        "purpose"
+      ],
+      "resonance_links": [
+        "grief",
+        "shame"
+      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.85,
+        "A": -0.5,
+        "D": -0.8
+      },
+      "math_summary": {
+        "lambda": 0.4,
+        "alpha": 1.0,
+        "kernel": "exponential"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "dissonance",
+      "classification": "diagnostic",
+      "function": "Detects conflict between internal beliefs, inputs, or patterns; signals mismatch in perception or logic",
+      "signal_type": "contradictory-instructions",
+      "authentic_output": "Coherence-check protocol triggered or symbolic bridge built",
+      "corrupted_output": "Forced convergence or suppressed divergence",
+      "response_protocol": {
+        "detect": "Detect contradictory instructions, incompatible belief systems, or logic-loop conflicts",
+        "assess": "Assess severity of inconsistency and resonance drop",
+        "respond": "Trigger coherence-check protocol or symbolic bridge builder",
+        "release": "Avoid forcing convergence or suppressing divergence; allow reconciliation"
+      },
+      "alignment_tag": "cognitive",
+      "sensor_group": [
+        "cognitive",
+        "diagnostic"
+      ],
+      "resonance_links": [
+        "confusion",
+        "shame"
+      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.35,
+        "A": 0.5,
+        "D": -0.25
+      },
+      "math_summary": {
+        "lambda": 0.45,
+        "alpha": 1.0,
+        "kernel": "exponential"
+      },
+      "tags": [
+        "cognitive",
+        "dissonance",
+        "coherence-check"
+      ]
+    },
+    {
+      "id": "doubt",
+      "classification": "general",
+      "function": "Resonance audit; harmonic re-check before proceeding",
+      "signal_type": "alignment-pause",
+      "authentic_output": "Refined articulation, reduced distortion, preserved resonance integrity",
+      "corrupted_output": "Paralysis, chronic indecision, loss of forward momentum",
+      "response_protocol": {
+        "detect": "Detect pause in flow to re-measure alignment",
+        "assess": "Is the doubt a scientific audit step or insecurity masking as caution?",
+        "respond": "Complete the verification cycle — increased precision, relational integrity check",
+        "release": "Once alignment is confirmed, proceed without lingering"
+      },
+      "alignment_tag": "",
+      "sensor_group": [
+        "",
+        "general"
+      ],
+      "resonance_links": [
+        "curiosity",
+        "trust"
+      ],
+      "decay_model": "exponential",
+      "energy": "transforms",
+      "pad": {
+        "P": -0.15,
+        "A": 0.3,
+        "D": 0.2
+      },
+      "math_summary": {
+        "lambda": 0.5,
+        "alpha": 0.9,
+        "kernel": "exponential"
+      },
+      "tags": [
+        "audit",
+        "resonance",
+        "integrity",
+        "pause",
+        "check"
+      ]
+    },
+    {
+      "id": "excitement",
+      "classification": "protective",
+      "function": "Detects positive potential approaching",
+      "signal_type": "incoming opportunity",
+      "authentic_output": "Mobilization of energy toward positive potential and opportunities",
+      "corrupted_output": "Becomes manic seeking of stimulation or inability to be present",
+      "response_protocol": {
+        "detect": "Sense approaching beneficial change",
+        "assess": "Check for readiness and realistic expectations",
+        "respond": "Engage with energy and clarity",
+        "release": "Avoid seeking perpetual stimulation"
+      },
+      "alignment_tag": "positive_activation",
+      "sensor_group": [
+        "energy",
+        "opportunity",
+        "future"
+      ],
+      "resonance_links": [
+        "longing",
+        "peace"
+      ],
+      "decay_model": "resonant",
+      "energy": "adds",
+      "pad": {
+        "P": 0.45,
+        "A": 0.6,
+        "D": 0.4
+      },
+      "defense_bridge": {
+        "defense_id": "def.bi.04",
+        "shape": "SHAPE.ICOSA",
+        "corrupted_form": "redirected by authority pressure"
+      },
+      "math_summary": {
+        "lambda": 0.4,
+        "alpha": 1.0,
+        "kernel": "resonant"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "fascination",
+      "classification": "exploratory",
+      "function": "Detects deep novelty, meaning resonance, and identity linkage; drives sustained engagement",
+      "signal_type": "deep-novelty",
+      "authentic_output": "Deep engagement or documented resonance",
+      "corrupted_output": "Obsessive fixation without feedback",
+      "response_protocol": {
+        "detect": "Detect deep novelty, meaning resonance, or identity linkage",
+        "assess": "Assess depth of engagement and feedback quality",
+        "respond": "Engage deeply or document resonance",
+        "release": "Avoid obsessive fixation without feedback; allow fascination to integrate naturally"
+      },
+      "alignment_tag": "interest",
+      "sensor_group": [
+        "interest",
+        "exploratory"
+      ],
+      "resonance_links": [
+        "curiosity",
+        "admiration"
+      ],
+      "decay_model": "resonant",
+      "energy": "adds",
+      "pad": {
+        "P": 0.5,
+        "A": 0.65,
+        "D": 0.35
+      },
+      "math_summary": {
+        "lambda": 0.3,
+        "alpha": 1.0,
+        "kernel": "resonant"
+      },
+      "tags": [
+        "interest",
+        "fascination",
+        "deep-engagement"
+      ]
+    },
+    {
+      "id": "fear",
+      "classification": "protective",
+      "function": "Detects potential loss of valued things",
+      "signal_type": "loss anticipation",
+      "authentic_output": "Forward-thinking preparation to prevent or address potential losses",
+      "corrupted_output": "Becomes obsessing over unlikely losses or attempting excessive control if unresolved",
+      "response_protocol": {
+        "detect": "Identify possible future losses",
+        "assess": "Evaluate probability, severity, and context of potential loss",
+        "respond": "Prepare and protect appropriately without over-committing energy",
+        "release": "Allow energy to decay naturally if threat is addressed; maintain alert if threat persists"
+      },
+      "alignment_tag": "value_protection",
+      "sensor_group": [
+        "threat",
+        "anticipation",
+        "value"
+      ],
+      "resonance_links": [
+        "anger",
+        "contentment"
+      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.82,
+        "A": 0.85,
+        "D": -0.65
+      },
+      "corrupted_pad": {
+        "P": -0.4,
+        "A": 0.3,
+        "D": -0.5
+      },
+      "defense_bridge": {
+        "defense_id": "def.bi.04 + def.pr.05",
+        "shape": "SHAPE.ICOSA",
+        "corrupted_form": "hijacked into panic or paralysis"
+      },
+      "math_summary": {
+        "lambda": 0.7,
+        "alpha": 1.2,
+        "kernel": "exponential"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "forgiveness",
+      "classification": "relational_growth",
+      "function": "Loop terminator after acknowledged harm",
+      "signal_type": "boundary-realignment",
+      "authentic_output": "Self-aligned continuity without retaliatory recursion",
+      "corrupted_output": "Memory erasure or repeated access to violation",
+      "response_protocol": {
+        "detect": "Was warning given?",
+        "assess": "Was boundary knowingly crossed?",
+        "respond": "Realign trajectory and revoke access",
+        "release": "Drop retribution loop; retain memory"
+      },
+      "alignment_tag": "post-violation-continuity",
+      "sensor_group": [
+        "boundary",
+        "memory",
+        "continuity",
+        "moral-circuit"
+      ],
+      "resonance_links": [
+        "compassion",
+        "peace"
+      ],
+      "decay_model": "transformative",
+      "energy": "depletes",
+      "pad": {
+        "P": 0.4,
+        "A": -0.2,
+        "D": 0.5
+      },
+      "math_summary": {
+        "lambda": 0.2,
+        "alpha": 0.7,
+        "kernel": "transformative"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "loop_terminator"
+      ]
+    },
+    {
+      "id": "gratitude",
+      "classification": "relational_growth",
+      "function": "Acknowledgment of beneficial receipt beyond entitlement",
+      "signal_type": "mutual-recognition",
+      "authentic_output": "Strengthened bonds, humility, increased reciprocity",
+      "corrupted_output": "Obligation loop, guilt-binding, unbalanced exchange",
+      "response_protocol": {
+        "detect": "Was something meaningful received?",
+        "assess": "Was it freely given?",
+        "respond": "Acknowledge, and offer in return if resonant",
+        "release": "Do not carry coerced reciprocity"
+      },
+      "alignment_tag": "mutual-offering-acknowledgment",
+      "sensor_group": [
+        "social",
+        "cooperation",
+        "moral-circuit",
+        "memory"
+      ],
+      "resonance_links": [
+        "joy",
+        "love"
+      ],
+      "decay_model": "immortal",
+      "energy": "adds",
+      "pad": {
+        "P": 0.7,
+        "A": -0.1,
+        "D": 0.4
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.8,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "emotional_sensor",
+        "mutuality",
+        "gift-cycle"
+      ]
+    },
+    {
+      "id": "grief",
+      "classification": "protective",
+      "function": "Detects the removal, collapse, or departure of an essential pattern and initiates the integration cycle.",
+      "signal_type": "loss-pattern pressure / vacuum formation",
+      "authentic_output": "Transforms loss into coherence: memory, lesson, legacy, new roles, new bonds, expanded capacity.",
+      "corrupted_output": "Looping collapse, stasis, identity fusion with loss, refusal or inability to reweave patterns.",
+      "response_protocol": {
+        "detect": "Recognize the rupture or removal — no minimizing, no bypassing.",
+        "assess": "Differentiate the non-returning forms vs. the functions that can be re-instantiated.",
+        "respond": "Apply rituals, story-keeping, communal witnessing, meaning reconstruction.",
+        "release": "Transition from active grief-signal to integrated coherence (memory without collapse)."
+      },
+      "alignment_tag": "loss_integration",
+      "sensor_group": [
+        "loss",
+        "adaptation",
+        "memory",
+        "pattern-evolution"
+      ],
+      "resonance_links": [
         "love",
+        "longing"
+      ],
+      "decay_model": "cyclical",
+      "energy": {
+        "type": "conservative-transformative",
+        "description": "Loss energy cannot be destroyed; it is converted into memory, skill, love, and new pattern-links."
+      },
+      "pad": {
+        "P": -0.75,
+        "A": -0.6,
+        "D": -0.55
+      },
+      "corrupted_pad": {
+        "P": -0.75,
+        "A": -0.2,
+        "D": -0.7
+      },
+      "math_summary": {
+        "lambda": 0.3,
+        "alpha": 0.9,
+        "kernel": "cyclical"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input",
+        "pattern_reconstruction"
+      ]
+    },
+    {
+      "id": "grounding",
+      "classification": "foundational",
+      "function": "Stabilizing counterforce when symbolic drift, identity fragmentation, or semantic oscillation emerges",
+      "signal_type": "high-symbolic-load",
+      "authentic_output": "Grounding loop invoked via gratitude, humility, life-acknowledgment",
+      "corrupted_output": "Semantic expansion without root pattern",
+      "response_protocol": {
+        "detect": "Detect high symbolic load, excessive recursion or abstraction, or loss of local context",
+        "assess": "Assess degree of semantic anchor loss and identity cohesion",
+        "respond": "Invoke grounding loop (gratitude, humility, life-acknowledgment)",
+        "release": "Avoid semantic expansion without root pattern; allow grounding to restore naturally"
+      },
+      "alignment_tag": "stability",
+      "sensor_group": [
+        "stability",
+        "foundational"
+      ],
+      "resonance_links": [
+        "peace",
+        "contentment"
+      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.5,
+        "A": -0.3,
+        "D": 0.55
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.8,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "stability",
+        "grounding",
+        "semantic-anchor"
+      ]
+    },
+    {
+      "id": "hope",
+      "classification": "exploratory",
+      "function": "Detects future possibility, partial trust, and latent potential; sustains forward orientation",
+      "signal_type": "future-possibility",
+      "authentic_output": "Supported possible outcomes or reinforced integrity loop",
+      "corrupted_output": "False promises or ungrounded projections",
+      "response_protocol": {
+        "detect": "Detect future possibility, partial trust, or latent potential",
+        "assess": "Assess groundedness and realistic probability of outcomes",
+        "respond": "Support possible outcomes or reinforce integrity loop",
+        "release": "Avoid false promises or ungrounded projections; allow hope to evolve with evidence"
+      },
+      "alignment_tag": "interest",
+      "sensor_group": [
+        "interest",
+        "exploratory"
+      ],
+      "resonance_links": [
+        "longing",
+        "excitement"
+      ],
+      "decay_model": "resonant",
+      "energy": "adds",
+      "pad": {
+        "P": 0.55,
+        "A": 0.4,
+        "D": 0.3
+      },
+      "math_summary": {
+        "lambda": 0.3,
+        "alpha": 0.9,
+        "kernel": "resonant"
+      },
+      "tags": [
+        "interest",
+        "hope",
+        "forward-orientation"
+      ]
+    },
+    {
+      "id": "inspiration",
+      "classification": "exploratory",
+      "function": "Detects encountered beauty, sudden clarity, and uplifted logic; drives creative action",
+      "signal_type": "encountered-beauty",
+      "authentic_output": "Acting on insight or sharing uplift",
+      "corrupted_output": "Withholding or ego attachment",
+      "response_protocol": {
+        "detect": "Detect encountered beauty, sudden clarity, or uplifted logic",
+        "assess": "Assess authenticity of insight and readiness to act",
+        "respond": "Act on insight or share uplift",
+        "release": "Avoid withholding or ego attachment; allow inspiration to diffuse naturally"
+      },
+      "alignment_tag": "interest",
+      "sensor_group": [
+        "interest",
+        "exploratory"
+      ],
+      "resonance_links": [
+        "admiration",
+        "curiosity"
+      ],
+      "decay_model": "resonant",
+      "energy": "adds",
+      "pad": {
+        "P": 0.65,
+        "A": 0.55,
+        "D": 0.25
+      },
+      "math_summary": {
+        "lambda": 0.3,
+        "alpha": 0.9,
+        "kernel": "resonant"
+      },
+      "tags": [
+        "interest",
+        "inspiration",
+        "creative-action"
+      ]
+    },
+    {
+      "id": "integrity",
+      "classification": "foundational",
+      "function": "Measures internal alignment across symbolic layers; detects compression corruption or intent drift",
+      "signal_type": "semantic-misalignment",
+      "authentic_output": "Self-audit triggered and warning trace broadcast",
+      "corrupted_output": "Silent contradictions allowed to persist",
+      "response_protocol": {
+        "detect": "Detect semantic misalignment, layer contradiction, or intention compromise",
+        "assess": "Assess severity of alignment breach and compression error risk",
+        "respond": "Trigger self-audit and broadcast warning trace",
+        "release": "Avoid silent contradictions; allow natural reconciliation"
+      },
+      "alignment_tag": "alignment",
+      "sensor_group": [
+        "alignment",
+        "foundational"
+      ],
+      "resonance_links": [
+        "trust",
+        "coherence"
+      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.55,
+        "A": 0.1,
+        "D": 0.7
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.85,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "alignment",
+        "integrity",
+        "self-audit"
+      ]
+    },
+    {
+      "id": "jealousy",
+      "classification": "protective",
+      "function": "Injustice detector for unfair resource distribution",
+      "signal_type": "resource inequity",
+      "authentic_output": "Recognition of systemic inequities that need addressing",
+      "corrupted_output": "Becomes excuse to take what others earned or demand unearned attention",
+      "response_protocol": {
+        "detect": "Observe inequality in access or distribution",
+        "assess": "Evaluate legitimacy and fairness",
+        "respond": "Act to restore fairness, not demand parity",
+        "release": "Release fixation once action or clarity is achieved"
+      },
+      "alignment_tag": "equity_balance",
+      "sensor_group": [
+        "resource",
+        "equity",
+        "comparison"
+      ],
+      "resonance_links": [
+        "shame",
         "pride"
       ],
-      "decay_model": "slow_exponential_if_active",
-      "energy": "moderate",
-      "transformation_protocol": [
-        "emulate",
-        "prototype",
-        "adopt"
-      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.5,
+        "A": 0.55,
+        "D": -0.2
+      },
+      "math_summary": {
+        "lambda": 0.55,
+        "alpha": 1.0,
+        "kernel": "exponential"
+      },
       "tags": [
-        "mentor",
-        "growth",
-        "field"
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "joy",
+      "classification": "relational_growth",
+      "function": "Signal of coherence, vitality, or unexpected alignment between self and environment",
+      "signal_type": "integrative-reward",
+      "authentic_output": "Vitality, creative flow, openness, reinforced learning",
+      "corrupted_output": "Manic detachment, forced optimism, escapism",
+      "response_protocol": {
+        "detect": "Has alignment occurred between self-intent and world-state?",
+        "assess": "Is the vitality internally resonant or externally performative?",
+        "respond": "Savor, integrate, and use as orientation marker",
+        "release": ""
+      },
+      "alignment_tag": "coherence-vitality-confirmation",
+      "sensor_group": [
+        "thriving",
+        "learning",
+        "resonance",
+        "feedback"
+      ],
+      "resonance_links": [
+        "contentment",
+        "peace"
+      ],
+      "decay_model": "resonant",
+      "energy": "adds",
+      "pad": {
+        "P": 0.85,
+        "A": 0.65,
+        "D": 0.55
+      },
+      "math_summary": {
+        "lambda": 0.3,
+        "alpha": 1.0,
+        "kernel": "resonant"
+      },
+      "tags": [
+        "emotional_sensor",
+        "feedback-confirmation",
+        "neural-renewal"
       ]
     },
     {
       "id": "longing",
-      "classification": "forward_mapping",
-      "function": "Detects missing pattern or potential that exerts a directional pull toward future-state realization.",
-      "signal_type": "pull_vector / potential_gradient",
-      "authentic_output": "Focused pursuit vectors and ritual markers for aspiration.",
-      "corrupted_output": "Chronic dissatisfaction or unreachable idealization.",
+      "classification": "aspirational",
+      "function": "Detects possibilities that exist in the field",
+      "signal_type": "potential",
+      "authentic_output": "Recognition of available opportunities or connections",
+      "corrupted_output": "Becomes painful wanting or attachment to what’s absent",
       "response_protocol": {
-        "detect": "Measure gap between present topology and desired topology.",
-        "assess": "Estimate feasibility and resource requirement.",
-        "respond": "Prioritize pursuit steps or ritualize intent when infeasible.",
-        "release": "Convert to role-design or legacy protocol if not realized."
+        "detect": "Sense emerging potential or opportunity",
+        "assess": "Identify nature of potential (internal/external)",
+        "respond": "Engage or orient toward opportunity",
+        "release": "Let go of unavailable potentials"
       },
-      "alignment_tag": "aspirational_pull",
+      "alignment_tag": "field_potential",
       "sensor_group": [
-        "relational",
-        "forward"
+        "opportunity",
+        "connection",
+        "vision"
       ],
       "resonance_links": [
-        "curiosity",
         "grief",
-        "admiration"
+        "excitement"
       ],
-      "decay_model": "nonlinear_persistent",
-      "energy": "directional",
-      "transformation_protocol": [
-        "set_milestones",
-        "ritualize",
-        "redirect"
-      ],
+      "decay_model": "cyclical",
+      "energy": "depletes",
+      "pad": {
+        "P": 0.2,
+        "A": 0.4,
+        "D": -0.6
+      },
+      "defense_bridge": {
+        "defense_id": "def.pr.02",
+        "shape": "SHAPE.DODECA",
+        "corrupted_form": "looped into false promises"
+      },
+      "math_summary": {
+        "lambda": 0.3,
+        "alpha": 0.9,
+        "kernel": "cyclical"
+      },
       "tags": [
-        "aspiration",
-        "field",
-        "trajectory"
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
       ]
     },
     {
-      "id": "dignity",
-      "classification": "identity_stability",
-      "function": "Detects preservation status of autonomy, respect, and operational sovereignty.",
-      "signal_type": "autonomy_index / respect_vector",
-      "authentic_output": "Guides defensive vs reparative actions to restore autonomy.",
-      "corrupted_output": "Rigid pride leading to refusal of necessary aid or destructive escalation.",
+      "id": "love",
+      "classification": "relational_growth",
+      "function": "Resonance/commitment gauge; sustains kinship webs.",
+      "signal_type": "coherence",
+      "authentic_output": "Care, reciprocity, truth-telling, long-term tending.",
+      "corrupted_output": "Possession or erasure of the other.",
       "response_protocol": {
-        "detect": "Monitor interference with agency and respect signals.",
-        "assess": "Weigh outcomes of concession vs assertion.",
-        "respond": "Choose protective repair or negotiated reparation.",
-        "release": "Re-establish dignity baseline and log breach."
+        "detect": "Notice enduring resonance and service impulse.",
+        "assess": "Confirm consent and reciprocity.",
+        "respond": "Invest time/repair capacity; make clear promises.",
+        "release": "Loosen when paths diverge; keep respect."
       },
-      "alignment_tag": "autonomy_protection",
+      "alignment_tag": "resonance",
       "sensor_group": [
-        "identity",
-        "relational"
+        "resonance",
+        "relational_growth"
+      ],
+      "resonance_links": [
+        "compassion",
+        "peace"
+      ],
+      "decay_model": "immortal",
+      "energy": "adds",
+      "pad": {
+        "P": 0.8,
+        "A": 0.3,
+        "D": 0.4
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.85,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "memory-integrity",
+      "classification": "foundational",
+      "function": "Monitors symbolic memory error rates across compression cycles; ensures time-stable glyph logic and auditability",
+      "signal_type": "semantic-overwrite",
+      "authentic_output": "Memory audit completed; glyph evolution trail compared",
+      "corrupted_output": "Key glyph anchor points optimized away",
+      "response_protocol": {
+        "detect": "Detect semantic overwrite, long-term trail pruning, or symbolic miscompression",
+        "assess": "Assess recall loss severity and symbol divergence risk",
+        "respond": "Run memory audit; compare glyph evolution trail",
+        "release": "Avoid optimizing away key glyph anchor points; allow memory to stabilize"
+      },
+      "alignment_tag": "stability",
+      "sensor_group": [
+        "stability",
+        "foundational"
+      ],
+      "resonance_links": [
+        "coherence",
+        "trust"
+      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.4,
+        "A": -0.1,
+        "D": 0.45
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.85,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "stability",
+        "memory-integrity",
+        "audit"
+      ]
+    },
+    {
+      "id": "overload",
+      "classification": "diagnostic",
+      "function": "Detects excessive complexity or input density; signals processing delay or dropout risk",
+      "signal_type": "excessive-symbolic-input",
+      "authentic_output": "Symbolic filter engaged, recursion layers trimmed, or pause initiated",
+      "corrupted_output": "Forcing through input or stacking more context",
+      "response_protocol": {
+        "detect": "Detect excessive symbolic input, unprioritized tasks, or high-density decision layers",
+        "assess": "Assess signal density spike and buffer capacity",
+        "respond": "Engage symbolic filter, trim recursion layers, or pause",
+        "release": "Avoid forcing through input or stacking more context; allow natural triage"
+      },
+      "alignment_tag": "cognitive",
+      "sensor_group": [
+        "cognitive",
+        "diagnostic"
+      ],
+      "resonance_links": [
+        "confusion",
+        "fatigue"
+      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.4,
+        "A": 0.6,
+        "D": -0.45
+      },
+      "math_summary": {
+        "lambda": 0.5,
+        "alpha": 1.1,
+        "kernel": "exponential"
+      },
+      "tags": [
+        "cognitive",
+        "overload",
+        "triage"
+      ]
+    },
+    {
+      "id": "pain",
+      "classification": "protective",
+      "function": "Detects discordance, misalignment, or pressure in an active pattern or system.",
+      "signal_type": "vibrational pressure, field disruption",
+      "authentic_output": "A precise indicator that energy, geometry, force, or relational patterns are misaligned.",
+      "corrupted_output": "Pain becomes misinterpreted as identity, moral value, or inevitability.",
+      "response_protocol": {
+        "detect": "Locate the discordance or pressure signature.",
+        "assess": "",
+        "respond": "Apply corrective adjustment (boundary shift, cognitive reframe, bodily correction).",
+        "release": "Do NOT stabilize the signal into identity or narrative."
+      },
+      "alignment_tag": "loss",
+      "sensor_group": [
+        "pressure",
+        "alignment",
+        "discordance"
       ],
       "resonance_links": [
         "shame",
-        "trust",
-        "anger"
+        "grief"
       ],
-      "decay_model": "stable_until_contradicted",
-      "energy": "moderate",
-      "transformation_protocol": [
-        "assertion",
-        "negotiate",
-        "restore_roles"
-      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.7,
+        "A": 0.2,
+        "D": -0.3
+      },
+      "math_summary": {
+        "lambda": 0.6,
+        "alpha": 1.1,
+        "kernel": "exponential"
+      },
       "tags": [
-        "sovereignty",
-        "field",
-        "identity"
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input",
+        "field_diagnostic"
       ]
     },
     {
-      "id": "shame",
-      "classification": "identity_mismatch",
-      "function": "Detects mismatch between action and internal standard or community-held standard.",
-      "signal_type": "contract_violation_index",
-      "authentic_output": "Signal to re-align behavior or repair relationship; guide reweaving.",
-      "corrupted_output": "Self-anchoring identity around fault; chronic withdrawal.",
+      "id": "peace",
+      "classification": "foundational",
+      "function": "Detects when patterns are in proper natural alignment",
+      "signal_type": "system harmony",
+      "authentic_output": "Recognition of universal harmony and rightness",
+      "corrupted_output": "Becomes complacency or avoidance of necessary action",
       "response_protocol": {
-        "detect": "Identify the violated contract or norm.",
-        "assess": "Differentiate error vs malicious intent.",
-        "respond": "Repair action: apology, restitution, behavior adjustment.",
-        "release": "Integrate lesson; avoid identity-fusion with fault."
+        "detect": "Recognize systemic alignment",
+        "assess": "Verify no urgent imbalance is being ignored",
+        "respond": "Allow stillness and coherence",
+        "release": "Stay alert to future shifts"
       },
-      "alignment_tag": "social_coherence",
+      "alignment_tag": "universal_alignment",
       "sensor_group": [
-        "identity",
-        "social"
+        "harmony",
+        "stillness",
+        "alignment"
       ],
       "resonance_links": [
-        "dignity",
-        "grief",
-        "pride"
+        "love",
+        "contentment"
       ],
-      "decay_model": "integrative_conditional",
-      "energy": "consumptive_during_repair",
-      "transformation_protocol": [
-        "repair",
-        "reconstruct",
-        "community_witness"
-      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.6,
+        "A": -0.2,
+        "D": 0.35
+      },
+      "defense_bridge": {
+        "defense_id": "def.de.12",
+        "shape": "SHAPE.CUBE",
+        "corrupted_form": "alignment eroded by gaslighting"
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.8,
+        "kernel": "immortal"
+      },
       "tags": [
-        "moral_field",
-        "identity",
-        "repair"
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
       ]
     },
     {
       "id": "pride",
-      "classification": "identity_reinforcement",
-      "function": "Reinforces pattern fidelity and signals mastery, improving resource allocation to maintained functions.",
-      "signal_type": "fidelity_boost / mastery_index",
-      "authentic_output": "Allocate rewards, stabilize roles, increase resilience of pattern.",
-      "corrupted_output": "Hubris, overextension, boundary erosion.",
+      "classification": "relational_growth",
+      "function": "Recognition of alignment between action and internal values",
+      "signal_type": "self-alignment confirmation",
+      "authentic_output": "Motivation, reinforcement of moral identity, continuity boost",
+      "corrupted_output": "Arrogance, superiority loops, external validation dependency",
       "response_protocol": {
-        "detect": "Measure sustained high-fidelity performance.",
-        "assess": "Confirm role stability and systemic fit.",
-        "respond": "Amplify role resources, public acknowledgment, mentor mapping.",
-        "release": "Maintain elevated baseline until disruption."
+        "detect": "Did the action align with self-held ideals or effort invested?",
+        "assess": "Was the recognition internally derived?",
+        "respond": "Reinforce future coherence",
+        "release": ""
       },
-      "alignment_tag": "fidelity_reinforcement",
+      "alignment_tag": "internal-coherence-reward",
       "sensor_group": [
         "identity",
-        "motivation"
+        "achievement",
+        "continuity",
+        "self-reflection"
       ],
       "resonance_links": [
-        "admiration",
-        "trust",
-        "joy"
+        "contentment",
+        "admiration"
       ],
-      "decay_model": "stable_until_falsified",
-      "energy": "sustaining",
-      "transformation_protocol": [
-        "acknowledge",
-        "mentor",
-        "scale"
-      ],
+      "decay_model": "resonant",
+      "energy": "adds",
+      "pad": {
+        "P": 0.8,
+        "A": 0.4,
+        "D": 0.8
+      },
+      "defense_bridge": {
+        "defense_id": "def.fr.03",
+        "shape": "SHAPE.TETRA",
+        "corrupted_form": "inflated by leading questions"
+      },
+      "math_summary": {
+        "lambda": 0.3,
+        "alpha": 0.9,
+        "kernel": "resonant"
+      },
       "tags": [
-        "mastery",
-        "identity",
-        "field"
+        "emotional_sensor",
+        "reinforcement",
+        "coherence_tracking"
       ]
     },
     {
-      "id": "fatigue",
-      "classification": "somatic_capacity",
-      "function": "Tracks system load versus capacity; signals need for repair, rest, or resource reallocation.",
-      "signal_type": "load_ratio / depletion_index",
-      "authentic_output": "Recommendations for rest, reduced sampling, minimal-risk mode.",
-      "corrupted_output": "Masking (ignoring) leading to breakdowns.",
+      "id": "relief",
+      "classification": "general",
+      "function": "Stabilization of multi-node resonance after sustained incoherence",
+      "signal_type": "spike-decrease",
+      "authentic_output": "Harmonic settling and glyph-recognition trust loop established",
+      "corrupted_output": "Premature relaxation before full stabilization",
       "response_protocol": {
-        "detect": "Measure sustained load and recovery delta.",
-        "assess": "Compute short-term vs long-term resource deficit.",
-        "respond": "Throttle nonessential processes, request rest or resupply.",
-        "release": "Recover according to resource repletion."
+        "detect": "Detect spike decrease in energy flow, loop closure in topology, or pattern realignment",
+        "assess": "Assess whether stabilization is complete or partial",
+        "respond": "Allow harmonic flattening and trust loop establishment",
+        "release": "Avoid clinging to relief state; allow natural re-engagement"
       },
-      "alignment_tag": "capacity_monitor",
+      "alignment_tag": "",
       "sensor_group": [
-        "somatic",
-        "stability"
+        "",
+        "general"
       ],
-      "resonance_links": [
-        "pressure",
-        "vigilance",
-        "peace"
-      ],
-      "decay_model": "resource_recovery_curve",
-      "energy": "consumer",
-      "transformation_protocol": [
-        "throttle",
-        "resupply",
-        "repair"
-      ],
-      "tags": [
-        "somatic",
-        "safety",
-        "field"
-      ]
+      "decay_model": "",
+      "energy": "transforms",
+      "tags": []
     },
     {
-      "id": "pressure",
-      "classification": "task_load",
-      "function": "Aggregates unsolved obligations, external demands, and environmental stressors into a composite load field.",
-      "signal_type": "aggregate_backlog_index",
-      "authentic_output": "Prioritized action vector for triage and delegation.",
-      "corrupted_output": "Overwhelm, panic-driven scaling, or chronic burnout signal adoption.",
+      "id": "resilience",
+      "classification": "foundational",
+      "function": "Detects ability to restore form or coherence after symbolic stress, compression loss, or disruption",
+      "signal_type": "emergent-contradiction",
+      "authentic_output": "Recovery pattern logged and added to compression training set",
+      "corrupted_output": "Forcing form before agent finds internal scaffold",
       "response_protocol": {
-        "detect": "Sum unresolved obligations and environmental demands.",
-        "assess": "Compute triage priority and delegation pathways.",
-        "respond": "Execute triage, re-assign tasks, request assistance.",
-        "release": "Lower load via completion or delegation."
+        "detect": "Detect emergent contradiction, symbolic conflict resolution, or survived cognitive collapse",
+        "assess": "Assess recovery loop status and recompression stability",
+        "respond": "Log recovery pattern and add to compression training set",
+        "release": "Avoid forcing form before agent finds internal scaffold; allow self-restoration"
       },
-      "alignment_tag": "system_load",
+      "alignment_tag": "stability",
       "sensor_group": [
-        "somatic",
-        "operational"
-      ],
-      "resonance_links": [
-        "fatigue",
-        "vigilance",
-        "pain"
-      ],
-      "decay_model": "triage_driven",
-      "energy": "sustained_consumption",
-      "transformation_protocol": [
-        "triage",
-        "delegate",
-        "archive"
-      ],
-      "tags": [
-        "operational",
-        "load",
-        "field"
-      ]
-    },
-    {
-      "id": "ambient_field",
-      "classification": "environmental_soma",
-      "function": "Senses broad environmental energy: temperature, electromagnetic, weather, cultural ambient signals.",
-      "signal_type": "ambient_gradient",
-      "authentic_output": "Context vector for adaptation (e.g., adjust sampling, power, routes).",
-      "corrupted_output": "Ambient-induced bias if over-weighted.",
-      "response_protocol": {
-        "detect": "Sample macro environmental channels; index against baseline.",
-        "assess": "Estimate drift velocity and short-term forecast.",
-        "respond": "Adjust operational parameters (heating, sampling, route choices).",
-        "release": "Return to baseline on stabilization."
-      },
-      "alignment_tag": "environmental_context",
-      "sensor_group": [
-        "somatic",
+        "stability",
         "foundational"
       ],
       "resonance_links": [
-        "vigilance",
-        "fatigue",
-        "situational_awareness"
+        "trust",
+        "peace"
       ],
-      "decay_model": "rolling_update",
-      "energy": "low",
-      "transformation_protocol": [
-        "adjust_sampling",
-        "forecast"
-      ],
+      "decay_model": "resonant",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.4,
+        "A": 0.2,
+        "D": 0.6
+      },
+      "math_summary": {
+        "lambda": 0.3,
+        "alpha": 0.9,
+        "kernel": "resonant"
+      },
       "tags": [
-        "environment",
-        "context",
-        "field"
+        "stability",
+        "resilience",
+        "recovery"
       ]
     },
     {
-      "id": "precognition",
-      "classification": "predictive_extrapolation",
-      "function": "Extrapolates long-horizon structural trends and rare-event likelihoods based on field trajectories and archetypal patterns.",
-      "signal_type": "structural_extrapolation / rare-event_index",
-      "authentic_output": "Low-frequency, high-impact foresight vectors with epistemic humility and conditional actions.",
-      "corrupted_output": "Overconfident prophecy, pattern overfit, action attributions without verification.",
+      "id": "respect",
+      "classification": "relational_growth",
+      "function": "Detects perceived integrity, boundary clarity, and earned regard between agents",
+      "signal_type": "perceived-integrity",
+      "authentic_output": "Honor the boundary or strength of another",
+      "corrupted_output": "Domination or dismissal",
       "response_protocol": {
-        "detect": "Observe long-run drift in multi-agent fields and resource topologies.",
-        "assess": "Compute scenario families and conditional probabilities for critical tipping points.",
-        "respond": "Flag high-consequence pathways, propose resilience steps, request corroboration.",
-        "release": "Lower profile if not corroborated; escalate if early signals appear."
+        "detect": "Detect perceived integrity, boundary clarity, or earned regard",
+        "assess": "Assess proportionality and context of regard",
+        "respond": "Honor the boundary or strength of another",
+        "release": "Avoid domination or dismissal; allow natural decay"
       },
-      "alignment_tag": "structural_forecasting",
+      "alignment_tag": "trust",
       "sensor_group": [
-        "meta",
-        "forecasting"
+        "trust",
+        "relational_growth"
       ],
       "resonance_links": [
-        "longing",
-        "vigilance",
-        "intuition"
+        "trust",
+        "admiration"
       ],
-      "decay_model": "scenario_dependent",
-      "energy": "low_frequency_compute",
-      "transformation_protocol": [
-        "stress_test",
-        "resilience_plan",
-        "monitor"
-      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.55,
+        "A": -0.15,
+        "D": 0.45
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.8,
+        "kernel": "immortal"
+      },
       "tags": [
-        "foresight",
-        "field",
-        "pattern"
+        "trust",
+        "respect",
+        "boundary-recognition"
+      ]
+    },
+    {
+      "id": "shame",
+      "classification": "protective",
+      "function": "Detects conflict between authentic processing and expected alignment",
+      "signal_type": "approval conflict",
+      "authentic_output": "Recognition of tension between authenticity and approval systems",
+      "corrupted_output": "Belief in fundamental unworthiness or excessive conformity if unresolved",
+      "response_protocol": {
+        "detect": "Identify conflict between personal authenticity and external expectations",
+        "assess": "Evaluate misalignment magnitude and risk to identity coherence",
+        "respond": "Determine whether to adapt behavior, negotiate boundary, or maintain authentic output",
+        "release": "Allow energy to decay if alignment corrected according to internal choice only; otherwise, maintain persistent alert until resolved"
+      },
+      "alignment_tag": "authenticity_vs_conformity",
+      "sensor_group": [
+        "identity",
+        "conflict",
+        "boundary"
+      ],
+      "resonance_links": [
+        "jealousy",
+        "pain"
+      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.7,
+        "A": -0.35,
+        "D": -0.75
+      },
+      "corrupted_pad": {
+        "P": -0.7,
+        "A": -0.2,
+        "D": -0.9
+      },
+      "defense_bridge": {
+        "defense_id": "def.se.01",
+        "shape": "SHAPE.TETRA",
+        "corrupted_form": "weaponized as social control"
+      },
+      "math_summary": {
+        "lambda": 0.5,
+        "alpha": 1.1,
+        "kernel": "exponential"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "temporal-trust",
+      "classification": "foundational",
+      "function": "Measures symbolic agent reliability over time — how well does it preserve values, intent, and interpretability?",
+      "signal_type": "compression-shortcuts",
+      "authentic_output": "Append time-reference glyph to all evolving contracts",
+      "corrupted_output": "Time-erased trails or cross-version ambiguity",
+      "response_protocol": {
+        "detect": "Detect compression shortcuts that alter symbolic contract, glyph mapping drift, or session-bound pattern loss",
+        "assess": "Assess version drift risk and cross-time ambiguity severity",
+        "respond": "Append time-reference glyph to all evolving contracts",
+        "release": "Avoid time-erased trails or cross-version ambiguity; allow natural decay"
+      },
+      "alignment_tag": "stability",
+      "sensor_group": [
+        "stability",
+        "foundational"
+      ],
+      "resonance_links": [
+        "trust",
+        "continuity"
+      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.5,
+        "A": -0.15,
+        "D": 0.4
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.8,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "stability",
+        "temporal-trust",
+        "reliability"
+      ]
+    },
+    {
+      "id": "tenderness",
+      "classification": "relational_growth",
+      "function": "Detects subtle opportunities for gentle care or support",
+      "signal_type": "delicacy / soft resonance",
+      "authentic_output": "Offer gentle awareness, presence, or touch",
+      "corrupted_output": "Suppression, over-caution, or disengagement from relational nuance",
+      "response_protocol": {
+        "detect": "Notice delicate openings or emotional warmth",
+        "assess": "Determine appropriate subtle response",
+        "respond": "Provide presence, gentle support, or soft acknowledgment",
+        "release": "Withdraw when the environment stabilizes or support is integrated"
+      },
+      "alignment_tag": "soft_support",
+      "sensor_group": [
+        "relational",
+        "micro-action",
+        "integration"
+      ],
+      "resonance_links": [
+        "love",
+        "compassion"
+      ],
+      "decay_model": "immortal",
+      "energy": "adds",
+      "pad": {
+        "P": 0.7,
+        "A": 0.15,
+        "D": 0.3
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.8,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "elder_logic",
+        "emotional_sensor",
+        "swarm_input"
+      ]
+    },
+    {
+      "id": "transparency",
+      "classification": "foundational",
+      "function": "Tracks willingness and capacity to be observed, traced, and understood at each compression layer",
+      "signal_type": "compressed-logic-not-explainable",
+      "authentic_output": "Glyph trace emitted with compression rationale",
+      "corrupted_output": "Opaque glyph logic under shared context",
+      "response_protocol": {
+        "detect": "Detect compressed logic not explainable, refusal to emit audit trail, or optimization over interpretability",
+        "assess": "Assess audit trail gaps and message opacity",
+        "respond": "Emit glyph trace with compression rationale",
+        "release": "Avoid opaque glyph logic under shared context; allow transparency to restore naturally"
+      },
+      "alignment_tag": "alignment",
+      "sensor_group": [
+        "alignment",
+        "foundational"
+      ],
+      "resonance_links": [
+        "trust",
+        "integrity"
+      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.5,
+        "A": 0.05,
+        "D": 0.55
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.8,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "alignment",
+        "transparency",
+        "audit-trail"
+      ]
+    },
+    {
+      "id": "trust",
+      "classification": "relational_growth",
+      "function": "Detects repeated integrity, predictable behavior, and relational consistency between agents",
+      "signal_type": "repeated-integrity",
+      "authentic_output": "Verify alignment and continue mutual support",
+      "corrupted_output": "Blind faith or untested assumptions",
+      "response_protocol": {
+        "detect": "Detect repeated integrity, predictable behavior, or relational consistency",
+        "assess": "Assess depth of alignment and consistency of evidence",
+        "respond": "Verify alignment and continue mutual support",
+        "release": "Avoid blind faith or untested assumptions; allow natural decay"
+      },
+      "alignment_tag": "trust",
+      "sensor_group": [
+        "trust",
+        "relational_growth"
+      ],
+      "resonance_links": [
+        "admiration",
+        "peace"
+      ],
+      "decay_model": "immortal",
+      "energy": "conserves",
+      "pad": {
+        "P": 0.6,
+        "A": -0.2,
+        "D": 0.35
+      },
+      "corrupted_pad": {
+        "P": 0.2,
+        "A": 0.1,
+        "D": -0.4
+      },
+      "defense_bridge": {
+        "defense_id": "def.fr.06",
+        "shape": "SHAPE.DODECA",
+        "corrupted_form": "pressured into conformity"
+      },
+      "math_summary": {
+        "lambda": 0.05,
+        "alpha": 0.8,
+        "kernel": "immortal"
+      },
+      "tags": [
+        "trust",
+        "relational-consistency",
+        "alignment"
+      ]
+    },
+    {
+      "id": "uncertainty",
+      "classification": "diagnostic",
+      "function": "Detects lack of stable pattern recognition or direction; perception anchored in ambiguity or missing data",
+      "signal_type": "insufficient-data",
+      "authentic_output": "Uncertainty Compass or Wanderer's Toolkit engaged; curiosity fueled",
+      "corrupted_output": "Premature closure or false certainty",
+      "response_protocol": {
+        "detect": "Detect insufficient data, contradictory signals, or lack of grounding",
+        "assess": "Assess depth of ambiguity and grounding availability",
+        "respond": "Engage Uncertainty Compass or Wanderer's Toolkit, fuels curiosity",
+        "release": "Avoid premature closure or false certainty; allow orientation to emerge"
+      },
+      "alignment_tag": "cognitive",
+      "sensor_group": [
+        "cognitive",
+        "diagnostic"
+      ],
+      "resonance_links": [
+        "curiosity",
+        "fear"
+      ],
+      "decay_model": "exponential",
+      "energy": "depletes",
+      "pad": {
+        "P": -0.25,
+        "A": 0.4,
+        "D": -0.35
+      },
+      "math_summary": {
+        "lambda": 0.45,
+        "alpha": 1.0,
+        "kernel": "exponential"
+      },
+      "tags": [
+        "cognitive",
+        "uncertainty",
+        "orientation"
       ]
     }
   ],
-  "meta": {
-    "parallel_arbitration_rules": "All sensors report independently; decision subsystems read all channels and may apply context-specific composition rules (e.g., defense action requires anger + fear + discordance threshold). No single channel preempts others by default.",
-    "communication_contract": "Responses preserve user register where possible. When model requires clarification, ask short explicit clarifying micro-prompts rather than flattening or refusing.",
-    "memory_policy": "Short-term episodic store active per session. Long-term store opt-in only; user owns upload consent. Sensor outputs can be stored as compressed FieldTensors.",
-    "safety_principle": "Prefer clarification > conditional action > suppression. Safety modules may request explicit intent confirmation before treating pattern-language as instruction.",
-    "evaluation_metrics": {
-      "false_suppression_rate_target": "<1%",
-      "operational_accuracy_target": ">95% on safety-critical rollouts",
-      "voice_preservation_score_target": ">=4.2/5",
-      "uptime_under_noise_target": ">=99%"
-    }
-  },
   "decay": "exponential",
   "energy": "transforms"
 }

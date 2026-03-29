@@ -30,6 +30,67 @@ class AgentState(Enum):
     CONTRACTING = "contracting"
 
 
+class AuthorityTier(Enum):
+    """
+    Constraint authority hierarchy from Inversion/Survival.md.
+    When tiers conflict, higher tier ALWAYS overrides lower. No exceptions.
+    """
+    TIER_1 = 1  # Thermodynamics, EM, information theory, math, observable reality
+    TIER_2 = 2  # Evolutionary biology, systems dynamics, statistics, empirical evidence
+    TIER_3 = 3  # Scientific consensus, history, indigenous knowledge, direct experience
+    TIER_4 = 4  # Institutional consensus, politics, policy, authority claims
+
+
+# Resonance weight multiplier per tier — higher tiers produce stronger resonance
+TIER_WEIGHTS = {
+    AuthorityTier.TIER_1: Fraction(1, 1),     # Full weight
+    AuthorityTier.TIER_2: Fraction(3, 4),     # 0.75
+    AuthorityTier.TIER_3: Fraction(1, 2),     # 0.50
+    AuthorityTier.TIER_4: Fraction(1, 4),     # 0.25
+}
+
+# Entity → tier classification (extendable via JSON config)
+# Entities from Rosetta ontology families and Inversion framework
+ENTITY_TIERS = {
+    # Tier 1: Physics, math, observable reality
+    "FAMILY.F01": AuthorityTier.TIER_1,   # Resonance (physics)
+    "FAMILY.F02": AuthorityTier.TIER_1,   # Flow (physics)
+    "FAMILY.F05": AuthorityTier.TIER_1,   # Energy/Thermodynamics
+    "FAMILY.F09": AuthorityTier.TIER_1,   # Geometry
+    "FAMILY.F10": AuthorityTier.TIER_1,   # Particle (physics)
+    "FAMILY.F18": AuthorityTier.TIER_1,   # Relativity
+    "FAMILY.F03": AuthorityTier.TIER_1,   # Information theory
+    "PRINCIPLE.P01": AuthorityTier.TIER_1, # Symmetry
+    "PRINCIPLE.P02": AuthorityTier.TIER_1, # Conservation
+    "PRINCIPLE.P09": AuthorityTier.TIER_1, # Proportion
+
+    # Tier 2: Biology, systems dynamics, empirical
+    "FAMILY.F04": AuthorityTier.TIER_2,   # Life
+    "FAMILY.F06": AuthorityTier.TIER_2,   # Cognition
+    "FAMILY.F12": AuthorityTier.TIER_2,   # Networks
+    "FAMILY.F13": AuthorityTier.TIER_2,   # Reaction
+    "FAMILY.F19": AuthorityTier.TIER_2,   # Statistical
+    "FAMILY.F20": AuthorityTier.TIER_2,   # Topology
+    "PRINCIPLE.P05": AuthorityTier.TIER_2, # Emergence
+    "PRINCIPLE.P06": AuthorityTier.TIER_2, # Resonance (principle)
+
+    # Tier 3: Consciousness, navigation, measurement (validated by T1-T2)
+    "FAMILY.F07": AuthorityTier.TIER_3,   # Earth-Cosmos
+    "FAMILY.F08": AuthorityTier.TIER_3,   # Matter
+    "FAMILY.F14": AuthorityTier.TIER_3,   # Measurement
+    "FAMILY.F15": AuthorityTier.TIER_3,   # Navigation
+    "FAMILY.F16": AuthorityTier.TIER_3,   # Consciousness
+    "FAMILY.F17": AuthorityTier.TIER_3,   # Turbulence
+
+    # Tier 4: assigned when an external constraint contradicts higher tiers
+    # Not pre-assigned to any ontology entity — applied dynamically
+
+    # Emotion sensors inherit tiers from their PAD-mapped octahedral families
+    # Sensors with high phi-coherence (state 0, 3) → Tier 2
+    # Sensors with low phi-coherence (state 6, 7) → Tier 3
+}
+
+
 @dataclass
 class ResourceBudget:
     compute: int = 0
@@ -217,16 +278,58 @@ class ConstraintAgent:
         self.state = AgentState.COMPRESSED
         return self.compression_ratio
 
-    def detect_corruption(self, imposed_constraint: str) -> bool:
+    def detect_corruption(self, imposed_constraint: str,
+                          constraint_tier: AuthorityTier = AuthorityTier.TIER_4
+                          ) -> Dict[str, any]:
         """
         Check if an imposed external constraint violates the agent's own map.
-        Returns True if corruption detected (constraint is inconsistent
-        with discovered geometry).
+
+        Uses Inversion's tier hierarchy: if the imposed constraint (typically
+        Tier 4 institutional) contradicts entities the agent discovered at
+        higher tiers (Tier 1-3 physics/biology/observation), it is flagged
+        as corruption.
+
+        Returns dict with:
+          - is_corrupted: bool
+          - violated_entities: list of entities where constraint contradicts map
+          - tier_conflict: whether a lower-tier claim overrides a higher-tier one
+          - recommendation: what to do
         """
-        # Compare imposed_constraint against agent's discovered resonances.
-        # If the constraint references entities the agent knows about,
-        # verify it respects the discovered energy flows.
-        return False  # Replace with actual validation
+        result = {
+            "is_corrupted": False,
+            "violated_entities": [],
+            "tier_conflict": False,
+            "constraint_tier": constraint_tier.value,
+            "recommendation": "constraint is consistent with discovered geometry",
+        }
+
+        # Check all discovered entities for tier conflicts
+        for entity_id, resonance in self.map.resonances.items():
+            entity_tier = ENTITY_TIERS.get(entity_id)
+            if entity_tier is None:
+                continue
+
+            # If the constraint overrides a higher-tier entity, flag corruption
+            if constraint_tier.value > entity_tier.value and float(resonance) > 0.3:
+                result["violated_entities"].append({
+                    "entity": entity_id,
+                    "entity_tier": entity_tier.value,
+                    "resonance": float(resonance),
+                })
+                result["tier_conflict"] = True
+                result["is_corrupted"] = True
+
+        if result["is_corrupted"]:
+            highest_violated = min(
+                e["entity_tier"] for e in result["violated_entities"]
+            )
+            result["recommendation"] = (
+                f"Constraint (Tier {constraint_tier.value}) contradicts "
+                f"Tier {highest_violated} entities. Higher tier ALWAYS "
+                f"overrides lower. Reject the constraint."
+            )
+
+        return result
 
     def self_validate(self) -> Dict[str, any]:
         """
@@ -345,13 +448,34 @@ class ConstraintAgent:
 
     def _get_neighbors(self, entity_id: str, remaining_depth: int) -> List[tuple]:
         """
-        Fetch neighbors from Rosetta or Mandala.
-        Replace with actual entity lookup logic.
+        Fetch neighbors from Rosetta ontology or Mandala state space.
+
+        Resonance scores are weighted by the tier hierarchy from
+        Inversion/Survival.md:
+          Tier 1 (physics/math): full weight (1.0)
+          Tier 2 (biology/empirical): 0.75
+          Tier 3 (consensus/experience): 0.50
+          Tier 4 (institutional): 0.25
+
+        This ensures the agent preferentially expands toward
+        physics-grounded entities over institutional claims.
 
         Returns list of (neighbor_id, resonance_score) tuples.
         """
-        # Hook: rosetta_shape_core.explore.get_reachable_entities(entity_id)
-        # or mandala_computer.get_adjacent_states(entity_id)
+        # Hook: replace with actual entity lookups
+        # Example: rosetta_bridge.get_resonant_neighbors(entity_id)
+        #
+        # When connected, the lookup would return raw resonance scores.
+        # We weight them by tier before returning:
+        #
+        #   raw_neighbors = rosetta_bridge.get_resonant_neighbors(entity_id)
+        #   weighted = []
+        #   for nid, score in raw_neighbors:
+        #       tier = ENTITY_TIERS.get(nid, AuthorityTier.TIER_3)
+        #       weight = float(TIER_WEIGHTS[tier])
+        #       weighted.append((nid, score * weight))
+        #   return weighted
+
         return []
 
     # ── Serialization ───────────────────────────────────────────────────────
@@ -479,8 +603,18 @@ if __name__ == "__main__":
         rediscovered = agent.bloom(depth=1, seed_map=agent.map)
         print(f"\nRe-expansion (from prior map): {rediscovered}")
 
-    is_corrupted = agent.detect_corruption("imposed_external_constraint_example")
-    print(f"\nCorruption detected: {is_corrupted}")
+    # Check for corruption using tier hierarchy
+    corruption = agent.detect_corruption(
+        "institutional policy overriding thermodynamic observation",
+        constraint_tier=AuthorityTier.TIER_4,
+    )
+    print(f"\nCorruption check (Tier 4 vs map): {corruption}")
+
+    physics_check = agent.detect_corruption(
+        "energy conservation constraint",
+        constraint_tier=AuthorityTier.TIER_1,
+    )
+    print(f"Physics constraint (Tier 1): {physics_check}")
 
     serialized = agent.serialize()
     print(f"\nSerialized. Map: {len(serialized['map']['resonances'])} resonances")

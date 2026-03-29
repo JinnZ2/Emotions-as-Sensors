@@ -68,6 +68,31 @@
           { "remote": "glyphs/emotion.glyphs.json", "as": "atlas/remote/emotions/glyphs.json" }
         ],
         "consent": { "license": "CC0-1.0", "share_ok": true }
+      },
+      {
+        "name": "inversion",
+        "repo": "https://github.com/JinnZ2/Inversion",
+        "ref": "main",
+        "direction": "bidirectional",
+        "paths": [
+          "sims/systems_dynamics.py",
+          "sims/dissipative_systems.py",
+          "scripts/validation_framework.py",
+          "scripts/contamination_detector.py",
+          "Survival.md"
+        ],
+        "exports": [
+          { "local": "atlas/emotions.json",                 "description": "Sensor atlas with PAD coordinates for corruption detection" },
+          { "local": "sensors/suite/comprehensive.json",    "description": "Full sensor suite for distributed sensing" },
+          { "local": "src/constraint_agent.py",             "description": "Constraint agent with tier-based prioritization" }
+        ],
+        "mounts": [
+          { "remote": "sims/systems_dynamics.py",           "as": "atlas/remote/inversion/systems_dynamics.py" },
+          { "remote": "sims/dissipative_systems.py",        "as": "atlas/remote/inversion/dissipative_systems.py" },
+          { "remote": "scripts/validation_framework.py",    "as": "atlas/remote/inversion/validation_framework.py" },
+          { "remote": "scripts/contamination_detector.py",  "as": "atlas/remote/inversion/contamination_detector.py" }
+        ],
+        "consent": { "license": "CC0-1.0", "share_ok": true }
       }
     ],
 
@@ -79,7 +104,7 @@
     ],
 
     "merge": {
-      "order": ["local", "rosetta", "emotions", "biogrid"],
+      "order": ["local", "rosetta", "emotions", "inversion", "biogrid"],
       "strategy": "deep-merge"
     },
 

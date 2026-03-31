@@ -115,6 +115,9 @@ class EmotionSensor:
         self.corruption_cycles = 0
         self.active = True
 
+        # Cultural overlay — D-axis offset (applied to pad_d)
+        self.cultural_d_offset = 0.0
+
     def sense(self, external_signal):
         """Input detection step: D_i(x_t; phi_i)."""
         D = external_signal.get(self.signal_type, 0.0)
@@ -274,17 +277,72 @@ class EmotionSensor:
         )
 
     @property
+    def effective_pad_d(self):
+        """D-axis with cultural overlay applied, clamped to [-1, 1]."""
+        return max(-1.0, min(1.0, self.pad_d + self.cultural_d_offset))
+
+    @property
     def pad_vector(self):
-        """Current PAD vector (scaled by activation)."""
-        return (self.pad_p * self.E, self.pad_a * self.E, self.pad_d * self.E)
+        """Current PAD vector (scaled by activation, cultural overlay on D)."""
+        return (self.pad_p * self.E, self.pad_a * self.E, self.effective_pad_d * self.E)
 
 
 class EmotionSystem:
-    def __init__(self, sensor_dir):
+    def __init__(self, sensor_dir, cultural_overlay=None):
         self.sensors = []
         self.load_sensors(sensor_dir)
         self.time = 0.0
         self.history = []
+        self.active_overlay = None
+        if cultural_overlay:
+            self.apply_cultural_overlay(cultural_overlay)
+
+    def apply_cultural_overlay(self, overlay):
+        """
+        Apply a cultural overlay to all sensors.
+
+        P and A axes are NEVER modified (culture-independent).
+        D axis shifts by overlay["D_offset"] globally, with optional
+        per-sensor overrides from overlay["sensor_overrides"].
+
+        Args:
+            overlay: dict with keys from data/cultural-overlays.json,
+                     or a culture_id string to load from file.
+        """
+        if isinstance(overlay, str):
+            overlay = self._load_overlay_by_id(overlay)
+            if overlay is None:
+                return
+
+        self.active_overlay = overlay
+        global_d_offset = overlay.get("D_offset", 0.0)
+        sensor_overrides = overlay.get("sensor_overrides", {})
+
+        for sensor in self.sensors:
+            # Per-sensor override takes precedence over global
+            override = sensor_overrides.get(sensor.name, {})
+            d_offset = override.get("D_offset", global_d_offset)
+            sensor.cultural_d_offset = d_offset
+
+    def remove_cultural_overlay(self):
+        """Remove active cultural overlay, restoring raw PAD coordinates."""
+        for sensor in self.sensors:
+            sensor.cultural_d_offset = 0.0
+        self.active_overlay = None
+
+    def _load_overlay_by_id(self, culture_id):
+        """Load a cultural overlay from data/cultural-overlays.json by ID."""
+        overlay_path = Path(__file__).resolve().parent.parent / "data" / "cultural-overlays.json"
+        if not overlay_path.exists():
+            return None
+        try:
+            data = json.loads(overlay_path.read_text(encoding="utf-8"))
+            for overlay in data.get("overlays", []):
+                if overlay.get("culture_id") == culture_id:
+                    return overlay
+        except (json.JSONDecodeError, KeyError):
+            pass
+        return None
 
     def load_sensors(self, directory):
         # Load all candidates, then deduplicate by name.

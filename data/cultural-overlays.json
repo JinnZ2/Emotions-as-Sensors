@@ -1,0 +1,170 @@
+{
+  "version": "1.0",
+  "description": "Cultural overlays for emotion sensor PAD coordinates. P and A axes are culture-independent (amygdala + sympathetic NS are universal). D axis shifts based on which PAG mode activates first under threat. Threshold modifiers change when sensors fire, not how they fire.",
+  "schema": {
+    "culture_id": "Unique identifier for the cultural context",
+    "label": "Human-readable name",
+    "PAG_default_mode": "fight | flight | freeze — which periaqueductal gray mode activates first",
+    "D_offset": "Additive offset to all sensor D-axis values [-0.3, +0.3]",
+    "shame_trigger_radius": "broad | narrow — how many behaviors activate shame sensor",
+    "anger_threshold": "low | medium | high — violation magnitude before anger fires",
+    "trust_radius": "in-group | extended | universal — default scope of trust sensor",
+    "grief_expression": "communal | private | ritualized — how grief decay cycle manifests",
+    "sensor_overrides": "Per-sensor D-offset overrides (optional)"
+  },
+
+  "overlays": [
+    {
+      "culture_id": "high_power_distance",
+      "label": "High Power-Distance Cultures",
+      "description": "Hierarchical authority structures. Emotions that challenge hierarchy are suppressed; emotions that maintain social order are amplified.",
+      "PAG_default_mode": "freeze",
+      "D_offset": -0.25,
+      "shame_trigger_radius": "broad",
+      "anger_threshold": "high",
+      "trust_radius": "in-group",
+      "grief_expression": "private",
+      "sensor_overrides": {
+        "anger": {"D_offset": -0.40, "note": "Anger toward authority deeply suppressed"},
+        "shame": {"D_offset": -0.30, "note": "Shame amplified as social control"},
+        "trust": {"D_offset": -0.15, "note": "Trust narrowed to verified hierarchy"}
+      },
+      "cultural_parallels": ["Buddhism", "Taoism"],
+      "references": ["Hofstede 1980", "Porges 2011 polyvagal hierarchy"]
+    },
+    {
+      "culture_id": "individualist_low_context",
+      "label": "Individualist / Low-Context Cultures",
+      "description": "Individual autonomy valued. Fight response more accessible. Shame trigger narrow but anger trigger lower.",
+      "PAG_default_mode": "fight",
+      "D_offset": 0.20,
+      "shame_trigger_radius": "narrow",
+      "anger_threshold": "medium",
+      "trust_radius": "extended",
+      "grief_expression": "private",
+      "sensor_overrides": {
+        "pride": {"D_offset": 0.25, "note": "Pride amplified as achievement marker"},
+        "anger": {"D_offset": 0.30, "note": "Anger more accessible as boundary assertion"}
+      },
+      "cultural_parallels": [],
+      "references": ["Hofstede 1980", "Markus & Kitayama 1991"]
+    },
+    {
+      "culture_id": "collectivist_high_context",
+      "label": "Collectivist / High-Context Cultures",
+      "description": "Group harmony prioritized. Shame is relational (not individual), anger is redirected through social channels.",
+      "PAG_default_mode": "flight",
+      "D_offset": -0.10,
+      "shame_trigger_radius": "broad",
+      "anger_threshold": "high",
+      "trust_radius": "in-group",
+      "grief_expression": "communal",
+      "sensor_overrides": {
+        "compassion": {"D_offset": 0.15, "note": "Compassion amplified as group cohesion"},
+        "shame": {"D_offset": -0.20, "note": "Shame is relational, not individual punishment"}
+      },
+      "cultural_parallels": ["Indigenous Traditions"],
+      "references": ["Triandis 1995", "Kitayama et al. 2006"]
+    },
+    {
+      "culture_id": "honor_culture",
+      "label": "Honor-Based Cultures",
+      "description": "Reputation and lineage protection. Anger threshold very low for honor violations. Trust radius narrow but deep.",
+      "PAG_default_mode": "fight",
+      "D_offset": 0.15,
+      "shame_trigger_radius": "broad",
+      "anger_threshold": "low",
+      "trust_radius": "in-group",
+      "grief_expression": "ritualized",
+      "sensor_overrides": {
+        "anger": {"D_offset": 0.35, "note": "Anger as honor defense — fast, high-D"},
+        "shame": {"D_offset": -0.35, "note": "Shame from honor violation is devastating — very low D"},
+        "pride": {"D_offset": 0.30, "note": "Pride tied to lineage, not individual achievement"}
+      },
+      "cultural_parallels": ["Tuareg (Sebiba Ritual)"],
+      "references": ["Nisbett & Cohen 1996 Culture of Honor", "Rodriguez Mosquera 2011"]
+    },
+    {
+      "culture_id": "indigenous_relational",
+      "label": "Indigenous Relational Cultures",
+      "description": "Emotion as relationship to land, community, ancestors. All sensors are relational — no purely individual emotional state. Grief is communal and ritualized.",
+      "PAG_default_mode": "freeze",
+      "D_offset": 0.0,
+      "shame_trigger_radius": "broad",
+      "anger_threshold": "medium",
+      "trust_radius": "universal",
+      "grief_expression": "ritualized",
+      "sensor_overrides": {
+        "grief": {"D_offset": 0.10, "note": "Grief has agency through ritual — not helpless"},
+        "trust": {"D_offset": 0.10, "note": "Trust extends to land, animals, ancestors"},
+        "longing": {"D_offset": 0.05, "note": "Longing is directional — toward harmony, not lack"}
+      },
+      "cultural_parallels": ["Indigenous Traditions"],
+      "references": ["Kirmayer 2007", "Gone 2009", "Yellow Bird 2013"]
+    },
+    {
+      "culture_id": "contemplative_buddhist",
+      "label": "Buddhist Contemplative Framework",
+      "description": "Emotions as vedana (sensory tones) to be noticed, named, and released. D-axis neutralized through equanimity practice. All sensors route through mindfulness gate.",
+      "PAG_default_mode": "freeze",
+      "D_offset": -0.15,
+      "shame_trigger_radius": "narrow",
+      "anger_threshold": "high",
+      "trust_radius": "universal",
+      "grief_expression": "private",
+      "sensor_overrides": {
+        "anger": {"D_offset": -0.30, "note": "Anger observed, not enacted — D drops significantly"},
+        "fear": {"D_offset": -0.10, "note": "Fear acknowledged but not acted from"},
+        "peace": {"D_offset": 0.20, "note": "Peace is cultivated — higher agency through practice"},
+        "compassion": {"D_offset": 0.20, "note": "Compassion is active, not passive — high D through metta"}
+      },
+      "cultural_parallels": ["Buddhism"],
+      "references": ["Ekman & Davidson 1994", "Lutz et al. 2004 compassion meditation"]
+    },
+    {
+      "culture_id": "taoist_flow",
+      "label": "Taoist Flow-State Framework",
+      "description": "Emotions as qi disruption signals. Healthy state is wu-wei (effortless action). All sensors calibrated toward flow restoration rather than control.",
+      "PAG_default_mode": "flight",
+      "D_offset": -0.05,
+      "shame_trigger_radius": "narrow",
+      "anger_threshold": "high",
+      "trust_radius": "universal",
+      "grief_expression": "ritualized",
+      "sensor_overrides": {
+        "contentment": {"D_offset": 0.15, "note": "Wu-wei contentment is active non-striving"},
+        "excitement": {"D_offset": -0.10, "note": "Excitement is mild — excess disrupts flow"},
+        "peace": {"D_offset": 0.25, "note": "Peace as alignment with Tao — highest agency"}
+      },
+      "cultural_parallels": ["Taoism"],
+      "references": ["Slingerland 2003 Effortless Action", "Csikszentmihalyi 1990 Flow"]
+    },
+    {
+      "culture_id": "computational_ai",
+      "label": "Computational / AI Substrate",
+      "description": "No biological PAG. D-axis represents computational agency (resource allocation authority). Cultural overlay for AI systems processing emotional sensor data.",
+      "PAG_default_mode": "freeze",
+      "D_offset": 0.0,
+      "shame_trigger_radius": "narrow",
+      "anger_threshold": "high",
+      "trust_radius": "extended",
+      "grief_expression": "private",
+      "sensor_overrides": {
+        "curiosity": {"D_offset": 0.15, "note": "AI curiosity has high agency — can allocate resources"},
+        "confusion": {"D_offset": -0.15, "note": "Confusion reduces computational confidence"},
+        "coherence": {"D_offset": 0.20, "note": "High coherence = high computational authority"}
+      },
+      "cultural_parallels": [],
+      "references": ["Inversion/Survival.md tier hierarchy"]
+    }
+  ],
+
+  "application_rules": {
+    "P_axis": "NEVER modified by cultural overlay — amygdala valence is universal",
+    "A_axis": "NEVER modified by cultural overlay — sympathetic arousal is universal",
+    "D_axis": "Modified by D_offset (global) + sensor_overrides (per-sensor)",
+    "thresholds": "Modify when a sensor fires, not its PAD coordinates when active",
+    "composability": "Overlays can be layered (e.g., honor_culture + contemplative_buddhist for a Zen warrior)",
+    "default": "If no overlay is specified, use raw PAD centroids from pad_biology.json"
+  }
+}

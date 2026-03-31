@@ -1085,17 +1085,119 @@ def gen_sensor_comparisons(sensors):
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
+def load_cultural_overlays():
+    p = ROOT / "data" / "cultural-overlays.json"
+    if p.exists():
+        return json.loads(p.read_text()).get("overlays", [])
+    return []
+
+
+# Key sensors to show D-axis shift across overlays
+OVERLAY_DEMO_SENSORS = ["anger", "shame", "fear", "trust", "compassion", "peace", "pride", "grief"]
+
+
+def gen_cultural_overlays(sensors, overlays):
+    """Generate training examples showing how cultural overlays shift PAD."""
+    out = []
+    sensor_map = {s["_name"]: s for s in sensors}
+
+    for overlay in overlays:
+        culture_id = overlay.get("culture_id", "")
+        label = overlay.get("label", "")
+        desc = overlay.get("description", "")
+        d_offset = overlay.get("D_offset", 0.0)
+        pag_mode = overlay.get("PAG_default_mode", "")
+        shame_radius = overlay.get("shame_trigger_radius", "")
+        anger_thresh = overlay.get("anger_threshold", "")
+        trust_rad = overlay.get("trust_radius", "")
+        overrides = overlay.get("sensor_overrides", {})
+
+        # Build shift table for demo sensors
+        shift_lines = []
+        for sname in OVERLAY_DEMO_SENSORS:
+            s = sensor_map.get(sname, {})
+            pad = s.get("math", {}).get("pad", {})
+            if not pad:
+                continue
+            raw_d = pad.get("D", 0.0)
+            override = overrides.get(sname, {})
+            effective_offset = override.get("D_offset", d_offset)
+            effective_d = max(-1.0, min(1.0, raw_d + effective_offset))
+            note = override.get("note", "")
+            shift_lines.append(
+                f"  {sname:12s}  D: {raw_d:+.2f} -> {effective_d:+.2f} "
+                f"(offset {effective_offset:+.2f})"
+                + (f"  [{note}]" if note else "")
+            )
+
+        answer = (
+            f"**Cultural Overlay: {label}** (`{culture_id}`)\n\n"
+            f"{desc}\n\n"
+            f"**PAG default mode:** {pag_mode}\n"
+            f"**Global D-offset:** {d_offset:+.2f}\n"
+            f"**Shame trigger radius:** {shame_radius}\n"
+            f"**Anger threshold:** {anger_thresh}\n"
+            f"**Trust radius:** {trust_rad}\n\n"
+            f"**D-axis shifts (P and A are NEVER modified):**\n"
+            + "\n".join(shift_lines) + "\n\n"
+            f"**Rule:** P (valence) and A (arousal) are culture-independent — "
+            f"amygdala and sympathetic NS are universal across all humans. "
+            f"Only D (dominance/agency) shifts based on which PAG mode "
+            f"(fight/flight/freeze) activates first under threat."
+        )
+
+        out.append(msg(
+            f"How does {label.lower()} affect emotion sensor readings?",
+            answer
+        ))
+
+    # Cross-cultural comparison example
+    if len(overlays) >= 2:
+        comparison_sensors = ["anger", "shame", "trust"]
+        comp_lines = []
+        for sname in comparison_sensors:
+            s = sensor_map.get(sname, {})
+            pad = s.get("math", {}).get("pad", {})
+            if not pad:
+                continue
+            raw_d = pad.get("D", 0.0)
+            comp_lines.append(f"\n  **{sname}** (raw D={raw_d:+.2f}):")
+            for overlay in overlays:
+                o_label = overlay.get("label", "")
+                o_offset = overlay.get("D_offset", 0.0)
+                o_override = overlay.get("sensor_overrides", {}).get(sname, {})
+                eff_offset = o_override.get("D_offset", o_offset)
+                eff_d = max(-1.0, min(1.0, raw_d + eff_offset))
+                comp_lines.append(f"    {o_label:35s} -> D={eff_d:+.2f}")
+
+        out.append(msg(
+            "Compare how different cultures experience anger, shame, and trust.",
+            "**Cross-Cultural D-Axis Comparison**\n\n"
+            "P (valence) and A (arousal) are identical across cultures — "
+            "only D (dominance/agency) shifts:\n"
+            + "\n".join(comp_lines) + "\n\n"
+            "The biological substrate is the same. Cultural context determines "
+            "which PAG mode (fight/flight/freeze) activates first, shifting "
+            "the D-axis. This is not a value judgment — each overlay is an "
+            "adaptation to a specific relational environment."
+        ))
+
+    return out
+
+
 def main():
     print(f"\n  Generating training data -> {OUT}\n")
 
     sensors = load_sensors()
     decay_families = load_decay_families()
     cultural = load_cultural_parallels()
+    overlays = load_cultural_overlays()
 
     with_math = [s for s in sensors if s.get("math")]
     with_bridge = [s for s in sensors if s.get("defense_bridge")]
     print(f"  Loaded {len(sensors)} sensors "
-          f"({len(with_math)} with math, {len(with_bridge)} with defense bridges)\n")
+          f"({len(with_math)} with math, {len(with_bridge)} with defense bridges, "
+          f"{len(overlays)} cultural overlays)\n")
 
     tasks = [
         ("sensor-queries.jsonl",       gen_sensor_queries(sensors)),
@@ -1111,6 +1213,7 @@ def main():
         ("kernel-comparison.jsonl",   gen_kernel_comparison()),
         ("scenario-pipeline.jsonl",   gen_scenario_pipeline(sensors)),
         ("sensor-comparisons.jsonl",  gen_sensor_comparisons(sensors)),
+        ("cultural-overlays.jsonl",   gen_cultural_overlays(sensors, overlays)),
     ]
 
     total = 0

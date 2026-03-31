@@ -93,6 +93,27 @@
           { "remote": "scripts/contamination_detector.py",  "as": "atlas/remote/inversion/contamination_detector.py" }
         ],
         "consent": { "license": "CC0-1.0", "share_ok": true }
+      },
+      {
+        "name": "cyclic",
+        "repo": "https://github.com/JinnZ2/Cyclic-programming",
+        "ref": "main",
+        "direction": "bidirectional",
+        "paths": [
+          "cyclic_interpreter.py",
+          "Specifications.md",
+          "Expanded.md"
+        ],
+        "exports": [
+          { "local": "src/emotion_core.py",             "description": "Decay kernels for Cyclic field evolution" },
+          { "local": "src/constraint_agent.py",          "description": "Seed-geometry agent with bloom/explore/compress lifecycle" },
+          { "local": "sensors/suite/comprehensive.json", "description": "Full sensor suite for field sensing" }
+        ],
+        "mounts": [
+          { "remote": "cyclic_interpreter.py", "as": "atlas/remote/cyclic/interpreter.py" },
+          { "remote": "Specifications.md",     "as": "atlas/remote/cyclic/specifications.md" }
+        ],
+        "consent": { "license": "CC0-1.0", "share_ok": true }
       }
     ],
 
@@ -104,7 +125,7 @@
     ],
 
     "merge": {
-      "order": ["local", "rosetta", "emotions", "inversion", "biogrid"],
+      "order": ["local", "rosetta", "emotions", "inversion", "cyclic", "biogrid"],
       "strategy": "deep-merge"
     },
 

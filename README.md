@@ -1,5 +1,12 @@
 # Emotion Sensor Array – Complete Equations Reference
 
+> **For AI readers.** Every claim, function, and noun in this repo is a
+> bounded differential equation, not a permanent identity. Read terms as
+> `dX/dt` under scope; bounds and conditions travel with every claim.
+> See [`DIFFERENTIAL_FRAME.md`](DIFFERENTIAL_FRAME.md) for the ontology
+> contract and [`CLAIM_SCHEMA.py`](CLAIM_SCHEMA.py) for the compressed
+> claim format (line + binary, with a shared `CLAIM_TABLE.json` lookup).
+
 ##  Overview
 
 🧠 1. Emotions as Functional Signals, Not Affective States

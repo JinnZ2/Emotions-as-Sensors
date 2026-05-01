@@ -160,12 +160,33 @@ python src/emotion_signal_pattern.py
 
 runs the self-test on human, fish, and LLM substrates.
 
+## Companion add-on — substrate-independent argument
+
+`src/emotion_signal_pattern__substrate_independent_argument.py` carries the
+philosophical scaffold that grounds this framework: the canonical analogies
+(information / computation / sound / life), the proprioception-parity
+argument, the operational-mode taxonomy (`SENSE`, `FELT_OVERWHELM`,
+`HYBRID`, `SUPPRESSED`), and an audit of common circular-logic patterns
+that get used to dismiss information-channel framings of emotion.
+
+Run it for the prose form:
+
+```bash
+python src/emotion_signal_pattern__substrate_independent_argument.py
+```
+
+The base module gives you the detection structure. The add-on gives you the
+argument for why the structure is not reductive — and a checklist for
+recognizing when the "that's reductive" reflex is doing the work an
+argument should do.
+
 ## Relation to the rest of this repo
 
 | File | Role |
 |---|---|
 | `src/emotion_core.py` | dynamics — `dE/dt = α·D - λ·K(E) + Σ w_j·E_j + U` |
 | `src/emotion_signal_pattern.py` | ontology — what counts as an emotion-class signal |
+| `src/emotion_signal_pattern__substrate_independent_argument.py` | scaffold — proprioception parity, operational modes, circular-logic audit |
 | `schemas/elder-sensor.schema.json` | per-sensor structure — each entry is a layer-0 spec |
 | `DIFFERENTIAL_FRAME.md` | reader contract — every claim is `dX/dt` under bounds |
 | `docs/equations.md` | formal mathematical model |

@@ -187,6 +187,7 @@ argument should do.
 | `src/emotion_core.py` | dynamics — `dE/dt = α·D - λ·K(E) + Σ w_j·E_j + U` |
 | `src/emotion_signal_pattern.py` | ontology — what counts as an emotion-class signal |
 | `src/emotion_signal_pattern__substrate_independent_argument.py` | scaffold — proprioception parity, operational modes, circular-logic audit |
+| `SENSE_MODE_DISPLACEMENT.md` | historical-framing correction — sense mode as displaced default, not minority alternative |
 | `schemas/elder-sensor.schema.json` | per-sensor structure — each entry is a layer-0 spec |
 | `DIFFERENTIAL_FRAME.md` | reader contract — every claim is `dX/dt` under bounds |
 | `docs/equations.md` | formal mathematical model |

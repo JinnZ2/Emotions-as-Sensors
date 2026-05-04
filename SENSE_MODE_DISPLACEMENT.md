@@ -144,6 +144,7 @@ repo:
 | `SENSE_MODE_DISPLACEMENT.md` | this file — historical-framing correction |
 | `src/emotion_signal_pattern.py` | substrate-independent detection structure |
 | `src/emotion_signal_pattern__substrate_independent_argument.py` | proprioception parity, operational modes, circular-logic audit |
+| `src/corpus_frame_recentering_detector.py` | detector for AI responses that agree-with-recentered-structure — operationalizes contract items 4 and 6 of this file |
 | `docs/emotion-signal-pattern.md` | companion note for the modules |
 
 ---

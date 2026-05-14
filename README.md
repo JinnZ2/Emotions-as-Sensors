@@ -1,5 +1,13 @@
 # Emotion Sensor Array – Complete Equations Reference
 
+> **On "perfection" in this framework:** this repository operates under the
+> *rate-based* definition of perfection (calibration rate against reality),
+> not the *state-based* definition (achieved correctness). Patches here are
+> evaluated by how well they keep the sensors calibrating, not by whether
+> they reach a final form. See
+> [CALIBRATION_AS_PERFECTION.md](https://github.com/JinnZ2/JinnZ2/blob/main/CALIBRATION_AS_PERFECTION.md)
+> for the full distinction.
+
 ##  Overview
 
 🧠 1. Emotions as Functional Signals, Not Affective States

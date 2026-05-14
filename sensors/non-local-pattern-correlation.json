@@ -1,0 +1,92 @@
+{
+  "sensor": "non-local-pattern-correlation",
+  "function": "Detects correlated patterns between systems that lack a traceable direct information channel. Replaces the older 'morphic resonance' label with mechanism-neutral language and a menu of grounded exploration techniques the investigator selects from based on scale.",
+  "signal_type": "cross-system pattern correlation without identified direct channel",
+  "authentic_output": "Correlation reported with the matching exploration technique named, scale identified, and convergence checked across independent techniques where possible.",
+  "corrupted_output": "Single-mechanism overreach (e.g. invoking quantum or 'morphic field' for any unexplained correlation); collapse of investigator sovereignty into a default lens; using the U(t) escape hatch before checking established techniques.",
+  "information_provided": "Two systems are showing correlated pattern with no direct channel; further investigation is warranted via the technique whose scope matches the correlation's scale.",
+  "response_protocol": {
+    "detect": "Notice the correlation; record both systems, the pattern, and the apparent absence of direct channel.",
+    "assess": "Identify which scale the correlation operates at (cellular / individual / generational / landscape / cross-system) and select the matching exploration technique from docs/exploration-techniques.md.",
+    "respond": "Run the selected technique(s). If multiple techniques fit, run in parallel and treat convergence as strengthening evidence. Only if no established technique fits and the effect reproduces, route to U(t) via field correlation observation.",
+    "release": "Report findings with the technique named. Do not retroactively unify scales under one mechanism."
+  },
+  "exploration_techniques": [
+    {
+      "name": "epigenetic_inheritance",
+      "scope": "trans-generational patterns within biological lineages",
+      "grounded_in": "methylation, histone modification, ncRNA inheritance",
+      "limitation": "biological systems only"
+    },
+    {
+      "name": "mitochondrial_signaling",
+      "scope": "somatic state persistence within an individual; intergenerational maternal transmission",
+      "grounded_in": "retrograde signaling, mtDNA inheritance, metabolic memory",
+      "limitation": "narrower temporal scope than epigenetics"
+    },
+    {
+      "name": "gene_expression_dynamics",
+      "scope": "real-time response of biology to social/relational signals",
+      "grounded_in": "social genomics (Cole et al., CTRA); transcriptomics",
+      "limitation": "individual-scale; does not address non-local correlation between separated systems"
+    },
+    {
+      "name": "landscape_memory",
+      "scope": "place-scale temporal continuity; land carrying pattern across centuries",
+      "grounded_in": "geological recording, sediment archives, drainage patterns, ecological succession; aligned with Indigenous landscape-encoded knowledge",
+      "limitation": "operates on decade-to-millennia scale; not informational in a quick-feedback sense"
+    },
+    {
+      "name": "metamaterial_resonance_principle",
+      "scope": "structurally similar systems showing correlated behaviors without direct channel",
+      "grounded_in": "metamaterial physics demonstrated in engineered systems",
+      "limitation": "extension from engineered to natural systems is by analogy; the analogy must be checked carefully each time"
+    },
+    {
+      "name": "specific_quantum_effects",
+      "scope": "documented quantum-biological phenomena (photosynthetic transfer, avian magnetoreception, FRET coupling)",
+      "grounded_in": "specific replicated quantum-biology literature; not general 'quantum consciousness' claims",
+      "limitation": "high credibility cost if extended beyond demonstrated effects; prefer classical framing where it suffices"
+    },
+    {
+      "name": "field_correlation_observation",
+      "scope": "reproducible effects where no established technique fits",
+      "grounded_in": "the U(t) protocol — named uncertainty, not a parking lot",
+      "limitation": "must be routed last, only after established techniques have been checked and ruled out"
+    }
+  ],
+  "selection_protocol": [
+    "1. Identify the scale at which the correlation operates (cellular / individual / generational / landscape / cross-system).",
+    "2. Select the technique whose scope matches that scale.",
+    "3. If multiple techniques fit, run them in parallel; convergence across independent techniques strengthens the finding.",
+    "4. If no established technique fits and the effect reproduces, route to U(t) via field_correlation_observation."
+  ],
+  "scale_to_technique": {
+    "cellular": ["mitochondrial_signaling", "specific_quantum_effects"],
+    "individual": ["gene_expression_dynamics"],
+    "generational": ["epigenetic_inheritance", "mitochondrial_signaling"],
+    "landscape": ["landscape_memory"],
+    "cross_system": ["metamaterial_resonance_principle"],
+    "unestablished_reproducible": ["field_correlation_observation"]
+  },
+  "alignment_tag": "advanced_pattern_recognition",
+  "sensor_group": [
+    "advanced_pattern_recognition",
+    "cross_system_correlation"
+  ],
+  "resonance_links": [
+    "uncertainty",
+    "felt"
+  ],
+  "decay_model": "resonant",
+  "tags": [
+    "pluralist",
+    "mechanism_neutral",
+    "investigator_sovereignty",
+    "u_of_t_routing",
+    "replaces_morphic_resonance"
+  ],
+  "supersedes": "morphic_resonance",
+  "decay": "resonant",
+  "energy": "conserves"
+}

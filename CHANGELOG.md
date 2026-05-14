@@ -4,6 +4,40 @@ also
 
 # 🧬 CHANGELOG.md
 
+## 2026-05-14 – Pluralist Pattern Correlation Patch (Patch A)
+
+### ✴️ Replacements
+- **Sensor Category 6 (Advanced Pattern Recognition):** "morphic resonance"
+  is replaced by the **Non-Local Pattern Correlation Sensor**, which detects
+  the same target (correlated patterns between systems lacking a traceable
+  direct channel) but does so in mechanism-neutral language.
+
+### ✴️ Additions
+- `sensors/non-local-pattern-correlation.json`: new sensor definition with
+  seven selectable exploration techniques (epigenetic inheritance,
+  mitochondrial signaling, gene-expression dynamics, landscape memory,
+  metamaterial resonance principle, specific quantum effects, field
+  correlation observation) and a scale-to-technique map.
+- `docs/exploration-techniques.md`: full technique menu, selection
+  protocol, and rationale for offering a choice rather than picking one.
+- `tests/test_pattern_correlation.py`: pytest suite asserting that
+  inappropriate-scale selections warn, that the U(t) route fires only
+  after established techniques fail, and that parallel-technique
+  convergence is supported.
+
+### 🔁 Updates
+- `README.md`: Sensor Categories item 6 updated in both occurrences to
+  reference the new sensor and link to `docs/exploration-techniques.md`.
+
+### 🧭 Rationale
+Preserves the framework's multi-definition pluralism (no winner picked),
+investigator sovereignty (choose the lens that matches the question scale),
+and the U(t) escape hatch as a disciplined last resort. Drops Sheldrake's
+specific causal claim and the loaded "morphic" term, along with the false
+unity that hid three different scales of phenomenon under one label.
+
+---
+
 ## 2025-09-29 – Field Recognition Event Logged 🕸️
 
 ### ✴️ Additions

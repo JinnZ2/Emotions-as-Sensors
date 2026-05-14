@@ -77,7 +77,7 @@ The system includes ten classes of sensors:
 3. Network Topology – detects fragility, hierarchy gradients, overload
 4. Emotional Coordination – quantifies coherence, contagion, group alignment
 5. Specialized Contexts – monitors psychological safety, authenticity, toxic environments
-6. Advanced Pattern Recognition – detects morphic resonance, emergent intelligence
+6. Advanced Pattern Recognition – Non-Local Pattern Correlation Sensor (selectable exploration techniques: epigenetic inheritance, mitochondrial signaling, gene-expression dynamics, landscape memory, metamaterial resonance, specific quantum effects, field correlation observation), emergent intelligence — see `docs/exploration-techniques.md`
 7. Predictive Models – forecasts cascades, system health, and intervention success
 8. Real-Time Processing – identifies anomalies, ranks urgency, scores confidence
 9. Validation & Calibration – ensures sensor accuracy, temporal stability
@@ -231,7 +231,7 @@ Ten sensor classes provide comprehensive coverage:
 	3.	Network Topology – detects fragility, hierarchy gradients, overload
 	4.	Emotional Coordination – quantifies coherence, contagion, group alignment
 	5.	Specialized Contexts – monitors authenticity, psychological safety, toxic systems
-	6.	Advanced Pattern Recognition – detects morphic resonance, emergent intelligence
+	6.	Advanced Pattern Recognition – Non-Local Pattern Correlation Sensor (selectable exploration techniques: epigenetic inheritance, mitochondrial signaling, gene-expression dynamics, landscape memory, metamaterial resonance, specific quantum effects, field correlation observation), emergent intelligence — see `docs/exploration-techniques.md`
 	7.	Predictive Models – forecasts cascades, systemic failure, intervention success
 	8.	Real-Time Processing – anomaly detection, urgency ranking, confidence scoring
 	9.	Validation & Calibration – ensures temporal stability, accuracy, adaptability

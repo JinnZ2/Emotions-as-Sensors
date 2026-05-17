@@ -62,7 +62,28 @@ class Substrate(Enum):
 
 @dataclass
 class ConstraintStatePattern:
+    """
+    Seven-dimensional substrate-agnostic constraint-state descriptor.
+
+    prediction_error is dimension zero: the calibration anchor.
+    It measures the magnitude of mismatch between the system's
+    internal model and observed reality. The other six dimensions
+    are downstream responses to detected prediction error:
+
+        prediction_error  ◄── the seventh: what the system didn't know
+                │             (calibration anchor, not failure marker)
+                ├─→ state_shift_rate
+                ├─→ attention_tunneling
+                ├─→ resource_reallocation
+                ├─→ coherence_seeking
+                ├─→ constraint_uncertainty
+                └─→ duration_scale
+
+    Without prediction_error, the other six float free. With it,
+    they're legible as responses to a measurable calibration signal.
+    """
     substrate:                 Substrate
+    prediction_error:          float    # dimension zero — calibration anchor
     state_shift_rate:          float
     attention_tunneling:       float
     resource_reallocation:     float
@@ -112,6 +133,38 @@ def _max_abs_delta(xs: list[float]) -> float:
     if len(xs) < 2:
         return 0.0
     return max(abs(xs[i+1] - xs[i]) for i in range(len(xs) - 1))
+
+
+def extract_prediction_error(channels: list[SignalChannel]) -> float:
+    """
+    Prediction error: magnitude of mismatch between baseline expectation
+    and observed signal. Calibration anchor (dimension zero).
+
+    Method: linearly extrapolate the early baseline of each channel
+    across the full window, compare to observed values, sum the
+    normalized deviation. High prediction_error means the system's
+    implicit model of "this signal should continue smoothly" was
+    massively violated — the calibration moment.
+    """
+    if not channels:
+        return 0.0
+    errors = []
+    for c in channels:
+        if len(c.values) < 4:
+            continue
+        # baseline: mean of first 25% of signal
+        baseline_window = max(1, len(c.values) // 4)
+        baseline = _mean(c.values[:baseline_window])
+        # observed: everything after the baseline window
+        observed = c.values[baseline_window:]
+        if not observed:
+            continue
+        # naive prediction: signal stays at baseline
+        # error: mean absolute deviation from that prediction
+        deviation = _mean([abs(v - baseline) for v in observed])
+        # normalize: max possible deviation is 1.0 (since values are [0,1])
+        errors.append(deviation)
+    return _clamp(_mean(errors) if errors else 0.0)
 
 
 def extract_state_shift_rate(channels: list[SignalChannel]) -> float:
@@ -225,11 +278,15 @@ def extract_pattern(channels: list[SignalChannel],
     """
     Extract a substrate-agnostic constraint-state pattern from signal data.
 
+    Seven dimensions. prediction_error is dimension zero (calibration
+    anchor); the other six are downstream responses.
+
     NOTE: This function refuses to accept or produce cultural labels.
     The `cultural_label_optional` field is left empty by construction.
     """
     return ConstraintStatePattern(
         substrate              = substrate,
+        prediction_error       = extract_prediction_error(channels),
         state_shift_rate       = extract_state_shift_rate(channels),
         attention_tunneling    = extract_attention_tunneling(channels),
         resource_reallocation  = extract_resource_reallocation(channels),
@@ -256,6 +313,7 @@ def patterns_are_isomorphic(p1: ConstraintStatePattern,
     if p1.substrate == p2.substrate:
         return False  # same substrate, not a cross-substrate match
     dims = [
+        (p1.prediction_error,       p2.prediction_error),       # anchor (dim zero)
         (p1.state_shift_rate,       p2.state_shift_rate),
         (p1.attention_tunneling,    p2.attention_tunneling),
         (p1.resource_reallocation,  p2.resource_reallocation),
@@ -347,6 +405,7 @@ if __name__ == "__main__":
         print("=" * 70)
         print(name)
         print("=" * 70)
+        print(f"  prediction_error:       {p.prediction_error:.3f}   (dim zero — calibration anchor)")
         print(f"  state_shift_rate:       {p.state_shift_rate:.3f}")
         print(f"  attention_tunneling:    {p.attention_tunneling:.3f}")
         print(f"  resource_reallocation:  {p.resource_reallocation:.3f}")

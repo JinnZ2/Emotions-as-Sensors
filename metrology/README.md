@@ -40,6 +40,27 @@ audit      detects metrology corruption  → no dependencies
            specific failure modes.
 ```
 
+### SUBSTRATE LAYER
+
+```
+CS-001     cooperation_substrate.py
+substrate  detects which mode a system   → no dependencies
+           is operating in (survival /
+           comfort / institutional /
+           competition-overlay /
+           collapse); surfaces hidden
+           cooperation in systems framed
+           as competitive
+
+           use when: a system claims to be competitive but you
+           suspect it's load-bearing on uncredited cooperation,
+           or when you want to know if a system's competition
+           overhead is affordable given its surplus. produces
+           declared vs actual mode, hidden_cooperation score,
+           and energy-hierarchy decomposition. pairs with
+           ELA-001 (audit), TO-003 (canvas), DAT-M1 (trigger).
+```
+
 ### EXTRACTION
 
 ```
@@ -164,6 +185,12 @@ thermo     virtual harmonic oscillator        (delegates to
 ELA-001 (diagnostic only)
 ```
 
+**Reading what mode a system is actually in:**
+
+```
+CS-001 (substrate detector; pair with ELA-001 if labels suspect)
+```
+
 **Training a new system on substrate-native patterns:**
 
 ```
@@ -205,6 +232,7 @@ PEX-001 × N substrates → TO-003 (alignment) → TO-002 (interference)
 
 ```
                 ELA-001 (standalone)
+                CS-001  (standalone; pairs with ELA-001, TO-003, DAT-M1)
 
                 PEX-001
                   ↓

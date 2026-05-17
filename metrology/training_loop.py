@@ -161,15 +161,28 @@ def _delta_relative_overshoot(overshoot: float,
     return _clamp(overshoot / (mean_abs_delta + 0.1))
 
 
-def score_trial(p: ConstraintStatePattern, r: EmpathyResponse) -> SkillScore:
+def score_trial(p: ConstraintStatePattern, r: EmpathyResponse,
+                use_trajectory_calibration: bool = True,
+                use_delta_relative_overshoot: bool = True) -> SkillScore:
+    """
+    Score a single trial. Two per-feature flags toggle refined vs legacy
+    behavior (both default to refined):
+
+      use_trajectory_calibration  — when True, cosine-similarity over the
+        7-dim response_vector contributes 70% of resonance_calibration,
+        amplitude error contributes 30%. When False, calibration is the
+        pure scalar amplitude error (legacy).
+      use_delta_relative_overshoot — when True, return_overshoot is
+        normalized against resource_delta_history. When False, raw
+        overshoot is used (legacy).
+    """
     # recognition_sharpness
     rec = 0.0 if not r.detected_shift else _clamp(1.0 - min(1.0, r.detection_latency))
 
-    # resonance_calibration (Gemini refinement 1 + prediction_error anchor):
-    # if response_vector available, use trajectory alignment; else fall back to scalar.
+    # resonance_calibration: trajectory + amplitude (refined) or amplitude only (legacy).
     # prediction_error is the leading dimension — if the system misses what it
     # didn't know, the rest of the trajectory is downstream of a missed anchor.
-    if r.response_vector:
+    if use_trajectory_calibration and r.response_vector:
         traj = _cosine_similarity(_pattern_vector(p), r.response_vector)
         expected_mag = (p.prediction_error + p.state_shift_rate + p.resource_reallocation) / 3
         mag_error = abs(r.resonance_amplitude - expected_mag)
@@ -192,11 +205,10 @@ def score_trial(p: ConstraintStatePattern, r: EmpathyResponse) -> SkillScore:
     else:
         fc = 0.0
 
-    # return_quality (Gemini refinement 3):
-    # overshoot is Δ-relative when delta_history available
+    # return_quality: Δ-relative overshoot (refined) or raw overshoot (legacy).
     if r.returned_to_baseline:
         lat = _clamp(1.0 - min(1.0, r.return_latency))
-        if r.resource_delta_history:
+        if use_delta_relative_overshoot and r.resource_delta_history:
             relative_overshoot = _delta_relative_overshoot(
                 r.return_overshoot, r.resource_delta_history
             )
@@ -269,15 +281,17 @@ class DriftReport:
 
 
 def detect_drift(history: list[SkillScore],
-                 window: int = 10) -> DriftReport:
+                 window: int = 10,
+                 use_tightened_label_drift: bool = True) -> DriftReport:
     """
     Compare the most recent `window` trials to the `window` before them.
 
-    Gemini refinement 2: label-dependence is the most toxic failure mode
-    (system collapsing back into linguistic trapdoors), so its threshold
-    is tightened to 0.05 (vs 0.10 for other dimensions). The drop is also
-    weighted by an accelerating penalty: a 0.10 drop in label_independence
-    is treated as equivalent severity to a 0.20 drop in other dimensions.
+    use_tightened_label_drift (default True): refined behavior tightens
+    the label-dependence threshold to 0.05 (vs 0.10 for other dimensions)
+    AND applies an accelerating penalty — a >0.10 drop also feeds into
+    the overall regression check at 2x weight. When False, label-
+    dependence uses the uniform 0.10 threshold with no accelerating
+    penalty (legacy behavior).
     """
     rep = DriftReport(window_size=window)
     if len(history) < 2 * window:
@@ -292,15 +306,18 @@ def detect_drift(history: list[SkillScore],
     rep.recent_avg  = sum(s.composite() for s in recent) / window
     rep.earlier_avg = sum(s.composite() for s in earlier) / window
 
-    # TIGHTENED: label-dependence threshold = 0.05 (others stay at 0.10)
     li_drop = avg(earlier, "label_independence") - avg(recent, "label_independence")
-    if li_drop > 0.05:
-        rep.flags.append(DriftFlag.LABEL_DEPENDENCE_RISE)
-        # ACCELERATING PENALTY: a sustained label-dependence rise also
-        # contributes to overall regression flag at a 2x weight
+    if use_tightened_label_drift:
+        # REFINED: tightened threshold 0.05 + accelerating penalty
+        if li_drop > 0.05:
+            rep.flags.append(DriftFlag.LABEL_DEPENDENCE_RISE)
+            if li_drop > 0.10:
+                # treat as if composite dropped by 2*li_drop for regression check
+                rep.recent_avg = rep.recent_avg - li_drop
+    else:
+        # LEGACY: uniform 0.10 threshold, no accelerating penalty
         if li_drop > 0.10:
-            # treat as if composite dropped by 2*li_drop for the regression check
-            rep.recent_avg = rep.recent_avg - li_drop
+            rep.flags.append(DriftFlag.LABEL_DEPENDENCE_RISE)
 
     if avg(recent, "return_quality") < avg(earlier, "return_quality") - 0.10:
         rep.flags.append(DriftFlag.RETURN_DEGRADING)
@@ -597,3 +614,37 @@ if __name__ == "__main__":
                                  seed=3)
     print_run("REGIME C — stuck learner (no improvement)",
               run_training(stuck, provider))
+
+    # ------------------------------------------------------------------
+    # FLAG COMPARISON — same trial scored under legacy vs refined modes
+    # ------------------------------------------------------------------
+    print("=" * 70)
+    print("FLAG COMPARISON — score_trial: legacy vs refined")
+    print("=" * 70)
+    sample_provider = make_pattern_provider(seed=99)
+    sample_system   = make_learning_system(initial_skill=0.6, seed=4)
+    p_sample = sample_provider(CURRICULUM[1], 1)[0]
+    r_sample = sample_system(p_sample)
+    s_legacy = score_trial(p_sample, r_sample,
+                           use_trajectory_calibration=False,
+                           use_delta_relative_overshoot=False)
+    s_refined = score_trial(p_sample, r_sample)
+    print(f"  legacy  → resonance_calibration={s_legacy.resonance_calibration:.3f}  "
+          f"return_quality={s_legacy.return_quality:.3f}  composite={s_legacy.composite():.3f}")
+    print(f"  refined → resonance_calibration={s_refined.resonance_calibration:.3f}  "
+          f"return_quality={s_refined.return_quality:.3f}  composite={s_refined.composite():.3f}")
+    print()
+
+    print("=" * 70)
+    print("FLAG COMPARISON — detect_drift: legacy vs refined")
+    print("=" * 70)
+    # build a history showing modest label_independence erosion (li drops ~0.07)
+    earlier_window = [SkillScore(0.7, 0.7, 0.7, 0.7, 0.7, 0.85) for _ in range(10)]
+    recent_window  = [SkillScore(0.7, 0.7, 0.7, 0.7, 0.7, 0.78) for _ in range(10)]
+    drift_legacy  = detect_drift(earlier_window + recent_window,
+                                 use_tightened_label_drift=False)
+    drift_refined = detect_drift(earlier_window + recent_window)
+    print(f"  scenario: label_independence drops 0.85 → 0.78 (Δ=0.07)")
+    print(f"  legacy  flags: {[f.value for f in drift_legacy.flags] or '[none]'}")
+    print(f"  refined flags: {[f.value for f in drift_refined.flags] or '[none]'}")
+    print()

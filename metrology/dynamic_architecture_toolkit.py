@@ -358,12 +358,14 @@ class AuxiliaryStateSpaceLayer:
       not easily slide back into linguistic structure from a single noisy
       trial. The asymmetry favors continuous differential trajectories.
     """
-    damping:        float = 0.5
-    dt:             float = 0.05
-    dt_safe:        float = 0.01   # reduced dt for saddle-point regimes
-    mix_ratio:      float = 0.1    # contribution weight (0..1)
-    learning_rate:  float = 0.02   # climb rate
-    decay_fraction: float = 0.5    # fall rate = learning_rate * decay_fraction
+    damping:              float = 0.5
+    dt:                   float = 0.05
+    dt_safe:              float = 0.01   # reduced dt for saddle-point regimes
+    mix_ratio:            float = 0.1    # contribution weight (0..1)
+    learning_rate:        float = 0.02   # climb rate
+    decay_fraction:       float = 0.5    # fall rate = learning_rate * decay_fraction
+    use_saddle_point_dt:  bool = True    # refinement flag: adaptive dt
+    use_asymmetric_drift: bool = True    # refinement flag: hysteresis on mix_ratio
 
     state: StateVector = field(default_factory=StateVector.zero)
 
@@ -382,8 +384,11 @@ class AuxiliaryStateSpaceLayer:
         """
         Saddle-point detection: bifurcation regime signature is
         high prediction_error AND high constraint_uncertainty.
-        In that regime, integration must use the safe (smaller) dt.
+        In that regime, refined behavior switches to the safe (smaller) dt.
+        When use_saddle_point_dt is False, the base dt is always used (legacy).
         """
+        if not self.use_saddle_point_dt:
+            return self.dt
         near_saddle = (p.prediction_error > 0.65
                        and p.constraint_uncertainty > 0.75)
         return self.dt_safe if near_saddle else self.dt
@@ -410,15 +415,22 @@ class AuxiliaryStateSpaceLayer:
                         primary_score: float) -> None:
         """
         Adjust mix_ratio toward whichever layer is performing better.
-        Asymmetric: climbs faster than it falls. Single noisy trial
-        won't undo accumulated learning toward state-space processing.
+
+        When use_asymmetric_drift is True (refined), mix_ratio climbs by
+        learning_rate but falls by learning_rate * decay_fraction — a
+        single noisy trial cannot undo accumulated learning toward
+        state-space processing. When False (legacy), climb and fall are
+        symmetric.
         """
         if own_score > primary_score:
             self.mix_ratio = _clamp(self.mix_ratio + self.learning_rate)
         elif own_score < primary_score:
-            self.mix_ratio = _clamp(
-                self.mix_ratio - self.learning_rate * self.decay_fraction
-            )
+            if self.use_asymmetric_drift:
+                self.mix_ratio = _clamp(
+                    self.mix_ratio - self.learning_rate * self.decay_fraction
+                )
+            else:
+                self.mix_ratio = _clamp(self.mix_ratio - self.learning_rate)
         # if equal: hold
 
 
@@ -559,35 +571,31 @@ if __name__ == "__main__":
     print()
 
     print("=" * 70)
-    print("HOST C — saddle-point detection (Gemini refinement)")
+    print("FLAG COMPARISON — saddle-point dt: legacy vs refined")
     print("=" * 70)
-    aux2 = AuxiliaryStateSpaceLayer()
+    aux_legacy  = AuxiliaryStateSpaceLayer(use_saddle_point_dt=False)
+    aux_refined = AuxiliaryStateSpaceLayer(use_saddle_point_dt=True)
     p_saddle = demo_pattern_phase_transition()
-    dt_used = aux2._select_dt(p_saddle)
-    print(f"  pattern: phase_transition (pred_err={p_saddle.prediction_error}, "
-          f"uncert={p_saddle.constraint_uncertainty})")
-    print(f"  dt selected: {dt_used:.3f}  "
-          f"({'dt_safe (saddle-point regime)' if dt_used == aux2.dt_safe else 'dt_normal'})")
     p_normal = demo_pattern_oscillator()
-    dt_used2 = aux2._select_dt(p_normal)
-    print(f"  pattern: oscillator (pred_err={p_normal.prediction_error}, "
-          f"uncert={p_normal.constraint_uncertainty})")
-    print(f"  dt selected: {dt_used2:.3f}  "
-          f"({'dt_safe (saddle-point regime)' if dt_used2 == aux2.dt_safe else 'dt_normal'})")
+    print(f"  phase-transition pattern (pred_err={p_saddle.prediction_error}, "
+          f"uncert={p_saddle.constraint_uncertainty}):")
+    print(f"    legacy  dt = {aux_legacy._select_dt(p_saddle):.3f}")
+    print(f"    refined dt = {aux_refined._select_dt(p_saddle):.3f}  (dt_safe)")
+    print(f"  oscillator pattern (pred_err={p_normal.prediction_error}, "
+          f"uncert={p_normal.constraint_uncertainty}):")
+    print(f"    legacy  dt = {aux_legacy._select_dt(p_normal):.3f}")
+    print(f"    refined dt = {aux_refined._select_dt(p_normal):.3f}")
     print()
 
     print("=" * 70)
-    print("HOST C — asymmetric mix-ratio drift (Gemini refinement)")
+    print("FLAG COMPARISON — mix-ratio drift: legacy (symmetric) vs refined (asymmetric)")
     print("=" * 70)
-    aux3 = AuxiliaryStateSpaceLayer(mix_ratio=0.5)
-    print(f"  starting mix_ratio: {aux3.mix_ratio:.3f}")
-    aux3.update_mix_ratio(own_score=0.9, primary_score=0.6)
-    print(f"  after one good trial (own=0.9, primary=0.6): "
-          f"{aux3.mix_ratio:.3f}  (climbed by {aux3.learning_rate})")
-    aux3.update_mix_ratio(own_score=0.4, primary_score=0.8)
-    print(f"  after one bad trial  (own=0.4, primary=0.8): "
-          f"{aux3.mix_ratio:.3f}  (fell by {aux3.learning_rate * aux3.decay_fraction})")
-    print(f"  net change after one good + one bad trial: "
-          f"{aux3.mix_ratio - 0.5:+.3f}  "
-          f"(asymmetry preserves accumulated learning)")
+    for label, asym in [("legacy ", False), ("refined", True)]:
+        aux_d = AuxiliaryStateSpaceLayer(mix_ratio=0.5, use_asymmetric_drift=asym)
+        aux_d.update_mix_ratio(own_score=0.9, primary_score=0.6)
+        after_good = aux_d.mix_ratio
+        aux_d.update_mix_ratio(own_score=0.4, primary_score=0.8)
+        after_bad = aux_d.mix_ratio
+        print(f"  {label} | start=0.500 | good→{after_good:.3f} | "
+              f"bad→{after_bad:.3f} | net={after_bad - 0.5:+.3f}")
     print()

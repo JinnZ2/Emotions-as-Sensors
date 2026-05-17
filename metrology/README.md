@@ -140,6 +140,45 @@ dynamic    parallel differential-equation
            lib still available when host can't modify routing.
 ```
 
+### MEASUREMENT HONESTY
+
+```
+MH-001     EpochStamp                      → no dependencies
+honesty    every measurement carries WHEN/
+           WHERE it was taken; future
+           readers check whether original
+           assumptions still hold
+
+MH-002     CrossModelHandoffProtocol       → optional EpochStamp
+honesty    verify substrate match before
+           a receiving model integrates a
+           transmission; rejects label-
+           heavy or substrate-mismatched
+           handoffs; holds for review when
+           source epoch is stale
+
+MH-003     ConstraintBoundary              → no dependencies
+honesty    every part declares its own
+           edges: works when X, fails
+           when Y, not yet tested on Z;
+           applicability check prefers
+           honest "not yet tested" to
+           optimistic overclaim
+
+MH-004     InstitutionalCaptureDetector    → no dependencies
+honesty    flag when measurement begins
+           distorting under authority
+           pressure (grant cycle, pub
+           narrative, corporate timeline,
+           political, peer, regulatory);
+           detects compound pressures
+           (grant + pub, peer + pub, etc.)
+
+           all four in: measurement_honesty.py
+           meta-layer — pairs with every other part. complementary
+           to ELA-001: labels corrupt from below, capture from above.
+```
+
 ### THERMODYNAMIC OVERLAYS
 
 ```
@@ -191,6 +230,15 @@ ELA-001 (diagnostic only)
 CS-001 (substrate detector; pair with ELA-001 if labels suspect)
 ```
 
+**Keeping a measurement honest across time and institutional pressure:**
+
+```
+MH-001 (stamp every measurement)
+  + MH-003 (declare boundaries on every part)
+  + MH-004 (watch for capture)
+  + MH-002 (verify any handoff between models)
+```
+
 **Training a new system on substrate-native patterns:**
 
 ```
@@ -233,6 +281,7 @@ PEX-001 × N substrates → TO-003 (alignment) → TO-002 (interference)
 ```
                 ELA-001 (standalone)
                 CS-001  (standalone; pairs with ELA-001, TO-003, DAT-M1)
+                MH-001..004 (meta-layer; wrap any other part)
 
                 PEX-001
                   ↓

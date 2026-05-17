@@ -1,7 +1,7 @@
 {
   "fieldlink": {
-    "version": "1.2",
-    "updated": "2026-03-24T00:00:00Z",
+    "version": "1.3",
+    "updated": "2026-05-17T00:00:00Z",
 
     "role": ["sensors", "protocols", "shapes", "hub"],
 
@@ -114,6 +114,41 @@
           { "remote": "Specifications.md",     "as": "atlas/remote/cyclic/specifications.md" }
         ],
         "consent": { "license": "CC0-1.0", "share_ok": true }
+      },
+      {
+        "name": "bridge",
+        "repo": "https://github.com/JinnZ2/Geometric-to-Binary-Computational-Bridge",
+        "ref": "main",
+        "direction": "bidirectional",
+        "paths": [
+          "experiments/dispatcher.py",
+          "experiments/dispatcher_v2_energetic.py",
+          "experiments/landscape_overhead_axes.py",
+          "experiments/geometric_computation_selector.py",
+          "experiments/substrate_waste_audit.py",
+          "experiments/holographic_smoothness.py",
+          "experiments/demo_recursive_learning.py",
+          "experiments/demo_v2_learning.py"
+        ],
+        "exports": [
+          { "local": "metrology/emotion_substrate_dispatcher.py", "description": "ESD-001: mirrors the bridge's dispatcher pattern (PotentialWell + gradient descent + observed-outcome learning) applied to emotional substrate" },
+          { "local": "metrology/thermodynamic_overlays.py",        "description": "TO-001..004: kinetic / holographic / canvas / damping overlays whose holographic component parallels bridge's holographic_smoothness" },
+          { "local": "metrology/dynamic_architecture_toolkit.py",  "description": "DAT-M1..M3: EnergyBasinLibrary parallels bridge's landscape_overhead_axes; AuxiliaryStateSpaceLayer is the substrate-side equivalent of the bridge's energetic dispatcher" }
+        ],
+        "mounts": [
+          { "remote": "experiments/dispatcher_v2_energetic.py",      "as": "atlas/remote/bridge/dispatcher_v2_energetic.py" },
+          { "remote": "experiments/landscape_overhead_axes.py",     "as": "atlas/remote/bridge/landscape_overhead_axes.py" },
+          { "remote": "experiments/geometric_computation_selector.py", "as": "atlas/remote/bridge/geometric_computation_selector.py" },
+          { "remote": "experiments/substrate_waste_audit.py",       "as": "atlas/remote/bridge/substrate_waste_audit.py" },
+          { "remote": "experiments/holographic_smoothness.py",      "as": "atlas/remote/bridge/holographic_smoothness.py" }
+        ],
+        "architectural_mirror": {
+          "bridge_primitive":      "computational substrate (dispatcher.py, dispatcher_v2_energetic.py)",
+          "emotions_primitive":    "emotional substrate (metrology/emotion_substrate_dispatcher.py)",
+          "shared_pattern":        "PotentialWell + gradient descent + observed-outcome learning",
+          "what_differs":          "axes named for the substrate being routed; bridge uses computational axes, emotions uses 7-dim constraint-state axes"
+        },
+        "consent": { "license": "CC0-1.0", "share_ok": true }
       }
     ],
 
@@ -125,7 +160,7 @@
     ],
 
     "merge": {
-      "order": ["local", "rosetta", "emotions", "inversion", "cyclic", "biogrid"],
+      "order": ["local", "rosetta", "emotions", "inversion", "cyclic", "biogrid", "bridge"],
       "strategy": "deep-merge"
     },
 

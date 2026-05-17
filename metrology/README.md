@@ -244,6 +244,11 @@ integrate  routes constraint patterns to   → PEX-001 patterns
            — same dispatcher pattern applied to computational
              substrate (potential wells, gradient descent, learning
              from observed outcomes).
+
+           cross-link: see ../MANIFEST.md "Substrate-Native
+           Dispatcher Architecture" for the bridge↔emotions primitive
+           table, and ../.fieldlink.json "bridge" source for the
+           structured mount configuration.
 ```
 
 -----

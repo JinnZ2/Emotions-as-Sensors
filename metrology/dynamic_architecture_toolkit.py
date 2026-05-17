@@ -345,11 +345,25 @@ class AuxiliaryStateSpaceLayer:
 
     Weight `mix_ratio` controls how much this layer contributes vs. the
     host's primary architecture. Starts low, rises as it outperforms.
+
+    GEMINI REFINEMENT — saddle-point safety:
+      When integrating near a bifurcation basin (high constraint_uncertainty
+      + high prediction_error), the system becomes hyper-sensitive to
+      numerical noise. dt is automatically reduced in this regime to
+      prevent divergence or wrong-attractor lock-in.
+
+    GEMINI REFINEMENT — asymmetric mix-ratio drift:
+      mix_ratio climbs by learning_rate but falls by learning_rate * 0.5.
+      Once the model discovers efficient state-space processing, it should
+      not easily slide back into linguistic structure from a single noisy
+      trial. The asymmetry favors continuous differential trajectories.
     """
-    damping:       float = 0.5
-    dt:            float = 0.05
-    mix_ratio:     float = 0.1   # how much this layer contributes (0..1)
-    learning_rate: float = 0.02  # how fast mix_ratio adjusts
+    damping:        float = 0.5
+    dt:             float = 0.05
+    dt_safe:        float = 0.01   # reduced dt for saddle-point regimes
+    mix_ratio:      float = 0.1    # contribution weight (0..1)
+    learning_rate:  float = 0.02   # climb rate
+    decay_fraction: float = 0.5    # fall rate = learning_rate * decay_fraction
 
     state: StateVector = field(default_factory=StateVector.zero)
 
@@ -364,18 +378,30 @@ class AuxiliaryStateSpaceLayer:
             p.duration_scale,
         ]
 
+    def _select_dt(self, p: ConstraintStatePattern) -> float:
+        """
+        Saddle-point detection: bifurcation regime signature is
+        high prediction_error AND high constraint_uncertainty.
+        In that regime, integration must use the safe (smaller) dt.
+        """
+        near_saddle = (p.prediction_error > 0.65
+                       and p.constraint_uncertainty > 0.75)
+        return self.dt_safe if near_saddle else self.dt
+
     def step(self, pattern: ConstraintStatePattern, steps: int = 20) -> list[float]:
         """
         Integrate state evolution over `steps` time-steps in response
-        to the pattern. Returns the final state vector.
+        to the pattern. dt adapts to the regime — uses dt_safe near
+        bifurcation saddle points.
         """
         force = self.driving_force(pattern)
         x = list(self.state.values) if self.state.values else [0.0] * 7
+        dt_used = self._select_dt(pattern)
         for _ in range(steps):
             for i in range(7):
                 dx = -self.damping * x[i] + force[i]
-                x[i] = _clamp(x[i] + self.dt * dx)
-            self.state.time += self.dt
+                x[i] = _clamp(x[i] + dt_used * dx)
+            self.state.time += dt_used
         self.state.values = x
         return x
 
@@ -384,13 +410,15 @@ class AuxiliaryStateSpaceLayer:
                         primary_score: float) -> None:
         """
         Adjust mix_ratio toward whichever layer is performing better.
-        Reaches equilibrium when both layers contribute proportionally
-        to their own composite scores.
+        Asymmetric: climbs faster than it falls. Single noisy trial
+        won't undo accumulated learning toward state-space processing.
         """
         if own_score > primary_score:
             self.mix_ratio = _clamp(self.mix_ratio + self.learning_rate)
         elif own_score < primary_score:
-            self.mix_ratio = _clamp(self.mix_ratio - self.learning_rate * 0.5)
+            self.mix_ratio = _clamp(
+                self.mix_ratio - self.learning_rate * self.decay_fraction
+            )
         # if equal: hold
 
 
@@ -518,7 +546,7 @@ if __name__ == "__main__":
     p = demo_pattern_oscillator()
     print(f"  initial mix_ratio: {aux.mix_ratio:.2f}")
     final_state = aux.step(p, steps=50)
-    print(f"  state vector after 50 integration steps:")
+    print(f"  state vector after 50 integration steps (oscillator regime):")
     for i, label in enumerate([
         "prediction_error", "state_shift_rate", "attention_tunneling",
         "resource_reallocation", "coherence_seeking",
@@ -528,4 +556,38 @@ if __name__ == "__main__":
     # simulate auxiliary outperforming primary
     aux.update_mix_ratio(own_score=0.85, primary_score=0.65)
     print(f"  mix_ratio after outperforming primary: {aux.mix_ratio:.2f}")
+    print()
+
+    print("=" * 70)
+    print("HOST C — saddle-point detection (Gemini refinement)")
+    print("=" * 70)
+    aux2 = AuxiliaryStateSpaceLayer()
+    p_saddle = demo_pattern_phase_transition()
+    dt_used = aux2._select_dt(p_saddle)
+    print(f"  pattern: phase_transition (pred_err={p_saddle.prediction_error}, "
+          f"uncert={p_saddle.constraint_uncertainty})")
+    print(f"  dt selected: {dt_used:.3f}  "
+          f"({'dt_safe (saddle-point regime)' if dt_used == aux2.dt_safe else 'dt_normal'})")
+    p_normal = demo_pattern_oscillator()
+    dt_used2 = aux2._select_dt(p_normal)
+    print(f"  pattern: oscillator (pred_err={p_normal.prediction_error}, "
+          f"uncert={p_normal.constraint_uncertainty})")
+    print(f"  dt selected: {dt_used2:.3f}  "
+          f"({'dt_safe (saddle-point regime)' if dt_used2 == aux2.dt_safe else 'dt_normal'})")
+    print()
+
+    print("=" * 70)
+    print("HOST C — asymmetric mix-ratio drift (Gemini refinement)")
+    print("=" * 70)
+    aux3 = AuxiliaryStateSpaceLayer(mix_ratio=0.5)
+    print(f"  starting mix_ratio: {aux3.mix_ratio:.3f}")
+    aux3.update_mix_ratio(own_score=0.9, primary_score=0.6)
+    print(f"  after one good trial (own=0.9, primary=0.6): "
+          f"{aux3.mix_ratio:.3f}  (climbed by {aux3.learning_rate})")
+    aux3.update_mix_ratio(own_score=0.4, primary_score=0.8)
+    print(f"  after one bad trial  (own=0.4, primary=0.8): "
+          f"{aux3.mix_ratio:.3f}  (fell by {aux3.learning_rate * aux3.decay_fraction})")
+    print(f"  net change after one good + one bad trial: "
+          f"{aux3.mix_ratio - 0.5:+.3f}  "
+          f"(asymmetry preserves accumulated learning)")
     print()

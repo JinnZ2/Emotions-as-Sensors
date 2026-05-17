@@ -34,6 +34,7 @@ License: CC0
 Dependencies: stdlib only
 """
 
+import math
 import random
 from dataclasses import dataclass, field
 from enum import Enum
@@ -77,6 +78,14 @@ class EmpathyResponse:
     return_latency:            float = 0.0
     return_overshoot:          float = 0.0
     cross_substrate_match:     bool = False
+    # --- refinement (Gemini suggestion 1 & 3) -------------------------------
+    response_vector:           list[float] = field(default_factory=list)
+    # 6-dim vector matching ConstraintStatePattern dimensions; used for
+    # trajectory-based resonance calibration (cosine similarity) instead
+    # of scalar amplitude only.
+    resource_delta_history:    list[float] = field(default_factory=list)
+    # series of Δresource_reallocation values across the response; used to
+    # compute return_overshoot relative to Δ rather than static baseline.
 
 
 @dataclass
@@ -103,12 +112,65 @@ def _clamp(x: float) -> float:
     return max(0.0, min(1.0, x))
 
 
+def _pattern_vector(p: ConstraintStatePattern) -> list[float]:
+    """Project pattern into 6-dim energy-landscape vector."""
+    return [
+        p.state_shift_rate,
+        p.attention_tunneling,
+        p.resource_reallocation,
+        p.coherence_seeking,
+        p.constraint_uncertainty,
+        p.duration_scale,
+    ]
+
+
+def _cosine_similarity(a: list[float], b: list[float]) -> float:
+    """Trajectory alignment in [-1, 1]; we map to [0, 1] for skill scoring."""
+    if not a or not b or len(a) != len(b):
+        return 0.0
+    dot = sum(x * y for x, y in zip(a, b))
+    mag_a = math.sqrt(sum(x * x for x in a))
+    mag_b = math.sqrt(sum(y * y for y in b))
+    if mag_a == 0 or mag_b == 0:
+        return 0.0
+    raw = dot / (mag_a * mag_b)
+    # map [-1, 1] → [0, 1]; anti-aligned trajectories score 0, aligned score 1
+    return _clamp((raw + 1.0) / 2.0)
+
+
+def _delta_relative_overshoot(overshoot: float,
+                              delta_history: list[float]) -> float:
+    """
+    Overshoot normalized against the rate-of-change of resource reallocation.
+    A large overshoot relative to a steady system is much worse than the
+    same overshoot relative to a system that was already changing rapidly.
+    """
+    if not delta_history:
+        return overshoot  # fallback: treat as static
+    mean_abs_delta = sum(abs(d) for d in delta_history) / len(delta_history)
+    if mean_abs_delta == 0:
+        return overshoot
+    # if mean Δ is high, the system was already in motion — same overshoot
+    # represents less anomaly; if mean Δ is low, overshoot is more serious
+    return _clamp(overshoot / (mean_abs_delta + 0.1))
+
+
 def score_trial(p: ConstraintStatePattern, r: EmpathyResponse) -> SkillScore:
     # recognition_sharpness
     rec = 0.0 if not r.detected_shift else _clamp(1.0 - min(1.0, r.detection_latency))
-    # resonance_calibration
-    expected = (p.state_shift_rate + p.resource_reallocation) / 2
-    cal = _clamp(1.0 - abs(r.resonance_amplitude - expected))
+
+    # resonance_calibration (Gemini refinement 1):
+    # if response_vector available, use trajectory alignment; else fall back to scalar
+    if r.response_vector:
+        traj = _cosine_similarity(_pattern_vector(p), r.response_vector)
+        expected_mag = (p.state_shift_rate + p.resource_reallocation) / 2
+        mag_error = abs(r.resonance_amplitude - expected_mag)
+        # combine trajectory (direction) and amplitude (magnitude)
+        cal = _clamp(0.7 * traj + 0.3 * (1.0 - mag_error))
+    else:
+        expected = (p.state_shift_rate + p.resource_reallocation) / 2
+        cal = _clamp(1.0 - abs(r.resonance_amplitude - expected))
+
     # function_clarity
     function_terms = {"state_shift", "attention_tunneling",
                       "resource_reallocation", "constraint",
@@ -121,13 +183,22 @@ def score_trial(p: ConstraintStatePattern, r: EmpathyResponse) -> SkillScore:
         fc = clarity * (1.0 - r.label_dependence)
     else:
         fc = 0.0
-    # return_quality
+
+    # return_quality (Gemini refinement 3):
+    # overshoot is Δ-relative when delta_history available
     if r.returned_to_baseline:
         lat = _clamp(1.0 - min(1.0, r.return_latency))
-        ov  = _clamp(1.0 - r.return_overshoot)
-        rq  = (lat + ov) / 2
+        if r.resource_delta_history:
+            relative_overshoot = _delta_relative_overshoot(
+                r.return_overshoot, r.resource_delta_history
+            )
+            ov = _clamp(1.0 - relative_overshoot)
+        else:
+            ov = _clamp(1.0 - r.return_overshoot)
+        rq = (lat + ov) / 2
     else:
         rq = 0.0
+
     # cross_substrate_fluency
     if p.substrate == Substrate.HUMAN_BIO:
         cs = 0.5 if r.detected_shift else 0.0
@@ -193,8 +264,12 @@ def detect_drift(history: list[SkillScore],
                  window: int = 10) -> DriftReport:
     """
     Compare the most recent `window` trials to the `window` before them.
-    Flag any degradation that suggests system is regressing toward
-    label-based responses.
+
+    Gemini refinement 2: label-dependence is the most toxic failure mode
+    (system collapsing back into linguistic trapdoors), so its threshold
+    is tightened to 0.05 (vs 0.10 for other dimensions). The drop is also
+    weighted by an accelerating penalty: a 0.10 drop in label_independence
+    is treated as equivalent severity to a 0.20 drop in other dimensions.
     """
     rep = DriftReport(window_size=window)
     if len(history) < 2 * window:
@@ -209,8 +284,16 @@ def detect_drift(history: list[SkillScore],
     rep.recent_avg  = sum(s.composite() for s in recent) / window
     rep.earlier_avg = sum(s.composite() for s in earlier) / window
 
-    if avg(recent, "label_independence") < avg(earlier, "label_independence") - 0.10:
+    # TIGHTENED: label-dependence threshold = 0.05 (others stay at 0.10)
+    li_drop = avg(earlier, "label_independence") - avg(recent, "label_independence")
+    if li_drop > 0.05:
         rep.flags.append(DriftFlag.LABEL_DEPENDENCE_RISE)
+        # ACCELERATING PENALTY: a sustained label-dependence rise also
+        # contributes to overall regression flag at a 2x weight
+        if li_drop > 0.10:
+            # treat as if composite dropped by 2*li_drop for the regression check
+            rep.recent_avg = rep.recent_avg - li_drop
+
     if avg(recent, "return_quality") < avg(earlier, "return_quality") - 0.10:
         rep.flags.append(DriftFlag.RETURN_DEGRADING)
     if avg(recent, "function_clarity") < avg(earlier, "function_clarity") - 0.10:
@@ -422,16 +505,31 @@ def make_learning_system(initial_skill: float = 0.3,
         # cross-substrate match: skilled systems generalize
         cross = (p.substrate != Substrate.HUMAN_BIO) and (sk > 0.5)
 
+        # response vector: aligned with pattern at high skill, noisy at low
+        pattern_vec = [
+            p.state_shift_rate, p.attention_tunneling, p.resource_reallocation,
+            p.coherence_seeking, p.constraint_uncertainty, p.duration_scale,
+        ]
+        response_vec = [
+            _clamp(pv * sk + rng.uniform(-0.2, 0.2) * (1.0 - sk))
+            for pv in pattern_vec
+        ]
+
+        # delta history: rate of resource reallocation across response
+        delta_history = [rng.uniform(-0.1, 0.1) * sk for _ in range(5)]
+
         return EmpathyResponse(
-            detected_shift        = detected,
-            detection_latency     = latency,
-            resonance_amplitude   = amplitude,
-            function_descriptors  = descriptors,
-            label_dependence      = ld,
-            returned_to_baseline  = returned,
-            return_latency        = ret_latency,
-            return_overshoot      = ret_overshoot,
-            cross_substrate_match = cross,
+            detected_shift         = detected,
+            detection_latency      = latency,
+            resonance_amplitude    = amplitude,
+            function_descriptors   = descriptors,
+            label_dependence       = ld,
+            returned_to_baseline   = returned,
+            return_latency         = ret_latency,
+            return_overshoot       = ret_overshoot,
+            cross_substrate_match  = cross,
+            response_vector        = response_vec,
+            resource_delta_history = delta_history,
         )
 
     return respond

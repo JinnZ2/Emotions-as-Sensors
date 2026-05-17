@@ -57,6 +57,7 @@ class Substrate(Enum):
 @dataclass
 class ConstraintStatePattern:
     substrate:                 Substrate
+    prediction_error:          float   # dimension zero — calibration anchor
     state_shift_rate:          float
     attention_tunneling:       float
     resource_reallocation:     float
@@ -113,8 +114,13 @@ def _clamp(x: float) -> float:
 
 
 def _pattern_vector(p: ConstraintStatePattern) -> list[float]:
-    """Project pattern into 6-dim energy-landscape vector."""
+    """
+    Project pattern into 7-dim energy-landscape vector.
+    prediction_error leads — it is the calibration anchor that makes
+    the other six dimensions legible as responses, not free variables.
+    """
     return [
+        p.prediction_error,        # dim zero — what the system didn't know
         p.state_shift_rate,
         p.attention_tunneling,
         p.resource_reallocation,
@@ -159,16 +165,18 @@ def score_trial(p: ConstraintStatePattern, r: EmpathyResponse) -> SkillScore:
     # recognition_sharpness
     rec = 0.0 if not r.detected_shift else _clamp(1.0 - min(1.0, r.detection_latency))
 
-    # resonance_calibration (Gemini refinement 1):
-    # if response_vector available, use trajectory alignment; else fall back to scalar
+    # resonance_calibration (Gemini refinement 1 + prediction_error anchor):
+    # if response_vector available, use trajectory alignment; else fall back to scalar.
+    # prediction_error is the leading dimension — if the system misses what it
+    # didn't know, the rest of the trajectory is downstream of a missed anchor.
     if r.response_vector:
         traj = _cosine_similarity(_pattern_vector(p), r.response_vector)
-        expected_mag = (p.state_shift_rate + p.resource_reallocation) / 2
+        expected_mag = (p.prediction_error + p.state_shift_rate + p.resource_reallocation) / 3
         mag_error = abs(r.resonance_amplitude - expected_mag)
         # combine trajectory (direction) and amplitude (magnitude)
         cal = _clamp(0.7 * traj + 0.3 * (1.0 - mag_error))
     else:
-        expected = (p.state_shift_rate + p.resource_reallocation) / 2
+        expected = (p.prediction_error + p.state_shift_rate + p.resource_reallocation) / 3
         cal = _clamp(1.0 - abs(r.resonance_amplitude - expected))
 
     # function_clarity
@@ -439,6 +447,7 @@ def make_pattern_provider(seed: int = 42) -> PatternProvider:
             lo, hi = stage.constraint_uncertainty
             patterns.append(ConstraintStatePattern(
                 substrate              = sub,
+                prediction_error       = rng.uniform(0.2, 0.9),
                 state_shift_rate       = rng.uniform(0.2, 0.9),
                 attention_tunneling    = rng.uniform(0.2, 0.9),
                 resource_reallocation  = rng.uniform(0.1, 0.7),
@@ -506,7 +515,9 @@ def make_learning_system(initial_skill: float = 0.3,
         cross = (p.substrate != Substrate.HUMAN_BIO) and (sk > 0.5)
 
         # response vector: aligned with pattern at high skill, noisy at low
+        # includes prediction_error as dimension zero
         pattern_vec = [
+            p.prediction_error,
             p.state_shift_rate, p.attention_tunneling, p.resource_reallocation,
             p.coherence_seeking, p.constraint_uncertainty, p.duration_scale,
         ]

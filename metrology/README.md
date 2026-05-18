@@ -214,6 +214,43 @@ thermo     virtual harmonic oscillator        (delegates to
            all four in: thermodynamic_overlays.py
 ```
 
+### INTEGRATION LAYER
+
+```
+ESD-001    emotion_substrate_dispatcher.py
+integrate  routes constraint patterns to   → PEX-001 patterns
+           emotional substrates via          (or supply your own)
+           gradient descent; each emotion
+           channel is a potential well in
+           the 7-dim constraint landscape;
+           wells reshape from observed
+           outcomes
+
+           use when: a system has access to multiple emotional
+           channels (rapid_threat_response, boundary_assertion,
+           slow_coherence_seeking, exploratory_probing,
+           cross_substrate_recognition, energy_conservation,
+           signal_amplification) and you want each constraint
+           geometry routed to the substrate that solves it most
+           efficiently. emotion channels are described by FUNCTION,
+           not LABEL — cultural names are reference handles.
+
+           cross-checks: MH-004 (capture) flags substrate-grounded
+           vs authority-shaped dispatch; ELA-001 (audit) flags
+           label-smuggled patterns.
+
+           mirrors the architecture in:
+             github.com/JinnZ2/Geometric-to-Binary-Computational-Bridge
+           — same dispatcher pattern applied to computational
+             substrate (potential wells, gradient descent, learning
+             from observed outcomes).
+
+           cross-link: see ../MANIFEST.md "Substrate-Native
+           Dispatcher Architecture" for the bridge↔emotions primitive
+           table, and ../.fieldlink.json "bridge" source for the
+           structured mount configuration.
+```
+
 -----
 
 ## TYPICAL ASSEMBLIES
@@ -301,6 +338,11 @@ PEX-001 × N substrates → TO-003 (alignment) → TO-002 (interference)
                 TO-002 (uses TO-001 heat metric)
                   ↑
                 TO-003 (unifies on TO-001+002 canvas)
+
+                PEX-001 ──▶ ESD-001 ◀── cross-checks ── MH-004
+                                                        ELA-001
+                            mirrors:
+                            Geometric-to-Binary-Computational-Bridge
 ```
 
 -----

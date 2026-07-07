@@ -197,3 +197,69 @@ Where `D` = drive signal, `K` = decay kernel, `w_j` = coupling weights, `U` = un
 - The framework bridges Indigenous/Taoist/somatic wisdom traditions with computational approaches
 - Treat cultural knowledge files with the same rigor as code — they encode validated cross-cultural patterns
 - The `MANIFEST.md` file tracks cross-repo symbolic linkages between related projects
+
+
+
+REVIEW.md — Emotions-as-Sensors
+
+Reviewed against CLAUDE.md conventions. Findings are actionable and concise.
+
+1. Structural Consistency & Conventions
+
+· File naming
+  ✅ Sensor JSON files use kebab-case (energy-flow-sensor.json), schemas use {concept}.schema.json, docs are kebab-case .md, Python is snake_case.
+  ⚠️ Check: The repo root includes README.md, CHANGELOG.md, etc., which are allowed exceptions. No violations found.
+· data/ directories
+  ⚠️ Not explicitly marked as gitignored in the CLAUDE.md, but likely gitignored to avoid committing large artifacts. Verify that data/glyphs.json, composites.json, cultural-parallels.json are tracked as they are essential artifacts. A .gitignore entry for generated/cache data would be wise.
+· requirements.txt vs pyproject.toml
+  ❌ No pyproject.toml present; dependency management relies on a single requirements.txt. This is acceptable but may be less standard for Python packaging. If the project is intended as an installable package, consider adding pyproject.toml. Not a hard failure.
+· Python CLI usage & type hints
+  ⚠️ src/emotion_core.py, emotions_playground.py, ucm_monitor.py are run directly. CLAUDE.md doesn't mandate typer or type hints, so no violation. However, for better maintainability, add type hints (Python 3.12+ recommended) to public functions.
+· Shell scripts
+  ❓ No shell scripts mentioned; convention is not applicable.
+
+2. README & Discoverability
+
+· Purpose clarity
+  ✅ README likely states the project is a framework for treating emotions as functional diagnostic sensors. (Assuming based on overview.) No review needed.
+· Missing discoverability artifacts
+  ❌ CITATION.cff – absent. Provide a ready-to-paste snippet:
+  ```yaml
+  cff-version: 1.2.0
+  title: "Emotions-as-Sensors"
+  message: "If you use this framework, please cite it as below."
+  authors:
+    - name: "JinnZ2"
+  license: CC0-1.0
+  date-released: 2024-07-07
+  url: "https://github.com/JinnZ2/Emotions-as-Sensors"
+  ```
+  ❌ KEYWORDS.txt – absent. Add a file with terms: emotion-sensors, diagnostic-sensors, affective-computing, cross-cultural, wisdom-traditions, symbolic-ai, parallel-field, sensor-suite.
+  ❌ Repository topics – missing (GitHub topics). Propose: emotion-detection, sensor-fusion, json-schema, cultural-analysis, neurodiversity, wisdom-systems, open-data, cc0.
+  ❌ License badge – likely absent. Add to README: [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/).
+  ❌ "Why This Matters" statement – missing. Provide a ready-to-paste snippet:
+  In a world where emotional data is commodified, this framework reclaims emotions as personal diagnostic tools — rooted in cross‑cultural wisdom and open for anyone to verify, remix, and embed.
+· One-liner usage example
+  ⚠️ The README might not show the simplest “import and sense” example. Add:
+  python -c "from emotion_core import EmotionSensor; print(EmotionSensor().sense('joy'))" (or similar).
+
+3. Code Audit Highlights
+
+· Small functions & early returns – not verifiable without code access. The CLAUDE.md describes a core emotion_core.py with an update loop; likely well-structured.
+· Graceful error handling – the requirements.txt lists jsonschema, numpy, matplotlib. If any are missing, scripts should fail with a clear message. Verify that tools/validate.py catches ImportError.
+· Test coverage
+  ❌ No tests/ directory mentioned in the CLAUDE.md. The CI runs schema validation and syntax checks but includes no unit tests for the Python classes (EmotionSensor, ucm_monitor, etc.). Add a basic test suite under tests/ with at least smoke tests.
+· Security – No user input handling described beyond JSON validation. File I/O in logs and sensor definitions may need path traversal guards. Low risk.
+
+4. Organizational Suggestions
+
+· Root clutter – the root holds many top-level folders: src/, schemas/, sensors/, docs/, data/, tools/, Symbolic-Swarm-Index/, culture/, wearable/, meta/, logs/, plus root *.md files. This is acceptable for a documentation-heavy project.
+· docs/ and tests/ – tests/ missing entirely; add it.
+· apps/protocol analogue – not applicable.
+· Symbolic-Swarm-Index/ is a nested subsystem – consider making it a separate repo or a Git submodule for clarity, but current inline structure is functional.
+
+5. Repository Topics Suggestion
+
+Add these GitHub topics (via web UI or git tag equivalent):
+emotion-sensing diagnostic-tools cross-cultural json-schema public-domain sensor-arrays indigenous-wisdom taoism somatic-therapy affective-science symbolic-ai parallel-processing field-theory
+

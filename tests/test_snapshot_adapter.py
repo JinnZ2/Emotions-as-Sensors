@@ -34,8 +34,12 @@ EXPECTED_KEYS = {
     "corrupted",
     "stress_level",
     "urgent",
+    "metrology",
     "time",
 }
+
+METROLOGY_AXES = {"pred", "shift", "tunnel", "realloc",
+                  "cohere", "uncert", "duration"}
 
 
 @pytest.fixture
@@ -109,3 +113,58 @@ def test_default_singleton_reload():
     eas.reset_default_system()
     second = eas._get_default_system()
     assert first is not second
+
+
+def test_metrology_axes_present_and_named(fresh_system):
+    """metrology sub-key exposes exactly the 7 constraint-state axes."""
+    snap = eas.snapshot(system=fresh_system)
+    assert set(snap["metrology"].keys()) == METROLOGY_AXES
+
+
+def test_metrology_zero_state(fresh_system):
+    snap = eas.snapshot(system=fresh_system)
+    assert all(v == 0.0 for v in snap["metrology"].values())
+
+
+def test_metrology_tunnel_reflects_concentration(fresh_system):
+    """One dominant sensor → tunnel near 1.0."""
+    if not fresh_system.sensors:
+        pytest.skip("no sensors loaded")
+    fresh_system.sensors[0].E = 0.8
+    snap = eas.snapshot(system=fresh_system)
+    assert snap["metrology"]["tunnel"] > 0.9
+
+
+def test_metrology_uncert_reflects_corruption_fraction(fresh_system):
+    """uncert = fraction of the fleet failing the authenticity gate."""
+    total = len(fresh_system.sensors)
+    if total == 0:
+        pytest.skip("no sensors loaded")
+    # Corrupt roughly half the fleet.
+    to_corrupt = max(1, total // 2)
+    for s in fresh_system.sensors[:to_corrupt]:
+        s.authentic = False
+
+    snap = eas.snapshot(system=fresh_system)
+    expected = round(to_corrupt / total, 4)
+    assert snap["metrology"]["uncert"] == pytest.approx(expected, abs=1e-3)
+
+
+def test_metrology_duration_rises_with_longlived_sensors(fresh_system):
+    """Immortal-decay activation pushes duration higher than exponential."""
+    immortal = next(
+        (s for s in fresh_system.sensors if s.decay_model == "immortal"), None
+    )
+    exponential = next(
+        (s for s in fresh_system.sensors if s.decay_model == "exponential"), None
+    )
+    if immortal is None or exponential is None:
+        pytest.skip("need both immortal and exponential sensors in fleet")
+
+    exponential.E = 0.8
+    snap_short = eas.snapshot(system=fresh_system)
+    exponential.E = 0.0
+    immortal.E = 0.8
+    snap_long = eas.snapshot(system=fresh_system)
+
+    assert snap_long["metrology"]["duration"] > snap_short["metrology"]["duration"]

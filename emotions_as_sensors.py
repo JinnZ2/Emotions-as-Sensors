@@ -22,6 +22,7 @@ The snapshot pulls from a lazy module-level EmotionSystem loaded from
 """
 from __future__ import annotations
 
+import math
 import sys
 from pathlib import Path
 from typing import Optional
@@ -71,6 +72,82 @@ def _is_urgent(a: float) -> bool:
     return a > 0.6
 
 
+# Decay-model → duration weight. Longer-lived kernels contribute more
+# to the `duration` axis.
+_DECAY_TO_DURATION = {
+    "immortal":       1.0,
+    "transformative": 0.8,
+    "cyclical":       0.6,
+    "resonant":       0.4,
+    "exponential":    0.2,
+}
+
+
+def _metrology_axes(sys_) -> dict:
+    """
+    Derive the 7-dim constraint-state axes from current EmotionSystem state.
+
+    Mirrors metrology/emotion_substrate_dispatcher.py's
+    ConstraintStatePattern axes so downstream dispatchers (Bridge,
+    metrology, Cyclic) can consume the same geometry the emotional
+    substrate itself is described in.
+
+    Axes (all values roughly in [0, 1], not strictly bounded):
+      pred      velocity dispersion — spikes vs uniform drift.
+                Rises when different sensors disagree about direction.
+      shift     mean absolute dE/dt across active authentic sensors.
+                Rises when state is changing fast in any direction.
+      tunnel    activation concentration (max E / total E).
+                Rises when one sensor dominates the fleet.
+      realloc   mean(max(0, D) * A * E) across active sensors.
+                Rises with high-dominance + high-arousal load
+                (boundary assertion, resource redirection).
+      cohere    (1 - global coherence) * activation load.
+                Rises when the system is under load but not resonating.
+      uncert    fraction of the fleet failing the authenticity gate.
+                Direct read of how much sensor input can't be trusted.
+      duration  activation-weighted decay-timescale.
+                Rises with long-lived (immortal / cyclical) load,
+                falls with short-lived (exponential) load.
+
+    These are heuristics, not physics. They give the Bridge dispatcher a
+    starting geometry; the dispatcher then reshapes weights from observed
+    outcomes (see metrology/emotion_substrate_dispatcher.py update_landscape).
+    """
+    active = [s for s in sys_.sensors if s.authentic and s.E > 0.01]
+    axes = {k: 0.0 for k in ("pred", "shift", "tunnel", "realloc",
+                             "cohere", "uncert", "duration")}
+    total_sensors = len(sys_.sensors)
+    if total_sensors:
+        corrupted_ct = sum(1 for s in sys_.sensors if not s.authentic)
+        axes["uncert"] = corrupted_ct / total_sensors
+
+    if not active:
+        return {k: round(v, 4) for k, v in axes.items()}
+
+    n = len(active)
+    total_E = sum(s.E for s in active)
+
+    axes["shift"] = sum(abs(s.V) for s in active) / n
+    v_mean = sum(s.V for s in active) / n
+    axes["pred"] = math.sqrt(sum((s.V - v_mean) ** 2 for s in active) / n)
+    axes["tunnel"] = (max(s.E for s in active) / total_E) if total_E > 0 else 0.0
+    axes["realloc"] = sum(
+        max(0.0, s.effective_pad_d) * s.pad_a * s.E for s in active
+    ) / n
+
+    coh = sys_.coherence()
+    activation_load = min(1.0, total_E / n)
+    axes["cohere"] = (1.0 - coh) * activation_load
+
+    if total_E > 0:
+        axes["duration"] = sum(
+            _DECAY_TO_DURATION.get(s.decay_model, 0.3) * s.E for s in active
+        ) / total_E
+
+    return {k: round(v, 4) for k, v in axes.items()}
+
+
 def snapshot(system: Optional[EmotionSystem] = None) -> dict:
     """
     Full sensor-state snapshot for downstream consumers.
@@ -83,11 +160,15 @@ def snapshot(system: Optional[EmotionSystem] = None) -> dict:
       corrupted    [name, ...]              sensors failing the authenticity gate
       stress_level 'low' | 'medium' | 'high'   derived from PAD
       urgent       bool                     derived from PAD arousal
+      metrology    {pred, shift, tunnel, realloc, cohere, uncert, duration}
+                                            7-dim constraint-state axes
+                                            (mirrors metrology dispatcher geometry)
       time         float                    EmotionSystem.time at capture
 
     The whole dict is safe to pass as `sensor_snapshot=`; downstream
     resolvers that only accept the summary can pull
-    `{stress_level, urgent}` out.
+    `{stress_level, urgent}` out, and dispatchers that speak the
+    7-axis geometry can consume `metrology` directly.
     """
     sys_ = system if system is not None else _get_default_system()
 
@@ -116,6 +197,7 @@ def snapshot(system: Optional[EmotionSystem] = None) -> dict:
         "corrupted": corrupted,
         "stress_level": _classify_stress(p, a),
         "urgent": _is_urgent(a),
+        "metrology": _metrology_axes(sys_),
         "time": sys_.time,
     }
 

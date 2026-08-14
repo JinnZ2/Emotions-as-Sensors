@@ -4,6 +4,54 @@ also
 
 # 🧬 CHANGELOG.md
 
+## 2026-08-14 – Emotion Reading Spec (seed)
+
+### ✴️ Additions
+- `docs/emotion-reading-spec.md`: operational layer beneath the sensor
+  panel. Where the panel names *what* each emotion reads, this names
+  *how to take the reading*.
+  - **Two fields per reading** — content (which channel breached, with
+    a referent) and gain (how much this reading is loading the rest of
+    the instrument). Gain is a self-diagnostic on the instrument, not a
+    severity claim, and says nothing about whether the content reading
+    was correct.
+  - **Impedance threshold** — the single decision point on the gain
+    axis. Below it the emotion is information (*what is this telling
+    me?*); above it the emotion is impedance degrading other channels
+    (*can I clear this?*). Clearing splits inward (strip assigned
+    meaning) vs outward (real environmental mismatch); which one it was
+    is itself a reading.
+  - **Verb, not noun** — a reading resolves to an action. A reading
+    that resolves to a label, a good/bad party, or a claim about who
+    the operator is was narrativized, not taken.
+  - **Worked example** — one event (mushed finger) read on two
+    channels: surprise = model-outside-range → extend the model;
+    frustration = model-had-capacity residual → fix the loading, not
+    the model. Pain runs alongside as physical parameter breach; anger,
+    if present, is a location report, not a verdict.
+  - **Carrier note** — the method is household-transmitted, unnamed,
+    and unrecorded, which puts it on a carrier clock (wood-gas
+    profile). The spec exists to move it onto the record.
+
+### 🔁 Updates
+- `README.md`: added an Emotion Reading Spec pointer alongside the
+  Glyph Web entry.
+
+### 🧭 Rationale
+The panel was complete on *what* each sensor detects and silent on the
+procedure for taking a reading. Without the gain axis, a correct
+content reading running loud is indistinguishable from a wrong one, and
+the standard failure — painting meaning over the signal until only a
+character claim remains — had no named test. "Verb, not noun" is the
+operational form of the existing `corrupted_output` field and of
+DETECT–ASSESS–RESPOND–RELEASE's release step.
+
+### 🕳️ Open
+- `tool-off-metrology`, cited in the carrier note, is referenced but
+  not yet in this repo.
+
+---
+
 ## 2026-05-14 – Pluralist Pattern Correlation Patch (Patch A)
 
 ### ✴️ Replacements

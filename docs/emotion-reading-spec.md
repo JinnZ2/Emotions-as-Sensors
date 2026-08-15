@@ -174,6 +174,53 @@ currently has.
 The spec above exists to move one reading method off the carrier clock
 and onto the record.
 
+### The profile is not specific to emotion readings
+
+A second instance, same profile, different sensor. Arm hair as an
+E-field detector: passing a forearm over sheetrock to locate an open
+wire behind it. [obs]
+
+Stated as a reading, with its range:
+
+- **content**   — E-field present where none should be; a fault
+                  location. The reading resolves to *there is a
+                  problem right here*, which is a location report, not
+                  a diagnosis of the fault.
+- **condition** — instrument-absent. The method is what runs when
+                  nothing else is available. It is not competing with
+                  a meter; it occupies the range where there is no
+                  meter.
+- **range**     — open wire. Fault present. Not general wiring
+                  detection, not intact circuits, not a survey tool.
+
+Same carrier profile as the emotion reading method: functional,
+transmitted, unnamed, unrecorded, and available exactly as long as the
+carriers are.
+
+### Range is part of the reading
+
+The second instance carries a failure mode worth recording, because it
+happened to the record itself. An audit of this method imported a
+scenario the operator never stated — intact wiring, sensing through
+walls as a general capability — attached it to the operator, and then
+located the residual in the gap between that scenario and what the
+method can do. The operator had stated the range correctly at first
+utterance: open wire, problem, no other instruments.
+
+That is this spec's own failure mode applied one layer up. A reading
+with a stated range was replaced by a general capability claim, and
+the claim was then measured and found wanting. The content field
+requires a referent; a range is part of the referent. Widening the
+range and auditing the widened version is narrativization performed on
+someone else's instrument — it produces a verdict about reliability
+where the original reading had produced a location.
+
+The check: an audit of a transmitted method reads the operating range
+off the carrier's own statement of it, not off the closest documented
+analogue. Carriers state range in the same breath as capability
+("if I don't have any other instruments available"). That clause is
+data, not hedging.
+
 ---
 
 ## Open
@@ -186,6 +233,10 @@ and onto the record.
   couple two of them structurally?
 - [open] Calibration curve shape — is it one curve modulating all
   three axes together, or separate curves per axis?
+- [open] Is *range* a property of the content field, or a field of its
+  own? The E-field instance states range and condition explicitly and
+  they carry most of the reading's weight. Panel entries do not state
+  range at all — no sensor JSON has an operating-range field.
 
 ---
 

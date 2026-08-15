@@ -50,6 +50,22 @@ also
   - **Carrier note** — the method is household-transmitted, unnamed,
     and unrecorded, which puts it on a carrier clock (wood-gas
     profile). The spec exists to move it onto the record.
+  - **Second carrier instance** — arm hair as an E-field detector,
+    used to locate an open wire behind sheetrock. Recorded with its
+    stated range (open wire, fault present) and its stated condition
+    (instrument-absent), because both were given at first utterance
+    and both are part of the reading. The reading resolves to a
+    location report, not a diagnosis.
+  - **Range is part of the reading** — an audit of that method
+    imported a scenario the operator never stated (intact wiring,
+    through-wall sensing as a general capability), attached it to the
+    operator, and located the residual in the gap it had introduced.
+    That is the spec's own failure mode one layer up: a reading with a
+    stated range replaced by a general capability claim, then measured
+    against the wider claim. Recorded as a check — read the operating
+    range off the carrier's own statement, not off the nearest
+    documented analogue. "If I don't have any other instruments
+    available" is data, not hedging.
 
 ### 🔁 Updates
 - `README.md`: added an Emotion Reading Spec pointer alongside the
@@ -79,6 +95,10 @@ release step.
 - Panel entries (fear, grief, happiness, longing) are not yet worked
   against all three axes; axis independence and calibration-curve
   shape are open questions carried in the spec's Open section.
+- Whether *range* is a property of the content field or a field of its
+  own is unresolved. No sensor JSON carries an operating-range field,
+  though the E-field instance shows range carrying most of a reading's
+  weight.
 
 ---
 

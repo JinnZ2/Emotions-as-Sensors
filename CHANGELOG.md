@@ -4,30 +4,48 @@ also
 
 # 🧬 CHANGELOG.md
 
-## 2026-08-14 – Emotion Reading Spec (seed)
+## 2026-08-15 – Emotion Reading Spec (seed)
 
 ### ✴️ Additions
 - `docs/emotion-reading-spec.md`: operational layer beneath the sensor
   panel. Where the panel names *what* each emotion reads, this names
   *how to take the reading*.
-  - **Two fields per reading** — content (which channel breached, with
-    a referent) and gain (how much this reading is loading the rest of
-    the instrument). Gain is a self-diagnostic on the instrument, not a
-    severity claim, and says nothing about whether the content reading
-    was correct.
-  - **Impedance threshold** — the single decision point on the gain
-    axis. Below it the emotion is information (*what is this telling
-    me?*); above it the emotion is impedance degrading other channels
-    (*can I clear this?*). Clearing splits inward (strip assigned
-    meaning) vs outward (real environmental mismatch); which one it was
-    is itself a reading.
+  - **Three fields per reading** — every emotion resolves to three
+    readings, not one:
+    - *content* — which channel breached, stated with a referent.
+      This is what the existing panel maps.
+    - *amplitude* — how immediate. Pure triage: where in the queue the
+      reading goes. Answers "when," not "is this trustworthy." A
+      high-amplitude reading can be perfectly clean.
+    - *impedance* — is the channel obstructed, and whose. Internal
+      (meaning got assigned; a stored verdict re-reads every new
+      instance through itself) or external (the environment is
+      emitting contradictory signals; the jam is real and in the
+      world). The source determines the fix.
+  - Amplitude and impedance are **separate axes**, not one axis with a
+    threshold. A low-amplitude reading can be obstructed; a
+    high-amplitude one can be clean.
+  - **Calibration layer** — hormonal state as apparatus gain. Not a
+    fourth field: it does not change what fired or what it is about,
+    it changes the sensitivity of the instrument taking the reading,
+    per axis and independently. The cycle has a known shape (daily in
+    some carriers, monthly in others), so the variation is information
+    about the operator's own instrument state, not noise. Read as
+    apparatus gain rather than as deficit, it is an asset — the
+    operator knows the offset and corrects for it, or schedules a
+    reading for the phase whose sensitivity the task needs.
   - **Verb, not noun** — a reading resolves to an action. A reading
     that resolves to a label, a good/bad party, or a claim about who
     the operator is was narrativized, not taken.
-  - **Worked example** — one event (mushed finger) read on two
+  - **Pattern cache, not grudge** — a grudge is a stored verdict and
+    is internal impedance by construction. Storing the *instances*
+    instead lets the pattern emerge from the data while each new
+    instance still gets a clean reading. The grudge is not a special
+    low-amplitude case; it is a narrativized cache.
+  - **Worked example** — one event (mushed finger) read on multiple
     channels: surprise = model-outside-range → extend the model;
     frustration = model-had-capacity residual → fix the loading, not
-    the model. Pain runs alongside as physical parameter breach; anger,
+    the model; pain = physical parameter breach alongside both; anger,
     if present, is a location report, not a verdict.
   - **Carrier note** — the method is household-transmitted, unnamed,
     and unrecorded, which puts it on a carrier clock (wood-gas
@@ -39,16 +57,28 @@ also
 
 ### 🧭 Rationale
 The panel was complete on *what* each sensor detects and silent on the
-procedure for taking a reading. Without the gain axis, a correct
-content reading running loud is indistinguishable from a wrong one, and
-the standard failure — painting meaning over the signal until only a
-character claim remains — had no named test. "Verb, not noun" is the
-operational form of the existing `corrupted_output` field and of
-DETECT–ASSESS–RESPOND–RELEASE's release step.
+procedure for taking a reading. Separating amplitude from impedance is
+what makes the procedure operational: triage and trustworthiness are
+different questions, and collapsing them means a loud clean reading
+gets treated as suspect while a quiet jammed one passes. Splitting
+impedance by source does the same work for the fix — stripping
+assigned meaning does nothing about a real environmental
+contradiction, and trying to exit an environment does nothing about a
+self-made verdict. "Verb, not noun" is the operational form of the
+existing `corrupted_output` field and of DETECT–ASSESS–RESPOND–RELEASE's
+release step.
 
 ### 🕳️ Open
 - `tool-off-metrology`, cited in the carrier note, is referenced but
   not yet in this repo.
+- No detector distinguishes a pattern cache from a grudge;
+  `metrology/empathy_layer_audit.py`'s `detect_temporal_freezing` is
+  the nearest existing check but tests a different thing.
+- No panel sensor carries an amplitude or impedance field. The three
+  axes are not yet represented in the sensor JSON schema.
+- Panel entries (fear, grief, happiness, longing) are not yet worked
+  against all three axes; axis independence and calibration-curve
+  shape are open questions carried in the spec's Open section.
 
 ---
 

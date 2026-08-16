@@ -166,12 +166,79 @@ also
     target: selection is indifferent to suffering, has no foresight,
     and its answers are correct for conditions that no longer obtain.
 
+- `docs/evidence-weighting.md`: standing prior for the repo. Structures
+  produced by long integration carry prior weight over recent human
+  overlays where they conflict — on grounds of integration depth and
+  n=1, not on grounds of being natural or good. Absence of a legible
+  reason is not evidence of absence of reason; unread ≠ arbitrary.
+  - Both grounds stated separately and both epistemic: integration
+    depth is a claim about information embedded in a structure, n=1 is
+    a claim that the comparison arm does not exist.
+  - Normative and epistemic forms tabled side by side, so the
+    naturalistic-fallacy caveat keeps its real target while stopping
+    at claims that carry no *ought*.
+  - Records the symmetric error (selection optimizes ancestral
+    fitness, is indifferent to suffering, has no foresight, and its
+    answers may not apply now), and states how the prior discharges:
+    on actual comparison where a comparison arm exists, not on
+    assertion.
+  - A four-step application test, and the response form the rule asks
+    for — name what would read out the function, or name where the
+    argument breaks.
+
+- `metrology/regime_layer_sim.py` (GD-002): E2 built. The regime layer
+  under GD-001 — storability, shock correlation and enclosure decide
+  whether holding or pooling is correct. Holding moves resource across
+  periods; pooling moves it across agents within a period, and the
+  pool does not persist, which is what "the pool IS the storage
+  medium" means mechanically.
+  - Part 1 runs both strategies through all eight corners rather than
+    asserting the table. Both named corners came out as claimed. The
+    run also reports which term is decisive: **shock correlation, not
+    enclosure**. High enclosure alone does not make zero-sum correct —
+    when deficits are rare and uncorrelated the small unenclosed
+    remainder still covers them, so enclosure needs covariant shocks
+    to bite.
+  - Part 2 is the confound. In a one-shot task that reveals nothing
+    about its own regime the agent runs its prior, so a
+    full-disposition agent calibrated in a zero-sum regime and a
+    7.6x-less-disposed agent calibrated in a sharing regime emit the
+    same number. Export at r = 0 does not rank disposition unless
+    calibration is known.
+  - The fix is the opposite of the obvious one: making the return
+    channel observable does not probe calibration, it washes the prior
+    out — which is why disposition survives in the delta. The delta
+    recovers the true disposition ratio to within 7% where the level
+    is off by 87%. Level at low observability carries calibration,
+    delta at high observability carries disposition, and neither
+    readout alone is interpretable.
+
 ### 🔁 Updates
 - `README.md`: added an Emotion Reading Spec pointer alongside the
   Glyph Web entry.
-- `metrology/README.md`: new EXPLORATION shelf carrying GD-001, plus
-  an assembly entry and a dependency-graph line; cross-linked to the
-  regime notes.
+- `metrology/gain_direction_sim.py`: E1 built. `EnvironmentSpec` gains
+  recovery rate, controllability and sensor range;
+  `calibration_variance_full` runs the predictor on perceived
+  magnitude while measuring error against true consequence, and
+  subtracts the agent's own contribution before taking the residual.
+  New `mismatch_report` covers the fourth axis, which cannot be read
+  off a developmental record at all. Demos 5 and 6 added.
+  - E1's result is three different answers, not one. Controllability
+    is a clean axis (~8x on calibration variance at fixed
+    autocorrelation, negligible level change, sign flips). Recovery
+    flips the sign through a level channel instead — mean rises toward
+    the damage ceiling and variance compresses against it, so chronic
+    non-recovery reads as *predictable*. Sensor range does not
+    separate at all (spread 0.022 at 68% clipping).
+  - The recovery result contradicts the ACE picture and is flagged in
+    the demo output rather than smoothed over: it places
+    chronic-no-recovery in the low-variance arm, the same arm as low
+    adversity.
+- `metrology/README.md`: new EXPLORATION shelf carrying GD-001 and
+  GD-002, plus assembly entries and dependency-graph lines;
+  cross-linked to the regime notes.
+- `docs/calibration-regime-notes.md`: E1 and E2 marked run, with their
+  results folded into §7 and the §1 confound marked resolved by E2.
 - `metrology/gain_direction_sim.py`: PAIRS WITH now points at the
   regime notes as the upstream half of the model.
 - `docs/emotion-reading-spec.md`: calibration layer now cross-links
@@ -208,6 +275,11 @@ release step.
 - GD-001's sign-flip threshold is a free parameter with nothing
   pinning it. The dissociation on either side of it is the prediction;
   its value is not.
+- E1 left two axes unresolved: whether the recovery result (chronic
+  non-recovery reading as low-variance) is a modeling artifact of the
+  saturating damage channel or a real prediction that contradicts the
+  ACE picture, and whether the within-range axis is real at all given
+  it does not separate.
 - E3 (pooled-share time series) is blocked on source identification.
 - E5 (capacity under withdrawal) has no existing instrument, which is
   the reason it is worth building.

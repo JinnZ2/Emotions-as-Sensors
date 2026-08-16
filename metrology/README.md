@@ -299,6 +299,41 @@ explore    generates discriminating       → no dependencies
            proposed experiments (E1/E2 extend this module directly).
 ```
 
+```
+GD-002     regime_layer_sim.py
+explore    derives which resource regime  → no dependencies
+           makes holding correct and         (mirrors GD-001's
+           which makes pooling correct,       export subtraction)
+           then shows what that does to
+           the reading of a no-return
+           donation task
+
+           use when: a study reads an export/donation/sharing
+           measure as a disposition. Three terms decide which
+           strategy is correct — storability (can the stock be
+           held?), shock correlation (do agents fail together?),
+           and enclosure (is the stock assignable?). Holding moves
+           resource across periods; pooling moves it across agents
+           within a period. Neither is a virtue.
+
+           part 1 runs both strategies through all eight corners of
+           the cube and reports which wins where — the corners are
+           derived, not asserted, and the run reports which term is
+           actually decisive.
+
+           part 2 is the confound: in a one-shot task that reveals
+           nothing about its own regime, the agent runs its prior.
+           A full-disposition agent calibrated in a zero-sum regime
+           and a 7.6x-less-disposed agent calibrated in a sharing
+           regime emit the SAME number. Level confounds them; the
+           delta across an observable return channel recovers the
+           disposition ratio to within 7%.
+
+           pairs with GD-001 (receiver side; this is the regime that
+           sets its calibration).
+           cross-link: ../docs/calibration-regime-notes.md E2.
+```
+
 -----
 
 ## TYPICAL ASSEMBLIES
@@ -308,6 +343,8 @@ explore    generates discriminating       → no dependencies
 ```
 GD-001 (prediction generator; pair with ELA-001 if the outcome
         variable is a label over a task-level count)
+  + GD-002 (if the outcome variable is an export/donation/sharing
+            measure — check whether it is reading a regime)
 ```
 
 **Auditing an existing system for label corruption:**
@@ -373,7 +410,8 @@ PEX-001 × N substrates → TO-003 (alignment) → TO-002 (interference)
 ```
                 ELA-001 (standalone)
                 CS-001  (standalone; pairs with ELA-001, TO-003, DAT-M1)
-                GD-001  (standalone; pairs with ELA-001)
+                GD-001  (standalone; pairs with ELA-001, GD-002)
+                GD-002  (standalone; regime layer under GD-001)
                 MH-001..004 (meta-layer; wrap any other part)
 
                 PEX-001

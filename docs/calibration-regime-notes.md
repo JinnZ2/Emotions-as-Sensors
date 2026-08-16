@@ -1,6 +1,8 @@
 # Calibration Regime — notes for further experimentation
 
-Status: notes. Not results. Nothing here has been measured.
+Status: notes, with two experiments now run. E1 and E2 have results
+(§7); everything else is unmeasured. Nothing here is empirical — the
+runs are simulations of the model, not tests of the world.
 
 GD-001 (`metrology/gain_direction_sim.py`) models the receiver: gain ×
 calibration sets the export sign. It takes calibration variance as
@@ -56,7 +58,11 @@ Both are consistent with the same number. This does not undo test 2 —
 it is still the only place buffering and disposition come apart — but
 it means the r = 0 measurement carries its own confound, and the
 identifying condition and the confounding condition are the same
-condition. Recorded rather than resolved.
+condition.
+
+*Since resolved by E2 (§7): the confound is real and large — a 7.6x
+disposition difference is invisible in the level — and the escape is a
+paired design rather than a better single task.*
 
 ---
 
@@ -130,9 +136,11 @@ The two literatures are therefore not measuring one variable at
 different doses. They are measuring different variables, and the
 apparent contradiction between them is an artifact of the shared word.
 
-GD-001 currently implements exactly one of these four axes
-(predictability, as AR(1) autocorrelation). The other three are not in
-the sim. That is the most direct extension available — see E1.
+GD-001 now implements all four — predictability as AR(1)
+autocorrelation, recovery as shed load, controllability as
+self-attributable variance, range as sensor saturation, and regime
+match as the mismatch report. E1 ran them and they did not behave
+alike; see §7.
 
 ---
 
@@ -167,19 +175,53 @@ carrier note in `docs/emotion-reading-spec.md`. [open]
 
 ## 7. Proposed experiments
 
-**E1 — the other three axes.** Extend `EnvironmentSpec` with recovery
-windows, controllability, and execution-regime match. Ask whether the
-export sign is set by predictability alone.
-*Falsifier:* if slope is unchanged by recovery and controllability at
-fixed autocorrelation, the single-term model holds and §5 is wrong
-about them being separate variables.
+**E1 — the other three axes.** *Run — GD-001 demos 5 and 6.*
+Predictability alone does not set the sign, but the three axes are not
+equivalent and the run gave three different answers:
 
-**E2 — regime layer.** Add storability, shock_corr, and enclosure to
-the environment, and derive whether export is storage under each
-corner. Predicted: under a sharing calibration, low export at r = 0 is
-the correct reading rather than reduced disposition.
-*Discriminates:* "reduced altruism" from "correct regime reading" —
-the confound recorded in §1.
+- *controllability* — clean. Moves calibration variance ~8x at fixed
+  autocorrelation with almost no change in mean level, and flips the
+  sign. Self-caused variance is not variance you are uncalibrated
+  against.
+- *recovery* — flips the sign too, but through a level channel: mean
+  rises toward the damage ceiling and variance compresses against it,
+  so a chronically pinned channel reads as predictable. **This puts
+  chronic-no-recovery in the LOW-variance arm, the same arm as low
+  adversity — the opposite of where ACE endpoints are assumed to sit.**
+  Either the saturating damage channel is wrong, or habituation does
+  not divide out a chronic level shift, or the ACE arm is not the
+  high-variance arm it is taken to be. [open]
+- *within calibration range* — not separable. Total spread 0.022 with
+  no sign change even at 68% of events clipped. Either the axis is
+  real and the mechanism modeled is the wrong one, or it collapses
+  into the others. [open]
+
+Regime match (demo 6) behaves as its own axis: it cannot be read off
+the developmental record at all, and produces slopes of the wrong sign
+for the current regime with nothing in the organism's history to flag
+it.
+
+**E2 — regime layer.** *Run — GD-002 (`metrology/regime_layer_sim.py`).*
+Both named corners came out as claimed when the strategies were
+actually run rather than asserted. Three results beyond that:
+
+- *shock correlation is the decisive term*, not enclosure. High
+  enclosure alone does not make zero-sum correct — when deficits are
+  rare and uncorrelated, the small unenclosed remainder still covers
+  them. Enclosure needs covariant shocks to bite, which is the pairing
+  §2 flags as having moved together.
+- *the confound is real and large.* In a task that reveals nothing
+  about its own regime, a full-disposition agent calibrated in a
+  zero-sum regime and a 7.6x-less-disposed agent calibrated in a
+  sharing regime emit the same number. Export at r = 0 does not rank
+  disposition unless calibration is known.
+- *the fix is the opposite of the obvious one.* Making the return
+  channel observable does not probe calibration — it washes the prior
+  out, which is why disposition survives in the delta. The delta
+  recovers the true disposition ratio to within 7% where the level is
+  off by 87%. So the level at low observability carries calibration
+  and the delta at high observability carries disposition, and neither
+  readout alone is interpretable.
 
 **E3 — pooled-share time series.** Archival, not simulated. Pension
 type mix, risk-pool participation, coverage breadth over time.
@@ -210,7 +252,7 @@ experimenter rather than inferred.
 
 ## Ordering
 
-E1 and E2 are sim extensions and can run immediately. E4 is a paper
+E1 and E2 have been run — see above. E4 is a paper
 exercise. E6 is a real experiment with an existing design. E3 is
 blocked on sources. E5 is blocked on having no instrument, which is
 also what makes it the one worth building.

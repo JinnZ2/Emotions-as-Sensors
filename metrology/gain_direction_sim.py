@@ -143,31 +143,87 @@ class EnvironmentSpec:
                     move calibration variance — the claim is that it
                     moves it far less than autocorrelation does, and
                     that is something the sim can get wrong.
+    recovery_rate   fraction of accumulated load shed per step. 1.0 =
+                    full recovery between events. 0.0 = no recovery,
+                    load ratchets and the receiver's target keeps
+                    moving.
+    controllability fraction of event magnitude attributable to the
+                    agent's own action. The agent knows its own
+                    contribution, so controllable variance is not
+                    calibration variance — that is the claim E1 tests.
+    sensor_range    magnitude beyond which perception saturates.
+                    Events above it are perceived as identical while
+                    their consequences still differ, so the receiver's
+                    model has no coverage there.
     """
     severity:        float = 1.0
     autocorrelation: float = 0.5
     n_steps:         int   = 400
     damage_ceiling:  float = 3.0
+    recovery_rate:   float = 1.0
+    controllability: float = 0.0
+    sensor_range:    float = 1e9
+    load_gain:       float = 0.35
+
+
+@dataclass
+class DevelopmentalRecord:
+    """
+    What a developmental period leaves behind.
+
+    true       consequence magnitude actually experienced
+    perceived  what the receiver's sensor registered (saturates at
+               sensor_range)
+    known      the component the agent produced itself, and can
+               therefore predict
+    """
+    true:      list[float] = field(default_factory=list)
+    perceived: list[float] = field(default_factory=list)
+    known:     list[float] = field(default_factory=list)
 
 
 def generate_adversity_stream(env: EnvironmentSpec, rng: random.Random) -> list[float]:
+    """Back-compatible view: the true consequence stream only."""
+    return generate_development(env, rng).true
+
+
+def generate_development(env: EnvironmentSpec, rng: random.Random) -> DevelopmentalRecord:
     """
-    Unit-variance AR(1) latent, scaled by severity, rectified at zero,
-    then passed through a saturating damage channel.
+    Unit-variance AR(1) environmental latent plus an agent-attributable
+    component, scaled by severity, rectified, accumulated as load under
+    incomplete recovery, then passed through a saturating damage
+    channel and a saturating sensor.
 
     rho near 1 -> chronic and predictable (harsh but knowable)
     rho near 0 -> episodic and unpredictable (mild events, no model)
+
+    The four axes from docs/calibration-regime-notes.md section 5 enter
+    here, except regime match, which is not a property of development
+    at all — see `mismatch_report`.
     """
     rho = max(0.0, min(0.999, env.autocorrelation))
     innovation_scale = math.sqrt(1.0 - rho * rho)
     ceiling = env.damage_ceiling
+    c = max(0.0, min(1.0, env.controllability))
+    recovery = max(0.0, min(1.0, env.recovery_rate))
+
+    rec = DevelopmentalRecord()
     x = 0.0
-    stream = []
+    load = 0.0
     for _ in range(env.n_steps):
         x = rho * x + innovation_scale * rng.gauss(0.0, 1.0)
-        raw = max(0.0, env.severity * (1.0 + x))
-        stream.append(ceiling * math.tanh(raw / ceiling))
-    return stream
+        action = rng.gauss(0.0, 1.0)
+        driver = (1.0 - c) * x + c * action
+        raw = max(0.0, env.severity * (1.0 + driver))
+
+        load = load * (1.0 - recovery) + raw * env.load_gain
+        damage = ceiling * math.tanh((raw + load) / ceiling)
+
+        rec.true.append(damage)
+        rec.perceived.append(min(damage, env.sensor_range))
+        # the agent can anticipate only its own contribution
+        rec.known.append(c * action * env.severity)
+    return rec
 
 
 def ace_count(stream: list[float], threshold: float = 1.0) -> int:
@@ -194,13 +250,74 @@ def calibration_variance(stream: list[float], habituation_rate: float = 0.1) -> 
     """
     if not stream:
         return 0.0
-    prediction = stream[0]
+    return calibration_variance_full(
+        DevelopmentalRecord(true=stream, perceived=list(stream),
+                            known=[0.0] * len(stream)),
+        habituation_rate=habituation_rate)
+
+
+def calibration_variance_full(rec: DevelopmentalRecord,
+                              habituation_rate: float = 0.1) -> float:
+    """
+    Calibration variance with all four developmental axes able to move
+    it.
+
+    The predictor runs on PERCEIVED magnitude — that is all the sensor
+    delivers — while error is measured against TRUE consequence. When
+    events exceed sensor range the two diverge and the receiver cannot
+    close the gap by learning, which is what "outside calibration
+    range" means mechanically.
+
+    The agent's own contribution is subtracted before the residual is
+    taken. Variance you generated yourself is not variance you are
+    uncalibrated against. This is the E1 claim in one line.
+    """
+    if not rec.true:
+        return 0.0
+    prediction = rec.perceived[0]
     errors = []
-    for m in stream:
-        errors.append(m - prediction)
-        prediction += habituation_rate * (m - prediction)
-    mean_level = statistics.fmean(stream)
+    for true_m, perceived_m, known_m in zip(rec.true, rec.perceived, rec.known):
+        errors.append(true_m - prediction - known_m)
+        prediction += habituation_rate * (perceived_m - prediction)
+    mean_level = statistics.fmean(rec.true)
     return statistics.pvariance(errors) / (mean_level * mean_level + EPS)
+
+
+# ---------------------------------------------------------------------------
+# REGIME MATCH — not a property of development
+# ---------------------------------------------------------------------------
+
+@dataclass
+class MismatchReport:
+    developmental_variance: float
+    execution_variance:     float
+    slope_used:             float   # slope the receiver actually runs
+    slope_correct:          float   # slope the execution regime warrants
+    sign_error:             bool    # the two disagree in direction
+
+
+def mismatch_report(model: "ExportModel", developmental_variance: float,
+                    execution_variance: float) -> MismatchReport:
+    """
+    The fourth axis: matched to the regime the organism will execute in.
+
+    Unlike the other three this cannot be read off the developmental
+    record at all. The receiver carries the precision it calibrated,
+    and applies it in whatever regime it later finds itself. When the
+    two regimes differ enough, the slope it runs and the slope its
+    current environment warrants have opposite signs — and nothing in
+    the organism's own history can flag that. It is not a reading
+    failure. It is a correct reading of a regime that has moved.
+    """
+    used = export_slope(model, developmental_variance)
+    correct = export_slope(model, execution_variance)
+    return MismatchReport(
+        developmental_variance=developmental_variance,
+        execution_variance=execution_variance,
+        slope_used=used,
+        slope_correct=correct,
+        sign_error=(used > 0) != (correct > 0),
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -549,6 +666,124 @@ def demo_recall_confound(seed: int = 3, n: int = 3000) -> None:
 
 
 # ---------------------------------------------------------------------------
+# DEMO 5 (E1) — do the other three axes move the sign at fixed predictability?
+# ---------------------------------------------------------------------------
+
+def _axis_row(label: str, model: "ExportModel", env: EnvironmentSpec,
+              seed: int) -> tuple[float, float, float]:
+    rng = random.Random(seed)
+    rec = generate_development(env, rng)
+    cv = calibration_variance_full(rec)
+    slope = export_slope(model, cv)
+    mean_level = statistics.fmean(rec.true)
+    print(f"{label:<24} {cv:>9.4f} {mean_level:>8.3f} {slope:>10.3f}   "
+          f"{'+' if slope > 0 else '-'}")
+    return cv, slope, mean_level
+
+
+def demo_other_axes(seed: int = 19) -> None:
+    print(_header("5  E1 — THE OTHER THREE AXES, AUTOCORRELATION HELD FIXED"))
+    model = ExportModel()
+    rho = 0.50
+    print(f"autocorrelation fixed at {rho}; sign flip at cal_var = "
+          f"{model.flip_threshold():.4f}")
+    print("E1's falsifier: if predictability is the whole story, every row")
+    print("within each block below is identical. Three axes, three different")
+    print("answers — the axes are not interchangeable.\n")
+
+    # -- controllability ----------------------------------------------------
+    print("A. CONTROLLABILITY — self-caused variance subtracted from residual")
+    print(f"{'':<24} {'cal_var':>9} {'mean':>8} {'dExp/dOT':>10}   sign")
+    print("-" * 58)
+    ctrl = [_axis_row(f"  c = {c:.1f}", model,
+                      EnvironmentSpec(autocorrelation=rho, controllability=c), seed)
+            for c in (0.0, 0.3, 0.5, 0.7, 0.9)]
+    ctrl_flips = len({sl > 0 for _, sl, _ in ctrl}) > 1
+    print(f"  -> moves calibration variance {ctrl[0][0] / (ctrl[-1][0] + EPS):.1f}x, "
+          f"sign flips: {ctrl_flips}. Mean level barely moves, so this is")
+    print("     not a severity effect in disguise. Clean axis.\n")
+
+    # -- recovery -----------------------------------------------------------
+    print("B. RECOVERY — accumulated load shed per step")
+    print(f"{'':<24} {'cal_var':>9} {'mean':>8} {'dExp/dOT':>10}   sign")
+    print("-" * 58)
+    recov = [_axis_row(f"  recovery = {r:.2f}", model,
+                       EnvironmentSpec(autocorrelation=rho, recovery_rate=r), seed)
+             for r in (1.0, 0.6, 0.3, 0.1, 0.05)]
+    print("  -> also flips the sign, but through a LEVEL channel: mean rises")
+    print("     toward the damage ceiling and variance compresses against it.")
+    print("     A chronically pinned channel is a predictable channel.\n")
+    print("     [flag] this predicts chronic-no-recovery lands in the")
+    print("     LOW-variance arm — the same arm as low adversity. ACE")
+    print("     endpoints load on chronic + no recovery and are supposed to")
+    print("     be the high arm. The model and the literature disagree here,")
+    print("     and the disagreement is load-bearing, not cosmetic. Either")
+    print("     the saturating damage channel is wrong, or habituation does")
+    print("     not divide out a chronic level shift, or the ACE arm is not")
+    print("     the high-variance arm it is assumed to be. Unresolved.\n")
+
+    # -- sensor range -------------------------------------------------------
+    print("C. WITHIN CALIBRATION RANGE — perception saturates, consequences do not")
+    print(f"{'':<24} {'cal_var':>9} {'mean':>8} {'dExp/dOT':>10}   sign")
+    print("-" * 58)
+    rng_rows = [_axis_row(f"  range = {r:>6.1f}", model,
+                          EnvironmentSpec(autocorrelation=rho, sensor_range=r), seed)
+                for r in (1e9, 1.5, 1.0, 0.8, 0.5)]
+    spread = max(r[0] for r in rng_rows) - min(r[0] for r in rng_rows)
+    print(f"  -> total spread {spread:.4f}, no sign change even at 68% of")
+    print("     events clipped. In this model the range axis is NOT")
+    print("     separable — it is dominated by the other two. Either the")
+    print("     axis is real and the mechanism here is the wrong one, or it")
+    print("     collapses into the others. E1 does not settle it.\n")
+
+    print("read:")
+    print("  E1 asked whether predictability alone sets the sign. It does not:")
+    print("  controllability moves it cleanly at fixed autocorrelation. But")
+    print("  the three axes are not equivalent — one is clean, one acts")
+    print("  through level and contradicts the ACE picture, one does not")
+    print("  separate at all. A study varying 'adversity' varies an aggregate")
+    print("  of at least three things that behave differently.")
+
+
+# ---------------------------------------------------------------------------
+# DEMO 6 (E1, fourth axis) — calibrated for one regime, executing in another
+# ---------------------------------------------------------------------------
+
+def demo_regime_match() -> None:
+    print(_header("6  E1 — REGIME MATCH: THE AXIS DEVELOPMENT CANNOT SEE"))
+    model = ExportModel()
+    print(f"sign flip at cal_var = {model.flip_threshold():.4f}\n")
+
+    pairs = [
+        ("stable dev -> stable exec",     0.06, 0.08),
+        ("stable dev -> volatile exec",   0.06, 0.55),
+        ("volatile dev -> volatile exec", 0.55, 0.50),
+        ("volatile dev -> stable exec",   0.55, 0.07),
+    ]
+
+    print(f"{'trajectory':<32} {'dev':>6} {'exec':>6} {'runs':>7} {'warranted':>10}  mismatch")
+    print("-" * 82)
+    for label, dev, ex in pairs:
+        r = mismatch_report(model, dev, ex)
+        print(f"{label:<32} {dev:>6.2f} {ex:>6.2f} "
+              f"{r.slope_used:>7.3f} {r.slope_correct:>10.3f}  "
+              f"{'SIGN ERROR' if r.sign_error else 'aligned'}")
+
+    print()
+    print("read:")
+    print("  the two middle rows run a slope of the wrong sign for the")
+    print("  regime they are actually in. Nothing in the organism's own")
+    print("  history flags this — the calibration was correct when taken.")
+    print()
+    print("  this is not a reading failure and not impedance. It is a")
+    print("  correct reading of a regime that has since moved, which is")
+    print("  the developmental-mismatch shape (Gluckman & Hanson) stated")
+    print("  in gain terms. Distinguishing it from a miscalibration")
+    print("  requires measuring the execution regime, which no arm of the")
+    print("  reported design does.")
+
+
+# ---------------------------------------------------------------------------
 # BOUNDARIES — MH-003 style, stated so they can be attacked
 # ---------------------------------------------------------------------------
 
@@ -610,6 +845,8 @@ DEMOS = {
     "2": demo_return_signal,
     "3": demo_captivity,
     "4": demo_recall_confound,
+    "5": demo_other_axes,
+    "6": demo_regime_match,
 }
 
 
@@ -618,7 +855,8 @@ def main() -> None:
         description="GD-001 — gain/calibration exploration harness. "
                     "Generates discriminating predictions; contains no data.")
     parser.add_argument("--demo", default="all",
-                        choices=["all", "1", "2", "3", "4", "flags", "boundaries"],
+                        choices=["all", "1", "2", "3", "4", "5", "6",
+                                 "flags", "boundaries"],
                         help="which section to run (default: all)")
     args = parser.parse_args()
 

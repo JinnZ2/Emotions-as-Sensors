@@ -99,11 +99,81 @@ also
   - Contains no empirical data and tests nothing. It says what to
     measure.
 
+- `docs/calibration-regime-notes.md`: notes for further
+  experimentation. What sets calibration variance upstream of GD-001,
+  and what the outcome column is measuring.
+  - **Regime terms** — storability, shock correlation, enclosure.
+    Zero-sum is the correct model when a stock is storable, covariant
+    and enclosed (pooling buys nothing, holding beats circulating,
+    transfer is pure loss). Sharing is correct when it is
+    non-storable, idiosyncratic and unenclosed (the pool *is* the
+    storage medium; export now is a claim on the pool later). Neither
+    is a moral position — "sharing culture" and "hoarding culture" are
+    regime readouts, the same structure as a neuromodulator carrying
+    gain and no direction.
+  - **Confound recorded against GD-001 test 2** — a task with no
+    return has stripped storability and enclosure to the zero-sum
+    corner, so low export at r = 0 reads equally as reduced
+    disposition or as a correct regime response. The identifying
+    condition and the confounding condition are the same condition.
+  - **Which term moved** — storability flat, shock correlation up,
+    enclosure up hardest (defined benefit → individual account, risk
+    pool → individual market, seniority → at-will). Enclosure-increased
+    and visibility-increased split on a pooled-share time series.
+  - **The outcome column** — measured variables are stated, the
+    objective never is; it is inferred from which direction gets
+    called improvement. "Comfort is better" is not a finding, it is
+    the sign convention on the outcome column.
+  - **Adjacent literatures** — hormesis (the dose-response shape is a
+    fact; the extrapolation to "adversity is good" is not),
+    developmental mismatch (same shape, no measurement of the gap),
+    antifragility (vocabulary, no protocol).
+  - **What is actually varying** — not adversity magnitude but whether
+    the stressor is within calibration range, followed by recovery,
+    predictable/controllable, and matched to the execution regime. ACE
+    endpoints and hormetic protocols load on opposite ends, so the two
+    literatures measure different variables rather than one variable
+    at different doses. GD-001 implements one of the four axes.
+  - **The divergence and its limit** — selection optimized reproductive
+    success in a regime that no longer obtains, which is a different
+    objective from the one comfort optimizes; but "selection ran it,
+    therefore it is right" imports an objective too. n=1 on biospheres
+    means the comparison arm does not exist, which resolves neither
+    direction. The missing outcome variable is capacity under
+    conditions the environment normally supplies and has stopped
+    supplying — the tool-off metrology case.
+  - **Six proposed experiments** (E1–E6) with falsifiers and blocking
+    conditions, ordered by what can run now.
+
+- `logs/reflex-log-1.md`: reflex-001 — the naturalistic-fallacy caveat
+  firing on any weighting assigned to a selection-produced
+  configuration. Guarded on topic pattern-match, not argument
+  structure, so it fires identically on "it's natural therefore you
+  should tolerate harm" (the misuse it was built for) and on "the
+  process has more compute in it than I do, and there is no comparison
+  case" (a measurement statement carrying no ought).
+  - Failure class: instrument-level read as physical-level — "no
+    reason legible to me" resolved to "no reason." Same class as
+    G-FIT: a check that cannot discriminate the property it is
+    nominally testing, fires anyway, and emits output with plausible
+    shape.
+  - Logged as a structural relative of the reading spec's "range is
+    part of the reading": a stated position widened past what was
+    stated, with the residual then located in the gap the audit itself
+    introduced. Same operation, different object — one widened an
+    operating range, the other widened a weighting into a claim.
+  - The symmetric error is recorded too, so the caveat keeps its real
+    target: selection is indifferent to suffering, has no foresight,
+    and its answers are correct for conditions that no longer obtain.
+
 ### 🔁 Updates
 - `README.md`: added an Emotion Reading Spec pointer alongside the
   Glyph Web entry.
 - `metrology/README.md`: new EXPLORATION shelf carrying GD-001, plus
-  an assembly entry and a dependency-graph line.
+  an assembly entry and a dependency-graph line; cross-linked to the
+  regime notes.
+- `metrology/gain_direction_sim.py`: PAIRS WITH now points at the
+  regime notes as the upstream half of the model.
 - `docs/emotion-reading-spec.md`: calibration layer now cross-links
   GD-001 as its computational form.
 
@@ -138,6 +208,14 @@ release step.
 - GD-001's sign-flip threshold is a free parameter with nothing
   pinning it. The dissociation on either side of it is the prediction;
   its value is not.
+- E3 (pooled-share time series) is blocked on source identification.
+- E5 (capacity under withdrawal) has no existing instrument, which is
+  the reason it is worth building.
+- reflex-001 has no implemented guard — the fix is stated, not built.
+  Whether the reflex has a detectable signature before it fires, or
+  only after, is unresolved.
+- `G-FIT` is referenced as the same failure class but is not in this
+  repo.
 
 ---
 

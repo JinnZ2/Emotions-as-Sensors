@@ -96,6 +96,10 @@ real. It is stated here so it can be attacked directly.
 
 PAIRS WITH
 ----------
+- docs/calibration-regime-notes.md — what sets calibration variance in
+  the first place (regime terms: storability, shock correlation,
+  enclosure), what the outcome column is measuring, and six proposed
+  experiments. E1 and E2 there are direct extensions of this module.
 - docs/emotion-reading-spec.md, "Calibration layer" — same claim in
   operator-facing terms: hormonal state shifts apparatus gain per
   axis, and does not change what fired or what it is about.

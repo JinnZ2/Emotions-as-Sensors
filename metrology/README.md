@@ -294,6 +294,9 @@ explore    generates discriminating       → no dependencies
 
            cross-link: ../docs/emotion-reading-spec.md "Calibration
            layer" — same claim in operator-facing terms.
+           ../docs/calibration-regime-notes.md — what sets calibration
+           variance, what the outcome column measures, and six
+           proposed experiments (E1/E2 extend this module directly).
 ```
 
 -----

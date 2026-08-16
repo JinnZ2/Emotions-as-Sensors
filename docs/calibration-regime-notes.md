@@ -283,11 +283,50 @@ not derived, and it is what makes the crossover appear. Probe-rate
 effects are unswept — repeated contingency breaks are training trials,
 so a probe frequent enough becomes the environment.
 
+**E8 — the three probes with no slot.** *Run — GD-003 demo 5 and
+`--demo gradient`.* Added K11 throughput, K12 reliance validation, K13
+relearn time constant, against an inventory whose probes all sit at
+fixed regime and none of which returns a rate.
+
+- *K11 throughput* — distinguishable environmental states registered
+  per unit time. Neither delay nor reliability: the buffer is fast and
+  perfectly consistent, and what it is not is wide. Capacity, not
+  quality.
+- *K12 reliance validation* — reliance weight and sensor validity are
+  two numbers routinely reported as one. Trust is a measurement only
+  if validity was ever run against outcome; otherwise it is a weight
+  with an empty validation history. The probe returns the pair plus
+  the history count and labels the unvalidated case explicitly.
+- *K13 tau* — **its own prediction is falsified.** "tau rises with
+  provisioning; flat tau falsifies" comes out flat under fixed-rate
+  updating (7% relative spread, tracking the analytic constant
+  1/(rate x E[act^2]) = 20) and flat under confidence-weighted
+  updating (14%), while latency moves 46x over the same rows.
+  Provisioning moves where relearning *starts*, not how fast it
+  proceeds.
+  - The reason is not separate from E7: confidence is flat across the
+    provisioning gradient because the buffer absorbs what would raise
+    observed error, so any rate mechanism driven by confidence is flat
+    too. Building the slowdown into the update rule does not rescue
+    the prediction — it slows every agent equally.
+  - What tau does separate is the *update rule* (24 vs 237, ~10x). Its
+    object_of is the learner, not the environment. The declaration
+    moves; the result stands.
+  - Latency cannot substitute. It rises under both rules and across
+    the whole gradient, reading as "slow relearn" in every cell where
+    the rate is in fact unchanged.
+
+*Gradient audit.* The stated falsifier is about a gradient; a probe
+that generates at a single point cannot fail it whatever it returns.
+3 of 8 parts in GD-003 sweep something — severity, condition, domain —
+but not the variable the falsifier names. Not a missing probe: a
+missing dimension on probes that already exist. [open]
+
 ---
 
 ## Ordering
 
-E1, E2 and E7 have been run — see above. E4 is a paper
+E1, E2, E7 and E8 have been run — see above. E4 is a paper
 exercise. E6 is a real experiment with an existing design. E3 is
 blocked on sources. E5 is blocked on having no instrument, which is
 also what makes it the one worth building.

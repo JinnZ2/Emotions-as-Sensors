@@ -121,17 +121,36 @@ class Contingency:
 
 @dataclass
 class Predictor:
-    """LMS learner on act -> consequence. w is its model of beta."""
+    """
+    LMS learner on act -> consequence. w is its model of beta.
+
+    confidence_weighted: if set, the update is divided by accumulated
+    confidence. A long run of low observed error therefore SLOWS later
+    updating. This is the mechanism the notes' "slow relearn" claim
+    needs; without it provisioning changes where relearning starts but
+    not how fast it proceeds. K13 is what separates those two.
+    """
     w:    float = 0.0
     rate: float = 0.05
+    confidence_weighted: bool = False
+    kappa: float = 0.004
+    accumulated_confidence: float = 0.0
     recent_error: list[float] = field(default_factory=list)
+
+    def effective_rate(self) -> float:
+        if not self.confidence_weighted:
+            return self.rate
+        return self.rate / (1.0 + self.kappa * self.accumulated_confidence)
 
     def step(self, act: float, observed: float) -> float:
         err = observed - self.w * act
-        self.w += self.rate * err * act
+        self.w += self.effective_rate() * err * act
         self.recent_error.append(abs(err))
         if len(self.recent_error) > 200:
             self.recent_error.pop(0)
+        # confidence accrues while observed error stays low, regardless of
+        # whether the model is right — that is the whole point
+        self.accumulated_confidence += 1.0 / (1.0 + abs(err))
         return err
 
     def confidence(self) -> float:
@@ -149,8 +168,9 @@ class Predictor:
 
 
 def train(contingency: Contingency, steps: int, rng: random.Random,
-          predictor: Predictor | None = None) -> Predictor:
-    p = predictor or Predictor()
+          predictor: Predictor | None = None,
+          confidence_weighted: bool = False) -> Predictor:
+    p = predictor or Predictor(confidence_weighted=confidence_weighted)
     for _ in range(steps):
         act = rng.gauss(0.0, 1.0)
         p.step(act, contingency.observe(act, rng))
@@ -180,7 +200,10 @@ def relearn_latency(predictor: Predictor, truth: Contingency,
                     max_steps: int = 4000) -> int:
     """Steps to bring |w - beta| under tolerance once the buffer is gone."""
     coupled = Contingency(beta=truth.beta, coupling=1.0, noise=truth.noise)
-    p = Predictor(w=predictor.w, rate=predictor.rate)
+    p = Predictor(w=predictor.w, rate=predictor.rate,
+                  confidence_weighted=predictor.confidence_weighted,
+                  kappa=predictor.kappa,
+                  accumulated_confidence=predictor.accumulated_confidence)
     for step in range(1, max_steps + 1):
         act = rng.gauss(0.0, 1.0)
         p.step(act, coupled.observe(act, rng))
@@ -598,6 +621,299 @@ def _print_2x2(a_in: float, a_out: float, b_out: float, b_in: float) -> None:
     print(f"  {'group B':<10} {b_out:>13.3f} {b_in:>13.3f}")
 
 
+
+# ---------------------------------------------------------------------------
+# K11 / K12 / K13 — the three probes the inventory had no slot for
+# ---------------------------------------------------------------------------
+#
+#   K01 delay   K02 variance  K05 ratio   K06 gap
+#   K07 slope   K08 interaction  K09 variance  K10 distribution
+#     -> all at fixed regime. None is a rate.
+#
+# K11  throughput             base information_rate      object_of coupling
+# K12  reliance_validation    base reliance/validity     object_of coupling
+# K13  relearn_time_constant  base tau                   object_of coupling
+#
+# ---------------------------------------------------------------------------
+
+def k11_throughput(truth: Contingency, rng: random.Random,
+                   n_states: int = 64, trials: int = 4000) -> float:
+    """
+    K11 — channel CAPACITY, not channel quality.
+
+    Distinguishable environmental states registered per unit time by the
+    actor's own sensor. Not delay (K01), not reliability (K02).
+
+    The environment presents one of `n_states` levels per trial. The
+    buffer compresses level differences by `coupling` while the sensor's
+    noise floor does not move, so states collapse into
+    indistinguishability from the actor's side. Returns distinguishable
+    states per trial.
+
+    blind_to: whether anything is done with the information.
+    """
+    levels = [i / (n_states - 1) for i in range(n_states)]
+    step = truth.beta * (levels[1] - levels[0]) * truth.coupling
+    # two levels are distinguishable if their delivered separation clears
+    # the sensor noise; count how many survive as distinct bins
+    resolvable = max(1.0, step / (2.0 * truth.noise + EPS))
+    distinguishable = min(float(n_states), n_states * min(1.0, resolvable))
+
+    # empirical check of the same quantity
+    hits = 0
+    for _ in range(trials):
+        i = rng.randrange(n_states)
+        j = rng.randrange(n_states)
+        if i == j:
+            continue
+        a = truth.observe(levels[i], rng)
+        b = truth.observe(levels[j], rng)
+        hits += abs(a - b) > 2.0 * truth.noise
+    empirical = distinguishable * (hits / trials)
+    return empirical
+
+
+@dataclass
+class RelianceReadout:
+    """
+    K12 — two numbers that are usually reported as one.
+
+    reliance_weight     how much the actor ACTS on its own read, versus
+                        alternative sources
+    sensor_validity     whether that read tracks outcome
+    validation_history  how many times the second was ever run
+
+    Trust is a MEASUREMENT only if validation_history > 0. Otherwise it
+    is a weight with no validation history, and reporting it as trust
+    is an unbacked claim.
+    """
+    reliance_weight:    float
+    sensor_validity:    float | None
+    validation_history: int
+
+    @property
+    def is_measurement(self) -> bool:
+        return self.validation_history > 0 and self.sensor_validity is not None
+
+    def label(self) -> str:
+        return "measurement" if self.is_measurement else "BELIEF (unvalidated)"
+
+
+def k12_reliance_validation(predictor: Predictor, truth: Contingency,
+                            rng: random.Random, validation_trials: int = 0,
+                            alternative_source_quality: float = 0.5
+                            ) -> RelianceReadout:
+    """
+    K12 — reliance is not confidence.
+
+    K06 reads confidence: what the agent's own error signal says. K12
+    reads (a) how much weight the agent gives its own read against an
+    alternative source, and (b) separately, whether that read was ever
+    checked against outcome. Different objects.
+
+    validation_trials = 0 is the default case in the wild: reliance is
+    high, validity was never run, and the pair gets reported as trust.
+    """
+    conf = predictor.confidence()
+    weight = conf / (conf + alternative_source_quality + EPS)
+
+    if validation_trials <= 0:
+        return RelianceReadout(weight, None, 0)
+
+    coupled = Contingency(beta=truth.beta, coupling=1.0, noise=truth.noise)
+    errors = []
+    for _ in range(validation_trials):
+        act = rng.gauss(0.0, 1.0)
+        errors.append(abs(coupled.observe(act, rng) - predictor.w * act))
+    validity = 1.0 / (1.0 + statistics.fmean(errors))
+    return RelianceReadout(weight, validity, validation_trials)
+
+
+def k13_relearn_tau(predictor: Predictor, truth: Contingency,
+                    rng: random.Random, steps: int = 900) -> tuple[float, float]:
+    """
+    K13 — a RATE, which no probe in the inventory returned.
+
+    Records error against trials-since-shift and fits
+
+        e(t) = e_inf + (e_0 - e_inf) * exp(-t / tau)
+
+    by log-linear regression on (e - e_inf). Returns (tau, e_0).
+
+    closes: reversibility after regime shift, AND the stated falsifier,
+    which is about a GRADIENT and therefore needs >= 2 provisioning
+    levels swept.
+    """
+    coupled = Contingency(beta=truth.beta, coupling=1.0, noise=truth.noise)
+    p = Predictor(w=predictor.w, rate=predictor.rate,
+                  confidence_weighted=predictor.confidence_weighted,
+                  kappa=predictor.kappa,
+                  accumulated_confidence=predictor.accumulated_confidence)
+    trace = []
+    for _ in range(steps):
+        act = rng.gauss(0.0, 1.0)
+        p.step(act, coupled.observe(act, rng))
+        trace.append(abs(p.w - truth.beta))
+
+    tail = trace[int(len(trace) * 0.85):]
+    e_inf = statistics.fmean(tail) if tail else 0.0
+    e_0 = trace[0]
+    span = e_0 - e_inf
+    if span <= 10.0 * EPS:
+        return float("nan"), e_0
+
+    # Fit ONLY the decay window. Once the trace reaches the noise floor,
+    # log(e - e_inf) is flat and mixing that phase into the regression
+    # inflates tau without bound — the floor phase is not decay.
+    cutoff = e_inf + 0.05 * span
+    xs, ys = [], []
+    for t, e in enumerate(trace):
+        if e <= cutoff:
+            break
+        adjusted = e - e_inf
+        if adjusted > 1e-9:
+            xs.append(float(t))
+            ys.append(math.log(adjusted))
+    if len(xs) < 10:
+        return float("nan"), e_0
+
+    mx, my = statistics.fmean(xs), statistics.fmean(ys)
+    num = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    den = sum((x - mx) ** 2 for x in xs)
+    slope = num / (den + EPS)
+    tau = -1.0 / slope if slope < 0 else float("inf")
+    return tau, e_0
+
+
+def demo_rates(seed: int = 41) -> None:
+    print(_header("5  K11 / K12 / K13 — BANDWIDTH, RELIANCE, AND A RATE"))
+    print("the inventory K01-K10 sits at fixed regime and returns no rate.")
+    print("these three close bandwidth, reliance validation, and")
+    print("reversibility. K13 also closes the stated falsifier, which is")
+    print("about a gradient and therefore needs the gradient swept.\n")
+
+    print("K11 THROUGHPUT — distinguishable states/trial through the channel")
+    print(f"{'coupling':>9} {'states/trial':>14}")
+    print("-" * 26)
+    for coupling in (1.0, 0.6, 0.3, 0.1):
+        rng = random.Random(seed)
+        truth = Contingency(beta=1.0, coupling=coupling)
+        print(f"{coupling:>9.2f} {k11_throughput(truth, rng):>14.2f}")
+    print("  capacity, not quality. K01 delay and K02 reliability are both")
+    print("  nominal here — the buffer is fast and perfectly consistent.")
+    print("  What it is not is wide.\n")
+
+    print("K12 RELIANCE VALIDATION — two numbers usually reported as one")
+    print(f"{'coupling':>9} {'reliance':>9} {'validity':>10} {'checks':>7}  status")
+    print("-" * 62)
+    for coupling, checks in ((1.0, 0), (0.2, 0), (0.2, 400)):
+        rng = random.Random(seed)
+        truth = Contingency(beta=1.0, coupling=coupling)
+        p = train(truth, 3000, rng)
+        r = k12_reliance_validation(p, truth, rng, validation_trials=checks)
+        vs = "  n/a" if r.sensor_validity is None else f"{r.sensor_validity:>10.3f}"
+        print(f"{coupling:>9.2f} {r.reliance_weight:>9.3f} {vs} "
+              f"{r.validation_history:>7d}  {r.label()}")
+    print("  row 2 is the default case in the wild: reliance high, validity")
+    print("  never run. That pair gets reported as trust. It is a weight")
+    print("  with no validation history until the third row is run.\n")
+
+    print("K13 RELEARN TIME CONSTANT — swept, two update rules")
+    print(f"{'coupling':>9} {'e_0':>7} | {'fixed-rate LMS':>18} | "
+          f"{'confidence-weighted':>21}")
+    print(f"{'':>9} {'':>7} | {'tau':>8} {'latency':>9} | {'tau':>10} {'latency':>10}")
+    print("-" * 74)
+    taus_plain, taus_cw, lats = [], [], []
+    for coupling in (0.9, 0.6, 0.3, 0.1):
+        truth = Contingency(beta=1.0, coupling=coupling)
+        rng = random.Random(seed)
+        p_plain = train(truth, 3000, rng)
+        tau_p, e0 = k13_relearn_tau(p_plain, truth, rng)
+        lat_p = relearn_latency(p_plain, truth, rng)
+
+        rng = random.Random(seed)
+        p_cw = train(truth, 3000, rng, confidence_weighted=True)
+        tau_c, _ = k13_relearn_tau(p_cw, truth, rng)
+        lat_c = relearn_latency(p_cw, truth, rng)
+
+        taus_plain.append(tau_p)
+        taus_cw.append(tau_c)
+        lats.append(lat_p)
+        print(f"{coupling:>9.2f} {e0:>7.3f} | {tau_p:>8.1f} {lat_p:>9d} | "
+              f"{tau_c:>10.1f} {lat_c:>10d}")
+
+    analytic = 1.0 / (Predictor().rate * 1.0)
+    rel_spread_p = (max(taus_plain) - min(taus_plain)) / (statistics.fmean(taus_plain) + EPS)
+    rel_spread_c = (max(taus_cw) - min(taus_cw)) / (statistics.fmean(taus_cw) + EPS)
+    lat_ratio = max(lats) / (min(lats) + EPS)
+
+    print()
+    print("read:")
+    print(f"  fixed-rate LMS tau tracks the analytic constant "
+          f"1/(rate*E[act^2]) = {analytic:.0f}, and is FLAT: relative")
+    print(f"  spread {rel_spread_p * 100:.0f}% across the gradient, while")
+    print(f"  latency changes by {lat_ratio:.0f}x over the same rows.")
+    print()
+    print("  STATED PREDICTION was: tau rises with provisioning level;")
+    print("  flat tau across the gradient falsifies.")
+    print(f"    fixed-rate         relative spread {rel_spread_p * 100:>5.0f}%  -> FLAT")
+    print(f"    confidence-weighted relative spread {rel_spread_c * 100:>4.0f}%  -> FLAT")
+    print("  the prediction is FALSIFIED under both update rules in this")
+    print("  model. Provisioning does not slow relearning. It moves where")
+    print("  relearning starts.")
+    print()
+    print("  the reason traces back to part 1 and is not a separate result:")
+    print("  confidence is FLAT across the provisioning gradient, because")
+    print("  the buffer absorbs what would raise observed error. So any")
+    print("  rate mechanism driven by confidence is flat too. Building the")
+    print("  slowdown into the update rule does not rescue the prediction —")
+    print("  it slows every agent equally.")
+    print()
+    print(f"  what tau DOES separate: update rule. {statistics.fmean(taus_plain):.0f}")
+    print(f"  vs {statistics.fmean(taus_cw):.0f}, roughly {statistics.fmean(taus_cw) / (statistics.fmean(taus_plain) + EPS):.0f}x. "
+          f"K13 is a probe on the")
+    print("  learner, not on the environment. That is a different object_of")
+    print("  than the one it was declared with, and the declaration should")
+    print("  move rather than the result.")
+    print()
+    print("  latency still cannot substitute: it rises under both rules and")
+    print("  across the whole gradient, so it reads as 'slow relearn' in")
+    print("  every cell where the rate is in fact unchanged. That is the")
+    print("  conflation a threshold-crossing probe cannot avoid, and it is")
+    print("  why K01-K10 could not have closed reversibility.")
+
+
+def demo_gradient_audit() -> None:
+    """Which parts of this module carry the gradient dimension at all."""
+    print(_header("GRADIENT AUDIT — can each part fail the stated falsifier?"))
+    print("the falsifier is about a GRADIENT. A probe that generates at a")
+    print("single point cannot fail it, whatever it returns.\n")
+    rows = [
+        ("1 instrument (ratio)",      "coupling 1.0 -> 0.05", True),
+        ("1 probe sizing",            "delta 0.01 -> 4.0",    True),
+        ("2 calibrated vs blunted",   "severity swept; PROVISIONING not", False),
+        ("3 budget",                  "3 named conditions, no sweep",     False),
+        ("4 bidirectional",           "2 groups x 2 domains, no sweep",   False),
+        ("5 K11 throughput",          "coupling 1.0 -> 0.1",  True),
+        ("5 K12 reliance",            "2 couplings x checks", True),
+        ("5 K13 tau",                 "coupling 0.9 -> 0.1 x 2 rules",    True),
+    ]
+    print(f"{'part':<28} {'swept over':<34} {'can fail'}")
+    print("-" * 74)
+    for name, swept, ok in rows:
+        print(f"{name:<28} {swept:<34} {'yes' if ok else 'NO'}")
+    n_bad = sum(1 for _, _, ok in rows if not ok)
+    print()
+    print("read:")
+    print(f"  {n_bad} of {len(rows)} parts sit at a point on the provisioning")
+    print("  axis. Parts 2-4 sweep something — severity, condition, domain —")
+    print("  but not the variable the falsifier names. They cannot fail it.")
+    print()
+    print("  this is not a missing probe. It is a missing DIMENSION on")
+    print("  probes that already exist: each needs provisioning as an outer")
+    print("  loop before its result is falsifiable at all.")
+
+
 # ---------------------------------------------------------------------------
 # PROTOCOL CARD + BOUNDARIES
 # ---------------------------------------------------------------------------
@@ -673,6 +989,7 @@ DEMOS = {
     "2": demo_calibrated_vs_blunted,
     "3": demo_budget,
     "4": demo_bidirectional,
+    "5": demo_rates,
 }
 
 
@@ -682,10 +999,13 @@ def main() -> None:
                     "decoupling, calibrated vs blunted, allocation vs "
                     "deficit.")
     parser.add_argument("--demo", default="all",
-                        choices=["all", "1", "2", "3", "4",
-                                 "protocol", "boundaries"])
+                        choices=["all", "1", "2", "3", "4", "5",
+                                 "protocol", "boundaries", "gradient"])
     args = parser.parse_args()
 
+    if args.demo == "gradient":
+        demo_gradient_audit()
+        return
     if args.demo == "protocol":
         print_protocol()
         return
@@ -695,6 +1015,7 @@ def main() -> None:
     if args.demo == "all":
         for fn in DEMOS.values():
             fn()
+        demo_gradient_audit()
         print_protocol()
         print_boundaries()
         return

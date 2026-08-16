@@ -334,6 +334,50 @@ explore    derives which resource regime  → no dependencies
            cross-link: ../docs/calibration-regime-notes.md E2.
 ```
 
+```
+GD-003     provisioning_probe_sim.py
+explore    reads accumulated calibration   → no dependencies
+           error while every internal
+           state variable reads nominal.
+           ratio = response magnitude /
+           objective perturbation size
+
+           use when: a system reports high confidence and you cannot
+           tell whether the confidence is earned. Under provisioning
+           the predictor still trains — on a mapping the environment
+           is not running — so the model converges, confidence rises,
+           and observed error stays low because the buffer absorbs
+           it. Confidence and validity decouple silently. The
+           confidence-accuracy gap IS the coupling deficit.
+
+           protocol: periodic contingency breaks, sized from the
+           noise floor (min_probe_delta), with confidence and
+           accuracy elicited as SEPARATE readouts.
+           falsifier: ratio flat across a provisioning gradient.
+
+           part 2 — calibrated vs blunted. Calibrated keeps the
+           ceiling and steepens the working range; blunted has lost
+           the gradient. A single matched-stimulus trial cannot
+           separate them, and that is overwhelmingly how it is
+           measured. Needs >=3 severities + recovery constant +
+           resting level.
+
+           part 3/4 — allocation vs deficit. One budget across
+           peripheral gain and discrimination compute. Allocation
+           predicts in-domain discrimination IMPROVES; damage
+           predicts both degrade. The bidirectional protocol reads
+           the INTERACTION: allocation gives crossover, deficit does
+           not. Single-domain testing returns "A deficit" under BOTH
+           hypotheses — and single-domain testing is nearly all of
+           it, because the test items come from the institution
+           doing the testing.
+
+           substrates: RL agents (cheapest, coupling is a parameter),
+           animal welfare, developmental, org behavior.
+           cross-link: ../docs/interface-spec.md section 2, DAMAGE
+           MECHANISM — this module is that mechanism instrumented.
+```
+
 -----
 
 ## TYPICAL ASSEMBLIES
@@ -345,6 +389,13 @@ GD-001 (prediction generator; pair with ELA-001 if the outcome
         variable is a label over a task-level count)
   + GD-002 (if the outcome variable is an export/donation/sharing
             measure — check whether it is reading a regime)
+```
+
+**Checking whether a confident system is actually calibrated:**
+
+```
+GD-003 (probe with contingency breaks; read confidence and
+        accuracy separately, never as one number)
 ```
 
 **Auditing an existing system for label corruption:**
@@ -412,6 +463,7 @@ PEX-001 × N substrates → TO-003 (alignment) → TO-002 (interference)
                 CS-001  (standalone; pairs with ELA-001, TO-003, DAT-M1)
                 GD-001  (standalone; pairs with ELA-001, GD-002)
                 GD-002  (standalone; regime layer under GD-001)
+                GD-003  (standalone; provisioning probe)
                 MH-001..004 (meta-layer; wrap any other part)
 
                 PEX-001

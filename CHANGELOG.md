@@ -213,9 +213,54 @@ also
     delta at high observability carries disposition, and neither
     readout alone is interpretable.
 
+- `docs/interface-spec.md`: operating spec for parsing input and for
+  which outputs are misfires. Not a position statement; no agreement
+  required. Carries the containment argument (B ⊂ A, whole vs part,
+  not two classes with one weighted over the other), the corollary
+  that unread ≠ arbitrary, the abstraction-is-compression point,
+  the damage mechanism with a rate attached, and the scope limit that
+  containment does not run within B. §3 lists the wrong-output forms,
+  §4 the correct response.
+
+- `metrology/provisioning_probe_sim.py` (GD-003): the damage mechanism
+  as an instrument. Ratio = response magnitude / objective
+  perturbation size, read as accumulated calibration error while every
+  internal state variable reads nominal.
+  - Confidence is flat across the whole provisioning gradient while
+    validity falls monotonically — the buffer absorbs what would
+    contradict the model, so the agent's own error signal cannot see
+    it. The confidence-accuracy gap is the coupling deficit, and the
+    probe ratio converges on (1 − coupling).
+  - Probe sizing turned out to be the protocol's main cost driver.
+    The ratio is not scale-free: below the observation-noise floor it
+    is noise, and the required probe scales inversely with the deficit
+    being detected — 10x more probe for a 5% deficit than a 50% one.
+    `min_probe_delta` computes it. "Small probes suffice" holds
+    relative to a real shock, not absolutely.
+  - Calibrated vs blunted: calibrated keeps the ceiling and steepens
+    the working range, spending less below threshold; blunted has lost
+    the gradient. Identical at a matched stimulus by construction, so
+    the minimum viable protocol is ≥3 severities plus a recovery
+    constant plus resting level.
+  - Allocation vs deficit: one budget across peripheral gain and
+    discrimination compute. The bidirectional protocol gives a
+    crossover under allocation (+0.453) and none under deficit
+    (0.000), but single-domain data returns "A deficit" under both —
+    computed from the run, not asserted. The crossover only appears in
+    a protocol nobody has an incentive to run, because the test items
+    come from the institution doing the testing.
+  - Terms held to latency, calibration, discrimination and
+    allocation throughout. No values quantity is computed anywhere in
+    the module and none is derivable from its outputs.
+
 ### 🔁 Updates
 - `README.md`: added an Emotion Reading Spec pointer alongside the
   Glyph Web entry.
+- `docs/evidence-weighting.md`: rewritten to the containment framing
+  and marked as the long form of interface-spec §2. Superseded on one
+  point — the earlier "prior weight over" framing is replaced by whole
+  vs part, where the part inherits its validity from the whole and
+  cannot exceed it.
 - `metrology/gain_direction_sim.py`: E1 built. `EnvironmentSpec` gains
   recovery rate, controllability and sensor range;
   `calibration_variance_full` runs the predictor on perceived
@@ -234,9 +279,9 @@ also
     the demo output rather than smoothed over: it places
     chronic-no-recovery in the low-variance arm, the same arm as low
     adversity.
-- `metrology/README.md`: new EXPLORATION shelf carrying GD-001 and
-  GD-002, plus assembly entries and dependency-graph lines;
-  cross-linked to the regime notes.
+- `metrology/README.md`: new EXPLORATION shelf carrying GD-001,
+  GD-002 and GD-003, plus assembly entries and dependency-graph
+  lines; cross-linked to the regime notes.
 - `docs/calibration-regime-notes.md`: E1 and E2 marked run, with their
   results folded into §7 and the §1 confound marked resolved by E2.
 - `metrology/gain_direction_sim.py`: PAIRS WITH now points at the
@@ -280,6 +325,10 @@ release step.
   saturating damage channel or a real prediction that contradicts the
   ACE picture, and whether the within-range axis is real at all given
   it does not separate.
+- GD-003's domain-transfer coefficient is stipulated, not derived, and
+  it is what makes the part-4 crossover appear. Probe-rate effects are
+  unswept: repeated contingency breaks are training trials, so a probe
+  frequent enough becomes the environment.
 - E3 (pooled-share time series) is blocked on source identification.
 - E5 (capacity under withdrawal) has no existing instrument, which is
   the reason it is worth building.

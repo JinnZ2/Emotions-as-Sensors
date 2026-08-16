@@ -248,11 +248,46 @@ neuromodulator literature. The cleanest of the six: no recall
 instrument, no self-report, and environmental variance set by the
 experimenter rather than inferred.
 
+**E7 — the provisioning probe.** *Run — GD-003
+(`metrology/provisioning_probe_sim.py`).* Four parts, four results:
+
+1. *Confidence is flat across the entire provisioning gradient* while
+   validity falls monotonically. Every agent's own internal state
+   reads nominal because the buffer absorbed what would have
+   contradicted it. The confidence-accuracy gap is the coupling
+   deficit, and the probe ratio converges on (1 − coupling) exactly.
+2. *Probe sizing is the protocol's main cost driver, and it was not
+   visible before running it.* The ratio is not scale-free — below the
+   observation-noise floor it is noise, and the required probe size
+   scales inversely with the deficit being detected. Detecting a 5%
+   coupling deficit needs a probe 10x the one that detects 50%. Small
+   probes are small relative to a real shock, not absolutely.
+3. *Calibrated keeps the ceiling and steepens the working range.* Full
+   response remains available at high severity; what changed is that
+   less is spent below threshold. Blunted has no gradient anywhere.
+   The two are identical at a matched stimulus by construction, so the
+   minimum viable protocol is ≥3 severities plus a recovery time
+   constant plus resting level.
+4. *The deficit reading and the allocation reading are identical on
+   single-domain data.* The bidirectional protocol produces a
+   crossover under allocation (+0.453 interaction) and none under
+   deficit (0.000), but env-B-only items return "A deficit" under
+   both. The verdict is computed from the run, not asserted.
+
+This is the runnable form of §6's missing column — capacity under
+conditions the environment normally supplies and has stopped
+supplying. [obs on the model; no empirical data]
+
+*Open:* the domain-transfer coefficient in parts 3–4 is stipulated,
+not derived, and it is what makes the crossover appear. Probe-rate
+effects are unswept — repeated contingency breaks are training trials,
+so a probe frequent enough becomes the environment.
+
 ---
 
 ## Ordering
 
-E1 and E2 have been run — see above. E4 is a paper
+E1, E2 and E7 have been run — see above. E4 is a paper
 exercise. E6 is a real experiment with an existing design. E3 is
 blocked on sources. E5 is blocked on having no instrument, which is
 also what makes it the one worth building.

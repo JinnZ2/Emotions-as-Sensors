@@ -67,9 +67,45 @@ also
     documented analogue. "If I don't have any other instruments
     available" is data, not hedging.
 
+- `metrology/gain_direction_sim.py` (GD-001): exploration harness for
+  the calibration layer as a testable model — a neuromodulator sets
+  gain and carries no direction; direction is set by what the receiver
+  was calibrated against. Responds to a reported oxytocin finding with
+  two opposite signs across adversity subgroups.
+  - The sign flip is not a branch. It falls out of one subtraction,
+    `dExport/dOT = cue_salience - precision * export_cost`, where
+    precision is the inverse of calibration variance. A tight prior
+    amplified is sharper discrimination, and against a stranger who
+    returns nothing, sharper discrimination means less export.
+  - Three discriminating tests: (1) adversity count vs environmental
+    autocorrelation — ACE instruments are order-invariant and cannot
+    see the operative term; (2) return signal — buffering and
+    disposition are unidentifiable wherever reciprocity is possible
+    and separate only at r = 0; (3) captivity — wild-caught vs
+    lab-reared conspecifics at the same dose, testing whether the
+    low-variance arm exists outside provisioning.
+  - Carries a layer audit (instrument-level reported as
+    organism-level; state-modulated recall; operative term never
+    measured) and a fourth demo showing recall modulation
+    manufactures the whole interaction with the true effect set to
+    zero.
+  - Declares its own edges MH-003 style, including the load-bearing
+    assumption that receivers habituate to level but not to
+    unpredictability. A saturating damage channel keeps the
+    count/autocorrelation dissociation an empirical property of the
+    model rather than an identity — without it, severity enters as a
+    pure multiplicative scale and a scale-free statistic is blind to
+    it by construction.
+  - Contains no empirical data and tests nothing. It says what to
+    measure.
+
 ### 🔁 Updates
 - `README.md`: added an Emotion Reading Spec pointer alongside the
   Glyph Web entry.
+- `metrology/README.md`: new EXPLORATION shelf carrying GD-001, plus
+  an assembly entry and a dependency-graph line.
+- `docs/emotion-reading-spec.md`: calibration layer now cross-links
+  GD-001 as its computational form.
 
 ### 🧭 Rationale
 The panel was complete on *what* each sensor detects and silent on the
@@ -99,6 +135,9 @@ release step.
   own is unresolved. No sensor JSON carries an operating-range field,
   though the E-field instance shows range carrying most of a reading's
   weight.
+- GD-001's sign-flip threshold is a free parameter with nothing
+  pinning it. The dissociation on either side of it is the prediction;
+  its value is not.
 
 ---
 

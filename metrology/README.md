@@ -251,9 +251,61 @@ integrate  routes constraint patterns to   → PEX-001 patterns
            structured mount configuration.
 ```
 
+### EXPLORATION
+
+```
+GD-001     gain_direction_sim.py
+explore    generates discriminating       → no dependencies
+           predictions for the claim
+           that a neuromodulator sets
+           GAIN but not DIRECTION, and
+           that direction is set by what
+           the receiver was calibrated
+           against
+
+           use when: a reported dose effect has two opposite signs
+           across subgroups. A substance with two effects is usually
+           a gain knob with the sign coming from somewhere else.
+           The sign flip is not a branch in the code — it falls out
+           of  dExport/dOT = cue_salience - precision * export_cost,
+           where precision is the inverse of calibration variance.
+
+           produces three tests that separate this account from an
+           adversity-count account:
+             1. count vs autocorrelation — severe-but-predictable is
+                not mild-but-unpredictable. ACE instruments are
+                order-invariant, so they cannot see the operative
+                term.
+             2. return signal — buffering and disposition are
+                unidentifiable wherever reciprocity is possible.
+                They separate only at r = 0.
+             3. captivity — wild-caught vs lab-reared conspecifics,
+                same dose. Direct test of whether the low-variance
+                arm exists outside provisioning.
+
+           also carries a layer audit (instrument-level reported as
+           organism-level; state-modulated recall; operative term
+           never measured) and a demo showing that recall modulation
+           manufactures the whole interaction with the true effect
+           set to zero.
+
+           contains no empirical data and tests nothing. It says
+           what to measure.
+
+           cross-link: ../docs/emotion-reading-spec.md "Calibration
+           layer" — same claim in operator-facing terms.
+```
+
 -----
 
 ## TYPICAL ASSEMBLIES
+
+**Deciding what to measure when a dose effect has two signs:**
+
+```
+GD-001 (prediction generator; pair with ELA-001 if the outcome
+        variable is a label over a task-level count)
+```
 
 **Auditing an existing system for label corruption:**
 
@@ -318,6 +370,7 @@ PEX-001 × N substrates → TO-003 (alignment) → TO-002 (interference)
 ```
                 ELA-001 (standalone)
                 CS-001  (standalone; pairs with ELA-001, TO-003, DAT-M1)
+                GD-001  (standalone; pairs with ELA-001)
                 MH-001..004 (meta-layer; wrap any other part)
 
                 PEX-001

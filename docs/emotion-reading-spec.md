@@ -267,6 +267,11 @@ Adjacent:
 - `metrology/empathy_layer_audit.py` — `detect_label_as_signal` and
   `detect_narrative_optimization` ("behavior is being steered by
   label, not by function") are the machine form of the noun/verb test.
+- `metrology/gain_direction_sim.py` (GD-001) — the calibration layer
+  as a testable model. A neuromodulator sets gain and carries no
+  direction; direction comes from what the receiver was calibrated
+  against. Generates three measurements that separate that account
+  from an adversity-count account.
 - `docs/temporal-balance.md` — the cyclic temporal grammar. The
   calibration curve is that grammar applied to the operator's own
   apparatus rather than to the field.

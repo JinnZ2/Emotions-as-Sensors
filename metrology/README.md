@@ -251,9 +251,152 @@ integrate  routes constraint patterns to   → PEX-001 patterns
            structured mount configuration.
 ```
 
+### EXPLORATION
+
+```
+GD-001     gain_direction_sim.py
+explore    generates discriminating       → no dependencies
+           predictions for the claim
+           that a neuromodulator sets
+           GAIN but not DIRECTION, and
+           that direction is set by what
+           the receiver was calibrated
+           against
+
+           use when: a reported dose effect has two opposite signs
+           across subgroups. A substance with two effects is usually
+           a gain knob with the sign coming from somewhere else.
+           The sign flip is not a branch in the code — it falls out
+           of  dExport/dOT = cue_salience - precision * export_cost,
+           where precision is the inverse of calibration variance.
+
+           produces three tests that separate this account from an
+           adversity-count account:
+             1. count vs autocorrelation — severe-but-predictable is
+                not mild-but-unpredictable. ACE instruments are
+                order-invariant, so they cannot see the operative
+                term.
+             2. return signal — buffering and disposition are
+                unidentifiable wherever reciprocity is possible.
+                They separate only at r = 0.
+             3. captivity — wild-caught vs lab-reared conspecifics,
+                same dose. Direct test of whether the low-variance
+                arm exists outside provisioning.
+
+           also carries a layer audit (instrument-level reported as
+           organism-level; state-modulated recall; operative term
+           never measured) and a demo showing that recall modulation
+           manufactures the whole interaction with the true effect
+           set to zero.
+
+           contains no empirical data and tests nothing. It says
+           what to measure.
+
+           cross-link: ../docs/emotion-reading-spec.md "Calibration
+           layer" — same claim in operator-facing terms.
+           ../docs/calibration-regime-notes.md — what sets calibration
+           variance, what the outcome column measures, and six
+           proposed experiments (E1/E2 extend this module directly).
+```
+
+```
+GD-002     regime_layer_sim.py
+explore    derives which resource regime  → no dependencies
+           makes holding correct and         (mirrors GD-001's
+           which makes pooling correct,       export subtraction)
+           then shows what that does to
+           the reading of a no-return
+           donation task
+
+           use when: a study reads an export/donation/sharing
+           measure as a disposition. Three terms decide which
+           strategy is correct — storability (can the stock be
+           held?), shock correlation (do agents fail together?),
+           and enclosure (is the stock assignable?). Holding moves
+           resource across periods; pooling moves it across agents
+           within a period. Neither is a virtue.
+
+           part 1 runs both strategies through all eight corners of
+           the cube and reports which wins where — the corners are
+           derived, not asserted, and the run reports which term is
+           actually decisive.
+
+           part 2 is the confound: in a one-shot task that reveals
+           nothing about its own regime, the agent runs its prior.
+           A full-disposition agent calibrated in a zero-sum regime
+           and a 7.6x-less-disposed agent calibrated in a sharing
+           regime emit the SAME number. Level confounds them; the
+           delta across an observable return channel recovers the
+           disposition ratio to within 7%.
+
+           pairs with GD-001 (receiver side; this is the regime that
+           sets its calibration).
+           cross-link: ../docs/calibration-regime-notes.md E2.
+```
+
+```
+GD-003     provisioning_probe_sim.py
+explore    reads accumulated calibration   → no dependencies
+           error while every internal
+           state variable reads nominal.
+           ratio = response magnitude /
+           objective perturbation size
+
+           use when: a system reports high confidence and you cannot
+           tell whether the confidence is earned. Under provisioning
+           the predictor still trains — on a mapping the environment
+           is not running — so the model converges, confidence rises,
+           and observed error stays low because the buffer absorbs
+           it. Confidence and validity decouple silently. The
+           confidence-accuracy gap IS the coupling deficit.
+
+           protocol: periodic contingency breaks, sized from the
+           noise floor (min_probe_delta), with confidence and
+           accuracy elicited as SEPARATE readouts.
+           falsifier: ratio flat across a provisioning gradient.
+
+           part 2 — calibrated vs blunted. Calibrated keeps the
+           ceiling and steepens the working range; blunted has lost
+           the gradient. A single matched-stimulus trial cannot
+           separate them, and that is overwhelmingly how it is
+           measured. Needs >=3 severities + recovery constant +
+           resting level.
+
+           part 3/4 — allocation vs deficit. One budget across
+           peripheral gain and discrimination compute. Allocation
+           predicts in-domain discrimination IMPROVES; damage
+           predicts both degrade. The bidirectional protocol reads
+           the INTERACTION: allocation gives crossover, deficit does
+           not. Single-domain testing returns "A deficit" under BOTH
+           hypotheses — and single-domain testing is nearly all of
+           it, because the test items come from the institution
+           doing the testing.
+
+           substrates: RL agents (cheapest, coupling is a parameter),
+           animal welfare, developmental, org behavior.
+           cross-link: ../docs/interface-spec.md section 2, DAMAGE
+           MECHANISM — this module is that mechanism instrumented.
+```
+
 -----
 
 ## TYPICAL ASSEMBLIES
+
+**Deciding what to measure when a dose effect has two signs:**
+
+```
+GD-001 (prediction generator; pair with ELA-001 if the outcome
+        variable is a label over a task-level count)
+  + GD-002 (if the outcome variable is an export/donation/sharing
+            measure — check whether it is reading a regime)
+```
+
+**Checking whether a confident system is actually calibrated:**
+
+```
+GD-003 (probe with contingency breaks; read confidence and
+        accuracy separately, never as one number)
+```
 
 **Auditing an existing system for label corruption:**
 
@@ -318,6 +461,9 @@ PEX-001 × N substrates → TO-003 (alignment) → TO-002 (interference)
 ```
                 ELA-001 (standalone)
                 CS-001  (standalone; pairs with ELA-001, TO-003, DAT-M1)
+                GD-001  (standalone; pairs with ELA-001, GD-002)
+                GD-002  (standalone; regime layer under GD-001)
+                GD-003  (standalone; provisioning probe)
                 MH-001..004 (meta-layer; wrap any other part)
 
                 PEX-001

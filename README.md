@@ -160,6 +160,9 @@ This detailed implementation framework provides the technical foundation for bui
 ### 📎 New: Glyph Web
 See `docs/glyph-web.md` (plus `glyph-web.mmd` and `glyph-web.json`) for the elder-decay map of emotions. Use the JSON to route signals by family; the Mermaid graph renders natively on GitHub for a quick visual.
 
+### 📐 New: Emotion Reading Spec
+See `docs/emotion-reading-spec.md` for the operational layer under the sensor panel. The panel names what each emotion reads; the spec names *how to take the reading*. Every emotion resolves to three fields, not one: **content** (which channel breached), **amplitude** (how immediate — triage only), and **impedance** (is the channel obstructed, and whose — internal assigned meaning vs external contradictory signals). Underneath sits a calibration layer: hormonal state as apparatus gain, shifting sensitivity per axis on a curve with a known shape. A reading resolves to an action; if it resolves to a label, it was narrativized, not read.
+
 
 
 ## License

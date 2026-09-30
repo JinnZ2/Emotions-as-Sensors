@@ -92,6 +92,21 @@ Emotions-as-Sensors is a framework that formalizes emotions as functional diagno
 pip install -r requirements.txt
 ```
 
+
+<!-- clone-refspec-note v1 -->
+## Cloning and pushing
+Shallow clones are single-branch by default.
+Before pushing any branch other than main, run:
+
+    git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+    git fetch --depth 1
+
+Or clone with: git clone --depth 1 --no-single-branch <url>
+Without this, the first push of a new branch
+fails the tracking-ref check even when the
+commit landed.
+<!-- /clone-refspec-note v1 -->
+
 ### Validation
 ```bash
 python tools/validate.py          # Validate schemas and composite data
@@ -262,4 +277,3 @@ Reviewed against CLAUDE.md conventions. Findings are actionable and concise.
 
 Add these GitHub topics (via web UI or git tag equivalent):
 emotion-sensing diagnostic-tools cross-cultural json-schema public-domain sensor-arrays indigenous-wisdom taoism somatic-therapy affective-science symbolic-ai parallel-processing field-theory
-

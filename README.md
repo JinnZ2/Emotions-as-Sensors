@@ -135,7 +135,6 @@ BioGrid 2.0 acts as a *living testbed* where abstract frameworks converge into *
 - All equations are openly published and available for peer review
 - Ethical constraints prevent misuse for manipulation or surveillance
 - The system is intended for healing, awareness, and regeneration—not control
-- Attribution required: Developed by JinnZ2 and Claude and ChatGPT
 
 ---
 
@@ -149,7 +148,7 @@ This framework is part of a larger symbolic AI project focused on regenerative c
 
 ## License
 
-This work is released under the MIT License. Free to use, adapt, and distribute with attribution.
+This work is released under CC0 1.0 Universal. Free to use, adapt, and distribute. No attribution required.
 
 ---
 
@@ -174,7 +173,7 @@ See `docs/emotion-reading-spec.md` for the operational layer under the sensor pa
 
 
 ## License
-This project is dedicated to the public domain under the CC0 1.0 Universal license.  
+This project is dedicated to the public domain under CC0 1.0 Universal.  
 Anyone may use, modify, and distribute without attribution.
 
 
@@ -291,14 +290,13 @@ Scientific & Ethical Principles
 	•	All equations are openly published for peer review
 	•	Ethical design prevents misuse for coercion, manipulation, or surveillance
 	•	Intended for healing, awareness, and regeneration — not control
-	•	Attribution required: Developed by JinnZ v2 with Claude and ChatGPT
 
 ⸻
 
 License
 
-Released under the MIT License.
-Free to use, adapt, and distribute with attribution.
+Released under CC0 1.0 Universal.
+Free to use, adapt, and distribute. No attribution required.
 
 ⸻
 

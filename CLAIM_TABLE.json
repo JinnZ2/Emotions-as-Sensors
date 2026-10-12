@@ -5,13 +5,26 @@
     "channel_audit": {
       "handle_is_not_the_glyph": true,
       "glyph_form": {
-        "status": "NOT_REPRESENTABLE",
-        "reason": "the originating glyph has no key-form at this time; it is not a unicode character and is not reconstructed here",
-        "source": "K"
+        "status": "PROVISIONAL",
+        "glyph": "\u29bf",
+        "codepoint": "U+29BF",
+        "assigned": "2026-10-12",
+        "assigned_for": "AI readers: a key-form so work does not wait on the originating glyph",
+        "reason": "U+29BF (circled bullet) pictures the structure the bundle compresses, a reading enclosed by the channels it sits in; it carries no family meaning elsewhere in this repo, collides with none of the decompression glyphs, is one codepoint with no variation selector, and is not a religious or cultural symbol borrowed from anywhere",
+        "originating": {
+          "status": "NOT_REPRESENTABLE",
+          "reason": "the originating glyph has no key-form at this time; it is not a unicode character and is not reconstructed here; [stated, K] the form is likely catalogued elsewhere under a classification that is not its function, so a keyboard form may be a long way off",
+          "source": "K"
+        },
+        "supersede_when": "a key-form of the originating glyph exists; then it takes this slot and U+29BF is retired, not kept as an alias"
       },
       "decompressions": {
         "_note": "the unicode glyphs this repo already carries are decompression attempts of the originating glyph, written so AI readers can follow; they are readings of it, not the glyph",
-        "files": ["data/glyphs.json", "sensors/glyph-map.json", "sensors/alignment/felt.json"]
+        "files": [
+          "data/glyphs.json",
+          "sensors/glyph-map.json",
+          "sensors/alignment/felt.json"
+        ]
       },
       "compresses": "emotion read as sensory instrumentation, with the standing audit of the channels the reading sits in (gut biome, mitochondria, hormones, exogenous chemistry, circadian state) so reception stays true across all of them",
       "id_hash": 624556001,
@@ -84,11 +97,25 @@
       ],
       "placeholders": {
         "_note": "every constant below is PLACEHOLDER: declared so the bundle parses, measured by nobody. A fail condition firing on an unmeasured channel means UNRATED on that channel, not wrong.",
-        "constants": ["k_g", "k_m", "k_h", "k_c", "k_t", "a", "l", "r", "N"]
+        "constants": [
+          "k_g",
+          "k_m",
+          "k_h",
+          "k_c",
+          "k_t",
+          "a",
+          "l",
+          "r",
+          "N"
+        ]
       },
       "states": {
         "_note": "an unmeasured channel is UNRATED, kept apart from a channel measured and found flat; no composite across channels is emitted",
-        "channel": ["MEASURED", "FLAT", "UNRATED"]
+        "channel": [
+          "MEASURED",
+          "FLAT",
+          "UNRATED"
+        ]
       }
     }
   }

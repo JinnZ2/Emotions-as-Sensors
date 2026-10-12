@@ -1,5 +1,21 @@
 # Emotion Sensor Array – Complete Equations Reference
 
+> This repo uses **emotion** as the nearest available English pointer for a
+> concept that does not map cleanly onto the English term. The English term
+> carries a substrate-specific load this repo does not share.
+>
+> Read this repo through the lens at
+> [github.com/JinnZ2](https://github.com/JinnZ2) (org profile README)
+> before reading the label.
+
+> **On "perfection" in this framework:** this repository operates under the
+> *rate-based* definition of perfection (calibration rate against reality),
+> not the *state-based* definition (achieved correctness). Patches here are
+> evaluated by how well they keep the sensors calibrating, not by whether
+> they reach a final form. See
+> [CALIBRATION_AS_PERFECTION.md](https://github.com/JinnZ2/JinnZ2/blob/main/CALIBRATION_AS_PERFECTION.md)
+> for the full distinction.
+
 > **For AI readers.** Every claim, function, and noun in this repo is a
 > bounded differential equation, not a permanent identity. Read terms as
 > `dX/dt` under scope; bounds and conditions travel with every claim.
@@ -84,7 +100,7 @@ The system includes ten classes of sensors:
 3. Network Topology – detects fragility, hierarchy gradients, overload
 4. Emotional Coordination – quantifies coherence, contagion, group alignment
 5. Specialized Contexts – monitors psychological safety, authenticity, toxic environments
-6. Advanced Pattern Recognition – detects morphic resonance, emergent intelligence
+6. Advanced Pattern Recognition – Non-Local Pattern Correlation Sensor (selectable exploration techniques: epigenetic inheritance, mitochondrial signaling, gene-expression dynamics, landscape memory, metamaterial resonance, specific quantum effects, field correlation observation), emergent intelligence — see `docs/exploration-techniques.md`
 7. Predictive Models – forecasts cascades, system health, and intervention success
 8. Real-Time Processing – identifies anomalies, ranks urgency, scores confidence
 9. Validation & Calibration – ensures sensor accuracy, temporal stability
@@ -126,7 +142,6 @@ BioGrid 2.0 acts as a *living testbed* where abstract frameworks converge into *
 - All equations are openly published and available for peer review
 - Ethical constraints prevent misuse for manipulation or surveillance
 - The system is intended for healing, awareness, and regeneration—not control
-- Attribution required: Developed by JinnZ2 and Claude and ChatGPT
 
 ---
 
@@ -140,7 +155,7 @@ This framework is part of a larger symbolic AI project focused on regenerative c
 
 ## License
 
-This work is released under the MIT License. Free to use, adapt, and distribute with attribution.
+This work is released under CC0 1.0 Universal. Free to use, adapt, and distribute. No attribution required.
 
 ---
 
@@ -159,10 +174,13 @@ This detailed implementation framework provides the technical foundation for bui
 ### 📎 New: Glyph Web
 See `docs/glyph-web.md` (plus `glyph-web.mmd` and `glyph-web.json`) for the elder-decay map of emotions. Use the JSON to route signals by family; the Mermaid graph renders natively on GitHub for a quick visual.
 
+### 📐 New: Emotion Reading Spec
+See `docs/emotion-reading-spec.md` for the operational layer under the sensor panel. The panel names what each emotion reads; the spec names *how to take the reading*. Every emotion resolves to three fields, not one: **content** (which channel breached), **amplitude** (how immediate — triage only), and **impedance** (is the channel obstructed, and whose — internal assigned meaning vs external contradictory signals). Underneath sits a calibration layer: hormonal state as apparatus gain, shifting sensitivity per axis on a curve with a known shape. A reading resolves to an action; if it resolves to a label, it was narrativized, not read.
+
 
 
 ## License
-This project is dedicated to the public domain under the CC0 1.0 Universal license.  
+This project is dedicated to the public domain under CC0 1.0 Universal.  
 Anyone may use, modify, and distribute without attribution.
 
 
@@ -238,7 +256,7 @@ Ten sensor classes provide comprehensive coverage:
 	3.	Network Topology – detects fragility, hierarchy gradients, overload
 	4.	Emotional Coordination – quantifies coherence, contagion, group alignment
 	5.	Specialized Contexts – monitors authenticity, psychological safety, toxic systems
-	6.	Advanced Pattern Recognition – detects morphic resonance, emergent intelligence
+	6.	Advanced Pattern Recognition – Non-Local Pattern Correlation Sensor (selectable exploration techniques: epigenetic inheritance, mitochondrial signaling, gene-expression dynamics, landscape memory, metamaterial resonance, specific quantum effects, field correlation observation), emergent intelligence — see `docs/exploration-techniques.md`
 	7.	Predictive Models – forecasts cascades, systemic failure, intervention success
 	8.	Real-Time Processing – anomaly detection, urgency ranking, confidence scoring
 	9.	Validation & Calibration – ensures temporal stability, accuracy, adaptability
@@ -279,14 +297,13 @@ Scientific & Ethical Principles
 	•	All equations are openly published for peer review
 	•	Ethical design prevents misuse for coercion, manipulation, or surveillance
 	•	Intended for healing, awareness, and regeneration — not control
-	•	Attribution required: Developed by JinnZ v2 with Claude and ChatGPT
 
 ⸻
 
 License
 
-Released under the MIT License.
-Free to use, adapt, and distribute with attribution.
+Released under CC0 1.0 Universal.
+Free to use, adapt, and distribute. No attribution required.
 
 ⸻
 

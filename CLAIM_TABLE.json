@@ -1,0 +1,95 @@
+{
+  "version": "0.1",
+  "_note": "Repo-level lookup for CLAIM_SCHEMA.py. Tables are GLYPH-SCOPED: encode_claim packs cond/rel/fail/meas as 16-bit masks, so each category holds at most 16 entries per glyph, never per repo. A glyph is a 4-byte id_hash whose expansion is the constraint set under it. The expansion is the compression rationale (see sensors/alignment/transparency.json).",
+  "glyphs": {
+    "channel_audit": {
+      "handle_is_not_the_glyph": true,
+      "glyph_form": {
+        "status": "NOT_REPRESENTABLE",
+        "reason": "the originating glyph has no key-form at this time; it is not a unicode character and is not reconstructed here",
+        "source": "K"
+      },
+      "decompressions": {
+        "_note": "the unicode glyphs this repo already carries are decompression attempts of the originating glyph, written so AI readers can follow; they are readings of it, not the glyph",
+        "files": ["data/glyphs.json", "sensors/glyph-map.json", "sensors/alignment/felt.json"]
+      },
+      "compresses": "emotion read as sensory instrumentation, with the standing audit of the channels the reading sits in (gut biome, mitochondria, hormones, exogenous chemistry, circadian state) so reception stays true across all of them",
+      "id_hash": 624556001,
+      "ids": [
+        "channel_audit.gut",
+        "channel_audit.mito",
+        "channel_audit.horm",
+        "channel_audit.chem",
+        "channel_audit.circ",
+        "channel_audit.fid",
+        "channel_audit.audit"
+      ],
+      "rates": [
+        "dR/dt += k_g * dB/dt",
+        "dR/dt += k_m * dE/dt",
+        "dR/dt += k_h * dH/dt",
+        "dR/dt += k_c * dC/dt",
+        "dR/dt += k_t * dT/dt",
+        "dF/dt = a * audit_rate - l * drift",
+        "d(drift)/dt = -r * audited"
+      ],
+      "bounds": [
+        "self,24h,per_meal",
+        "self,24h,per_exertion",
+        "self,28d,phase_known",
+        "self,event,dose_known",
+        "self,24h,sleep_known",
+        "self,season,all_channels",
+        "self,24h,each_cycle"
+      ],
+      "cond": [
+        "B_measured",
+        "load_logged",
+        "phase_logged",
+        "intake_logged",
+        "sleep_logged",
+        "all_ch_measured",
+        "practiced"
+      ],
+      "rel": [
+        "channel_audit.gut",
+        "channel_audit.mito",
+        "channel_audit.horm",
+        "channel_audit.chem",
+        "channel_audit.circ",
+        "channel_audit.fid",
+        "channel_audit.audit"
+      ],
+      "fail": [
+        "B_unmeasured",
+        "load_unlogged",
+        "phase_unknown",
+        "intake_unlogged",
+        "sleep_unknown",
+        "any_ch_unmeasured",
+        "skipped_cycles_gt_N"
+      ],
+      "meas": [
+        "stool_log",
+        "symptom_lag",
+        "fatigue_vs_load",
+        "phase_log",
+        "R_vs_phase",
+        "intake_log",
+        "R_lag",
+        "sleep_log",
+        "R_vs_sleep",
+        "R_attrib_vs_ch_state",
+        "audit_log_present"
+      ],
+      "placeholders": {
+        "_note": "every constant below is PLACEHOLDER: declared so the bundle parses, measured by nobody. A fail condition firing on an unmeasured channel means UNRATED on that channel, not wrong.",
+        "constants": ["k_g", "k_m", "k_h", "k_c", "k_t", "a", "l", "r", "N"]
+      },
+      "states": {
+        "_note": "an unmeasured channel is UNRATED, kept apart from a channel measured and found flat; no composite across channels is emitted",
+        "channel": ["MEASURED", "FLAT", "UNRATED"]
+      }
+    }
+  }
+}

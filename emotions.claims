@@ -1,0 +1,11 @@
+# .claims -- one claim per line, CLAIM_SCHEMA.py LAYER 2 line format.
+# id|rate|bounds|cond|rel|fail|meas|cyc
+# Every token after id resolves inside its glyph's table in CLAIM_TABLE.json
+# (glyph = text before the first '.'). Constants k_*, a, l, r, N are PLACEHOLDER.
+channel_audit.gut|dR/dt += k_g * dB/dt|self,24h,per_meal|B_measured|channel_audit.fid|B_unmeasured|stool_log,symptom_lag|1
+channel_audit.mito|dR/dt += k_m * dE/dt|self,24h,per_exertion|load_logged|channel_audit.fid|load_unlogged|fatigue_vs_load|1
+channel_audit.horm|dR/dt += k_h * dH/dt|self,28d,phase_known|phase_logged|channel_audit.fid|phase_unknown|phase_log,R_vs_phase|1
+channel_audit.chem|dR/dt += k_c * dC/dt|self,event,dose_known|intake_logged|channel_audit.fid|intake_unlogged|intake_log,R_lag|0
+channel_audit.circ|dR/dt += k_t * dT/dt|self,24h,sleep_known|sleep_logged|channel_audit.fid|sleep_unknown|sleep_log,R_vs_sleep|1
+channel_audit.fid|dF/dt = a * audit_rate - l * drift|self,season,all_channels|all_ch_measured|channel_audit.gut,channel_audit.mito,channel_audit.horm,channel_audit.chem,channel_audit.circ,channel_audit.audit|any_ch_unmeasured|R_attrib_vs_ch_state|2
+channel_audit.audit|d(drift)/dt = -r * audited|self,24h,each_cycle|practiced|channel_audit.fid|skipped_cycles_gt_N|audit_log_present|1

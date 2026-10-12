@@ -10,6 +10,12 @@ Checks:
   2  id_hash == crc32(handle): derived, never typed.
   3  glyph_form is a declared state. NOT_REPRESENTABLE must carry a reason;
      an empty string is refused (absent-with-reason is not a blank).
+     PROVISIONAL (a glyph assigned here for AI readers) must carry the
+     glyph, a reason, an originating block that is still
+     NOT_REPRESENTABLE with its own reason, and a supersede_when; and the
+     assigned glyph must not collide with any decompression glyph the
+     repo already carries, or the stand-in would merge with one of its
+     own readings.
   4  every .claims line splits into 8 fields; its glyph exists; every
      token in rate/bounds/cond/rel/fail/meas resolves inside that glyph's
      table; rel ids exist; cyc is in CYCLE_ENUM.
@@ -37,7 +43,9 @@ import CLAIM_SCHEMA as CS  # noqa: E402
 TABLE = os.path.join(ROOT, "CLAIM_TABLE.json")
 CLAIMS = os.path.join(ROOT, "emotions.claims")
 MASK_BITS = 16
-GLYPH_STATES = ("NOT_REPRESENTABLE", "UNICODE", "IMAGE_REF")
+GLYPH_STATES = ("NOT_REPRESENTABLE", "PROVISIONAL", "UNICODE", "IMAGE_REF")
+DECOMPRESSION_FILES = ("data/glyphs.json", "sensors/glyph-map.json",
+                       "sensors/alignment/felt.json")
 FIELDS = ("id", "rate", "bounds", "cond", "rel", "fail", "meas", "cyc")
 LISTS = ("cond", "rel", "fail", "meas")
 
@@ -64,9 +72,38 @@ def load_table(path=TABLE):
                           % (handle, gf["status"]))
         if gf["status"] == "NOT_REPRESENTABLE" and not gf.get("reason", "").strip():
             raise Refused("glyph %s: NOT_REPRESENTABLE with no reason" % handle)
+        if gf["status"] == "PROVISIONAL":
+            for k in ("glyph", "reason", "supersede_when"):
+                if not str(gf.get(k, "")).strip():
+                    raise Refused("glyph %s: PROVISIONAL with no %s" % (handle, k))
+            o = gf.get("originating") or {}
+            if o.get("status") != "NOT_REPRESENTABLE" or not o.get("reason", "").strip():
+                raise Refused("glyph %s: PROVISIONAL must keep the originating "
+                              "glyph NOT_REPRESENTABLE with a reason" % handle)
+            used = _decompression_glyphs()
+            if gf["glyph"] in used:
+                raise Refused("glyph %s: provisional glyph %r collides with a "
+                              "decompression glyph" % (handle, gf["glyph"]))
         if "handle_is_not_the_glyph" not in g:
             raise Refused("glyph %s: handle_is_not_the_glyph undeclared" % handle)
     return t
+
+
+def _decompression_glyphs():
+    """Every glyph string the repo's decompression files carry."""
+    out = set()
+    for rel in DECOMPRESSION_FILES:
+        p = os.path.join(ROOT, rel)
+        if not os.path.exists(p):
+            continue
+        d = json.load(io.open(p, encoding="utf-8"))
+        if isinstance(d, dict):
+            out.update(str(v) for v in d.get("glyphs", {}).values())
+            if "glyph" in d:
+                out.add(str(d["glyph"]))
+        elif isinstance(d, list):
+            out.update(str(e.get("glyph")) for e in d if isinstance(e, dict))
+    return out
 
 
 def parse_claims(path=CLAIMS):
@@ -202,7 +239,10 @@ def selftest():
     t, claims = run(out=io.StringIO())
     chk("real table loads and round-trips", len(claims) == 7)
     g = t["glyphs"]["channel_audit"]
-    chk("glyph form declared NOT_REPRESENTABLE", g["glyph_form"]["status"] == "NOT_REPRESENTABLE")
+    chk("glyph form PROVISIONAL, originating still NOT_REPRESENTABLE",
+        g["glyph_form"]["status"] == "PROVISIONAL"
+        and g["glyph_form"]["originating"]["status"] == "NOT_REPRESENTABLE")
+    chk("decompression files read and non-empty", len(_decompression_glyphs()) >= 13)
     chk("handle marked not the glyph", g["handle_is_not_the_glyph"] is True)
     chk("no composite field on the glyph", not any(k in g for k in ("score", "total", "index")))
 
@@ -224,7 +264,24 @@ def selftest():
     refused(lambda b: b["glyphs"]["channel_audit"].__setitem__("id_hash", 1),
             "typed id_hash is refused")
     refused(lambda b: b["glyphs"]["channel_audit"]["glyph_form"].__setitem__("reason", ""),
-            "NOT_REPRESENTABLE with blank reason is refused")
+            "PROVISIONAL with blank reason is refused")
+    refused(lambda b: b["glyphs"]["channel_audit"]["glyph_form"].__setitem__("glyph", " "),
+            "PROVISIONAL with blank glyph is refused")
+    refused(lambda b: b["glyphs"]["channel_audit"]["glyph_form"]["originating"].__setitem__("reason", ""),
+            "PROVISIONAL that drops the originating reason is refused")
+    refused(lambda b: b["glyphs"]["channel_audit"]["glyph_form"].__setitem__(
+        "glyph", sorted(_decompression_glyphs())[0]),
+            "provisional glyph colliding with a decompression glyph is refused")
+    nr = copy.deepcopy(t); nr["glyphs"]["channel_audit"]["glyph_form"] = {
+        "status": "NOT_REPRESENTABLE", "reason": "x", "source": "K"}
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+        json.dump(nr, f)
+    try:
+        load_table(f.name); chk("NOT_REPRESENTABLE with a reason still loads", True)
+    except Refused:
+        chk("NOT_REPRESENTABLE with a reason still loads", False)
+    finally:
+        os.unlink(f.name)
     refused(lambda b: b["glyphs"]["channel_audit"]["glyph_form"].__setitem__("status", "EMOJI"),
             "undeclared glyph state is refused")
     refused(lambda b: b["glyphs"]["channel_audit"].pop("handle_is_not_the_glyph"),

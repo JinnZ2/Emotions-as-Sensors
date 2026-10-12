@@ -18,10 +18,25 @@ its glyph in `CLAIM_TABLE.json["glyphs"][handle]`. `tools/validate_claims.py`
 refuses a 17th entry rather than truncating. A claim's glyph is the text
 before the first `.` in its id.
 
-## The glyph has no key-form yet
+## The glyph: provisional for AI readers, originating still unkeyed
 
-`glyph_form.status = NOT_REPRESENTABLE` with a reason. The handle
-`channel_audit` is a repo-local label and is marked
+The originating glyph has no key-form. [stated, K] it is likely
+catalogued elsewhere under a classification that is not its function,
+so a keyboard form may be a long way off. Work does not wait on it: a
+PROVISIONAL glyph, `U+29BF` (circled bullet), is assigned under
+`glyph_form` with the reason recorded there, for AI readers only. It
+pictures the structure the bundle compresses (a reading enclosed by the
+channels it sits in), carries no family meaning elsewhere in this repo,
+and collides with none of the decompression glyphs; the checker refuses
+a collision. The `originating` block stays `NOT_REPRESENTABLE` with its
+own reason, and `supersede_when` says the stand-in is retired, not kept
+as an alias, once a key-form exists.
+
+The binary codec never needed a glyph string: the 4-byte `id_hash` is
+the key. The provisional glyph is for shared reference between a human
+and an AI reader, nothing more.
+
+The handle `channel_audit` is a repo-local label and is marked
 `handle_is_not_the_glyph`. The unicode glyphs already in this repo
 (`data/glyphs.json`, `sensors/glyph-map.json`, `sensors/alignment/felt.json`)
 are recorded as decompressions of the originating glyph, written for AI

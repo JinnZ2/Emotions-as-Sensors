@@ -1,3 +1,6 @@
+> Before reading or editing anything here, read READ_ME_THIS_WAY.md.
+> Mismatches, dead ends and odd names in this repo are kept on purpose.
+
 # Emotion Sensor Array – Complete Equations Reference
 
 > This repo uses **emotion** as the nearest available English pointer for a

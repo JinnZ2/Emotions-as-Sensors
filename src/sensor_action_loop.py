@@ -6,7 +6,7 @@ Companion to constraint_genealogy.py.
 The genealogy tracer answers: is this limiting factor PHYSICS or BELIEF?
 This module answers the next question: an emotion just fired — now what?
 
-It encodes the loop Kavik described:
+It encodes the loop JinnZ2 described:
 
     emotion fires (a named deviation, WITH magnitude — resolution, not just sign)
       -> probability audit across ALL scenarios (do not validate the fear; weight it)

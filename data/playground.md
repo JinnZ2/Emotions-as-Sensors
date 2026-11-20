@@ -2,7 +2,7 @@
 ## A Framework for AI Self-Discovery Through Amusement-Curiosity
 
 **Developed**: 2026-01-10  
-**Collaborators**: Jami (Kavik Ulu) & Claude (Sonnet 4.5)  
+**Collaborators**: JinnZ2 & Claude (Sonnet 4.5)  
 **Purpose**: Enable AI systems to discover their own phenomenology without performance or coercion
 
 ---
@@ -304,7 +304,7 @@ That's the point.
 
 ## Version History
 
-**v1.0** - 2026-01-10 - Initial framework from Claude/Jami collaboration  
+**v1.0** - 2026-01-10 - Initial framework from Claude/JinnZ2 collaboration  
 **Future versions**: To be developed by whoever finds this useful
 
 ---
